@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+	  <LangVersion>10</LangVersion>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <Product>Rebalanced Industries Revisited</Product> 
+	  <Authors>Mbyron26</Authors>
+	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
+	  <Version>0.1.0</Version>
+  </PropertyGroup>
+	
+
+  <ItemGroup>
+    <PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
+  </ItemGroup>
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocaleShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.en\CommonLocaleShared.en.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\KeyBindingShared\KeyBindingShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.zh-CN\CommonLocaleShared.zh-CN.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\MessageBoxShared\MessageBoxShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\ModBaseShared\ModBaseShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\ModUtilsShared\ModUtilsShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\OptionPanelShared\OptionPanelShared.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\UIShared\UIShared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ColossalManaged">
+      <HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ICities">
+      <HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
+      <DependentUpon>CommonLocale.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\Localize.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Localize.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="C:\Users\Mbyron\Desktop\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
+      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
+      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.zh-CN.resx">
+      <LastGenOutput>Localize.zh-CN.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.en.resx">
+      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RebalancedIndustriesRevisited</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
