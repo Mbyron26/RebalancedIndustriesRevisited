@@ -3,23 +3,18 @@ using ICities;
 using MbyronModsCommon;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace RebalancedIndustriesRevisited {
     public class Mod : ModBase<Mod, OptionPanel, Config> {
         public override string SolidModName => "RebalancedIndustriesRevisited";
         public override string ModName => "Rebalanced Industries Revisited";
         public override Version ModVersion => new(0, 1, 0);
-        public override ulong ModID => 0;
+        public override ulong ModID => 2911178252;
         public override string Description => Localize.MOD_Description;
-        public override List<ModUpdateInfo> ModUpdateLogs { get; set; } = new() {
-            new ModUpdateInfo(new Version(0, 1, 0), @"2022/01/02", new List<string> {
-                "UpdateLog_V0_1_0UPT1","UpdateLog_V0_1_0UPT2","UpdateLog_V0_1_0FIX"
-            }),
-        };
-
-        public override string GetLocale(string text) {
-            return "";
-        }
+        
+        public override void SetModCulture(CultureInfo cultureInfo) =>  Localize.Culture = cultureInfo;
+        public override string GetLocale(string text) => Localize.ResourceManager.GetString(text, ModCulture);
         public override void IntroActions() {
             base.IntroActions();
             CompatibilityCheck.IncompatibleMods = ConflictMods;
@@ -47,7 +42,11 @@ namespace RebalancedIndustriesRevisited {
             Manager.InitializePrefab();
 #endif
         }
-
+        public override List<ModUpdateInfo> ModUpdateLogs { get; set; } = new List<ModUpdateInfo>() {
+            new ModUpdateInfo(new Version(0, 1, 0), @"2022/01/02", new List<string> {
+                "UpdateLog_V0_1_0UPT1","UpdateLog_V0_1_0UPT2","UpdateLog_V0_1_0FIX"
+            }),
+        };
         private List<IncompatibleModInfo> ConflictMods { get; set; } = new() {
             new IncompatibleModInfo(1562650024, @"Rebalanced Industries", true),
         };

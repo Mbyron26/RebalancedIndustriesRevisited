@@ -53,6 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
+      <DependentUpon>CommonLocale.resx</DependentUpon>
+    </Compile>
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
       <DependentUpon>CommonLocale.resx</DependentUpon>
     </Compile>
@@ -65,6 +68,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="C:\Users\Mbyron\Desktop\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
+      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
