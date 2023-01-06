@@ -1,0 +1,9 @@
+﻿
+V0.2.0
+[UPT]Update buffer recognition and rebinding logic.
+[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.
+
+V0.1.0
+[FIX]Fixed incorrect display of vehicle count.
+[UPT]Using new algorithms to rebalances Industries.
+[UPT]Using the latest Harmony API.
