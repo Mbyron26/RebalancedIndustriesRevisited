@@ -9,7 +9,7 @@ namespace RebalancedIndustriesRevisited {
     public class Mod : ModBase<Mod, OptionPanel, Config> {
         public override string SolidModName => "RebalancedIndustriesRevisited";
         public override string ModName => "Rebalanced Industries Revisited";
-        public override Version ModVersion => new(0, 1, 0);
+        public override Version ModVersion => new(0, 2, 0);
         public override ulong ModID => 2911178252;
         public override string Description => Localize.MOD_Description;
         
@@ -43,6 +43,9 @@ namespace RebalancedIndustriesRevisited {
 #endif
         }
         public override List<ModUpdateInfo> ModUpdateLogs { get; set; } = new List<ModUpdateInfo>() {
+             new ModUpdateInfo(new Version(0, 2, 0), @"2022/01/06", new List<string> {
+                "UpdateLog_V0_2_0UPT","UpdateLog_V0_2_0FIX"
+            }),
             new ModUpdateInfo(new Version(0, 1, 0), @"2022/01/02", new List<string> {
                 "UpdateLog_V0_1_0UPT1","UpdateLog_V0_1_0UPT2","UpdateLog_V0_1_0FIX"
             }),

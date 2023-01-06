@@ -7,7 +7,7 @@
 	  <Product>Rebalanced Industries Revisited</Product> 
 	  <Authors>Mbyron26</Authors>
 	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Version>0.1.0</Version>
+	  <Version>0.2.0</Version>
   </PropertyGroup>
 	
 
@@ -32,6 +32,12 @@
   <Import Project="..\MbyronModsCommonShared\OptionPanelShared\OptionPanelShared.projitems" Label="Shared" />
 
   <Import Project="..\MbyronModsCommonShared\UIShared\UIShared.projitems" Label="Shared" />
+
+  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.es-ES\CommonLocaleShared.es-ES.projitems" Label="Shared" />
+
+  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ja\CommonLocaleShared.ja.projitems" Label="Shared" />
+
+  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.nl\CommonLocaleShared.nl.projitems" Label="Shared" />
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -75,6 +81,18 @@
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.es-ES.resx">
+      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.nl.resx">
+      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\Localize.ja.resx">
+      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Localization\Localize.zh-CN.resx">
       <LastGenOutput>Localize.zh-CN.Designer.cs</LastGenOutput>

@@ -95,5 +95,23 @@ namespace RebalancedIndustriesRevisited {
                 return ResourceManager.GetString("UpdateLog_V0_1_0UPT2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_2_0FIX {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_2_0FIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [UPT]Update buffer recognition and rebinding logic. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_2_0UPT {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_2_0UPT", resourceCulture);
+            }
+        }
     }
 }

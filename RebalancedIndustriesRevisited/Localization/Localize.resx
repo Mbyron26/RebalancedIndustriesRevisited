@@ -129,4 +129,10 @@
   <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
     <value>[UPT]Using the latest Harmony API.</value>
   </data>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+  </data>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]Update buffer recognition and rebinding logic.</value>
+  </data>
 </root>
