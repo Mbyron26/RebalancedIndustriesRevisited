@@ -24,9 +24,9 @@ namespace RebalancedIndustriesRevisited {
                     }
                 }
                 ModLogger.ModLog("--------Deployment succeeded--------");
-                ModLogger.ModLog("Try reloading localized tooltip.");
-                LocaleManager.ForceReload();
-                ModLogger.ModLog("Reloaded localized tooltip succeed.");
+                //ModLogger.ModLog("Try reloading localized tooltip.");
+                //LocaleManager.ForceReload();
+                //ModLogger.ModLog("Reloaded localized tooltip succeed.");
             }
             catch (Exception e) {
                 ModLogger.ModLog(e.ToString());
@@ -64,11 +64,6 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace2 = uniqueFactoryAI.m_workPlaceCount2;
                 var rawWorkSpace3 = uniqueFactoryAI.m_workPlaceCount3;
                 var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                var rawInputRate1 = uniqueFactoryAI.m_inputRate1;
-                var rawInputRate2 = uniqueFactoryAI.m_inputRate2;
-                var rawInputRate3 = uniqueFactoryAI.m_inputRate3;
-                var rawInputRate4 = uniqueFactoryAI.m_inputRate4;
-                var rawOutputRate = uniqueFactoryAI.m_outputRate;
                 InitializeProfile(uniqueFactoryAI);
                 SingletonProfileObject.InitializePrefab(TypeAI.UniqueFactoryAI, uniqueFactoryAI.m_outputResource, uniqueFactoryAI.m_outputVehicleCount);
                 if (SingletonProfileObject.Flag == TypeProfile.Constant) {
@@ -78,9 +73,7 @@ namespace RebalancedIndustriesRevisited {
                     uniqueFactoryAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
                     uniqueFactoryAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
                     uniqueFactoryAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
-                    SingletonProfileObject.SetProcessingFacilityBufferSize(ref uniqueFactoryAI.m_inputRate1, ref uniqueFactoryAI.m_inputRate2, ref uniqueFactoryAI.m_inputRate3, ref uniqueFactoryAI.m_inputRate4);
-                    SingletonProfileObject.SetProcessingFacilityBufferSize(ref uniqueFactoryAI.m_outputRate);
-                    ModLogger.ModLog($"Unique Factory | Maintenance cost: {rawMaintenanceCost} -> {uniqueFactoryAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {uniqueFactoryAI.m_workPlaceCount0} {uniqueFactoryAI.m_workPlaceCount1} {uniqueFactoryAI.m_workPlaceCount2} {uniqueFactoryAI.m_workPlaceCount3} | InputRate: {rawInputRate1} {rawInputRate2} {rawInputRate3} {rawInputRate4} -> {uniqueFactoryAI.m_inputRate1} {uniqueFactoryAI.m_inputRate2} {uniqueFactoryAI.m_inputRate3} {uniqueFactoryAI.m_inputRate4} | OutputRate: {rawOutputRate} -> {uniqueFactoryAI.m_outputRate} | Building: {name}");
+                    ModLogger.ModLog($"Unique Factory | Maintenance cost: {rawMaintenanceCost} -> {uniqueFactoryAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {uniqueFactoryAI.m_workPlaceCount0} {uniqueFactoryAI.m_workPlaceCount1} {uniqueFactoryAI.m_workPlaceCount2} {uniqueFactoryAI.m_workPlaceCount3} | Building: {name}");
                 } else {
                     ModLogger.ModLog($"Unique Factory | No rebinding. | Building: {uniqueFactoryAI.name}");
                 }
@@ -95,11 +88,6 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace2 = processingFacilityAI.m_workPlaceCount2;
                 var rawWorkSpace3 = processingFacilityAI.m_workPlaceCount3;
                 var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                var rawInputRate1 = processingFacilityAI.m_inputRate1;
-                var rawInputRate2 = processingFacilityAI.m_inputRate2;
-                var rawInputRate3 = processingFacilityAI.m_inputRate3;
-                var rawInputRate4 = processingFacilityAI.m_inputRate4;
-                var rawOnputRate = processingFacilityAI.m_outputRate;
                 InitializeProfile(processingFacilityAI);
                 SingletonProfileObject.InitializePrefab(TypeAI.ProcessingFacilityAI, processingFacilityAI.m_outputResource, processingFacilityAI.m_outputVehicleCount);
                 processingFacilityAI.m_outputVehicleCount = SingletonProfileObject.GetTruck();
@@ -110,9 +98,7 @@ namespace RebalancedIndustriesRevisited {
                 processingFacilityAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
                 processingFacilityAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
                 processingFacilityAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
-                SingletonProfileObject.SetProcessingFacilityBufferSize(ref processingFacilityAI.m_inputRate1, ref processingFacilityAI.m_inputRate2, ref processingFacilityAI.m_inputRate3, ref processingFacilityAI.m_inputRate4);
-                SingletonProfileObject.SetProcessingFacilityBufferSize(ref processingFacilityAI.m_outputRate);
-                ModLogger.ModLog($"Processing Facility | Vehicle count: {rawTruckCount} -> {processingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {processingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {processingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {processingFacilityAI.m_workPlaceCount0} {processingFacilityAI.m_workPlaceCount1} {processingFacilityAI.m_workPlaceCount2} {processingFacilityAI.m_workPlaceCount3} | InputRate: {rawInputRate1} {rawInputRate2} {rawInputRate3} {rawInputRate4} -> {processingFacilityAI.m_inputRate1} {processingFacilityAI.m_inputRate2} {processingFacilityAI.m_inputRate3} {processingFacilityAI.m_inputRate4} | OutputRate: {rawOnputRate} -> {processingFacilityAI.m_outputRate} | Building: {name}");
+                ModLogger.ModLog($"Processing Facility | Vehicle count: {rawTruckCount} -> {processingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {processingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {processingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {processingFacilityAI.m_workPlaceCount0} {processingFacilityAI.m_workPlaceCount1} {processingFacilityAI.m_workPlaceCount2} {processingFacilityAI.m_workPlaceCount3} | Building: {name}");
             } else if (ai is WarehouseAI warehouseAI) {
                 var name = warehouseAI.name;
                 var rawTruckCount = warehouseAI.m_truckCount;
@@ -184,7 +170,6 @@ namespace RebalancedIndustriesRevisited {
                 };
             } else SingletonProfileObject = new ProfileBase(1m, 1m);
         }
-
 
         public static string[] ProcessorField = { "Animal Pasture 01", "Animal Pasture 02", "Cattle Shed 01" };
         public static bool IsField(BuildingAI buildingAI) {
@@ -285,7 +270,7 @@ namespace RebalancedIndustriesRevisited {
             } else {
                 newAllWorkers = (int)Math.Ceiling(RawAllWorkers * WorkersFactor);
             }
-            foreach (int item in RawWorkSpaceBuffer) {
+            foreach (int item in WorkSpaceRatio) {
                 newWorkSpace.Add((int)(GetRatio(item, WorkSpaceRatio.Sum()) * newAllWorkers));
             }
             NewWorkSpaceBuffer = new WorkSpace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
@@ -327,35 +312,7 @@ namespace RebalancedIndustriesRevisited {
             OutputResource = outputResource;
             RawTruckCount = rawTruckCount;
         }
-        public virtual void SetProcessingFacilityBufferSize(ref int outRate) {
-            var raw = GetBufferSize(outRate);
-            var modified = EMath.Clamp(raw * 2, 20000, 60000);
-            outRate = SetBufferSize(modified);
-        }
-        public virtual void SetProcessingFacilityBufferSize(ref int rate1, ref int rate2, ref int rate3, ref int rate4) {
-            if (rate1 != 0) {
-                var raw = GetBufferSize(rate1);
-                var modified = EMath.Clamp(raw * 2, 20000, 60000);
-                rate1 = SetBufferSize(modified);
-            }
-            if (rate2 != 0) {
-                var raw = GetBufferSize(rate2);
-                var modified = EMath.Clamp(raw * 2, 20000, 60000);
-                rate2 = SetBufferSize(modified);
-            }
-            if (rate3 != 0) {
-                var raw = GetBufferSize(rate3);
-                var modified = EMath.Clamp(raw * 2, 20000, 60000);
-                rate3 = SetBufferSize(modified);
-            }
-            if (rate4 != 0) {
-                var raw = GetBufferSize(rate4);
-                var modified = EMath.Clamp(raw * 2, 20000, 60000);
-                rate4 = SetBufferSize(modified);
-            }
-        }
-        private static int GetBufferSize(int rate) => ((rate * 32 + 8000) * 100 + 50) / 100 * 1000 / 1000;
-        private static int SetBufferSize(int newBuffer) => ((newBuffer * 100 - 50) / 100 - 8000) / 32;
+        
 
         public virtual int GetCost(int rawValue) => (int)Math.Ceiling(rawValue * CostsFactor);
         public virtual WorkSpace GetWorkSpace(WorkSpace rawWorkSpaceBuffer) {

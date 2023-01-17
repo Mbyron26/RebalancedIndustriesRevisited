@@ -117,127 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CompatibilityCheck_Incompatible" xml:space="preserve">
-    <value>Ce mod est incompatible.</value>
+  <data name="MOD_Description" xml:space="preserve">
+    <value>Rééquilibre le DLC "Industries", réduit le flux de circulation, augmente le chargement des marchandises et plus encore.</value>
   </data>
-  <data name="CompatibilityCheck_SameFunctionality" xml:space="preserve">
-    <value>contient déjà la même fonctionnalité.</value>
+  <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
+    <value>[FIX]Correction de l'affichage incorrect du nombre de véhicules.</value>
   </data>
-  <data name="CompatibilityCheck_UseInstead" xml:space="preserve">
-    <value>Utiliser {0} à la place.</value>
+  <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
+    <value>[UPT]Utilisation de nouveaux algorithmes pour rééquilibrer les industries.</value>
   </data>
-  <data name="CompatibilityMessageBox_Unsubscribe" xml:space="preserve">
-    <value>Se désabonner</value>
+  <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
+    <value>[UPT]Utilisation de la dernière API d'Harmony.</value>
   </data>
-  <data name="KeyBinding_PressAnyKey" xml:space="preserve">
-    <value>Appuyez sur n'importe quelle touche</value>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[FIX]Correction de certains bâtiments de traitement qui ne présentent pas assez d'acheteurs ou pas assez de matières premières.</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Langue</value>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]Mise à jour de la logique de reconnaissance et de reliure des tampons.</value>
   </data>
-  <data name="Language_de" xml:space="preserve">
-    <value>Allemand</value>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
   </data>
-  <data name="Language_en" xml:space="preserve">
-    <value>Anglais</value>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed an issue where work space was incorrect.</value>
   </data>
-  <data name="Language_es_ES" xml:space="preserve">
-    <value>Espagnol</value>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
   </data>
-  <data name="Language_fr" xml:space="preserve">
-    <value>Français</value>
-  </data>
-  <data name="Language_GameLanguage" xml:space="preserve">
-    <value>Langue du jeu</value>
-  </data>
-  <data name="Language_it" xml:space="preserve">
-    <value>Italien</value>
-  </data>
-  <data name="Language_ja" xml:space="preserve">
-    <value>Japonais</value>
-  </data>
-  <data name="Language_ko" xml:space="preserve">
-    <value>Coréen</value>
-  </data>
-  <data name="Language_nl" xml:space="preserve">
-    <value>Néerlandais</value>
-  </data>
-  <data name="Language_pl" xml:space="preserve">
-    <value>Polonais</value>
-  </data>
-  <data name="Language_pt" xml:space="preserve">
-    <value>Portugais</value>
-  </data>
-  <data name="Language_pt_BR" xml:space="preserve">
-    <value>Portugais Brésilien</value>
-  </data>
-  <data name="Language_ru" xml:space="preserve">
-    <value>Russe</value>
-  </data>
-  <data name="Language_zh_CN" xml:space="preserve">
-    <value>Chinois simplifié</value>
-  </data>
-  <data name="Language_zh_TW" xml:space="preserve">
-    <value>Chinois traditionnel</value>
-  </data>
-  <data name="LogMessageBox_Added" xml:space="preserve">
-    <value>Ajouté</value>
-  </data>
-  <data name="LogMessageBox_Adjusted" xml:space="preserve">
-    <value>Ajusté</value>
-  </data>
-  <data name="LogMessageBox_Fixed" xml:space="preserve">
-    <value>Fixé</value>
-  </data>
-  <data name="LogMessageBox_Optimized" xml:space="preserve">
-    <value>Optimisé</value>
-  </data>
-  <data name="LogMessageBox_Removed" xml:space="preserve">
-    <value>Retiré</value>
-  </data>
-  <data name="LogMessageBox_Updated" xml:space="preserve">
-    <value>Mis à jour</value>
-  </data>
-  <data name="MessageBox_NormalPrompt" xml:space="preserve">
-    <value>N'a détecté aucun mod incompatible.</value>
-  </data>
-  <data name="MessageBox_OK" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="MessageBox_WarningPrompt" xml:space="preserve">
-    <value>Des mods incompatibles ont été détectés, afin de s'assurer que ce mod fonctionne correctement, vous devez vous désabonner des mods suivants :</value>
-  </data>
-  <data name="OptionPanel_Advanced" xml:space="preserve">
-    <value>Avancé</value>
-  </data>
-  <data name="OptionPanel_BuiltinFunction" xml:space="preserve">
-    <value>Fonction intégrée</value>
-  </data>
-  <data name="OptionPanel_ChangeLog" xml:space="preserve">
-    <value>Historique des changements</value>
-  </data>
-  <data name="OptionPanel_CompatibilityCheck" xml:space="preserve">
-    <value>Vérification de la compatibilité</value>
-  </data>
-  <data name="OptionPanel_DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
-  </data>
-  <data name="OptionPanel_General" xml:space="preserve">
-    <value>Général</value>
-  </data>
-  <data name="OptionPanel_Hotkeys" xml:space="preserve">
-    <value>Raccourcis</value>
-  </data>
-  <data name="OptionPanel_IsDisabled" xml:space="preserve">
-    <value>Est désactivé</value>
-  </data>
-  <data name="OptionPanel_IsEnabled" xml:space="preserve">
-    <value>Est activé</value>
-  </data>
-  <data name="OptionPanel_Version" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="XMLWariningMessageBox_Warning" xml:space="preserve">
-    <value>Attention ! Le mod ne peut pas lire normalement les anciennes données de configuration. La configuration par défaut a été chargée pour le mod. Veuillez aller dans le panneau des options et configurer vos paramètres avant de commencer la partie.</value>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Fixed the exception throwing issues.</value>
   </data>
 </root>

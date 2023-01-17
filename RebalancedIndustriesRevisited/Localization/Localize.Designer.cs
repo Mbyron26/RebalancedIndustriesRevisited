@@ -113,5 +113,41 @@ namespace RebalancedIndustriesRevisited {
                 return ResourceManager.GetString("UpdateLog_V0_2_0UPT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_3_0FIX1 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_3_0FIX1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed an issue where work space was incorrect. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_3_0FIX2 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_3_0FIX2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed compatibility issues with IMT and IPT mod. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_3_0FIX3 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_3_0FIX3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed the exception throwing issues. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_3_0FIX4 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_3_0FIX4", resourceCulture);
+            }
+        }
     }
 }

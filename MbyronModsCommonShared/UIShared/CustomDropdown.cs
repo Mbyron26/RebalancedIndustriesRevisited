@@ -3,6 +3,29 @@ using UnityEngine;
 
 namespace MbyronModsCommon {
     public class CustomDropdown {
+        public static UIDropDown AddDropDown(UIComponent parent, float width, float height, float textScale) {
+            var dropDown = parent.AddUIComponent<UIDropDown>();
+            dropDown.width = width;
+            dropDown.height = height;
+            dropDown.listWidth = (int)width;
+            dropDown.itemHeight = (int)height;
+            dropDown.verticalAlignment = UIVerticalAlignment.Middle;
+            dropDown.horizontalAlignment = UIHorizontalAlignment.Left;
+            dropDown.textFieldPadding = dropDown.itemPadding = new RectOffset(8, 0, 4, 0);
+            dropDown.textScale = textScale;
+            dropDown.atlas = CustomAtlas.CommonAtlas;
+            dropDown.normalBgSprite = CustomAtlas.FieldNormal;
+            dropDown.disabledBgSprite = CustomAtlas.FieldDisabled;
+            dropDown.hoveredBgSprite = CustomAtlas.FieldHovered;
+            dropDown.focusedBgSprite = CustomAtlas.FieldNormal;
+            dropDown.listBackground = CustomAtlas.FieldHovered;
+            dropDown.itemHover = CustomAtlas.FieldNormal;
+            dropDown.itemHighlight = CustomAtlas.FieldFocused;
+            dropDown.popupColor = Color.white;
+            dropDown.popupTextColor = Color.black;
+            dropDown.triggerButton = dropDown;
+            return dropDown;
+        }
         public static UIDropDown AddDropdown(UIComponent parent, string textLabel, float textLabelScale, string[] options, int defaultSelection,
                 float dropDownWidth, float dropDownHeight, float dropDownTextScale, RectOffset textFieldPadding = null, RectOffset itemPadding = null) {
             UIPanel uiPanel = parent.AttachUIComponent(UITemplateManager.GetAsGameObject("OptionsDropdownTemplate")) as UIPanel;

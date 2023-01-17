@@ -3,7 +3,6 @@ using MbyronModsCommon;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using System.Reflection;
 
 namespace RebalancedIndustriesRevisited {
 
@@ -48,7 +47,6 @@ namespace RebalancedIndustriesRevisited {
                             yield return next2;
                             yield return next3;
                         }
-
                     } else {
                         yield return instruction;
                         yield return next;
@@ -58,52 +56,49 @@ namespace RebalancedIndustriesRevisited {
                 }
             }
 
-#if EarlyTest
-            //var codes = instructions.ToList();
-            //codes[1348].operand = 0x3e80;
-            //return codes.AsEnumerable();
-#endif
 
         }
 
 
-        //[HarmonyPrefix]
-        //[HarmonyPatch("GetInputBufferSize1", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
-        //public static void Prefix1(ProcessingFacilityAI __instance) {
-        //    if (__instance.m_inputRate1 == 200) {
-        //        __instance.m_inputRate1 = 625;
-        //    } else if (__instance.m_inputRate1 == 300) {
-        //        __instance.m_inputRate1 = 875;
-        //    } else if (__instance.m_inputRate1 == 150) {
-        //        __instance.m_inputRate1 = 562;
-        //    } else if (__instance.m_inputRate1 == 250) {
-        //        __instance.m_inputRate1 = 750;
-        //    }
-        //}
+        [HarmonyPostfix]
+        [HarmonyPatch("GetInputBufferSize1", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
+        public static void Postfix1(ref int __result) {
+            if (__result != 0) {
+                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+            }
+        }
 
-        //[HarmonyPrefix]
-        //[HarmonyPatch("GetOutputBufferSize", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
-        //public static void Prefix2(ProcessingFacilityAI __instance) {
-        //    if (__instance.m_outputRate == 200) {
-        //        __instance.m_outputRate = 625;
-        //    } else if (__instance.m_outputRate == 400) {
-        //        __instance.m_outputRate = 1125;
-        //    } else if (__instance.m_outputRate == 150) {
-        //        __instance.m_outputRate = 562;
-        //    } else if (__instance.m_outputRate == 250) {
-        //        __instance.m_outputRate = 750;
-        //    }
-        //    //SetOutputRate(ref __instance.m_outputRate);
-        //}
+        [HarmonyPostfix]
+        [HarmonyPatch("GetInputBufferSize2", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
+        public static void Postfix2(ref int __result) {
+            if (__result != 0) {
+                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+            }
+        }
 
-        //public static void SetOutputRate(ref int outputRate) {
-            
-        //    if (outputRate <= 250) {
-        //        var modified = ((outputRate * 32 + 8000) * 100 + 50) / 100 * 2;
-        //        outputRate = ((modified * 100 - 50) / 100 - 8000) / 32;
-        //    }
-        //}
+        [HarmonyPostfix]
+        [HarmonyPatch("GetInputBufferSize3", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
+        public static void Postfix3(ref int __result) {
+            if (__result != 0) {
+                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+            }
+        }
 
+        [HarmonyPostfix]
+        [HarmonyPatch("GetInputBufferSize4", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
+        public static void Postfix4(ref int __result) {
+            if (__result != 0) {
+                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch("GetOutputBufferSize", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
+        public static void Postfix5(ref int __result) {
+            if (__result != 0) {
+                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+            }
+        }
 
 #if POSSIBLE_DEPRECATED
         private static FieldInfo inputRate1Field = AccessTools.Field(typeof(ProcessingFacilityAI), nameof(ProcessingFacilityAI.m_inputRate1));

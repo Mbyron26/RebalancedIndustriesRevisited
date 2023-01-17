@@ -1,4 +1,10 @@
 ﻿
+V0.3.0
+[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.
+[FIX]Fixed an issue where work space was incorrect.
+[FIX]Fixed compatibility issues with IMT and IPT mod.
+[FIX]Fixed the exception throwing issues.
+
 V0.2.0
 [UPT]Update buffer recognition and rebinding logic.
 [FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.

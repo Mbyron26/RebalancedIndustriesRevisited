@@ -6,7 +6,7 @@ namespace RebalancedIndustriesRevisited {
         public OptionPanel() {
             var panel = CustomTabs.AddCustomTabs(this);
             new OptionPanel_General(panel.AddTabs(CommonLocale.OptionPanel_General, CommonLocale.OptionPanel_General, 0, 30).MainPanel, TypeWidth.NormalWidth);
-            new AdvancedBase<Mod>(panel.AddTabs(CommonLocale.OptionPanel_Advanced, CommonLocale.OptionPanel_Advanced, 0, 30).MainPanel, TypeWidth.NormalWidth);
+            new AdvancedBase<Mod, Config>(panel.AddTabs(CommonLocale.OptionPanel_Advanced, CommonLocale.OptionPanel_Advanced, 0, 30).MainPanel, TypeWidth.NormalWidth);
         }
     }
 

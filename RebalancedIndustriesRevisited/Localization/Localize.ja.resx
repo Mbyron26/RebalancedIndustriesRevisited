@@ -130,9 +130,21 @@
     <value>[UPT]最新のHarmony2 APIを使用</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+    <value>[FIX]一部の加工施設で、十分な販売先が無い・原料が不足するなどの不具合を修正</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
-    <value>[UPT]Update buffer recognition and rebinding logic.</value>
+    <value>[UPT]バッファの認識方法と再結合のロジックを更新</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Fixed the exception throwing issues.</value>
   </data>
 </root>

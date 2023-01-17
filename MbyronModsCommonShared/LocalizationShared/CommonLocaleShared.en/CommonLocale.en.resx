@@ -117,124 +117,168 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CompatibilityCheck_Incompatible" xml:space="preserve">
-    <value>This mod is incompatible.</value>
+  <data name="String" xml:space="preserve">
+    <value>CompatibilityCheck_Incompatible</value>
+    <comment>This mod is incompatible.</comment>
   </data>
-  <data name="CompatibilityCheck_SameFunctionality" xml:space="preserve">
-    <value>already includes the same functionality.</value>
+  <data name="String1" xml:space="preserve">
+    <value>CompatibilityCheck_SameFunctionality</value>
+    <comment>already includes the same functionality.</comment>
   </data>
-  <data name="CompatibilityCheck_UseInstead" xml:space="preserve">
-    <value>Use {0} instead.</value>
+  <data name="String10" xml:space="preserve">
+    <value>Language_GameLanguage</value>
+    <comment>Game Language</comment>
   </data>
-  <data name="CompatibilityMessageBox_Unsubscribe" xml:space="preserve">
-    <value>Unsubscribe</value>
+  <data name="String11" xml:space="preserve">
+    <value>Language_it</value>
+    <comment>Italian</comment>
   </data>
-  <data name="KeyBinding_PressAnyKey" xml:space="preserve">
-    <value>Press any key</value>
+  <data name="String12" xml:space="preserve">
+    <value>Language_ja</value>
+    <comment>Japanese</comment>
   </data>
-  <data name="Language" xml:space="preserve">
+  <data name="String13" xml:space="preserve">
+    <value>Language_ko</value>
+    <comment>Korean</comment>
+  </data>
+  <data name="String14" xml:space="preserve">
+    <value>Language_nl</value>
+    <comment>Dutch</comment>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>Language_pl</value>
+    <comment>Polish</comment>
+  </data>
+  <data name="String16" xml:space="preserve">
+    <value>Language_pt</value>
+    <comment>Portuguese</comment>
+  </data>
+  <data name="String17" xml:space="preserve">
+    <value>Language_pt_BR</value>
+    <comment>Portuguese-Brazil</comment>
+  </data>
+  <data name="String18" xml:space="preserve">
+    <value>Language_ru</value>
+    <comment>Russian</comment>
+  </data>
+  <data name="String19" xml:space="preserve">
+    <value>Language_zh_CN</value>
+    <comment>Simplified Chinese</comment>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>CompatibilityCheck_UseInstead</value>
+    <comment>Use {0} instead.</comment>
+  </data>
+  <data name="String20" xml:space="preserve">
+    <value>Language_zh_TW</value>
+    <comment>Traditional Chinese</comment>
+  </data>
+  <data name="String21" xml:space="preserve">
+    <value>LogMessageBox_Added</value>
+    <comment>Added</comment>
+  </data>
+  <data name="String22" xml:space="preserve">
+    <value>LogMessageBox_Adjusted</value>
+    <comment>Adjusted</comment>
+  </data>
+  <data name="String23" xml:space="preserve">
+    <value>LogMessageBox_Fixed</value>
+    <comment>Fixed</comment>
+  </data>
+  <data name="String24" xml:space="preserve">
+    <value>LogMessageBox_Optimized</value>
+    <comment>Optimized</comment>
+  </data>
+  <data name="String25" xml:space="preserve">
+    <value>LogMessageBox_Removed</value>
+    <comment>Removed</comment>
+  </data>
+  <data name="String26" xml:space="preserve">
+    <value>LogMessageBox_Updated</value>
+    <comment>Updated</comment>
+  </data>
+  <data name="String27" xml:space="preserve">
+    <value>MessageBox_NormalPrompt</value>
+    <comment>Did not detect any incompatible mods.</comment>
+  </data>
+  <data name="String28" xml:space="preserve">
+    <value>MessageBox_OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>MessageBox_WarningPrompt</value>
+    <comment>Incompatible mods have been detected, in order to ensure this mod works properly, you need to unsubscribe following mods:</comment>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>CompatibilityMessageBox_Unsubscribe</value>
+    <comment>Unsubscribe</comment>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>OptionPanel_Advanced</value>
+    <comment>Advanced</comment>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>OptionPanel_BuiltinFunction</value>
+    <comment>Builtin Function</comment>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>OptionPanel_ChangeLog</value>
+    <comment>Change Log</comment>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>OptionPanel_CompatibilityCheck</value>
+    <comment>Compatibility Check</comment>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>OptionPanel_DebugMode</value>
+    <comment>Debug mode</comment>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>OptionPanel_General</value>
+    <comment>General</comment>
+  </data>
+  <data name="String36" xml:space="preserve">
+    <value>OptionPanel_Hotkeys</value>
+    <comment>Hotkeys</comment>
+  </data>
+  <data name="String37" xml:space="preserve">
+    <value>OptionPanel_IsDisabled</value>
+    <comment>Is Disabled</comment>
+  </data>
+  <data name="String38" xml:space="preserve">
+    <value>OptionPanel_IsEnabled</value>
+    <comment>Is Enabled</comment>
+  </data>
+  <data name="String39" xml:space="preserve">
+    <value>OptionPanel_Version</value>
+    <comment>Version</comment>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>KeyBinding_PressAnyKey</value>
+    <comment>Press any key</comment>
+  </data>
+  <data name="String40" xml:space="preserve">
+    <value>XMLWariningMessageBox_Warning</value>
+    <comment>Warning! Mod cannot normally read the old configuration data. Now default configuration has been loaded for the mod. Please go to options panel and configure your Settings before starting game.</comment>
+  </data>
+  <data name="String5" xml:space="preserve">
     <value>Language</value>
+    <comment>Language</comment>
   </data>
-  <data name="Language_de" xml:space="preserve">
-    <value>German</value>
+  <data name="String6" xml:space="preserve">
+    <value>Language_de</value>
+    <comment>German</comment>
   </data>
-  <data name="Language_en" xml:space="preserve">
-    <value>English</value>
+  <data name="String7" xml:space="preserve">
+    <value>Language_en</value>
+    <comment>English</comment>
   </data>
-  <data name="Language_es_ES" xml:space="preserve">
-    <value>Spanish</value>
+  <data name="String8" xml:space="preserve">
+    <value>Language_es_ES</value>
+    <comment>Spanish</comment>
   </data>
-  <data name="Language_fr" xml:space="preserve">
-    <value>French</value>
-  </data>
-  <data name="Language_GameLanguage" xml:space="preserve">
-    <value>Game Language</value>
-  </data>
-  <data name="Language_it" xml:space="preserve">
-    <value>Italian</value>
-  </data>
-  <data name="Language_ja" xml:space="preserve">
-    <value>Japanese</value>
-  </data>
-  <data name="Language_ko" xml:space="preserve">
-    <value>Korean</value>
-  </data>
-  <data name="Language_nl" xml:space="preserve">
-    <value>Dutch</value>
-  </data>
-  <data name="Language_pl" xml:space="preserve">
-    <value>Polish</value>
-  </data>
-  <data name="Language_pt" xml:space="preserve">
-    <value>Portuguese</value>
-  </data>
-  <data name="Language_pt_BR" xml:space="preserve">
-    <value>Portuguese-Brazil</value>
-  </data>
-  <data name="Language_ru" xml:space="preserve">
-    <value>Russian</value>
-  </data>
-  <data name="Language_zh_CN" xml:space="preserve">
-    <value>Simplified Chinese</value>
-  </data>
-  <data name="Language_zh_TW" xml:space="preserve">
-    <value>Traditional Chinese</value>
-  </data>
-  <data name="LogMessageBox_Added" xml:space="preserve">
-    <value>Added</value>
-  </data>
-  <data name="LogMessageBox_Adjusted" xml:space="preserve">
-    <value>Adjusted</value>
-  </data>
-  <data name="LogMessageBox_Fixed" xml:space="preserve">
-    <value>Fixed</value>
-  </data>
-  <data name="LogMessageBox_Optimized" xml:space="preserve">
-    <value>Optimized</value>
-  </data>
-  <data name="LogMessageBox_Removed" xml:space="preserve">
-    <value>Removed</value>
-  </data>
-  <data name="LogMessageBox_Updated" xml:space="preserve">
-    <value>Updated</value>
-  </data>
-  <data name="MessageBox_NormalPrompt" xml:space="preserve">
-    <value>Did not detect any incompatible mods.</value>
-  </data>
-  <data name="MessageBox_OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="MessageBox_WarningPrompt" xml:space="preserve">
-    <value>Incompatible mods have been detected, in order to ensure this mod works properly, you need to unsubscribe following mods:</value>
-  </data>
-  <data name="OptionPanel_Advanced" xml:space="preserve">
-    <value>Advanced</value>
-  </data>
-  <data name="OptionPanel_BuiltinFunction" xml:space="preserve">
-    <value>Builtin Function</value>
-  </data>
-  <data name="OptionPanel_ChangeLog" xml:space="preserve">
-    <value>Change Log</value>
-  </data>
-  <data name="OptionPanel_CompatibilityCheck" xml:space="preserve">
-    <value>Compatibility Check</value>
-  </data>
-  <data name="OptionPanel_General" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="OptionPanel_Hotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
-  </data>
-  <data name="OptionPanel_IsDisabled" xml:space="preserve">
-    <value>Is Disabled</value>
-  </data>
-  <data name="OptionPanel_IsEnabled" xml:space="preserve">
-    <value>Is Enabled</value>
-  </data>
-  <data name="OptionPanel_Version" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="XMLWariningMessageBox_Warning" xml:space="preserve">
-    <value>Warning! Mod cannot normally read the old configuration data. Now default configuration has been loaded for the mod. Please go to options panel and configure your Settings before starting game.</value>
+  <data name="String9" xml:space="preserve">
+    <value>Language_fr</value>
+    <comment>French</comment>
   </data>
 </root>

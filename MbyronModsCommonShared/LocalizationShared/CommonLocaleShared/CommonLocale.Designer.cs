@@ -367,6 +367,15 @@ namespace MbyronModsCommon {
         }
         
         /// <summary>
+        ///   查找类似 Debug mode 的本地化字符串。
+        /// </summary>
+        public static string OptionPanel_DebugMode {
+            get {
+                return ResourceManager.GetString("OptionPanel_DebugMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 General 的本地化字符串。
         /// </summary>
         public static string OptionPanel_General {

@@ -33,33 +33,41 @@
 
   <Import Project="..\MbyronModsCommonShared\UIShared\UIShared.projitems" Label="Shared" />
 
-  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.es-ES\CommonLocaleShared.es-ES.projitems" Label="Shared" />
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.de\CommonLocaleShared.de.projitems" Label="Shared" />
 
-  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ja\CommonLocaleShared.ja.projitems" Label="Shared" />
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.es-ES\CommonLocaleShared.es-ES.projitems" Label="Shared" />
 
-  <Import Project="..\..\..\..\ImageOverlayRenewal\V1_8_0\ImageOverlayRenewal\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.nl\CommonLocaleShared.nl.projitems" Label="Shared" />
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.fr\CommonLocaleShared.fr.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ja\CommonLocaleShared.ja.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.nl\CommonLocaleShared.nl.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.pt-BR\CommonLocaleShared.pt-BR.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ru\CommonLocaleShared.ru.projitems" Label="Shared" />
+
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ColossalManaged">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ICities">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
-      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
+      <DependentUpon>CommonLocale.resx</DependentUpon>
+    </Compile>
+    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
       <DependentUpon>CommonLocale.resx</DependentUpon>
     </Compile>
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
@@ -77,6 +85,9 @@
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
+      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">

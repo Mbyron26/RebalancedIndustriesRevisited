@@ -130,9 +130,21 @@
     <value>[UPT]Se usa la API de "Harmony" más reciente.</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+    <value>[FIX]Resuelto el problema donde algunos edificios de procesamiento indican que no tienen suficientes compradores o materias primas.</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
-    <value>[UPT]Update buffer recognition and rebinding logic.</value>
+    <value>[UPT]Actualización del reconocimiento de buffer y de la lógica de re-vinculación.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Fixed the exception throwing issues.</value>
   </data>
 </root>
