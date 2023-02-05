@@ -220,7 +220,7 @@
     <value>Vérification de la compatibilité</value>
   </data>
   <data name="OptionPanel_DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Mode debug</value>
   </data>
   <data name="OptionPanel_General" xml:space="preserve">
     <value>Général</value>

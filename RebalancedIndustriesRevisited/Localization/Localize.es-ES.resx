@@ -147,4 +147,10 @@
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
     <value>[FIX]Fixed the exception throwing issues.</value>
   </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+  </data>
 </root>

@@ -1,4 +1,8 @@
 ﻿
+V0.4.0
+[FIX]Fixed incorrect maintenance costs for unique factories.
+[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.
+
 V0.3.0
 [FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.
 [FIX]Fixed an issue where work space was incorrect.

@@ -149,5 +149,23 @@ namespace RebalancedIndustriesRevisited {
                 return ResourceManager.GetString("UpdateLog_V0_3_0FIX4", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed incorrect maintenance costs for unique factories. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_4_0FIX1 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_4_0FIX1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_4_0FIX2 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_4_0FIX2", resourceCulture);
+            }
+        }
     }
 }

@@ -136,15 +136,21 @@
     <value>[UPT]Mise à jour de la logique de reconnaissance et de reliure des tampons.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]Correction d'un problème où les bâtiments qui ne sont pas par défaut ne faisaient pas apparaître les véhicules correctement.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]Correction d'un problème où l'espace de travail était incorrect.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]Correction de problèmes de compatibilité avec les mods IMT et IPT.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]Correction des problèmes lançant des exceptions.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
   </data>
 </root>

@@ -136,15 +136,21 @@
     <value>[UPT]更新了缓冲区识别重新绑定逻辑。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]修复了非原版建筑物无法正确生成载具的问题。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]修复了工作空间不正确的问题。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]修复了与 IMT 和 IPT 模组的兼容性问题。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]修复了抛出异常的问题。</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
   </data>
 </root>

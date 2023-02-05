@@ -41,6 +41,7 @@ namespace MbyronModsCommon {
         public static string FieldHovered => nameof(FieldHovered);
         public static string FieldNormal => nameof(FieldNormal);
 
+        public static string ArrowDown => nameof(ArrowDown);
         static CustomAtlas() {
             SpriteParams[ButtonNormal] = new RectOffset(4, 4, 4, 4);
             SpriteParams[ButtonHovered] = new RectOffset(4, 4, 4, 4);
@@ -67,6 +68,7 @@ namespace MbyronModsCommon {
             SpriteParams[FieldHovered] = new RectOffset(4, 4, 4, 4);
             SpriteParams[FieldNormal] = new RectOffset(4, 4, 4, 4);
 
+            SpriteParams[ArrowDown] = new RectOffset(4, 4, 4, 4);
         }
 
         public static UITextureAtlas CommonAtlas {

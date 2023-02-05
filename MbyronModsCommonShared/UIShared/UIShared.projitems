@@ -72,4 +72,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\FieldHovered.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\FieldNormal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ArrowDown.png" />
+  </ItemGroup>
 </Project>

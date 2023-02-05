@@ -136,15 +136,21 @@
     <value>[UPT]バッファの認識方法と再結合のロジックを更新</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]バニラ以外の建物が正常に動作しない問題を修正</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]ワークスペースが正しくない不具合を修正</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]IMTとIPTの両MODで互換性の問題を修正</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]例外エラーが発生する問題を修正</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
   </data>
 </root>

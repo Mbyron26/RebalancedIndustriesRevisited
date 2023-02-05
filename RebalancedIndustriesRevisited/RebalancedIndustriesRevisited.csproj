@@ -7,7 +7,7 @@
 	  <Product>Rebalanced Industries Revisited</Product> 
 	  <Authors>Mbyron26</Authors>
 	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Version>0.2.0</Version>
+	  <Version>0.4.0</Version>
   </PropertyGroup>
 	
 
@@ -70,6 +70,9 @@
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
       <DependentUpon>CommonLocale.resx</DependentUpon>
     </Compile>
+    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.4\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
+      <DependentUpon>CommonLocale.resx</DependentUpon>
+    </Compile>
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
       <DependentUpon>CommonLocale.resx</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
+      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.4\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
       <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
