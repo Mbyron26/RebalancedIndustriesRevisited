@@ -61,11 +61,38 @@ namespace RebalancedIndustriesRevisited {
         }
         
         /// <summary>
+        ///   查找类似 Display both corrected value and original value 的本地化字符串。
+        /// </summary>
+        public static string BothValue {
+            get {
+                return ResourceManager.GetString("BothValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more. 的本地化字符串。
         /// </summary>
         public static string MOD_Description {
             get {
                 return ResourceManager.GetString("MOD_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Only display corrected value 的本地化字符串。
+        /// </summary>
+        public static string OriginalValue {
+            get {
+                return ResourceManager.GetString("OriginalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Tooltip Box Mode 的本地化字符串。
+        /// </summary>
+        public static string TooltipBoxMode {
+            get {
+                return ResourceManager.GetString("TooltipBoxMode", resourceCulture);
             }
         }
         
@@ -165,6 +192,42 @@ namespace RebalancedIndustriesRevisited {
         public static string UpdateLog_V0_4_0FIX2 {
             get {
                 return ResourceManager.GetString("UpdateLog_V0_4_0FIX2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ADD]Added tooltip box mode option, allows display both corrected value and original value. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_5_0ADD {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_5_0ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed tooltip box for some buildings still not showing the corrected value. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_5_0FIX1 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_5_0FIX1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed worker levelup requirements are too high issues. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_5_0FIX2 {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_5_0FIX2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save. 的本地化字符串。
+        /// </summary>
+        public static string ValueWarning {
+            get {
+                return ResourceManager.GetString("ValueWarning", resourceCulture);
             }
         }
     }

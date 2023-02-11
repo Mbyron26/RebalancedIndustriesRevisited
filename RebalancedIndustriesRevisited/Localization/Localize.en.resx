@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>Display both corrected value and original value</value>
+  </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>Only display corrected value</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>Tooltip Box Mode</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]Fixed incorrect display of vehicle count.</value>
@@ -152,5 +161,17 @@
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
     <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
   </data>
 </root>

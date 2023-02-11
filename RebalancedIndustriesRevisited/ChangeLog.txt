@@ -1,4 +1,9 @@
 ﻿
+V0.5.0
+[ADD]Added tooltip box mode option to compare the original value to the corrected value.
+[FIX]Fixed tooltip box for some buildings still not showing the corrected value.
+[FIX]Fixed worker levelup requirements are too high issues.
+
 V0.4.0
 [FIX]Fixed incorrect maintenance costs for unique factories.
 [FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.

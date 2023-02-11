@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>補正した数値と元の数値を両方表示</value>
+  </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>DLC Industriesのバランスを調整して、渋滞の緩和や貨物の積載量の増加などを変更します。</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>補正した値のみ表示</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>ツールチップボックスのモード</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]車両数の間違った表示を修正</value>
@@ -148,9 +157,21 @@
     <value>[FIX]例外エラーが発生する問題を修正</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]ユニーク工場の維持費が正しくない問題を修正</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]建物にカーソルを合わせるとツールチップ上に、建設費・維持費・車両数・労働者数が正しく表示されない問題を修正</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]ツールチップボックスのオプションを追加して、補正した数値と元の数値を両方表示</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>補正した値と元の値を両方表示: 補正した値 (オリジナルの値) ｰ このオプションはゲームの開始前に設定するか、またはセーブ/ロードの前に設定して下さい。</value>
   </data>
 </root>

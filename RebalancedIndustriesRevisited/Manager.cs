@@ -1,9 +1,11 @@
 ﻿using ColossalFramework;
+using ColossalFramework.Globalization;
 using ColossalFramework.UI;
 using MbyronModsCommon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace RebalancedIndustriesRevisited {
     public static class Manager {
@@ -15,22 +17,18 @@ namespace RebalancedIndustriesRevisited {
         private const string IndustryWarehousesPanel = nameof(IndustryWarehousesPanel);
         public static ProfileBase SingletonProfileObject { get; set; }
         public static bool PrefabFlag { get; set; }
-#if DEBUG
-        private static List<UIButton> SpecializedIndustries { get; set; } = new();
-        private static List<UIButton> UniqueFactoryBuildings { get; set; } = new();
-        private static List<UIButton> WarehousesBuildings { get; set; } = new();
-#endif
+        private static List<UIButton> ButtonBuffer { get; set; } = new();
 
         public static void InitializePrefab() {
             if (PrefabFlag) {
                 return;
             }
             PrefabFlag = true;
-#if DEBUG
-            ModLogger.ModLog("--------Start getting all building buttons--------");
+
+            ModLogger.ModLog("--------Start getting all building buttons--------", Config.Instance.DebugMode);
             GetAllButtons();
-            ModLogger.ModLog("--------Get all building buttons done--------\n");
-#endif
+            ModLogger.ModLog("--------Get all building buttons done--------\n", Config.Instance.DebugMode);
+
             ModLogger.ModLog("--------Start rebinding building information--------");
             try {
                 for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
@@ -48,14 +46,14 @@ namespace RebalancedIndustriesRevisited {
             }
         }
 
-#if DEBUG
         private static void GetAllButtons() {
-            GetButtons(IndustryFarmingPanel, _ => SpecializedIndustries.Add(_));
-            GetButtons(IndustryForestryPanel, _ => SpecializedIndustries.Add(_));
-            GetButtons(IndustryOilPanel, _ => SpecializedIndustries.Add(_));
-            GetButtons(IndustryOrePanel, _ => SpecializedIndustries.Add(_));
-            GetButtons(IndustryUniqueFactoryPanel, _ => UniqueFactoryBuildings.Add(_));
-            GetButtons(IndustryWarehousesPanel, _ => WarehousesBuildings.Add(_));
+            if (!Config.Instance.DebugMode) return;
+            GetButtons(IndustryFarmingPanel, _ => ButtonBuffer.Add(_));
+            GetButtons(IndustryForestryPanel, _ => ButtonBuffer.Add(_));
+            GetButtons(IndustryOilPanel, _ => ButtonBuffer.Add(_));
+            GetButtons(IndustryOrePanel, _ => ButtonBuffer.Add(_));
+            GetButtons(IndustryUniqueFactoryPanel, _ => ButtonBuffer.Add(_));
+            GetButtons(IndustryWarehousesPanel, _ => ButtonBuffer.Add(_));
         }
 
         private static void GetButtons(string panelName, Action<UIButton> addButtons) {
@@ -78,7 +76,6 @@ namespace RebalancedIndustriesRevisited {
                 ModLogger.ModLog($"Couldn't find {targetPanel}");
             }
         }
-#endif
 
         [Obsolete]
         private static string GetSearchTargetPanel(NaturalResourceManager.Resource typeResource) => typeResource switch {
@@ -126,24 +123,11 @@ namespace RebalancedIndustriesRevisited {
                             for (int i = 0; i < buttons.Count; i++) {
                                 if (buttons[i].name == name) {
                                     var rawTooltip = buttons[i].tooltip;
-                                    var newTooltip = rawTooltip.Replace(string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), rawTruckCount), string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), extractingFacilityAI.m_outputVehicleCount));
-                                    if (rawConstructionCost != extractingFacilityAI.m_constructionCost) {
-                                        int result1 = rawConstructionCost * 100;
-                                        Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetConstructionCost(ref result1, extractingFacilityAI.m_info.m_class.m_service, extractingFacilityAI.m_info.m_class.m_subService, extractingFacilityAI.m_info.m_class.m_level);
-                                        var ingameRawConstructionCost = LocaleFormatter.FormatCost(result1, false);
-                                        var ingameConstructionCost = LocaleFormatter.FormatCost(extractingFacilityAI.GetConstructionCost(), false);
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatCost(result1, false), LocaleFormatter.FormatCost(extractingFacilityAI.GetConstructionCost(), false));
-                                    }
-                                    if (rawMaintenanceCost != extractingFacilityAI.m_maintenanceCost) {
-                                        int result2 = rawMaintenanceCost * 100;
-                                        Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetMaintenanceCost(ref result2, extractingFacilityAI.m_info.m_class.m_service, extractingFacilityAI.m_info.m_class.m_subService, extractingFacilityAI.m_info.m_class.m_level);
-                                        var ingameRawMaintenancenCost = LocaleFormatter.FormatUpkeep(result2, false);
-                                        var ingameMaintenanceCost = LocaleFormatter.FormatUpkeep(extractingFacilityAI.GetMaintenanceCost(), false);
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatUpkeep(result2, false), LocaleFormatter.FormatUpkeep(extractingFacilityAI.GetMaintenanceCost(), false));
-                                    }
-                                    if (rawWorkSpace.Sum() != newWorkSpace.Sum()) {
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { rawWorkSpace.Sum().ToString() }), LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { newWorkSpace.Sum().ToString() }));
-                                    }
+                                    var newTooltip = rawTooltip;
+                                    ModifyTruckCountString(rawTruckCount, extractingFacilityAI.m_outputVehicleCount, ref newTooltip);
+                                    ModifyConstructionCostString(rawConstructionCost, extractingFacilityAI.m_constructionCost, extractingFacilityAI, ref newTooltip);
+                                    ModifyMaintenanceCostString(rawMaintenanceCost, extractingFacilityAI.m_maintenanceCost, extractingFacilityAI, ref newTooltip);
+                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
                                     ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
@@ -181,16 +165,8 @@ namespace RebalancedIndustriesRevisited {
                                 if (buttons[i].name == name) {
                                     var rawTooltip = buttons[i].tooltip;
                                     string newTooltip = rawTooltip;
-                                    if (rawMaintenanceCost != uniqueFactoryAI.m_maintenanceCost) {
-                                        int result1 = rawMaintenanceCost * 100;
-                                        Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetMaintenanceCost(ref result1, uniqueFactoryAI.m_info.m_class.m_service, uniqueFactoryAI.m_info.m_class.m_subService, uniqueFactoryAI.m_info.m_class.m_level);
-                                        var ingameRawMaintenancenCost = LocaleFormatter.FormatUpkeep(result1, false);
-                                        var ingameMaintenanceCost = LocaleFormatter.FormatUpkeep(uniqueFactoryAI.GetMaintenanceCost(), false);
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatUpkeep(result1, false), LocaleFormatter.FormatUpkeep(uniqueFactoryAI.GetMaintenanceCost(), false));
-                                    }
-                                    if (rawWorkSpace.Sum() != newWorkSpace.Sum()) {
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { rawWorkSpace.Sum().ToString() }), LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { newWorkSpace.Sum().ToString() }));
-                                    }
+                                    ModifyMaintenanceCostString(rawMaintenanceCost, uniqueFactoryAI.m_maintenanceCost, uniqueFactoryAI, ref newTooltip);
+                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
                                     ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
@@ -241,24 +217,11 @@ namespace RebalancedIndustriesRevisited {
                             for (int i = 0; i < buttons.Count; i++) {
                                 if (buttons[i].name == name) {
                                     var rawTooltip = buttons[i].tooltip;
-                                    var newTooltip = rawTooltip.Replace(string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), rawTruckCount), string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), processingFacilityAI.m_outputVehicleCount));
-                                    if (rawConstructionCost != processingFacilityAI.m_constructionCost) {
-                                        int result1 = rawConstructionCost * 100;
-                                        Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetConstructionCost(ref result1, processingFacilityAI.m_info.m_class.m_service, processingFacilityAI.m_info.m_class.m_subService, processingFacilityAI.m_info.m_class.m_level);
-                                        var ingameRawConstructionCost = LocaleFormatter.FormatCost(result1, false);
-                                        var ingameConstructionCost = LocaleFormatter.FormatCost(processingFacilityAI.GetConstructionCost(), false);
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatCost(result1, false), LocaleFormatter.FormatCost(processingFacilityAI.GetConstructionCost(), false));
-                                    }
-                                    if (rawMaintenanceCost != processingFacilityAI.m_maintenanceCost) {
-                                        int result2 = rawMaintenanceCost * 100;
-                                        Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetMaintenanceCost(ref result2, processingFacilityAI.m_info.m_class.m_service, processingFacilityAI.m_info.m_class.m_subService, processingFacilityAI.m_info.m_class.m_level);
-                                        var ingameRawMaintenancenCost = LocaleFormatter.FormatUpkeep(result2, false);
-                                        var ingameMaintenanceCost = LocaleFormatter.FormatUpkeep(processingFacilityAI.GetMaintenanceCost(), false);
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatUpkeep(result2, false), LocaleFormatter.FormatUpkeep(processingFacilityAI.GetMaintenanceCost(), false));
-                                    }
-                                    if (rawWorkSpace.Sum() != newWorkSpace.Sum()) {
-                                        newTooltip = newTooltip.Replace(LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { rawWorkSpace.Sum().ToString() }), LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { newWorkSpace.Sum().ToString() }));
-                                    }
+                                    var newTooltip = rawTooltip;
+                                    ModifyTruckCountString(rawTruckCount, processingFacilityAI.m_outputVehicleCount, ref newTooltip);
+                                    ModifyConstructionCostString(rawConstructionCost, processingFacilityAI.m_constructionCost, processingFacilityAI, ref newTooltip);
+                                    ModifyMaintenanceCostString(rawMaintenanceCost, processingFacilityAI.m_maintenanceCost, processingFacilityAI, ref newTooltip);
+                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
                                     ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
@@ -294,30 +257,24 @@ namespace RebalancedIndustriesRevisited {
                 warehouseAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
                 ModLogger.ModLog($"Warehouse | Vehicle count: {rawTruckCount} -> {warehouseAI.m_truckCount} | Construction cost: {rawConstructionCost} -> {warehouseAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {warehouseAI.m_maintenanceCost} | Work space0: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {warehouseAI.m_workPlaceCount0} {warehouseAI.m_workPlaceCount1} {warehouseAI.m_workPlaceCount2} {warehouseAI.m_workPlaceCount3} | Building: {name}");
                 try {
-                    var panel = UIView.Find<UIPanel>(IndustryWarehousesPanel).Find<UIScrollablePanel>("ScrollablePanel");
+                    var typePanel = warehouseAI.m_storageType switch {
+                        TransferManager.TransferReason.Grain => IndustryFarmingPanel,
+                        TransferManager.TransferReason.Logs => IndustryForestryPanel,
+                        TransferManager.TransferReason.Ore => IndustryOrePanel,
+                        TransferManager.TransferReason.Oil => IndustryOilPanel,
+                        _ => IndustryWarehousesPanel
+                    };
+                    var panel = UIView.Find<UIPanel>(typePanel).Find<UIScrollablePanel>("ScrollablePanel");
                     if (panel is not null) {
                         var buttons = panel.components;
                         for (int i = 0; i < buttons.Count; i++) {
                             if (buttons[i].name == name) {
                                 var rawTooltip = buttons[i].tooltip;
-                                var newTooltip = rawTooltip.Replace(string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), rawTruckCount), string.Format(ColossalFramework.Globalization.Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), warehouseAI.m_truckCount));
-                                if (rawConstructionCost != warehouseAI.m_constructionCost) {
-                                    int result1 = rawConstructionCost * 100;
-                                    Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetConstructionCost(ref result1, warehouseAI.m_info.m_class.m_service, warehouseAI.m_info.m_class.m_subService, warehouseAI.m_info.m_class.m_level);
-                                    var ingameRawConstructionCost = LocaleFormatter.FormatCost(result1, false);
-                                    var ingameConstructionCost = LocaleFormatter.FormatCost(warehouseAI.GetConstructionCost(), false);
-                                    newTooltip = newTooltip.Replace(LocaleFormatter.FormatCost(result1, false), LocaleFormatter.FormatCost(warehouseAI.GetConstructionCost(), false));
-                                }
-                                if (rawMaintenanceCost != warehouseAI.m_maintenanceCost) {
-                                    int result2 = rawMaintenanceCost * 100;
-                                    Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetMaintenanceCost(ref result2, warehouseAI.m_info.m_class.m_service, warehouseAI.m_info.m_class.m_subService, warehouseAI.m_info.m_class.m_level);
-                                    var ingameRawMaintenancenCost = LocaleFormatter.FormatUpkeep(result2, false);
-                                    var ingameMaintenanceCost = LocaleFormatter.FormatUpkeep(warehouseAI.GetMaintenanceCost(), false);
-                                    newTooltip = newTooltip.Replace(LocaleFormatter.FormatUpkeep(result2, false), LocaleFormatter.FormatUpkeep(warehouseAI.GetMaintenanceCost(), false));
-                                }
-                                if (rawWorkSpace.Sum() != newWorkSpace.Sum()) {
-                                    newTooltip = newTooltip.Replace(LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { rawWorkSpace.Sum().ToString() }), LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { newWorkSpace.Sum().ToString() }));
-                                }
+                                var newTooltip = rawTooltip;
+                                ModifyTruckCountString(rawTruckCount, warehouseAI.m_truckCount, ref newTooltip);
+                                ModifyConstructionCostString(rawConstructionCost, warehouseAI.m_constructionCost, warehouseAI, ref newTooltip);
+                                ModifyMaintenanceCostString(rawMaintenanceCost, warehouseAI.m_maintenanceCost, warehouseAI, ref newTooltip);
+                                ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
                                 buttons[i].tooltip = newTooltip;
                                 ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                 break;
@@ -330,6 +287,45 @@ namespace RebalancedIndustriesRevisited {
                 }
             }
         }
+
+        private static void ModifyWorkSpaceString(WorkSpace rawWorkSpace, WorkSpace newWorkSpace, ref string tooltip) {
+            var rawValue = rawWorkSpace.Sum();
+            var newValue = newWorkSpace.Sum();
+            if (rawValue != newValue) {
+                var RawWorkSpaceString = LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { rawValue.ToString() });
+                var WorkSpaceString = LocaleFormatter.FormatGeneric("AIINFO_WORKPLACES_ACCUMULATION", new object[] { newValue.ToString() });
+                tooltip = Config.Instance.BothValue ? tooltip.Replace(RawWorkSpaceString, WorkSpaceString + AddOriginalValue(rawValue.ToString())) : tooltip.Replace(RawWorkSpaceString, WorkSpaceString);
+            }
+        }
+
+        private static void ModifyMaintenanceCostString(int rawMaintenanceCost, int newMaintenanceCost, PlayerBuildingAI ai, ref string tooltip) {
+            if (rawMaintenanceCost != newMaintenanceCost) {
+                int result = rawMaintenanceCost * 100;
+                Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetMaintenanceCost(ref result, ai.m_info.m_class.m_service, ai.m_info.m_class.m_subService, ai.m_info.m_class.m_level);
+                var RawMaintenancenCostString = LocaleFormatter.FormatUpkeep(result, false);
+                var MaintenanceCostString = LocaleFormatter.FormatUpkeep(ai.GetMaintenanceCost(), false);
+                float num = Mathf.Abs(result * 0.0016f);
+                tooltip = Config.Instance.BothValue ? tooltip.Replace(RawMaintenancenCostString, MaintenanceCostString + AddOriginalValue(num.ToString((!(num >= 10f)) ? Settings.moneyFormat : Settings.moneyFormatNoCents, LocaleManager.cultureInfo))) : tooltip.Replace(RawMaintenancenCostString, MaintenanceCostString);
+            }
+        }
+
+        private static void ModifyConstructionCostString(int rawConstructionCost, int newConstructionCost, PlayerBuildingAI ai, ref string tooltip) {
+            if (rawConstructionCost != newConstructionCost) {
+                int result = rawConstructionCost * 100;
+                Singleton<EconomyManager>.instance.m_EconomyWrapper.OnGetConstructionCost(ref result, ai.m_info.m_class.m_service, ai.m_info.m_class.m_subService, ai.m_info.m_class.m_level);
+                var RawConstructionCostString = LocaleFormatter.FormatCost(result, false);
+                var ConstructionCostString = LocaleFormatter.FormatCost(ai.GetConstructionCost(), false);
+                tooltip = Config.Instance.BothValue ? tooltip.Replace(RawConstructionCostString, ConstructionCostString + AddOriginalValue((result * 0.01f).ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo))) : tooltip.Replace(RawConstructionCostString, ConstructionCostString);
+            }
+        }
+
+        private static void ModifyTruckCountString(int rawTruckCount, int newTruckCount, ref string tooltip) {
+            if (rawTruckCount != newTruckCount) {
+                tooltip = Config.Instance.BothValue ? tooltip.Replace(string.Format(Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), rawTruckCount), string.Format(Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), newTruckCount) + AddOriginalValue(rawTruckCount.ToString())) : tooltip.Replace(string.Format(Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), rawTruckCount), string.Format(Locale.Get("AIINFO_INDUSTRY_VEHICLE_COUNT"), newTruckCount));
+            }
+        }
+
+        private static string AddOriginalValue(string value) => $"({value})";
 
         public static void InitializeProfile(BuildingAI ai) {
             if (SingletonProfileObject is not null) {

@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>同时显示正确数值和原始数值</value>
+  </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>重新平衡工业 DLC ，减少交通流量，增加载具载货量等等。</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>仅显示正确数值</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>提示信息框的模式</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]修复了车辆计数显示错误的问题。</value>
@@ -148,9 +157,21 @@
     <value>[FIX]修复了抛出异常的问题。</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]修复了独特工厂维护费用异常的问题。</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]修复了建筑物工具提示框中建造费用、维护费用、载具数量、工作岗位不正确的问题。</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]添加了提示信息框模式的选项，允许同时显示正确数值和原始数值。</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>同时显示正确数值和原始数值的格式：正确数值（原始数值），以上选项需要在新建或加载存档前设置好。</value>
   </data>
 </root>

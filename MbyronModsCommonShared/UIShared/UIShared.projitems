@@ -46,9 +46,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\TextFieldNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\CornerMark.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ButtonHovered.png" />
   </ItemGroup>
   <ItemGroup>
@@ -74,5 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ArrowDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ArrowDown1.png" />
   </ItemGroup>
 </Project>
