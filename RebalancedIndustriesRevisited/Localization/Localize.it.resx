@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BothValue" xml:space="preserve">
-    <value>Display both corrected value and original value</value>
+    <value>Mostra sia il valore corretto che il valore originale</value>
   </data>
   <data name="ExtractingFacilityMultiplier" xml:space="preserve">
     <value>Extracting facility multiplier</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
-    <value>Reequilibra el DLC "Industries", reduce el flujo de tráfico, aumenta la carga de la carga comercial y más.</value>
+    <value>Riequilibra Industries DLC, riduce il flusso di traffico, aumenta il carico di merci e altro ancora.</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Only display corrected value</value>
+    <value>Visualizza solo il valore corretto</value>
   </data>
   <data name="ProcessingFacilityMultiplier" xml:space="preserve">
     <value>Processing facility multiplier</value>
@@ -139,49 +139,49 @@
     <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Tooltip Box Mode</value>
+    <value>Modalità Box Suggerimenti</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
-    <value>[FIX]Se arregló la visualización incorrecta del número de vehículos.</value>
+    <value>[FIX]Corretta la visualizzazione errata del conteggio dei veicoli.</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
-    <value>[UPT]Se usan nuevos algoritmos para reequilibrar las industrias.</value>
+    <value>[UPT]Usati nuovi algoritmi per riequilibrare le industrie.</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
-    <value>[UPT]Se usa la API de "Harmony" más reciente.</value>
+    <value>[UPT]Usata l'ultima API Harmony.</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Resuelto el problema donde algunos edificios de procesamiento indican que no tienen suficientes compradores o materias primas.</value>
+    <value>[FIX] Risolto il problema con alcuni edifici di lavorazione che non sembravano sufficienti per l'acquirente o per i problemi relativi alle materie prime.</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
-    <value>[UPT]Actualización del reconocimiento de buffer y de la lógica de re-vinculación.</value>
+    <value>[UPT]Aggiornato il riconoscimento del buffer e la logica di rebinding.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]Risolto un problema per cui gli edifici non-vanilla non generavano correttamente i veicoli.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]Risolto un problema per cui lo spazio di lavoro non era corretto.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]Risolti problemi di compatibilità con le mod IMT e IPT.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]Risolti i problemi di generazione delle eccezioni.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]Risolti i costi di manutenzione errati per le fabbriche uniche.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]Risolti i problemi per cui passando con il mouse sopra un edificio veniva visualizzata una descrizione comando con costi di costruzione, costi di manutenzione, numero di veicoli e area di lavoro errati.</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]Aggiunta l'opzione della modalità casella descrizione comandi, consente di visualizzare sia il valore corretto che il valore originale.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX] Risolto il problema con la casella dei suggerimenti per alcuni edifici che ancora non mostrava il valore corretto.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[FIX]Risolto i requisiti per l'aumento di livello del lavoratore che sono problemi troppo elevati.</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
     <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
@@ -193,7 +193,7 @@
     <value>[OPT]Optimized rebinding prefab speed.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+    <value>Visualizza sia il valore corretto che il valore originale: valore corretto (valore originale), le opzioni di cui sopra devono essere impostate prima di iniziare una nuova partita o caricare il salvataggio.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>vanilla</value>

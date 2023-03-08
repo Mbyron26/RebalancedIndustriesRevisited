@@ -75,4 +75,7 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ArrowDown1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\SliderFillIndicator.png" />
+  </ItemGroup>
 </Project>

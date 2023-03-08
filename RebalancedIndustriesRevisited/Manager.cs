@@ -15,7 +15,6 @@ namespace RebalancedIndustriesRevisited {
         private const string IndustryOrePanel = nameof(IndustryOrePanel);
         private const string IndustryUniqueFactoryPanel = nameof(IndustryUniqueFactoryPanel);
         private const string IndustryWarehousesPanel = nameof(IndustryWarehousesPanel);
-        public static ProfileBase SingletonProfileObject { get; set; }
         public static bool PrefabFlag { get; set; }
         private static List<UIButton> ButtonBuffer { get; set; } = new();
 
@@ -44,6 +43,55 @@ namespace RebalancedIndustriesRevisited {
             catch (Exception e) {
                 ModLogger.ModLog(e.ToString());
             }
+
+            DebugUtils.TimeCalculater(RefreshOutputRatePrefab);
+        }
+
+        private static Dictionary<string, int> ExtractingFacilityAIData { get; set; } = new();
+        private static Dictionary<string, int> ProcessingFacilityAIData { get; set; } = new();
+        public static void RefreshOutputRate() {
+            for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
+                if (PrefabCollection<BuildingInfo>.GetLoaded(i) != null) {
+                    BuildingInfo prefab = PrefabCollection<BuildingInfo>.GetLoaded(i);
+                    if (prefab.m_class.m_service == ItemClass.Service.PlayerIndustry && prefab.m_buildingAI is not null) {
+                        if (prefab.m_buildingAI is ExtractingFacilityAI ai1) {
+                            if (ExtractingFacilityAIData.TryGetValue(ai1.name, out var value)) {
+                                ai1.m_outputRate = (int)(value * Config.Instance.ExtractingFacilityProductionRate);
+                            } else {
+                                ModLogger.ModLog($"Couldn't found {ai1.name} in data buffer.");
+                            }
+                        } else if (prefab.m_buildingAI is ProcessingFacilityAI ai2) {
+                            if (ProcessingFacilityAIData.TryGetValue(ai2.name, out var value)) {
+                                ai2.m_outputRate = (int)(value * Config.Instance.ExtractingFacilityProductionRate);
+                            } else {
+                                ModLogger.ModLog($"Couldn't found {ai2.name} in data buffer.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private static void RefreshOutputRatePrefab() {
+            ModLogger.ModLog($"--------------------------------------------------------------------------------------");
+            for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
+                if (PrefabCollection<BuildingInfo>.GetLoaded(i) != null) {
+                    BuildingInfo prefab = PrefabCollection<BuildingInfo>.GetLoaded(i);
+                    if (prefab.m_class.m_service == ItemClass.Service.PlayerIndustry && prefab.m_buildingAI is not null) {
+                        if (prefab.m_buildingAI is ExtractingFacilityAI ai1) {
+                            ExtractingFacilityAIData.Add(ai1.name, ai1.m_outputRate);
+                            var raw1 = ai1.m_outputRate;
+                            ai1.m_outputRate = (int)(ai1.m_outputRate * Config.Instance.ExtractingFacilityProductionRate);
+                            ModLogger.ModLog($"{raw1} -> {ai1.m_outputRate} | {ai1.name}");
+                        } else if (prefab.m_buildingAI is ProcessingFacilityAI ai2) {
+                            ProcessingFacilityAIData.Add(ai2.name, ai2.m_outputRate);
+                            var raw2 = ai2.m_outputRate;
+                            ai2.m_outputRate = (int)(ai2.m_outputRate * Config.Instance.ProcessingFacilityProductionRate);
+                            ModLogger.ModLog($"{raw2} -> {ai2.m_outputRate} | {ai2.name}");
+                        }
+                    }
+                }
+            }
+            ModLogger.ModLog($"--------------------------------------------------------------------------------------");
         }
 
         private static void GetAllButtons() {
@@ -77,15 +125,6 @@ namespace RebalancedIndustriesRevisited {
             }
         }
 
-        [Obsolete]
-        private static string GetSearchTargetPanel(NaturalResourceManager.Resource typeResource) => typeResource switch {
-            NaturalResourceManager.Resource.Oil => IndustryOilPanel,
-            NaturalResourceManager.Resource.Ore => IndustryOrePanel,
-            NaturalResourceManager.Resource.Forest => IndustryForestryPanel,
-            NaturalResourceManager.Resource.Fertility => IndustryFarmingPanel,
-            _ => string.Empty
-        };
-
         public static void RebindPrefab(BuildingAI ai) {
             if (ai is ExtractingFacilityAI extractingFacilityAI) {
                 var name = extractingFacilityAI.name;
@@ -96,17 +135,12 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace1 = extractingFacilityAI.m_workPlaceCount1;
                 var rawWorkSpace2 = extractingFacilityAI.m_workPlaceCount2;
                 var rawWorkSpace3 = extractingFacilityAI.m_workPlaceCount3;
-                var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                InitializeProfile(extractingFacilityAI);
-                SingletonProfileObject.InitializePrefab(TypeAI.ExtractingFacilityAI, extractingFacilityAI.m_outputResource, extractingFacilityAI.m_outputVehicleCount);
-                extractingFacilityAI.m_outputVehicleCount = SingletonProfileObject.GetTruck();
-                extractingFacilityAI.m_constructionCost = SingletonProfileObject.GetCost(rawConstructionCost);
-                extractingFacilityAI.m_maintenanceCost = SingletonProfileObject.GetCost(rawMaintenanceCost);
-                var newWorkSpace = SingletonProfileObject.GetWorkSpace(rawWorkSpace);
-                extractingFacilityAI.m_workPlaceCount0 = newWorkSpace.UneducatedWorkers;
-                extractingFacilityAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
-                extractingFacilityAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
-                extractingFacilityAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
+                var rawWorkSpace = new WorkPlace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
+                IProfile profile = new ExtractingFacilityProfile(extractingFacilityAI);
+                profile.SetTruckCount(ref extractingFacilityAI.m_outputVehicleCount);
+                profile.SetConstructionCost(ref extractingFacilityAI.m_constructionCost);
+                profile.SetMaintenanceCost(ref extractingFacilityAI.m_maintenanceCost);
+                var newWorkPlace = profile.SetWorkPlace(ref extractingFacilityAI.m_workPlaceCount0, ref extractingFacilityAI.m_workPlaceCount1, ref extractingFacilityAI.m_workPlaceCount2, ref extractingFacilityAI.m_workPlaceCount3);
                 ModLogger.ModLog($"Extracting Facility | Vehicle count: {rawTruckCount} -> {extractingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {extractingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {extractingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {extractingFacilityAI.m_workPlaceCount0} {extractingFacilityAI.m_workPlaceCount1} {extractingFacilityAI.m_workPlaceCount2} {extractingFacilityAI.m_workPlaceCount3} | Building: {name}");
                 var resource = extractingFacilityAI.NaturalResourceType switch {
                     NaturalResourceManager.Resource.Oil => IndustryOilPanel,
@@ -127,7 +161,7 @@ namespace RebalancedIndustriesRevisited {
                                     ModifyTruckCountString(rawTruckCount, extractingFacilityAI.m_outputVehicleCount, ref newTooltip);
                                     ModifyConstructionCostString(rawConstructionCost, extractingFacilityAI.m_constructionCost, extractingFacilityAI, ref newTooltip);
                                     ModifyMaintenanceCostString(rawMaintenanceCost, extractingFacilityAI.m_maintenanceCost, extractingFacilityAI, ref newTooltip);
-                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
+                                    ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
                                     ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
@@ -146,39 +180,37 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace1 = uniqueFactoryAI.m_workPlaceCount1;
                 var rawWorkSpace2 = uniqueFactoryAI.m_workPlaceCount2;
                 var rawWorkSpace3 = uniqueFactoryAI.m_workPlaceCount3;
-                var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                InitializeProfile(uniqueFactoryAI);
-                SingletonProfileObject.InitializePrefab(TypeAI.UniqueFactoryAI, uniqueFactoryAI.m_outputResource, uniqueFactoryAI.m_outputVehicleCount);
-                if (SingletonProfileObject.Flag == TypeProfile.Constant) {
-                    var newWorkSpace = SingletonProfileObject.GetWorkSpace(rawWorkSpace);
-                    uniqueFactoryAI.m_maintenanceCost = SingletonProfileObject.GetCost(rawMaintenanceCost);
-                    uniqueFactoryAI.m_workPlaceCount0 = newWorkSpace.UneducatedWorkers;
-                    uniqueFactoryAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
-                    uniqueFactoryAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
-                    uniqueFactoryAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
+                var rawWorkSpace = new WorkPlace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
+
+                UniqueFactoryProfile profile = new(uniqueFactoryAI);
+                profile.SetTruckCount(ref uniqueFactoryAI.m_outputVehicleCount);
+                profile.SetConstructionCost(ref uniqueFactoryAI.m_constructionCost);
+                profile.SetMaintenanceCost(ref uniqueFactoryAI.m_maintenanceCost);
+                var newWorkPlace = profile.SetWorkPlace(ref uniqueFactoryAI.m_workPlaceCount0, ref uniqueFactoryAI.m_workPlaceCount1, ref uniqueFactoryAI.m_workPlaceCount2, ref uniqueFactoryAI.m_workPlaceCount3);
+                if (profile.ProfileValue.CostsFactor != 1) {
                     ModLogger.ModLog($"Unique Factory | Maintenance cost: {rawMaintenanceCost} -> {uniqueFactoryAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {uniqueFactoryAI.m_workPlaceCount0} {uniqueFactoryAI.m_workPlaceCount1} {uniqueFactoryAI.m_workPlaceCount2} {uniqueFactoryAI.m_workPlaceCount3} | Building: {name}");
-                    try {
-                        var panel = UIView.Find<UIPanel>(IndustryUniqueFactoryPanel).Find<UIScrollablePanel>("ScrollablePanel");
-                        if (panel is not null) {
-                            var buttons = panel.components;
-                            for (int i = 0; i < buttons.Count; i++) {
-                                if (buttons[i].name == name) {
-                                    var rawTooltip = buttons[i].tooltip;
-                                    string newTooltip = rawTooltip;
-                                    ModifyMaintenanceCostString(rawMaintenanceCost, uniqueFactoryAI.m_maintenanceCost, uniqueFactoryAI, ref newTooltip);
-                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
-                                    buttons[i].tooltip = newTooltip;
-                                    ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
-                                    break;
-                                }
+                } else {
+                    ModLogger.ModLog($"Unique Factory | No rebinding. | Building: {uniqueFactoryAI.name}");
+                }
+                try {
+                    var panel = UIView.Find<UIPanel>(IndustryUniqueFactoryPanel).Find<UIScrollablePanel>("ScrollablePanel");
+                    if (panel is not null) {
+                        var buttons = panel.components;
+                        for (int i = 0; i < buttons.Count; i++) {
+                            if (buttons[i].name == name) {
+                                var rawTooltip = buttons[i].tooltip;
+                                string newTooltip = rawTooltip;
+                                ModifyMaintenanceCostString(rawMaintenanceCost, uniqueFactoryAI.m_maintenanceCost, uniqueFactoryAI, ref newTooltip);
+                                ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
+                                buttons[i].tooltip = newTooltip;
+                                ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
+                                break;
                             }
                         }
                     }
-                    catch (Exception ex) {
-                        ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
-                    }
-                } else {
-                    ModLogger.ModLog($"Unique Factory | No rebinding. | Building: {uniqueFactoryAI.name}");
+                }
+                catch (Exception ex) {
+                    ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
                 }
 
             } else if (ai is ProcessingFacilityAI processingFacilityAI) {
@@ -190,17 +222,12 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace1 = processingFacilityAI.m_workPlaceCount1;
                 var rawWorkSpace2 = processingFacilityAI.m_workPlaceCount2;
                 var rawWorkSpace3 = processingFacilityAI.m_workPlaceCount3;
-                var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                InitializeProfile(processingFacilityAI);
-                SingletonProfileObject.InitializePrefab(TypeAI.ProcessingFacilityAI, processingFacilityAI.m_outputResource, processingFacilityAI.m_outputVehicleCount);
-                processingFacilityAI.m_outputVehicleCount = SingletonProfileObject.GetTruck();
-                var newWorkSpace = SingletonProfileObject.GetWorkSpace(rawWorkSpace);
-                processingFacilityAI.m_constructionCost = SingletonProfileObject.GetCost(rawConstructionCost);
-                processingFacilityAI.m_maintenanceCost = SingletonProfileObject.GetCost(rawMaintenanceCost);
-                processingFacilityAI.m_workPlaceCount0 = newWorkSpace.UneducatedWorkers;
-                processingFacilityAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
-                processingFacilityAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
-                processingFacilityAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
+                var rawWorkSpace = new WorkPlace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
+                IProfile profile = new ProcessingFacilityProfile(processingFacilityAI);
+                profile.SetTruckCount(ref processingFacilityAI.m_outputVehicleCount);
+                profile.SetConstructionCost(ref processingFacilityAI.m_constructionCost);
+                profile.SetMaintenanceCost(ref processingFacilityAI.m_maintenanceCost);
+                var newWorkPlace = profile.SetWorkPlace(ref processingFacilityAI.m_workPlaceCount0, ref processingFacilityAI.m_workPlaceCount1, ref processingFacilityAI.m_workPlaceCount2, ref processingFacilityAI.m_workPlaceCount3);
                 ModLogger.ModLog($"Processing Facility | Vehicle count: {rawTruckCount} -> {processingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {processingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {processingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {processingFacilityAI.m_workPlaceCount0} {processingFacilityAI.m_workPlaceCount1} {processingFacilityAI.m_workPlaceCount2} {processingFacilityAI.m_workPlaceCount3} | Building: {name}");
                 var resource = processingFacilityAI.m_inputResource1 switch {
                     TransferManager.TransferReason.Oil => IndustryOilPanel,
@@ -221,7 +248,7 @@ namespace RebalancedIndustriesRevisited {
                                     ModifyTruckCountString(rawTruckCount, processingFacilityAI.m_outputVehicleCount, ref newTooltip);
                                     ModifyConstructionCostString(rawConstructionCost, processingFacilityAI.m_constructionCost, processingFacilityAI, ref newTooltip);
                                     ModifyMaintenanceCostString(rawMaintenanceCost, processingFacilityAI.m_maintenanceCost, processingFacilityAI, ref newTooltip);
-                                    ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
+                                    ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
                                     ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
@@ -243,18 +270,12 @@ namespace RebalancedIndustriesRevisited {
                 var rawWorkSpace1 = warehouseAI.m_workPlaceCount1;
                 var rawWorkSpace2 = warehouseAI.m_workPlaceCount2;
                 var rawWorkSpace3 = warehouseAI.m_workPlaceCount3;
-                var rawWorkSpace = new WorkSpace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
-                InitializeProfile(warehouseAI);
-                SingletonProfileObject.InitializePrefab(TypeAI.WarehouseAI, warehouseAI.m_storageType, rawTruckCount);
-                SingletonProfileObject.WarehouseCapacity = warehouseAI.m_storageCapacity;
-                warehouseAI.m_truckCount = SingletonProfileObject.GetTruck();
-                var newWorkSpace = SingletonProfileObject.GetWorkSpace(rawWorkSpace);
-                warehouseAI.m_constructionCost = SingletonProfileObject.GetCost(rawConstructionCost);
-                warehouseAI.m_maintenanceCost = SingletonProfileObject.GetCost(rawMaintenanceCost);
-                warehouseAI.m_workPlaceCount0 = newWorkSpace.UneducatedWorkers;
-                warehouseAI.m_workPlaceCount1 = newWorkSpace.EducatedWorkers;
-                warehouseAI.m_workPlaceCount2 = newWorkSpace.WellEducatedWorkers;
-                warehouseAI.m_workPlaceCount3 = newWorkSpace.HighlyEducatedWorkers;
+                var rawWorkSpace = new WorkPlace(rawWorkSpace0, rawWorkSpace1, rawWorkSpace2, rawWorkSpace3);
+                IProfile profile = new WarehouseProfile(warehouseAI);
+                profile.SetTruckCount(ref warehouseAI.m_truckCount);
+                profile.SetConstructionCost(ref warehouseAI.m_constructionCost);
+                profile.SetMaintenanceCost(ref warehouseAI.m_maintenanceCost);
+                var newWorkPlace = profile.SetWorkPlace(ref warehouseAI.m_workPlaceCount0, ref warehouseAI.m_workPlaceCount1, ref warehouseAI.m_workPlaceCount2, ref warehouseAI.m_workPlaceCount3);
                 ModLogger.ModLog($"Warehouse | Vehicle count: {rawTruckCount} -> {warehouseAI.m_truckCount} | Construction cost: {rawConstructionCost} -> {warehouseAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {warehouseAI.m_maintenanceCost} | Work space0: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {warehouseAI.m_workPlaceCount0} {warehouseAI.m_workPlaceCount1} {warehouseAI.m_workPlaceCount2} {warehouseAI.m_workPlaceCount3} | Building: {name}");
                 try {
                     var typePanel = warehouseAI.m_storageType switch {
@@ -274,7 +295,7 @@ namespace RebalancedIndustriesRevisited {
                                 ModifyTruckCountString(rawTruckCount, warehouseAI.m_truckCount, ref newTooltip);
                                 ModifyConstructionCostString(rawConstructionCost, warehouseAI.m_constructionCost, warehouseAI, ref newTooltip);
                                 ModifyMaintenanceCostString(rawMaintenanceCost, warehouseAI.m_maintenanceCost, warehouseAI, ref newTooltip);
-                                ModifyWorkSpaceString(rawWorkSpace, newWorkSpace, ref newTooltip);
+                                ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                 buttons[i].tooltip = newTooltip;
                                 ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                 break;
@@ -288,7 +309,7 @@ namespace RebalancedIndustriesRevisited {
             }
         }
 
-        private static void ModifyWorkSpaceString(WorkSpace rawWorkSpace, WorkSpace newWorkSpace, ref string tooltip) {
+        private static void ModifyWorkSpaceString(WorkPlace rawWorkSpace, WorkPlace newWorkSpace, ref string tooltip) {
             var rawValue = rawWorkSpace.Sum();
             var newValue = newWorkSpace.Sum();
             if (rawValue != newValue) {
@@ -326,70 +347,6 @@ namespace RebalancedIndustriesRevisited {
         }
 
         private static string AddOriginalValue(string value) => $"({value})";
-
-        public static void InitializeProfile(BuildingAI ai) {
-            if (SingletonProfileObject is not null) {
-                SingletonProfileObject = null;
-            }
-            if (ai is ExtractingFacilityAI) {
-                if (IsField(ai)) {
-                    SingletonProfileObject = new RatioProfile(0.25m, 1m, new WorkSpace(2, 4, 1, 0));
-                } else {
-                    SingletonProfileObject = new ProfileBase(1m, 0.5m);
-                }
-            } else if (ai is UniqueFactoryAI) {
-                SingletonProfileObject = ai.name switch {
-                    "Furniture Factory 01" => new ConstantValueProfile(320, new WorkSpace(25, 18, 8, 4)),
-                    "Bakery 01" => new ConstantValueProfile(260, new WorkSpace(15, 9, 4, 2)),
-                    "Industrial Steel Plant 01" => new ConstantValueProfile(1800, new WorkSpace(60, 45, 30, 5)),
-                    "Household Plastic Factory 01" => new ConstantValueProfile(480, new WorkSpace(25, 18, 8, 4)),
-                    "Toy Factory 01" => new ConstantValueProfile(760, new WorkSpace(25, 18, 8, 4)),
-                    "Printing Press 01" => new ConstantValueProfile(560, new WorkSpace(22, 16, 8, 4)),
-                    "Lemonade Factory 01" => new ConstantValueProfile(800, new WorkSpace(55, 35, 15, 5)),
-                    "Electronics Factory 01" => new ConstantValueProfile(1800, new WorkSpace(55, 40, 20, 10)),
-                    "Clothing Factory 01" => new ConstantValueProfile(840, new WorkSpace(35, 20, 10, 5)),
-                    "Petroleum Refinery 01" => new ConstantValueProfile(2600, new WorkSpace(60, 45, 30, 15)),
-                    "Soft Paper Factory 01" => new ConstantValueProfile(2200, new WorkSpace(60, 50, 12, 8)),
-                    "Car Factory 01" => new ConstantValueProfile(3400, new WorkSpace(70, 60, 20, 10)),
-                    "Sneaker Factory 01" => new ConstantValueProfile(1920, new WorkSpace(35, 30, 10, 5)),
-                    "Modular House Factory 01" => new ConstantValueProfile(2400, new WorkSpace(70, 45, 15, 10)),
-                    "Food Factory 01" => new ConstantValueProfile(1920, new WorkSpace(55, 35, 15, 5)),
-                    "Dry Dock 01" => new ConstantValueProfile(3800, new WorkSpace(80, 50, 20, 10)),
-                    _ => new ProfileBase(),
-                };
-            } else if (ai is ProcessingFacilityAI) {
-                if (IsField(ai)) {
-                    SingletonProfileObject = new RatioProfile(0.5m, 0.35m, new WorkSpace(2, 4, 1, 0));
-                } else {
-                    SingletonProfileObject = new ProfileBase(1m, 1m);
-                }
-            } else if (ai is WarehouseAI warehouseAI) {
-                SingletonProfileObject = warehouseAI.m_storageType switch {
-                    TransferManager.TransferReason.Grain => new RatioProfile(0.5m, 0.25m, new WorkSpace(8, 4, 2, 1)),
-                    TransferManager.TransferReason.Logs or
-                    TransferManager.TransferReason.Ore or
-                    TransferManager.TransferReason.Oil => new RatioProfile(1m, 0.5m, new WorkSpace(8, 4, 2, 1)),
-                    _ => new RatioProfile(2m, 1m, new WorkSpace(8, 4, 2, 1)),
-                };
-            } else SingletonProfileObject = new ProfileBase(1m, 1m);
-        }
-
-        public static string[] ProcessorField = { "Animal Pasture 01", "Animal Pasture 02", "Cattle Shed 01" };
-        public static bool IsField(BuildingAI buildingAI) {
-            if (buildingAI is ExtractingFacilityAI extractingFacilityAI) {
-                if (extractingFacilityAI.m_outputResource == TransferManager.TransferReason.Grain) {
-                    return true;
-                }
-            }
-            if (buildingAI is ProcessingFacilityAI processingFacilityAI) {
-                foreach (var item in ProcessorField) {
-                    if (processingFacilityAI.name == item) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
 
         public static void SetCargoCapacity(Vehicle data, CargoTruckAI cargoTruckAI, int capacity) {
             var type = (TransferManager.TransferReason)data.m_transferType;
@@ -431,140 +388,212 @@ namespace RebalancedIndustriesRevisited {
         Oil,
     }
 
-    public class ConstantValueProfile : ProfileBase {
-        public ConstantValueProfile(decimal costsFactor, WorkSpace newWorkSpaceBuffer) {
-            CostsFactor = costsFactor;
-            NewWorkSpaceBuffer = newWorkSpaceBuffer;
-            Flag = TypeProfile.Constant;
-        }
-        public override int GetCost(int rawValue) => (int)CostsFactor * 100 / 16;
-
-        public override WorkSpace GetWorkSpace(WorkSpace rawWorkSpaceBuffer) {
-            RawWorkSpaceBuffer = rawWorkSpaceBuffer;
-            RawAllWorkers = RawWorkSpaceBuffer.Sum();
-            if (Flag != TypeProfile.Constant) {
-                ModLogger.ModLog("Flag error.");
-                NewWorkSpaceBuffer = RawWorkSpaceBuffer;
-                return NewWorkSpaceBuffer;
-            }
-            return NewWorkSpaceBuffer;
-        }
-    }
-
-    public class RatioProfile : ProfileBase {
-        public RatioProfile(decimal costsFactor, decimal workersFactor, WorkSpace workSpaceRatio) : base(costsFactor, workersFactor) {
-            WorkSpaceRatio = workSpaceRatio;
-            Flag = TypeProfile.Ratio;
-        }
-        public override WorkSpace GetWorkSpace(WorkSpace rawWorkSpaceBuffer) {
-            RawWorkSpaceBuffer = rawWorkSpaceBuffer;
-            RawAllWorkers = RawWorkSpaceBuffer.Sum();
-            if (Flag != TypeProfile.Ratio) {
-                ModLogger.ModLog("Flag error.");
-                NewWorkSpaceBuffer = RawWorkSpaceBuffer;
-                return NewWorkSpaceBuffer;
-            }
-            List<int> newWorkSpace = new();
-            int newAllWorkers;
-            if (WorkersFactor == 1) {
-                newAllWorkers = RawAllWorkers;
-            } else {
-                newAllWorkers = (int)Math.Ceiling(RawAllWorkers * WorkersFactor);
-            }
-            foreach (int item in WorkSpaceRatio) {
-                newWorkSpace.Add((int)(GetRatio(item, WorkSpaceRatio.Sum()) * newAllWorkers));
-            }
-            NewWorkSpaceBuffer = new WorkSpace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
-            return NewWorkSpaceBuffer;
-        }
-    }
-
-    public class ProfileBase : ITruck {
-        public const decimal MinWarehouseTruckCountFactor = 0.5m;
+    public class WarehouseProfile : ProfileBase<WarehouseAI> {
+        public const decimal TruckCountFactor = 0.5m;
         public const int MinWarehouseCapacity = 40000;
-        public TransferManager.TransferReason OutputResource { get; set; }
-        public int RawTruckCount { get; set; }
-        public int NewTruckCount { get; set; }
 
-        public TypeAI TypeAI { get; set; }
-        public decimal CostsFactor { get; set; }
-        public decimal WorkersFactor { get; set; }
-
-        public WorkSpace RawWorkSpaceBuffer { get; protected set; }
-        public WorkSpace WorkSpaceRatio { get; set; }
-        public WorkSpace NewWorkSpaceBuffer { get; protected set; }
-
-        public int RawAllWorkers { get; protected set; }
-        public TypeProfile Flag { get; set; }
-
-        public int WarehouseCapacity { get; set; }
-
-        public ProfileBase() {
-            Flag = TypeProfile.None;
-        }
-        public ProfileBase(decimal costsFactor, decimal workersFactor) {
-            CostsFactor = costsFactor;
-            WorkersFactor = workersFactor;
-            Flag = TypeProfile.Base;
+        public WarehouseProfile(WarehouseAI ai) {
+            AI = ai;
+            InitializePrefab();
         }
 
-        public virtual void InitializePrefab(TypeAI typeAI, TransferManager.TransferReason outputResource, int rawTruckCount) {
-            TypeAI = typeAI;
-            OutputResource = outputResource;
-            RawTruckCount = rawTruckCount;
-        }
-
-        public virtual int GetCost(int rawValue) => (int)Math.Ceiling(rawValue * CostsFactor);
-        public virtual WorkSpace GetWorkSpace(WorkSpace rawWorkSpaceBuffer) {
-            RawWorkSpaceBuffer = rawWorkSpaceBuffer;
-            RawAllWorkers = RawWorkSpaceBuffer.Sum();
-            if (Flag != TypeProfile.Base || Flag == TypeProfile.None) {
-                ModLogger.ModLog("Flag error.");
-                NewWorkSpaceBuffer = RawWorkSpaceBuffer;
-                return NewWorkSpaceBuffer;
-            }
-            List<int> newWorkSpace = new();
-            foreach (int item in RawWorkSpaceBuffer) {
-                newWorkSpace.Add((int)Math.Ceiling(item * WorkersFactor));
-            }
-            NewWorkSpaceBuffer = new WorkSpace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
-            return NewWorkSpaceBuffer;
-        }
-        protected decimal GetRatio(decimal numerator, int denominator) => Math.Round(numerator / denominator, 2);
-
-        public virtual int GetTruck() {
-            if (RawTruckCount == 0) {
-                NewTruckCount = default;
-                return default;
-            }
-            var factor = GetTruckFactor(OutputResource);
-            if (TypeAI == TypeAI.WarehouseAI) {
-                if (WarehouseCapacity == default) {
-                    NewTruckCount = default;
-                    return default;
-                }
-                if (IsRawWarehouse(OutputResource)) {
-                    factor = (factor - 1) / 1.5m + 1;
-                    NewTruckCount = (int)Math.Ceiling(RawTruckCount / factor);
-                    if (WarehouseCapacity <= 40000) {
-                        NewTruckCount = EMath.Max(1, NewTruckCount);
-                    } else {
-                        NewTruckCount = EMath.Max(2, NewTruckCount);
-                    }
-                    return NewTruckCount;
+        public override void InitializePrefab() {
+            NewConstructionCost = RawConstructionCost = AI.m_constructionCost;
+            NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
+            NewTruckCount = RawTruckCount = AI.m_truckCount;
+            NewWorkPlace = RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+            var costFactor = AI.m_storageType switch {
+                TransferManager.TransferReason.Grain => 2m,
+                TransferManager.TransferReason.Logs or
+                TransferManager.TransferReason.Ore or
+                TransferManager.TransferReason.Oil => 1m,
+                _ => 0.5m
+            };
+            NewConstructionCost = Convert.ToInt32(NewConstructionCost / costFactor);
+            NewMaintenanceCost = Convert.ToInt32(NewMaintenanceCost / costFactor);
+            var truckFactor = GetTruckFactor(AI.m_storageType);
+            if (IsRawWarehouse(AI.m_storageType)) {
+                truckFactor = (truckFactor - 1) / 1.5m + 1;
+                NewTruckCount = (int)Math.Ceiling(NewTruckCount / truckFactor);
+                if (AI.m_storageCapacity <= MinWarehouseCapacity) {
+                    NewTruckCount = EMath.Max(1, NewTruckCount);
                 } else {
-                    NewTruckCount = (int)Math.Ceiling(RawTruckCount * MinWarehouseTruckCountFactor);
-                    if (WarehouseCapacity <= MinWarehouseCapacity) {
-                        NewTruckCount = EMath.Max(1, NewTruckCount);
-                    } else {
-                        NewTruckCount = EMath.Max(2, NewTruckCount);
-                    }
-                    return NewTruckCount;
+                    NewTruckCount = EMath.Max(2, NewTruckCount);
                 }
             } else {
-                NewTruckCount = EMath.Clamp((int)Math.Ceiling(RawTruckCount / factor), 1, RawTruckCount);
-                return NewTruckCount;
+                NewTruckCount = (int)Math.Ceiling(NewTruckCount * truckFactor);
+                if (AI.m_storageCapacity <= MinWarehouseCapacity) {
+                    NewTruckCount = EMath.Max(1, NewTruckCount);
+                } else {
+                    NewTruckCount = EMath.Max(2, NewTruckCount);
+                }
             }
+            var workPlaceFactor = AI.m_storageType switch {
+                TransferManager.TransferReason.Grain => 4m,
+                TransferManager.TransferReason.Logs or
+                TransferManager.TransferReason.Ore or
+                TransferManager.TransferReason.Oil => 2m,
+                _ => 1m
+            };
+            if (NewWorkPlace.Sum() > 10) {
+                NewWorkPlace = new(Convert.ToInt32(Math.Round(NewWorkPlace.UneducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.EducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.WellEducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.HighlyEducatedWorkers / workPlaceFactor)));
+            }
+
+        }
+
+        private static bool IsRawWarehouse(TransferManager.TransferReason material) => material switch {
+            TransferManager.TransferReason.Grain or
+            TransferManager.TransferReason.Logs or
+            TransferManager.TransferReason.Ore or
+            TransferManager.TransferReason.Oil => true,
+            _ => false,
+        };
+    }
+
+    public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
+        public static string[] ProcessorField { get; } = { "Animal Pasture 01", "Animal Pasture 02", "Cattle Shed 01" };
+
+        public ProcessingFacilityProfile(ProcessingFacilityAI ai) {
+            AI = ai;
+            InitializePrefab();
+        }
+
+        public override void InitializePrefab() {
+            NewConstructionCost = RawConstructionCost = AI.m_constructionCost;
+            NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
+            NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
+            NewWorkPlace = RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+            bool isField = false;
+            foreach (var item in ProcessorField) {
+                if (AI.name == item) {
+                    isField = true;
+                }
+            }
+            if (isField) {
+                var costsFactor = 0.5m;
+                var workersFactor = 0.35m;
+                NewConstructionCost = (int)(RawConstructionCost * costsFactor);
+                NewMaintenanceCost = (int)(RawMaintenanceCost * costsFactor);
+                NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
+            }
+            var truckFactor = GetTruckFactor(AI.m_outputResource);
+            if (truckFactor != 0) {
+                NewTruckCount = EMath.Clamp((int)Math.Ceiling(NewTruckCount / truckFactor), MinVehicles, NewTruckCount);
+            }
+        }
+
+    }
+
+    public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
+        public UniqueFactoryAIValue ProfileValue { get; private set; }
+
+        public UniqueFactoryProfile(UniqueFactoryAI ai) {
+            AI = ai;
+            InitializePrefab();
+        }
+
+        public override void InitializePrefab() {
+            RawConstructionCost = AI.m_constructionCost;
+            RawMaintenanceCost = AI.m_maintenanceCost;
+            RawTruckCount = AI.m_outputVehicleCount;
+            RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+            ProfileValue = AI.name switch {
+                "Furniture Factory 01" => new UniqueFactoryAIValue(320, new WorkPlace(25, 18, 8, 4)),
+                "Bakery 01" => new UniqueFactoryAIValue(260, new WorkPlace(15, 9, 4, 2)),
+                "Industrial Steel Plant 01" => new UniqueFactoryAIValue(1800, new WorkPlace(60, 45, 30, 5)),
+                "Household Plastic Factory 01" => new UniqueFactoryAIValue(480, new WorkPlace(25, 18, 8, 4)),
+                "Toy Factory 01" => new UniqueFactoryAIValue(760, new WorkPlace(25, 18, 8, 4)),
+                "Printing Press 01" => new UniqueFactoryAIValue(560, new WorkPlace(22, 16, 8, 4)),
+                "Lemonade Factory 01" => new UniqueFactoryAIValue(800, new WorkPlace(55, 35, 15, 5)),
+                "Electronics Factory 01" => new UniqueFactoryAIValue(1800, new WorkPlace(55, 40, 20, 10)),
+                "Clothing Factory 01" => new UniqueFactoryAIValue(840, new WorkPlace(35, 20, 10, 5)),
+                "Petroleum Refinery 01" => new UniqueFactoryAIValue(2600, new WorkPlace(60, 45, 30, 15)),
+                "Soft Paper Factory 01" => new UniqueFactoryAIValue(2200, new WorkPlace(60, 50, 12, 8)),
+                "Car Factory 01" => new UniqueFactoryAIValue(3400, new WorkPlace(70, 60, 20, 10)),
+                "Sneaker Factory 01" => new UniqueFactoryAIValue(1920, new WorkPlace(35, 30, 10, 5)),
+                "Modular House Factory 01" => new UniqueFactoryAIValue(2400, new WorkPlace(70, 45, 15, 10)),
+                "Food Factory 01" => new UniqueFactoryAIValue(1920, new WorkPlace(55, 35, 15, 5)),
+                "Dry Dock 01" => new UniqueFactoryAIValue(3800, new WorkPlace(80, 50, 20, 10)),
+                _ => new UniqueFactoryAIValue(1, new WorkPlace()),
+            };
+            NewConstructionCost = AI.m_constructionCost;
+            NewMaintenanceCost = ProfileValue.CostsFactor != 1 ? ProfileValue.CostsFactor * 100 / 16 : AI.m_maintenanceCost;
+            NewWorkPlace = ProfileValue.CostsFactor != 1 ? ProfileValue.WorkPlaceValue : new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+        }
+
+        public struct UniqueFactoryAIValue {
+            public int CostsFactor;
+            public WorkPlace WorkPlaceValue;
+            public UniqueFactoryAIValue(int costsFactor, WorkPlace workPlaceValue) {
+                CostsFactor = costsFactor;
+                WorkPlaceValue = workPlaceValue;
+            }
+        }
+
+    }
+
+    public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
+        public ExtractingFacilityProfile(ExtractingFacilityAI ai) {
+            AI = ai;
+            InitializePrefab();
+        }
+
+        public override void InitializePrefab() {
+            RawConstructionCost = AI.m_constructionCost;
+            RawMaintenanceCost = AI.m_maintenanceCost;
+            RawTruckCount = AI.m_outputVehicleCount;
+            RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+            var costFactor = AI.m_outputResource == TransferManager.TransferReason.Grain ? 0.25m : 1m;
+            NewConstructionCost = (int)Math.Ceiling(RawConstructionCost * costFactor);
+            NewMaintenanceCost = (int)Math.Ceiling(RawMaintenanceCost * costFactor);
+            var truckFactor = GetTruckFactor(AI.m_outputResource);
+            if (truckFactor != 0) {
+                NewTruckCount = EMath.Clamp((int)Math.Ceiling(RawTruckCount / truckFactor), MinVehicles, RawTruckCount);
+            } else {
+                NewTruckCount = RawTruckCount;
+            }
+            NewWorkPlace = RawWorkPlace;
+            List<int> newWorkSpace = new();
+            if (AI.m_outputResource == TransferManager.TransferReason.Grain) {
+                var workPlace = new WorkPlace(2, 4, 1, 0);
+                int workPlaceSum = (int)Math.Ceiling(Math.Sqrt(AI.m_info.m_cellLength * AI.m_info.m_cellWidth) / 2);
+                if (workPlaceSum != 0) {
+                    foreach (int item in workPlace) {
+                        newWorkSpace.Add((int)(GetRatio(item, workPlace.Sum()) * workPlaceSum));
+                    }
+                    NewWorkPlace = new WorkPlace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
+                }
+            } else {
+                var workersFactor = 0.5m;
+                NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
+            }
+        }
+
+    }
+
+    public abstract class ProfileBase<TypeAI> : IProfile where TypeAI : PlayerBuildingAI {
+        public const int MinVehicles = 2;
+
+        public TypeAI AI { get; protected set; }
+        public int RawConstructionCost { get; protected set; }
+        public int NewConstructionCost { get; protected set; }
+        public int RawMaintenanceCost { get; protected set; }
+        public int NewMaintenanceCost { get; protected set; }
+        public int RawTruckCount { get; protected set; }
+        public int NewTruckCount { get; protected set; }
+        public WorkPlace RawWorkPlace { get; protected set; }
+        public WorkPlace NewWorkPlace { get; protected set; }
+
+        public abstract void InitializePrefab();
+        public virtual void SetConstructionCost(ref int constructionCost) => constructionCost = NewConstructionCost;
+        public virtual void SetMaintenanceCost(ref int maintenanceCost) => maintenanceCost = NewMaintenanceCost;
+        public virtual void SetTruckCount(ref int truckCount) => truckCount = NewTruckCount;
+        public virtual WorkPlace SetWorkPlace(ref int uneducatedWorkers, ref int educatedWorkers, ref int wellEducatedWorkers, ref int highlyEducatedWorkers) {
+            uneducatedWorkers = NewWorkPlace.UneducatedWorkers;
+            educatedWorkers = NewWorkPlace.EducatedWorkers;
+            wellEducatedWorkers = NewWorkPlace.WellEducatedWorkers;
+            highlyEducatedWorkers = NewWorkPlace.HighlyEducatedWorkers;
+            return NewWorkPlace;
         }
 
         protected static decimal GetTruckFactor(TransferManager.TransferReason material) => material switch {
@@ -580,48 +609,26 @@ namespace RebalancedIndustriesRevisited {
             TransferManager.TransferReason.Oil => 3m,
             TransferManager.TransferReason.Plastics => 1.5m,
             TransferManager.TransferReason.Petroleum => 2m,
-            _ => 0m
+            _ => 0.5m
         };
-
-        protected static bool IsRawWarehouse(TransferManager.TransferReason material) => material switch {
-            TransferManager.TransferReason.Grain or
-            TransferManager.TransferReason.Logs or
-            TransferManager.TransferReason.Ore or
-            TransferManager.TransferReason.Oil => true,
-            _ => false,
-        };
-
+        protected decimal GetRatio(decimal numerator, int denominator) => Math.Round(numerator / denominator, 2);
     }
 
-    public interface ITruck {
-        TransferManager.TransferReason OutputResource { get; set; }
-        int RawTruckCount { get; set; }
-        int NewTruckCount { get; set; }
-        int GetTruck();
+    public interface IProfile {
+        void InitializePrefab();
+        void SetConstructionCost(ref int constructionCost);
+        void SetMaintenanceCost(ref int maintenanceCost);
+        void SetTruckCount(ref int truckCount);
+        WorkPlace SetWorkPlace(ref int uneducatedWorkers, ref int educatedWorkers, ref int wellEducatedWorkers, ref int highlyEducatedWorkers);
     }
 
-    public enum TypeProfile {
-        Base,
-        Ratio,
-        Constant,
-        None
-    }
-
-    public enum TypeAI {
-        ExtractingFacilityAI,
-        ProcessingFacilityAI,
-        UniqueFactoryAI,
-        WarehouseAI,
-        None
-    }
-
-    public readonly struct WorkSpace : IEnumerable {
+    public readonly struct WorkPlace : IEnumerable {
         public readonly int UneducatedWorkers;
         public readonly int EducatedWorkers;
         public readonly int WellEducatedWorkers;
         public readonly int HighlyEducatedWorkers;
 
-        public WorkSpace(int uneducatedWorkers, int educatedWorkers, int wellEducatedWorkers, int highlyEducatedWorkers) {
+        public WorkPlace(int uneducatedWorkers, int educatedWorkers, int wellEducatedWorkers, int highlyEducatedWorkers) {
             UneducatedWorkers = uneducatedWorkers;
             EducatedWorkers = educatedWorkers;
             WellEducatedWorkers = wellEducatedWorkers;

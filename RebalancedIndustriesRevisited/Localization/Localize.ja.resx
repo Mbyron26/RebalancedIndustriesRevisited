@@ -120,11 +120,23 @@
   <data name="BothValue" xml:space="preserve">
     <value>補正した数値と元の数値を両方表示</value>
   </data>
+  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
+    <value>産出施設の倍率</value>
+  </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>DLC Industriesのバランスを調整して、渋滞の緩和や貨物の積載量の増加などを変更します。</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>補正した値のみ表示</value>
+  </data>
+  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
+    <value>加工施設の倍率</value>
+  </data>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>生産速度</value>
+  </data>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>このオプションは、産業エリアにある建物の生産速度を調整することが可能です。 バニラより上げると出荷が速くなりますが渋滞する場合があるので、生産速度は下げることをお勧めします。 途中での動的な変更も可能です。</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>ツールチップボックスのモード</value>
@@ -166,12 +178,24 @@
     <value>[ADD]ツールチップボックスのオプションを追加して、補正した数値と元の数値を両方表示</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]補正した数値が表示されない一部の建物で、ツールチップボックスを修正</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[FIX]労働者のレベルアップ要件が高すぎる問題を修正</value>
+  </data>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]産出施設および加工施設の生産速度の制限を追加</value>
+  </data>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[FIX]いくつかの農業エリアの建物で、過剰な雇用の問題を修正</value>
+  </data>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]最適化と再結合されたプレハブの速度</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>補正した値と元の値を両方表示: 補正した値 (オリジナルの値) ｰ このオプションはゲームの開始前に設定するか、またはセーブ/ロードの前に設定して下さい。</value>
+  </data>
+  <data name="Vanilla" xml:space="preserve">
+    <value>バニラ</value>
   </data>
 </root>

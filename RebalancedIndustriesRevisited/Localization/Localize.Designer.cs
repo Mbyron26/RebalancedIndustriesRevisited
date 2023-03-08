@@ -70,6 +70,15 @@ namespace RebalancedIndustriesRevisited {
         }
         
         /// <summary>
+        ///   查找类似 Extracting facility multiplier 的本地化字符串。
+        /// </summary>
+        public static string ExtractingFacilityMultiplier {
+            get {
+                return ResourceManager.GetString("ExtractingFacilityMultiplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more. 的本地化字符串。
         /// </summary>
         public static string MOD_Description {
@@ -84,6 +93,33 @@ namespace RebalancedIndustriesRevisited {
         public static string OriginalValue {
             get {
                 return ResourceManager.GetString("OriginalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Processing facility multiplier 的本地化字符串。
+        /// </summary>
+        public static string ProcessingFacilityMultiplier {
+            get {
+                return ResourceManager.GetString("ProcessingFacilityMultiplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Production Rate 的本地化字符串。
+        /// </summary>
+        public static string ProductionRate {
+            get {
+                return ResourceManager.GetString("ProductionRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed. 的本地化字符串。
+        /// </summary>
+        public static string ProductionRateWarning {
+            get {
+                return ResourceManager.GetString("ProductionRateWarning", resourceCulture);
             }
         }
         
@@ -223,11 +259,47 @@ namespace RebalancedIndustriesRevisited {
         }
         
         /// <summary>
+        ///   查找类似 [ADD]Added Extracting facility and processing facility output rate regulation. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_6_0ADD {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_6_0ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [FIX]Fixed some farm buildings overemployment issues. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_6_0FIX {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_6_0FIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [OPT]Optimized rebinding prefab speed. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_6_0OPT {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_6_0OPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save. 的本地化字符串。
         /// </summary>
         public static string ValueWarning {
             get {
                 return ResourceManager.GetString("ValueWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 vanilla 的本地化字符串。
+        /// </summary>
+        public static string Vanilla {
+            get {
+                return ResourceManager.GetString("Vanilla", resourceCulture);
             }
         }
     }

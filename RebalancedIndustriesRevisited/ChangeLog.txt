@@ -1,4 +1,9 @@
 ﻿
+V0.6.0
+[ADD]Added Extracting facility and processing facility output rate regulation.
+[OPT]Optimized rebinding prefab speed.
+[FIX]Fixed some farm buildings overemployment issues.
+
 V0.5.0
 [ADD]Added tooltip box mode option to compare the original value to the corrected value.
 [FIX]Fixed tooltip box for some buildings still not showing the corrected value.

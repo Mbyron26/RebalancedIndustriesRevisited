@@ -4,6 +4,27 @@ using UnityEngine;
 
 namespace MbyronModsCommon {
     public class CustomSlider {
+        public static UISlider AddSliderA(UIComponent parent, Vector2 size, float min, float max, float step, float defaultValue, PropertyChangedEventHandler<float> callback) {
+            UISlider slider = parent.AddUIComponent<UISlider>();
+            slider.size = size;
+            UISlicedSprite sliderSprite = slider.AddUIComponent<UISlicedSprite>();
+            sliderSprite.atlas = CustomAtlas.CommonAtlas;
+            sliderSprite.spriteName = CustomAtlas.GradientSlider;
+            sliderSprite.size = size;
+            sliderSprite.relativePosition = new Vector2(0f, 0f);
+            UISlicedSprite sliderThumb = slider.AddUIComponent<UISlicedSprite>();
+            sliderThumb.atlas = CustomAtlas.CommonAtlas;
+            sliderThumb.spriteName = CustomAtlas.SliderThumb;
+            //sliderThumb.size = new(size.y / 2, size.y);
+            slider.thumbObject = sliderThumb;
+            slider.minValue = min;
+            slider.maxValue = max;
+            slider.stepSize = step;
+            slider.value = defaultValue;
+            slider.eventValueChanged += callback;
+            slider.scrollWheelAmount = 0;
+            return slider;
+        }
         public static UISlider AddCustomSliderStyleB(UIComponent parent, string text, float min, float max, float step, float defaultValue, Vector2 size, PropertyChangedEventHandler<float> callback, out UILabel labelText) {
             UIPanel panel = parent.AttachUIComponent(UITemplateManager.GetAsGameObject("OptionsSliderTemplate")) as UIPanel;
             panel.autoLayoutPadding = new RectOffset(1, 0, 2, 0);

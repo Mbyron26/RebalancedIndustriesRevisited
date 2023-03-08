@@ -43,6 +43,7 @@ namespace MbyronModsCommon {
 
         public static string ArrowDown => nameof(ArrowDown);
         public static string ArrowDown1 => nameof(ArrowDown1);
+        public static string SliderFillIndicator => nameof(SliderFillIndicator);
         static CustomAtlas() {
             SpriteParams[ButtonNormal] = new RectOffset(4, 4, 4, 4);
             SpriteParams[ButtonHovered] = new RectOffset(4, 4, 4, 4);
@@ -70,6 +71,7 @@ namespace MbyronModsCommon {
 
             SpriteParams[ArrowDown] = new RectOffset(4, 4, 4, 4);
             SpriteParams[ArrowDown1] = new RectOffset(4, 4, 4, 4);
+            SpriteParams[SliderFillIndicator] = new RectOffset();
         }
 
         public static UITextureAtlas CommonAtlas {

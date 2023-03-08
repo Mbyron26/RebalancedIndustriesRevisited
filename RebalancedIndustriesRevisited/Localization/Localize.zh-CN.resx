@@ -120,11 +120,23 @@
   <data name="BothValue" xml:space="preserve">
     <value>同时显示正确数值和原始数值</value>
   </data>
+  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
+    <value>开采设施倍乘因子</value>
+  </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>重新平衡工业 DLC ，减少交通流量，增加载具载货量等等。</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>仅显示正确数值</value>
+  </data>
+  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
+    <value>加工设施倍乘因子</value>
+  </data>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>生产速率</value>
+  </data>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>此选项可用于调节工业设施的生产速率。 降低生产速率有利于缓解交通拥堵；高于默认数值时，能提高生产速率，但可能会导致交通问题。 此选项允许动态调整。</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>提示信息框的模式</value>
@@ -166,12 +178,24 @@
     <value>[ADD]添加了提示信息框模式的选项，允许同时显示正确数值和原始数值。</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]修复了某些建筑的提示信息框仍未显示正确数值的问题。</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[FIX]修复工人升级要求过高的问题。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]增加了调整开采设施与加工设施生产速率的功能。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[FIX]修复了一些农场建筑雇佣过多的问题。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]优化重新绑定预置的速度。</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>同时显示正确数值和原始数值的格式：正确数值（原始数值），以上选项需要在新建或加载存档前设置好。</value>
+  </data>
+  <data name="Vanilla" xml:space="preserve">
+    <value>原版</value>
   </data>
 </root>

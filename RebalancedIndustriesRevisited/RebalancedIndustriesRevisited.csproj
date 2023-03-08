@@ -7,7 +7,7 @@
 	  <Product>Rebalanced Industries Revisited</Product> 
 	  <Authors>Mbyron26</Authors>
 	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Version>0.5.0</Version>
+	  <Version>0.6.0</Version>
   </PropertyGroup>
 	
 
@@ -47,19 +47,25 @@
 
   <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ru\CommonLocaleShared.ru.projitems" Label="Shared" />
 
+  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.it\CommonLocaleShared.it.projitems" Label="Shared" />
+
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ColossalManaged">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ICities">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
