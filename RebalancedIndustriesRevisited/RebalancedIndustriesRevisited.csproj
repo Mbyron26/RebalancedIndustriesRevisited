@@ -7,47 +7,13 @@
 	  <Product>Rebalanced Industries Revisited</Product> 
 	  <Authors>Mbyron26</Authors>
 	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Version>0.6.0</Version>
+	  <Version>0.7.0</Version>
   </PropertyGroup>
 	
 
   <ItemGroup>
     <PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
   </ItemGroup>
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocaleShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.en\CommonLocaleShared.en.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\KeyBindingShared\KeyBindingShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.zh-CN\CommonLocaleShared.zh-CN.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\MessageBoxShared\MessageBoxShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\ModBaseShared\ModBaseShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\ModUtilsShared\ModUtilsShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\OptionPanelShared\OptionPanelShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\UIShared\UIShared.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.de\CommonLocaleShared.de.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.es-ES\CommonLocaleShared.es-ES.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.fr\CommonLocaleShared.fr.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ja\CommonLocaleShared.ja.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.nl\CommonLocaleShared.nl.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.pt-BR\CommonLocaleShared.pt-BR.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.ru\CommonLocaleShared.ru.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared.it\CommonLocaleShared.it.projitems" Label="Shared" />
 
 
   <ItemGroup>
@@ -135,6 +101,46 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localize.Designer.cs</LastGenOutput>
       <CustomToolNamespace>RebalancedIndustriesRevisited</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\en\en.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\zh-CN\zh-CN.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\de\de.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\fr\fr.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\it\it.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\ja\ja.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\nl\nl.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\pt-BR\pt-BR.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\ru\ru.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\tr\tr.projitems" Label="Shared" />
+
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\es-ES\es-ES.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CommonLocalize.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.resx">
+      <LastGenOutput>CommonLocalize.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

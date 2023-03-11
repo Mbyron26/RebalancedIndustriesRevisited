@@ -1,4 +1,8 @@
 ﻿
+V0.7.0
+[FIX]Fixed incorrect number of vehicles in the unique factory.
+[UPT]Updated framework and UI style.
+
 V0.6.0
 [ADD]Added Extracting facility and processing facility output rate regulation.
 [OPT]Optimized rebinding prefab speed.

@@ -3,6 +3,7 @@ using MbyronModsCommon;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using UnityEngine;
 
 namespace RebalancedIndustriesRevisited {
     [HarmonyPatch(typeof(ExtractingFacilityAI))]
@@ -30,7 +31,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetOutputBufferSize", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 

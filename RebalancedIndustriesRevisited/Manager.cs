@@ -416,16 +416,16 @@ namespace RebalancedIndustriesRevisited {
                 truckFactor = (truckFactor - 1) / 1.5m + 1;
                 NewTruckCount = (int)Math.Ceiling(NewTruckCount / truckFactor);
                 if (AI.m_storageCapacity <= MinWarehouseCapacity) {
-                    NewTruckCount = EMath.Max(1, NewTruckCount);
+                    NewTruckCount = Mathf.Max(1, NewTruckCount);
                 } else {
-                    NewTruckCount = EMath.Max(2, NewTruckCount);
+                    NewTruckCount = Mathf.Max(2, NewTruckCount);
                 }
             } else {
                 NewTruckCount = (int)Math.Ceiling(NewTruckCount * truckFactor);
                 if (AI.m_storageCapacity <= MinWarehouseCapacity) {
-                    NewTruckCount = EMath.Max(1, NewTruckCount);
+                    NewTruckCount = Mathf.Max(1, NewTruckCount);
                 } else {
-                    NewTruckCount = EMath.Max(2, NewTruckCount);
+                    NewTruckCount = Mathf.Max(2, NewTruckCount);
                 }
             }
             var workPlaceFactor = AI.m_storageType switch {
@@ -478,7 +478,7 @@ namespace RebalancedIndustriesRevisited {
             }
             var truckFactor = GetTruckFactor(AI.m_outputResource);
             if (truckFactor != 0) {
-                NewTruckCount = EMath.Clamp((int)Math.Ceiling(NewTruckCount / truckFactor), MinVehicles, NewTruckCount);
+                NewTruckCount = Mathf.Clamp((int)Math.Ceiling(NewTruckCount / truckFactor), MinVehicles, NewTruckCount);
             }
         }
 
@@ -493,8 +493,8 @@ namespace RebalancedIndustriesRevisited {
         }
 
         public override void InitializePrefab() {
-            RawConstructionCost = AI.m_constructionCost;
-            RawMaintenanceCost = AI.m_maintenanceCost;
+            NewConstructionCost = RawConstructionCost = AI.m_constructionCost;
+            NewMaintenanceCost =  RawMaintenanceCost = AI.m_maintenanceCost;
             NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
             RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
             ProfileValue = AI.name switch {
@@ -548,7 +548,7 @@ namespace RebalancedIndustriesRevisited {
             NewMaintenanceCost = (int)Math.Ceiling(RawMaintenanceCost * costFactor);
             var truckFactor = GetTruckFactor(AI.m_outputResource);
             if (truckFactor != 0) {
-                NewTruckCount = EMath.Clamp((int)Math.Ceiling(RawTruckCount / truckFactor), MinVehicles, RawTruckCount);
+                NewTruckCount = Mathf.Clamp((int)Math.Ceiling(RawTruckCount / truckFactor), MinVehicles, RawTruckCount);
             } else {
                 NewTruckCount = RawTruckCount;
             }

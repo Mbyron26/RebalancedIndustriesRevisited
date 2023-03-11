@@ -192,6 +192,12 @@
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]Optimized rebinding prefab speed.</value>
   </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Updated framework and UI style.</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
   </data>

@@ -286,6 +286,24 @@ namespace RebalancedIndustriesRevisited {
         }
         
         /// <summary>
+        ///   查找类似 [FIX]Fixed incorrect number of vehicles in the unique factory. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_7_0FIX {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_7_0FIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [UPT]Updated framework and UI style. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_7_0UPT {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_7_0UPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save. 的本地化字符串。
         /// </summary>
         public static string ValueWarning {

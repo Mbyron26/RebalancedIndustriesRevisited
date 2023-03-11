@@ -3,6 +3,7 @@ using MbyronModsCommon;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using UnityEngine;
 
 namespace RebalancedIndustriesRevisited {
 
@@ -64,7 +65,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetInputBufferSize1", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix1(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 
@@ -72,7 +73,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetInputBufferSize2", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix2(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 
@@ -80,7 +81,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetInputBufferSize3", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix3(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 
@@ -88,7 +89,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetInputBufferSize4", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix4(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 
@@ -96,7 +97,7 @@ namespace RebalancedIndustriesRevisited {
         [HarmonyPatch("GetOutputBufferSize", new Type[] { typeof(DistrictPolicies.Park), typeof(int) })]
         public static void Postfix5(ref int __result) {
             if (__result != 0) {
-                __result = EMath.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
+                __result = Mathf.Clamp(__result * 1000 / 1000 * 2, 20000, 60000);
             }
         }
 
