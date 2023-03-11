@@ -495,7 +495,7 @@ namespace RebalancedIndustriesRevisited {
         public override void InitializePrefab() {
             RawConstructionCost = AI.m_constructionCost;
             RawMaintenanceCost = AI.m_maintenanceCost;
-            RawTruckCount = AI.m_outputVehicleCount;
+            NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
             RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
             ProfileValue = AI.name switch {
                 "Furniture Factory 01" => new UniqueFactoryAIValue(320, new WorkPlace(25, 18, 8, 4)),
