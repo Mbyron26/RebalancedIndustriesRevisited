@@ -7,8 +7,13 @@ namespace RebalancedIndustriesRevisited {
         public OptionPanel() {
             var panel = CustomTabs.AddCustomTabs(this);
             new OptionPanel_General(panel.AddTab(CommonLocalize.OptionPanel_General, CommonLocalize.OptionPanel_General, 0, 30, 1.2f).MainPanel, TypeWidth.NormalWidth);
-            new AdvancedBase<Mod, Config>(panel.AddTab(CommonLocalize.OptionPanel_Advanced, CommonLocalize.OptionPanel_Advanced, 0, 30, 1.2f).MainPanel, TypeWidth.NormalWidth);
+            new OptionPanel_Advanced(panel.AddTab(CommonLocalize.OptionPanel_Advanced, CommonLocalize.OptionPanel_Advanced, 0, 30, 1.2f).MainPanel, TypeWidth.NormalWidth);
         }
+    }
+
+    public class OptionPanel_Advanced : AdvancedBase<Mod, Config> {
+        public OptionPanel_Advanced(UIComponent parent, TypeWidth typeWidth) : base(parent, typeWidth) { }
+        protected override void ResetSettings() => ResetSettings<OptionPanel>();
     }
 
     public class OptionPanel_General : GeneralOptionsBase<Mod, Config> {
