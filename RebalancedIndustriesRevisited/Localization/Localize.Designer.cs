@@ -304,6 +304,15 @@ namespace RebalancedIndustriesRevisited {
         }
         
         /// <summary>
+        ///   查找类似 [ADD]Added advanced option for reset mod config. 的本地化字符串。
+        /// </summary>
+        public static string UpdateLog_V0_7_1ADD {
+            get {
+                return ResourceManager.GetString("UpdateLog_V0_7_1ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save. 的本地化字符串。
         /// </summary>
         public static string ValueWarning {

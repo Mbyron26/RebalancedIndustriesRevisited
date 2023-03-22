@@ -117,160 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeLog" xml:space="preserve">
-    <value>Change log</value>
+  <data name="BothValue" xml:space="preserve">
+    <value>Wyświetlaj zarówno wartość skorygowaną, jak i domyślną</value>
   </data>
-  <data name="ChangeLog_Major" xml:space="preserve">
-    <value>Mod change log</value>
+  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
+    <value>Mnożnik zakładu wydobywczego</value>
   </data>
-  <data name="Check" xml:space="preserve">
-    <value>Check</value>
+  <data name="MOD_Description" xml:space="preserve">
+    <value>Zmienia balans Industries DLC, zmniejsza przepływ ruchu, zwiększa ładowność towarów i więcej.</value>
   </data>
-  <data name="CompatibilityCheck_Incompatible" xml:space="preserve">
-    <value>This mod is incompatible.</value>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>Wyświetlaj tylko skorygowaną wartość</value>
   </data>
-  <data name="CompatibilityCheck_Major" xml:space="preserve">
-    <value>Mod compatibility check</value>
+  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
+    <value>Mnożnik zakładu przetwórczego</value>
   </data>
-  <data name="CompatibilityCheck_Minor" xml:space="preserve">
-    <value>This function only detects compatibility issues related to this mod. To check compatibility for all mods, [Compatibility Report] mod is recommended.</value>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>Poziom produkcji</value>
   </data>
-  <data name="CompatibilityCheck_SameFunctionality" xml:space="preserve">
-    <value>already includes the same functionality.</value>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>Ta opcja służy do regulacji poziomu produkcji zakładów przemysłowych. Zmniejszenie poziomu produkcji zmniejszy natężenie ruchu, a zwiększenie go ponad poziom domyślny zwiększy produktywność, ale może spowodować korki. Dynamiczna regulacja jest dozwolona.</value>
   </data>
-  <data name="CompatibilityCheck_UseInstead" xml:space="preserve">
-    <value>Use {0} instead.</value>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>Tryb podpowiedzi</value>
   </data>
-  <data name="CompatibilityMessageBox_Unsubscribe" xml:space="preserve">
-    <value>Unsubscribe</value>
+  <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
+    <value>[FIX]Poprawiono wyświetlanie liczby pojazdów.</value>
   </data>
-  <data name="KeyBinding_PressAnyKey" xml:space="preserve">
-    <value>Press any key</value>
+  <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
+    <value>[UPT]Użycie nowych algorytmów w celu zmiany balansu przemysłu.</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Language</value>
+  <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
+    <value>[UPT]Użycie najnowszej wersji Harmony API.</value>
   </data>
-  <data name="Language_de" xml:space="preserve">
-    <value>German</value>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[FIX]Naprawiono problemy z wyświetlaniem zbyt małej ilości konsumentów/materiałów w niektórych budynkach przemysłowych.</value>
   </data>
-  <data name="Language_en" xml:space="preserve">
-    <value>English</value>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]Zaktualizowano rozpoznawanie bufora i zmieniono logikę.</value>
   </data>
-  <data name="Language_es_ES" xml:space="preserve">
-    <value>Spanish</value>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]Naprawiono problem błędnego spawnu pojazdów w budynkach z warsztatu Steam.</value>
   </data>
-  <data name="Language_fr" xml:space="preserve">
-    <value>French</value>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Naprawiono problem błędnej ilości stanowisk.</value>
   </data>
-  <data name="Language_GameLanguage" xml:space="preserve">
-    <value>Game Language</value>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Naprawiono problemy z kompatybilnością z modami IMT i IPT.</value>
   </data>
-  <data name="Language_it" xml:space="preserve">
-    <value>Italian</value>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Naprawiono problemy związane z wyrzucaniem wyjątków.</value>
   </data>
-  <data name="Language_ja" xml:space="preserve">
-    <value>Japanese</value>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Naprawiono błędny koszt utrzymania unikalnych fabryk.</value>
   </data>
-  <data name="Language_ko" xml:space="preserve">
-    <value>Korean</value>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Naprawiono problemy z wyświetlaniem błędnych kosztów wybudowania, kosztów utrzymania, liczby pojazdów i liczby stanowisk.</value>
   </data>
-  <data name="Language_nl" xml:space="preserve">
-    <value>Dutch</value>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]Dodano tryb podpowiedzi, pozwolono na wyświetlanie zarówno wartości skorygowanej, jak i domyślnej.</value>
   </data>
-  <data name="Language_pl" xml:space="preserve">
-    <value>Polish</value>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Poprawiono wyświetlanie błędnych wartości w oknie informacyjnym o niektórych budynkach.</value>
   </data>
-  <data name="Language_pt" xml:space="preserve">
-    <value>Portuguese</value>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]Naprawiono problem ze zbyt wysokimi wymaganiami do awansu pracowników.</value>
   </data>
-  <data name="Language_pt_BR" xml:space="preserve">
-    <value>Portuguese-Brazil</value>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]Dodano możliwość zmiany poziomu produkcji zakładów wydobywczych i przetwórczych.</value>
   </data>
-  <data name="Language_ru" xml:space="preserve">
-    <value>Russian</value>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[FIX]Naprawiono problemy z zatrudnianiem zbyt dużej ilości pracowników przez niektóre budynki rolnicze.</value>
   </data>
-  <data name="Language_tr" xml:space="preserve">
-    <value>Turkish</value>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]Zoptymalizowano szybkość ponownego łączenia prefabów.</value>
   </data>
-  <data name="Language_zh_CN" xml:space="preserve">
-    <value>Simplified Chinese</value>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>Wyświetlaj zarówno wartość zmienioną, jak i oryginalną: wartość poprawiona (wartość domyślna), opcje powyżej muszą być zmienione przed rozpoczęciem nowej gry lub wczytaniem zapisu.</value>
   </data>
-  <data name="Language_zh_TW" xml:space="preserve">
-    <value>Traditional Chinese</value>
-  </data>
-  <data name="LogMessageBox_Added" xml:space="preserve">
-    <value>Added</value>
-  </data>
-  <data name="LogMessageBox_Adjusted" xml:space="preserve">
-    <value>Adjusted</value>
-  </data>
-  <data name="LogMessageBox_Fixed" xml:space="preserve">
-    <value>Fixed</value>
-  </data>
-  <data name="LogMessageBox_Optimized" xml:space="preserve">
-    <value>Optimized</value>
-  </data>
-  <data name="LogMessageBox_Removed" xml:space="preserve">
-    <value>Removed</value>
-  </data>
-  <data name="LogMessageBox_Updated" xml:space="preserve">
-    <value>Updated</value>
-  </data>
-  <data name="MessageBox_NormalPrompt" xml:space="preserve">
-    <value>Did not detect any incompatible mods.</value>
-  </data>
-  <data name="MessageBox_OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="MessageBox_WarningPrompt" xml:space="preserve">
-    <value>Incompatible mods have been detected, in order to ensure this mod works properly, you need to unsubscribe following mods:</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="OptionPanel_Advanced" xml:space="preserve">
-    <value>Advanced</value>
-  </data>
-  <data name="OptionPanel_BuiltinFunction" xml:space="preserve">
-    <value>Builtin Function</value>
-  </data>
-  <data name="OptionPanel_CompatibilityCheck" xml:space="preserve">
-    <value>Compatibility Check</value>
-  </data>
-  <data name="OptionPanel_DebugMinor" xml:space="preserve">
-    <value>Advanced functions. It is only used for debugging output. If something goes wrong, it is recommended to enable this option and send your log to developer after repeating issues.</value>
-  </data>
-  <data name="OptionPanel_DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
-  </data>
-  <data name="OptionPanel_General" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="OptionPanel_Hotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
-  </data>
-  <data name="OptionPanel_IsDisabled" xml:space="preserve">
-    <value>Is Disabled</value>
-  </data>
-  <data name="OptionPanel_IsEnabled" xml:space="preserve">
-    <value>Is Enabled</value>
-  </data>
-  <data name="OptionPanel_ModInfo" xml:space="preserve">
-    <value>Mod Information</value>
-  </data>
-  <data name="OptionPanel_Version" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="ScrollWheel" xml:space="preserve">
-    <value>Scroll the wheel to change, Shift X10, Ctrl X0.1</value>
-  </data>
-  <data name="ShowControlPanel" xml:space="preserve">
-    <value>Show control panel</value>
-  </data>
-  <data name="XMLWariningMessageBox_Warning" xml:space="preserve">
-    <value>Warning! Mod cannot normally read the old configuration data. Now default configuration has been loaded for the mod. Please go to options panel and configure your Settings before starting game.</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+  <data name="Vanilla" xml:space="preserve">
+    <value>domyślny</value>
   </data>
 </root>

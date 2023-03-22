@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChangeLog" xml:space="preserve">
-    <value>Change log</value>
+    <value>Änderungsprotokoll</value>
   </data>
   <data name="ChangeLog_Major" xml:space="preserve">
-    <value>Mod change log</value>
+    <value>Mod-Änderungsprotokoll</value>
   </data>
   <data name="Check" xml:space="preserve">
-    <value>Check</value>
+    <value>Prüfen</value>
   </data>
   <data name="CompatibilityCheck_Incompatible" xml:space="preserve">
     <value>Dieser Mod ist inkompatibel.</value>
   </data>
   <data name="CompatibilityCheck_Major" xml:space="preserve">
-    <value>Mod compatibility check</value>
+    <value>Mod Kompatibilitätsprüfung</value>
   </data>
   <data name="CompatibilityCheck_Minor" xml:space="preserve">
-    <value>This function only detects compatibility issues related to this mod. To check compatibility for all mods, [Compatibility Report] mod is recommended.</value>
+    <value>Diese Funktion erkennt nur Kompatibilitätsprobleme im Zusammenhang mit diesem Mod. Um die Kompatibilität aller Mods zu überprüfen, wird [Kompatibilitätsbericht] Mod empfohlen.</value>
   </data>
   <data name="CompatibilityCheck_SameFunctionality" xml:space="preserve">
     <value>enthält bereits die gleiche Funktionalität.</value>
@@ -184,13 +184,13 @@
     <value>Portugiesisch</value>
   </data>
   <data name="Language_pt_BR" xml:space="preserve">
-    <value>Portugiesisch-Brasilianisch</value>
+    <value>Portugiesisch-Brasilien</value>
   </data>
   <data name="Language_ru" xml:space="preserve">
     <value>Russisch</value>
   </data>
   <data name="Language_tr" xml:space="preserve">
-    <value>Turkish</value>
+    <value>Türkisch</value>
   </data>
   <data name="Language_zh_CN" xml:space="preserve">
     <value>Vereinfachtes Chinesisch</value>
@@ -223,10 +223,10 @@
     <value>OK</value>
   </data>
   <data name="MessageBox_WarningPrompt" xml:space="preserve">
-    <value>Inkompatible Mods wurden entdeckt, um sicherzustellen, dass diese Mod ordnungsgemäß funktioniert, müssen Sie folgende Mods abbestellen:</value>
+    <value>Es wurden inkompatible Mods entdeckt, um sicherzustellen, dass diese Mod ordnungsgemäß funktioniert, musst du die folgende(n) Mod(s) abbestellen:</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No</value>
+    <value>Nein</value>
   </data>
   <data name="OptionPanel_Advanced" xml:space="preserve">
     <value>Erweitert</value>
@@ -238,7 +238,7 @@
     <value>Kompatibilitätsprüfung</value>
   </data>
   <data name="OptionPanel_DebugMinor" xml:space="preserve">
-    <value>Advanced functions. It is only used for debugging output. If something goes wrong, it is recommended to enable this option and send your log to developer after repeating issues.</value>
+    <value>Fortgeschrittene Funktionen. Es wird nur zum Debuggen der Ausgabe verwendet. Wenn etwas schief geht, ist es empfehlenswert, diese Option zu aktivieren und dein Protokoll nach wiederholten Problemen an den Entwickler zu senden.</value>
   </data>
   <data name="OptionPanel_DebugMode" xml:space="preserve">
     <value>Debug-Modus</value>
@@ -261,16 +261,31 @@
   <data name="OptionPanel_Version" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ResetModFailed" xml:space="preserve">
+    <value>Reset mod failed. It is recommended to send the log file to the developer.</value>
+  </data>
+  <data name="ResetModMajor" xml:space="preserve">
+    <value>Reset mod config</value>
+  </data>
+  <data name="ResetModMinor" xml:space="preserve">
+    <value>Attention! This option will reset all settings of this mod, and this operation is irreversible!</value>
+  </data>
+  <data name="ResetModSucceeded" xml:space="preserve">
+    <value>Reset mod succeeded.</value>
+  </data>
   <data name="ScrollWheel" xml:space="preserve">
-    <value>Scroll the wheel to change, Shift X10, Ctrl X0.1</value>
+    <value>Zum Ändern das Mausrad drehen, Shift X10, Strg X0,1</value>
   </data>
   <data name="ShowControlPanel" xml:space="preserve">
-    <value>Show control panel</value>
+    <value>Kontrollleiste anzeigen</value>
   </data>
   <data name="XMLWariningMessageBox_Warning" xml:space="preserve">
-    <value>Warnung! Mod kann die alten Konfigurationsdaten nicht lesen. Die Standardkonfiguration wurde für den Mod geladen. Bitte gehen Sie in die Einstellungen und konfigurieren Sie Ihre Einstellungen, bevor Sie das Spiel starten.</value>
+    <value>Warnung! Mod kann die alten Konfigurationsdaten nicht lesen. Jetzt wurde die Standardkonfiguration für den Mod geladen. Bitte gehe zu den Einstellungen und konfiguriere diese, bevor du das Spiel startest.</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
 </root>

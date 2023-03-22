@@ -6,7 +6,6 @@ using ColossalFramework.IO;
 using System.IO;
 using System.Globalization;
 using ColossalFramework.Globalization;
-using ColossalFramework;
 
 namespace MbyronModsCommon {
     public class ModMainInfo<Mod> : SingletonMod<Mod> where Mod : IMod {
@@ -26,18 +25,9 @@ namespace MbyronModsCommon {
         public bool IsBeta => BetaID.HasValue;
         public string Name => IsBeta ? ModName + " Beta " + ModVersion : ModName + " " + ModVersion;
         public abstract string Description { get; }
-
-        private string configFilePath;
-        public string ConfigFilePath {
-            get {
-                if (configFilePath.IsNullOrWhiteSpace()) {
-                    var path = Path.Combine(DataLocation.localApplicationData, $"{SolidModName}Config.xml");
-                    configFilePath = path;
-                    return path;
-                }
-                return configFilePath;
-            }
-        }
+        public abstract List<ModChangeLog> ChangeLog { get; }
+        public string VersionType => IsBeta ? "Beta" : "Stable";
+        public string ConfigFilePath => Path.Combine(DataLocation.localApplicationData, $"{SolidModName}Config.xml");
 
         private CultureInfo modCulture;
         public CultureInfo ModCulture {
@@ -90,8 +80,6 @@ namespace MbyronModsCommon {
         public void LoadConfig() => XMLUtils.LoadData<Config>(ConfigFilePath);
         public void SaveConfig() => XMLUtils.SaveData<Config>(ConfigFilePath);
 
-        public abstract List<ModChangeLog> ChangeLog { get; }
-        public string VersionType => IsBeta ? "Beta" : "Stable";
 
         public virtual void OnEnabled() {
             if (UIView.GetAView() is not null) {
@@ -102,9 +90,7 @@ namespace MbyronModsCommon {
             LoadingManager.instance.m_introLoaded += IntroActions;
         }
 
-        public virtual void IntroActions() {
-            GetDeserializationState();
-        }
+        public virtual void IntroActions() => GetDeserializationState();
 
         public virtual void OnDisabled() { }
         public virtual void OnCreated(ILoading loading) { }
@@ -116,19 +102,26 @@ namespace MbyronModsCommon {
         public virtual void OnReleased() { }
 
         private void ShowLogMessageBox() {
+            if (IsBeta) {
+                SingletonMod<Config>.Instance.ModVersion = ModVersion.ToString();
+                SaveConfig();
+                return;
+            }
             if (!string.IsNullOrEmpty(SingletonMod<Config>.Instance.ModVersion)) {
                 var lastVersion = new Version(SingletonMod<Config>.Instance.ModVersion);
-                var nowVersion = ModVersion;
-                if (lastVersion < nowVersion) {
+                if ((lastVersion.Major == ModVersion.Major) && (lastVersion.Minor == ModVersion.Minor) && (lastVersion.Build == ModVersion.Build)) {
                     SingletonMod<Config>.Instance.ModVersion = ModVersion.ToString();
                     SaveConfig();
+                    return;
+                }
+                if (lastVersion < ModVersion) {
                     var messageBox = MessageBox.Show<LogMessageBox>();
                     messageBox.Initialize<Mod>(true);
                 }
-                if (lastVersion > nowVersion) {
-                    SingletonMod<Config>.Instance.ModVersion = ModVersion.ToString();
-                    SaveConfig();
-                }
+                SingletonMod<Config>.Instance.ModVersion = ModVersion.ToString();
+                SaveConfig();
+            } else {
+                ModLogger.ModLog("Updated version failed, mod version is null or empty in config file.");
             }
         }
 

@@ -1,4 +1,7 @@
 ﻿
+V0.7.1
+[ADD]Added advanced option for reset mod config.
+
 V0.7.0
 [FIX]Fixed incorrect number of vehicles in the unique factory.
 [UPT]Updated framework and UI style.
