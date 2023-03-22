@@ -11,7 +11,9 @@ namespace RebalancedIndustriesRevisited {
         public override string ModName => "Rebalanced Industries Revisited";
         public override Version ModVersion => new(0, 7, 1);
         public override ulong ModID => 2911178252;
+#if DEBUG
         public override ulong? BetaID => 2928683738;
+#endif
         public override string Description => Localize.MOD_Description;
 
         public override void SetModCulture(CultureInfo cultureInfo) => Localize.Culture = cultureInfo;
@@ -50,7 +52,7 @@ namespace RebalancedIndustriesRevisited {
 
         public override List<ModChangeLog> ChangeLog => new() {
             new ModChangeLog(new Version(0, 7, 1), new(2022, 3, 22), new List<string> {
-                Localize.UpdateLog_V0_7_1ADD
+                "[UPT]Updated to support game version 1.16.1", Localize.UpdateLog_V0_7_1ADD
             }),
             new ModChangeLog(new Version(0, 7, 0), new(2022, 3, 11), new List<string> {
                 Localize.UpdateLog_V0_7_0FIX, Localize.UpdateLog_V0_7_0UPT
