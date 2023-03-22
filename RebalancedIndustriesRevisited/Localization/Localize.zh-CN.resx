@@ -192,6 +192,15 @@
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]优化重新绑定预置的速度。</value>
   </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]修复独特工厂货车数量异常的问题。</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]更新框架和界面风格。</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]添加重置模组配置的高级选项。</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>同时显示正确数值和原始数值的格式：正确数值（原始数值），以上选项需要在新建或加载存档前设置好。</value>
   </data>

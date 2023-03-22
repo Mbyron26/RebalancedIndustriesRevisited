@@ -118,93 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BothValue" xml:space="preserve">
-    <value>Hem düzeltilmiş değeri hem de orijinal değeri görüntüleyin</value>
+    <value>顯示校正值和原始值</value>
   </data>
   <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Tesis çarpanı çıkarılıyor</value>
+    <value>提取設施乘數</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
-    <value>Industries DLC'yi yeniden dengeler, trafik akışını azaltır, kargo yüklemesini artırır ve daha fazlasını yapar.</value>
+    <value>重新平衡工業 DLC，減少交通流量，增加貨物裝載等。</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Yalnızca düzeltilmiş değeri göster</value>
+    <value>只顯示校正值</value>
   </data>
   <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>İşleme tesisi çarpanı</value>
+    <value>加工設施乘數</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Üretim hızı</value>
+    <value>生產率</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>Bu seçenekler, endüstriyel tesislerin çıkış oranını düzenlemek için kullanılabilir. Çıkış hızının düşürülmesi trafiği rahatlatmak için iyidir, normalden daha yüksek olması üretkenliği artırır ancak trafik sorunlarına neden olabilir. Dinamik ayara izin verilir.</value>
+    <value>此選項可用於調節工業設施的輸出率。降低輸出率有利於緩解交通，高於香草會提高生產率但可能會導致交通問題。允許動態調整。</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Araç İpucu Kutusu Modu</value>
+    <value>工具提示框模式</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect display of vehicle count.</value>
+    <value>[修復]修復了車輛數量的錯誤顯示。</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
-    <value>[UPT]Using new algorithms to rebalances Industries.</value>
+    <value>[UPT]使用新算法重新平衡行業。</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
-    <value>[UPT]Using the latest Harmony API.</value>
+    <value>[UPT]使用最新的 Harmony API。</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+    <value>[修復]修復部分加工建築出現買主不足或原材料不足的問題。</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
-    <value>[UPT]Update buffer recognition and rebinding logic.</value>
+    <value>[UPT]更新緩衝區識別和重新綁定邏輯。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[修復]修復了非香草建築無法正確生成車輛的問題。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]修復了工作空間不正確的問題。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[修復]修復了與 IMT 和 IPT mod 的兼容性問題。</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[修復]修復異常拋出問題。</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[修復]修復了獨特工廠的不正確維護成本。</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[修復]修復了將鼠標懸停在建築物上會彈出帶有不正確的建造成本、維護成本、車輛數量和工作空間的工具提示框的問題。</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]添加了工具提示框模式選項，允許顯示更正值和原始值。</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[修復]修復了一些建築物的工具提示框仍然沒有顯示正確的值。</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[修復]修復了工人升級要求過高的問題。</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
-    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+    <value>[ADD]增加了提取設施和加工設施的產出率規定。</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[修復]修復了一些農場建築過度使用的問題。</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
-    <value>[OPT]Optimized rebinding prefab speed.</value>
+    <value>[OPT]優化重新綁定預製件速度。</value>
   </data>
   <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+    <value>[修復]修復了獨特工廠中不正確的車輛數量。</value>
   </data>
   <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
-    <value>[UPT]Updated framework and UI style.</value>
+    <value>[UPT]更新了框架和 UI 風格。</value>
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
-    <value>[ADD]Added advanced option for reset mod config.</value>
+    <value>[ADD]添加了重置模組配置的高級選項。</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Hem düzeltilmiş değeri hem de orijinal değeri görüntüleyin: düzeltilmiş değer (orijinal değer), yeni oyuna başlamadan veya yük kaydetmeden önce yukarıdaki seçeneklerin ayarlanması gerekir.</value>
+    <value>Display both corrected value and original value：修正值（原始值），以上選項需要在開始新遊戲或載入存檔前設置。</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
-    <value>vanilla</value>
+    <value>香草</value>
   </data>
 </root>

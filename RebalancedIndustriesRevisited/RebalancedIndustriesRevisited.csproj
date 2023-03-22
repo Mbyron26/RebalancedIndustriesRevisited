@@ -140,6 +140,8 @@
 
   <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\pl\pl.projitems" Label="Shared" />
 
+  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\zh-TW\zh-TW.projitems" Label="Shared" />
+
   <ItemGroup>
     <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7.1\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.Designer.cs">
       <DesignTime>True</DesignTime>

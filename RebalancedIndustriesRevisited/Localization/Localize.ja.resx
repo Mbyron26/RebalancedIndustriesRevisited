@@ -192,6 +192,15 @@
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]最適化と再結合されたプレハブの速度</value>
   </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Updated framework and UI style.</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>補正した値と元の値を両方表示: 補正した値 (オリジナルの値) ｰ このオプションはゲームの開始前に設定するか、またはセーブ/ロードの前に設定して下さい。</value>
   </data>

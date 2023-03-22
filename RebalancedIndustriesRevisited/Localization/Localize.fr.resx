@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BothValue" xml:space="preserve">
-    <value>Display both corrected value and original value</value>
+    <value>Afficher à la fois la valeur corrigée et la valeur d'origine</value>
   </data>
   <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Extracting facility multiplier</value>
+    <value>Multiplicateur d'installations d'extraction</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Rééquilibre le DLC "Industries", réduit le flux de circulation, augmente le chargement des marchandises et plus encore.</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Only display corrected value</value>
+    <value>Afficher uniquement la valeur corrigée</value>
   </data>
   <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>Processing facility multiplier</value>
+    <value>Multiplicateur d'installations de traitement</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Production Rate</value>
+    <value>Taux de production</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
+    <value>Ces options peuvent être utilisées pour réguler le taux de production des installations industrielles. Réduire le taux de sortie est bon pour faciliter le trafic, plus élevé que la vanille augmentera la productivité mais peut causer des problèmes de trafic.</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Tooltip Box Mode</value>
+    <value>Mode Boîte d'info-bulle</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]Correction de l'affichage incorrect du nombre de véhicules.</value>
@@ -169,33 +169,42 @@
     <value>[FIX]Correction des problèmes lançant des exceptions.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]Correction de coûts de maintenance incorrects pour les usines uniques.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]Correction de problèmes où le survol d'un bâtiment déclenche la boîte à outils avec des coûts de construction incorrects, des coûts d'entretien, du nombre de véhicules et de l'espace de travail.</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]Option de mode de boite d'info-bulle ajoutée, permet d'afficher à la fois la valeur corrigée et la valeur originale.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]Boîte d'info-bulle fixe pour certains bâtiments n'affichant toujours pas la valeur corrigée.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
     <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
-    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+    <value>Ajout de la régulation du taux de sortie des installations d'extraction et de traitement.</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[FIX]Correction de certains problèmes de suremploi dans les bâtiments agricoles.</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]Optimized rebinding prefab speed.</value>
   </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Updated framework and UI style.</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+    <value>Afficher à la fois la valeur corrigée et la valeur originale : la valeur corrigée (valeur originale), les options ci-dessus doivent être définies avant de commencer une nouvelle partie ou de charger la sauvegarde.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
-    <value>vanilla</value>
+    <value>jeu de base</value>
   </data>
 </root>

@@ -192,6 +192,15 @@
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]Zoptymalizowano szybkość ponownego łączenia prefabów.</value>
   </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Updated framework and UI style.</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Wyświetlaj zarówno wartość zmienioną, jak i oryginalną: wartość poprawiona (wartość domyślna), opcje powyżej muszą być zmienione przed rozpoczęciem nowej gry lub wczytaniem zapisu.</value>
   </data>
