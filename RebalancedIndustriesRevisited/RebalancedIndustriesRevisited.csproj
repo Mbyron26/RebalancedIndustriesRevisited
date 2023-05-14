@@ -3,21 +3,35 @@
   <PropertyGroup>
     <TargetFramework>net35</TargetFramework>
 	  <LangVersion>10</LangVersion>
-	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	  <Product>Rebalanced Industries Revisited</Product> 
 	  <Authors>Mbyron26</Authors>
 	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Version>0.7.1</Version>
+	  <Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>none</DebugType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Version>0.8</Version>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
-  </PropertyGroup>
-	
+	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
+		<Version>0.7.7.7</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Stable Debug|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Stable Release|AnyCPU'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>	
 
   <ItemGroup>
     <PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
@@ -44,144 +58,33 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
-      <DependentUpon>CommonLocale.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
-      <DependentUpon>CommonLocale.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.4\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
-      <DependentUpon>CommonLocale.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.5\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
-      <DependentUpon>CommonLocale.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.Designer.cs">
-      <DependentUpon>CommonLocale.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Localization\Localize.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Localize.resx</DependentUpon>
-    </Compile>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="C:\Users\Mbyron\Desktop\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.1\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.3\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.4\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.5\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\MbyronModsCommonShared\LocalizationShared\CommonLocaleShared\CommonLocale.resx">
-      <LastGenOutput>CommonLocale.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.es-ES.resx">
-      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.nl.resx">
-      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.ja.resx">
-      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.zh-CN.resx">
-      <LastGenOutput>Localize.zh-CN.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.en.resx">
-      <LastGenOutput>Localize.en.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Localize.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>RebalancedIndustriesRevisited</CustomToolNamespace>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\en\en.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\zh-CN\zh-CN.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\de\de.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\fr\fr.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\it\it.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\ja\ja.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\nl\nl.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\pt-BR\pt-BR.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\ru\ru.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\tr\tr.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\es-ES\es-ES.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\pl\pl.projitems" Label="Shared" />
-
-  <Import Project="..\MbyronModsCommon\MbyronModsCommon\Localization\zh-TW\zh-TW.projitems" Label="Shared" />
-
-  <ItemGroup>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7.1\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CommonLocalize.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CommonLocalize.resx</DependentUpon>
-    </Compile>
-    <Compile Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.8\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CommonLocalize.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7.1\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.resx">
-      <LastGenOutput>CommonLocalize.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.7\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.resx">
-      <LastGenOutput>CommonLocalize.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="D:\CitiesSkylines\MyMods\RebalancedIndustriesRevisited\0.8\RebalancedIndustriesRevisited\MbyronModsCommon\MbyronModsCommon\Localization\CommonLocalize\CommonLocalize.resx">
-      <LastGenOutput>CommonLocalize.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-	<PropertyGroup>
-		<OutDir>$(LOCALAPPDATA)/Colossal Order/Cities_Skylines/Addons/Mods/$(SolutionName)/Locale</OutDir>
-	</PropertyGroup>
-
-	<Target Name="DeployToLocalModDir" AfterTargets="Build">
+	<Target Name="PdbToMdb" AfterTargets="Build">
+		<PropertyGroup>
+			<LocalDir>$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(MSBuildProjectName)</LocalDir>
+			<RootNamespace>RebalancedIndustriesRevisited</RootNamespace>
+		</PropertyGroup>
 		<ItemGroup>
-			<DLLToMove Include="$(OutDir)\*.dll*" />
-			<DLLDir Include="$(LOCALAPPDATA)/Colossal Order/Cities_Skylines/Addons/Mods/$(SolutionName)/" />
+			<LocalizeToMove Include="$(OutDir)Properties\*.resx" />
 		</ItemGroup>
-		<Move SourceFiles="@(DLLToMove)" DestinationFolder="@(DLLDir)" />
+		<Move SourceFiles="@(LocalizeToMove)" DestinationFiles="@(LocalizeToMove->'$(OutDir)Locale\%(Filename)%(Extension)')" />
+		<RemoveDir Directories="$(OutDir)Properties" />
+		<ItemGroup>
+			<CommonLocalizeToMove Include="$(OutDir)*.resx" />
+		</ItemGroup>
 	</Target>
+
+	<Target Name="DeployToLocal" AfterTargets="PdbToMdb">
+		<Message Text="Deploy to local $(LocalDir)" Importance="high" />
+		<RemoveDir Directories="$(LocalDir)" />
+		<ItemGroup>
+			<FilesToCopy Include="$(OutDir)\**\*.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+	</Target>
+
+	<Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
 
 </Project>

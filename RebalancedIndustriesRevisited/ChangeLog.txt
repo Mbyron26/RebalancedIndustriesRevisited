@@ -1,4 +1,7 @@
 ﻿
+V0.7.1.1
+[FIX]Fixed an issue with unadjustable processing rates.
+
 V0.7.1
 [ADD]Added advanced option for reset mod config.
 

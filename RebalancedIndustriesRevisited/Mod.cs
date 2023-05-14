@@ -9,7 +9,7 @@ namespace RebalancedIndustriesRevisited {
     public class Mod : ModBase<Mod, OptionPanel, Config> {
         public override string SolidModName => "RebalancedIndustriesRevisited";
         public override string ModName => "Rebalanced Industries Revisited";
-        public override Version ModVersion => new(0, 7, 1);
+        public override Version ModVersion => new(0, 7, 1, 1);
         public override ulong ModID => 2911178252;
 #if DEBUG
         public override ulong? BetaID => 2928683738;

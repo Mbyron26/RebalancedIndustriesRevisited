@@ -62,7 +62,7 @@ namespace RebalancedIndustriesRevisited {
                             }
                         } else if (prefab.m_buildingAI is ProcessingFacilityAI ai2) {
                             if (ProcessingFacilityAIData.TryGetValue(ai2.name, out var value)) {
-                                ai2.m_outputRate = (int)(value * Config.Instance.ExtractingFacilityProductionRate);
+                                ai2.m_outputRate = (int)(value * Config.Instance.ProcessingFacilityProductionRate);
                             } else {
                                 ModLogger.ModLog($"Couldn't found {ai2.name} in data buffer.");
                             }
