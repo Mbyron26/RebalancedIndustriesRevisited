@@ -23,7 +23,7 @@ namespace RebalancedIndustriesRevisited {
                 if (instruction.Is(OpCodes.Ldc_I4, 0x1F40) && !flag1) {
                     yield return new CodeInstruction(OpCodes.Ldc_I4, incomingThreshold/*0x4268*/);
                     flag1 = true;
-                    ModLogger.ModLog("ProcessingFacilityAI ProduceGoods Transpiler1 succeed.");
+                    ExternalLogger.Log("ProcessingFacilityAI ProduceGoods Transpiler1 succeed.");
                 } else if (instruction.Is(OpCodes.Ldc_I4, 0x1F40)) {
                     targetEnumerator.MoveNext();
                     var next = targetEnumerator.Current;
@@ -40,7 +40,7 @@ namespace RebalancedIndustriesRevisited {
                             yield return next1;
                             yield return next2;
                             yield return next3;
-                            ModLogger.ModLog("ProcessingFacilityAI ProduceGoods Transpiler2 succeed.");
+                            ExternalLogger.Log("ProcessingFacilityAI ProduceGoods Transpiler2 succeed.");
                         } else {
                             yield return instruction;
                             yield return next;

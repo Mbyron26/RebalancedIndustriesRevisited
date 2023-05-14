@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>顯示校正值和原始值</value>
+  </data>
+  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
+    <value>提取設施乘數</value>
+  </data>
+  <data name="MOD_Description" xml:space="preserve">
+    <value>重新平衡工業 DLC，減少交通流量，增加貨物裝載等。</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>只顯示校正值</value>
+  </data>
+  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
+    <value>加工設施乘數</value>
+  </data>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>生產率</value>
+  </data>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>此選項可用於調節工業設施的輸出率。降低輸出率有利於緩解交通，高於香草會提高生產率但可能會導致交通問題。允許動態調整。</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>工具提示框模式</value>
+  </data>
+  <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
+    <value>[修復]修復了車輛數量的錯誤顯示。</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
+    <value>[UPT]使用新算法重新平衡行業。</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
+    <value>[UPT]使用最新的 Harmony API。</value>
+  </data>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[修復]修復部分加工建築出現買主不足或原材料不足的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]更新緩衝區識別和重新綁定邏輯。</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[修復]修復了非香草建築無法正確生成車輛的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]修復了工作空間不正確的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[修復]修復了與 IMT 和 IPT mod 的兼容性問題。</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[修復]修復異常拋出問題。</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[修復]修復了獨特工廠的不正確維護成本。</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[修復]修復了將鼠標懸停在建築物上會彈出帶有不正確的建造成本、維護成本、車輛數量和工作空間的工具提示框的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]添加了工具提示框模式選項，允許顯示更正值和原始值。</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[修復]修復了一些建築物的工具提示框仍然沒有顯示正確的值。</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[修復]修復了工人升級要求過高的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]增加了提取設施和加工設施的產出率規定。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[修復]修復了一些農場建築過度使用的問題。</value>
+  </data>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]優化重新綁定預製件速度。</value>
+  </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[修復]修復了獨特工廠中不正確的車輛數量。</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]更新了框架和 UI 風格。</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]添加了重置模組配置的高級選項。</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>Display both corrected value and original value：修正值（原始值），以上選項需要在開始新遊戲或載入存檔前設置。</value>
+  </data>
+  <data name="Vanilla" xml:space="preserve">
+    <value>香草</value>
+  </data>
+</root>

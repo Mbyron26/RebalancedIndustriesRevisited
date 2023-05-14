@@ -24,11 +24,11 @@ namespace RebalancedIndustriesRevisited {
             }
             PrefabFlag = true;
 
-            ModLogger.ModLog("--------Start getting all building buttons--------", Config.Instance.DebugMode);
+            ExternalLogger.DebugMode("--------Start getting all building buttons--------", Config.Instance.DebugMode);
             GetAllButtons();
-            ModLogger.ModLog("--------Get all building buttons done--------\n", Config.Instance.DebugMode);
+            ExternalLogger.DebugMode("--------Get all building buttons done--------\n", Config.Instance.DebugMode);
 
-            ModLogger.ModLog("--------Start rebinding building information--------");
+            ExternalLogger.Log("--------Start rebinding building information--------");
             try {
                 for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
                     if (PrefabCollection<BuildingInfo>.GetLoaded(i) != null) {
@@ -38,10 +38,10 @@ namespace RebalancedIndustriesRevisited {
                         }
                     }
                 }
-                ModLogger.ModLog("--------Rebinding all building information done--------\n");
+                ExternalLogger.Log("--------Rebinding all building information done--------\n");
             }
             catch (Exception e) {
-                ModLogger.ModLog(e.ToString());
+                ExternalLogger.Log(e.ToString());
             }
 
             DebugUtils.TimeCalculater(RefreshOutputRatePrefab);
@@ -58,13 +58,13 @@ namespace RebalancedIndustriesRevisited {
                             if (ExtractingFacilityAIData.TryGetValue(ai1.name, out var value)) {
                                 ai1.m_outputRate = (int)(value * Config.Instance.ExtractingFacilityProductionRate);
                             } else {
-                                ModLogger.ModLog($"Couldn't found {ai1.name} in data buffer.");
+                                ExternalLogger.Log($"Couldn't found {ai1.name} in data buffer.");
                             }
                         } else if (prefab.m_buildingAI is ProcessingFacilityAI ai2) {
                             if (ProcessingFacilityAIData.TryGetValue(ai2.name, out var value)) {
                                 ai2.m_outputRate = (int)(value * Config.Instance.ProcessingFacilityProductionRate);
                             } else {
-                                ModLogger.ModLog($"Couldn't found {ai2.name} in data buffer.");
+                                ExternalLogger.Log($"Couldn't found {ai2.name} in data buffer.");
                             }
                         }
                     }
@@ -72,7 +72,7 @@ namespace RebalancedIndustriesRevisited {
             }
         }
         private static void RefreshOutputRatePrefab() {
-            ModLogger.ModLog($"--------------------------------------------------------------------------------------");
+            ExternalLogger.Log($"--------------------------------------------------------------------------------------");
             for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
                 if (PrefabCollection<BuildingInfo>.GetLoaded(i) != null) {
                     BuildingInfo prefab = PrefabCollection<BuildingInfo>.GetLoaded(i);
@@ -81,17 +81,17 @@ namespace RebalancedIndustriesRevisited {
                             ExtractingFacilityAIData.Add(ai1.name, ai1.m_outputRate);
                             var raw1 = ai1.m_outputRate;
                             ai1.m_outputRate = (int)(ai1.m_outputRate * Config.Instance.ExtractingFacilityProductionRate);
-                            ModLogger.ModLog($"{raw1} -> {ai1.m_outputRate} | {ai1.name}");
+                            ExternalLogger.Log($"{raw1} -> {ai1.m_outputRate} | {ai1.name}");
                         } else if (prefab.m_buildingAI is ProcessingFacilityAI ai2) {
                             ProcessingFacilityAIData.Add(ai2.name, ai2.m_outputRate);
                             var raw2 = ai2.m_outputRate;
                             ai2.m_outputRate = (int)(ai2.m_outputRate * Config.Instance.ProcessingFacilityProductionRate);
-                            ModLogger.ModLog($"{raw2} -> {ai2.m_outputRate} | {ai2.name}");
+                            ExternalLogger.Log($"{raw2} -> {ai2.m_outputRate} | {ai2.name}");
                         }
                     }
                 }
             }
-            ModLogger.ModLog($"--------------------------------------------------------------------------------------");
+            ExternalLogger.Log($"--------------------------------------------------------------------------------------");
         }
 
         private static void GetAllButtons() {
@@ -107,21 +107,21 @@ namespace RebalancedIndustriesRevisited {
         private static void GetButtons(string panelName, Action<UIButton> addButtons) {
             var targetPanel = UIView.Find<UIPanel>(panelName);
             if (targetPanel != null) {
-                ModLogger.ModLog($"Found {targetPanel.name} succeed.");
+                ExternalLogger.Log($"Found {targetPanel.name} succeed.");
                 var scrollablePanel = targetPanel.Find<UIScrollablePanel>("ScrollablePanel");
                 if (scrollablePanel != null) {
-                    ModLogger.ModLog($"Found {targetPanel.name}.scrollablePanel succeed.");
+                    ExternalLogger.Log($"Found {targetPanel.name}.scrollablePanel succeed.");
                     foreach (var item in scrollablePanel.components) {
                         if (item is UIButton button) {
                             addButtons(button);
-                            ModLogger.ModLog($"Got {button.name} succeed.", Config.Instance.DebugMode);
+                            ExternalLogger.DebugMode($"Got {button.name} succeed.", Config.Instance.DebugMode);
                         }
                     }
                 } else {
-                    ModLogger.ModLog($"Found {panelName}.scrollablePanel failed.");
+                    ExternalLogger.Log($"Found {panelName}.scrollablePanel failed.");
                 }
             } else {
-                ModLogger.ModLog($"Couldn't find {targetPanel}");
+                ExternalLogger.Log($"Couldn't find {targetPanel}");
             }
         }
 
@@ -141,7 +141,7 @@ namespace RebalancedIndustriesRevisited {
                 profile.SetConstructionCost(ref extractingFacilityAI.m_constructionCost);
                 profile.SetMaintenanceCost(ref extractingFacilityAI.m_maintenanceCost);
                 var newWorkPlace = profile.SetWorkPlace(ref extractingFacilityAI.m_workPlaceCount0, ref extractingFacilityAI.m_workPlaceCount1, ref extractingFacilityAI.m_workPlaceCount2, ref extractingFacilityAI.m_workPlaceCount3);
-                ModLogger.ModLog($"Extracting Facility | Vehicle count: {rawTruckCount} -> {extractingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {extractingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {extractingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {extractingFacilityAI.m_workPlaceCount0} {extractingFacilityAI.m_workPlaceCount1} {extractingFacilityAI.m_workPlaceCount2} {extractingFacilityAI.m_workPlaceCount3} | Building: {name}");
+                ExternalLogger.Log($"Extracting Facility | Vehicle count: {rawTruckCount} -> {extractingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {extractingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {extractingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {extractingFacilityAI.m_workPlaceCount0} {extractingFacilityAI.m_workPlaceCount1} {extractingFacilityAI.m_workPlaceCount2} {extractingFacilityAI.m_workPlaceCount3} | Building: {name}");
                 var resource = extractingFacilityAI.NaturalResourceType switch {
                     NaturalResourceManager.Resource.Oil => IndustryOilPanel,
                     NaturalResourceManager.Resource.Ore => IndustryOrePanel,
@@ -163,14 +163,14 @@ namespace RebalancedIndustriesRevisited {
                                     ModifyMaintenanceCostString(rawMaintenanceCost, extractingFacilityAI.m_maintenanceCost, extractingFacilityAI, ref newTooltip);
                                     ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
-                                    ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
+                                    ExternalLogger.DebugMode($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
                                 }
                             }
                         }
                     }
                     catch (Exception ex) {
-                        ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
+                        ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                     }
                 }
             } else if (ai is UniqueFactoryAI uniqueFactoryAI) {
@@ -188,9 +188,9 @@ namespace RebalancedIndustriesRevisited {
                 profile.SetMaintenanceCost(ref uniqueFactoryAI.m_maintenanceCost);
                 var newWorkPlace = profile.SetWorkPlace(ref uniqueFactoryAI.m_workPlaceCount0, ref uniqueFactoryAI.m_workPlaceCount1, ref uniqueFactoryAI.m_workPlaceCount2, ref uniqueFactoryAI.m_workPlaceCount3);
                 if (profile.ProfileValue.CostsFactor != 1) {
-                    ModLogger.ModLog($"Unique Factory | Maintenance cost: {rawMaintenanceCost} -> {uniqueFactoryAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {uniqueFactoryAI.m_workPlaceCount0} {uniqueFactoryAI.m_workPlaceCount1} {uniqueFactoryAI.m_workPlaceCount2} {uniqueFactoryAI.m_workPlaceCount3} | Building: {name}");
+                    ExternalLogger.Log($"Unique Factory | Maintenance cost: {rawMaintenanceCost} -> {uniqueFactoryAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {uniqueFactoryAI.m_workPlaceCount0} {uniqueFactoryAI.m_workPlaceCount1} {uniqueFactoryAI.m_workPlaceCount2} {uniqueFactoryAI.m_workPlaceCount3} | Building: {name}");
                 } else {
-                    ModLogger.ModLog($"Unique Factory | No rebinding. | Building: {uniqueFactoryAI.name}");
+                    ExternalLogger.Log($"Unique Factory | No rebinding. | Building: {uniqueFactoryAI.name}");
                 }
                 try {
                     var panel = UIView.Find<UIPanel>(IndustryUniqueFactoryPanel).Find<UIScrollablePanel>("ScrollablePanel");
@@ -203,14 +203,14 @@ namespace RebalancedIndustriesRevisited {
                                 ModifyMaintenanceCostString(rawMaintenanceCost, uniqueFactoryAI.m_maintenanceCost, uniqueFactoryAI, ref newTooltip);
                                 ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                 buttons[i].tooltip = newTooltip;
-                                ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
+                                ExternalLogger.DebugMode($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                 break;
                             }
                         }
                     }
                 }
                 catch (Exception ex) {
-                    ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
+                    ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                 }
 
             } else if (ai is ProcessingFacilityAI processingFacilityAI) {
@@ -228,7 +228,7 @@ namespace RebalancedIndustriesRevisited {
                 profile.SetConstructionCost(ref processingFacilityAI.m_constructionCost);
                 profile.SetMaintenanceCost(ref processingFacilityAI.m_maintenanceCost);
                 var newWorkPlace = profile.SetWorkPlace(ref processingFacilityAI.m_workPlaceCount0, ref processingFacilityAI.m_workPlaceCount1, ref processingFacilityAI.m_workPlaceCount2, ref processingFacilityAI.m_workPlaceCount3);
-                ModLogger.ModLog($"Processing Facility | Vehicle count: {rawTruckCount} -> {processingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {processingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {processingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {processingFacilityAI.m_workPlaceCount0} {processingFacilityAI.m_workPlaceCount1} {processingFacilityAI.m_workPlaceCount2} {processingFacilityAI.m_workPlaceCount3} | Building: {name}");
+                ExternalLogger.Log($"Processing Facility | Vehicle count: {rawTruckCount} -> {processingFacilityAI.m_outputVehicleCount} | Construction cost: {rawConstructionCost} -> {processingFacilityAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {processingFacilityAI.m_maintenanceCost} | Work space: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {processingFacilityAI.m_workPlaceCount0} {processingFacilityAI.m_workPlaceCount1} {processingFacilityAI.m_workPlaceCount2} {processingFacilityAI.m_workPlaceCount3} | Building: {name}");
                 var resource = processingFacilityAI.m_inputResource1 switch {
                     TransferManager.TransferReason.Oil => IndustryOilPanel,
                     TransferManager.TransferReason.Ore => IndustryOrePanel,
@@ -250,14 +250,14 @@ namespace RebalancedIndustriesRevisited {
                                     ModifyMaintenanceCostString(rawMaintenanceCost, processingFacilityAI.m_maintenanceCost, processingFacilityAI, ref newTooltip);
                                     ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                     buttons[i].tooltip = newTooltip;
-                                    ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
+                                    ExternalLogger.DebugMode($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                     break;
                                 }
                             }
                         }
                     }
                     catch (Exception ex) {
-                        ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
+                        ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                     }
                 }
 
@@ -276,7 +276,7 @@ namespace RebalancedIndustriesRevisited {
                 profile.SetConstructionCost(ref warehouseAI.m_constructionCost);
                 profile.SetMaintenanceCost(ref warehouseAI.m_maintenanceCost);
                 var newWorkPlace = profile.SetWorkPlace(ref warehouseAI.m_workPlaceCount0, ref warehouseAI.m_workPlaceCount1, ref warehouseAI.m_workPlaceCount2, ref warehouseAI.m_workPlaceCount3);
-                ModLogger.ModLog($"Warehouse | Vehicle count: {rawTruckCount} -> {warehouseAI.m_truckCount} | Construction cost: {rawConstructionCost} -> {warehouseAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {warehouseAI.m_maintenanceCost} | Work space0: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {warehouseAI.m_workPlaceCount0} {warehouseAI.m_workPlaceCount1} {warehouseAI.m_workPlaceCount2} {warehouseAI.m_workPlaceCount3} | Building: {name}");
+                ExternalLogger.Log($"Warehouse | Vehicle count: {rawTruckCount} -> {warehouseAI.m_truckCount} | Construction cost: {rawConstructionCost} -> {warehouseAI.m_constructionCost} | Maintenance cost: {rawMaintenanceCost} -> {warehouseAI.m_maintenanceCost} | Work space0: {rawWorkSpace0} {rawWorkSpace1} {rawWorkSpace2} {rawWorkSpace3} -> {warehouseAI.m_workPlaceCount0} {warehouseAI.m_workPlaceCount1} {warehouseAI.m_workPlaceCount2} {warehouseAI.m_workPlaceCount3} | Building: {name}");
                 try {
                     var typePanel = warehouseAI.m_storageType switch {
                         TransferManager.TransferReason.Grain => IndustryFarmingPanel,
@@ -297,14 +297,14 @@ namespace RebalancedIndustriesRevisited {
                                 ModifyMaintenanceCostString(rawMaintenanceCost, warehouseAI.m_maintenanceCost, warehouseAI, ref newTooltip);
                                 ModifyWorkSpaceString(rawWorkSpace, newWorkPlace, ref newTooltip);
                                 buttons[i].tooltip = newTooltip;
-                                ModLogger.ModLog($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
+                                ExternalLogger.DebugMode($"Rebinding {name} tooltip:\n{rawTooltip} -> \n{buttons[i].tooltip}\n", Config.Instance.DebugMode);
                                 break;
                             }
                         }
                     }
                 }
                 catch (Exception ex) {
-                    ModLogger.ModLog("Couldn't rebinding tooltip.", ex);
+                    ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                 }
             }
         }

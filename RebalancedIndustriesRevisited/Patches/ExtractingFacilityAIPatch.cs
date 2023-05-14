@@ -19,7 +19,7 @@ namespace RebalancedIndustriesRevisited {
                 if (instruction.Is(OpCodes.Ldc_I4, 0x1F40) && !flag) {
                     flag = true;
                     yield return new CodeInstruction(OpCodes.Ldc_I4, outcomingThreshold);
-                    ModLogger.ModLog("ExtractingFacilityAI ProduceGoods Transpiler succeed.");
+                    ExternalLogger.Log("ExtractingFacilityAI ProduceGoods Transpiler succeed.");
                 } else {
                     yield return instruction;
                 }

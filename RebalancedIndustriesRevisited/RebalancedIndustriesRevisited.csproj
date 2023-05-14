@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net35</TargetFramework>
-	  <LangVersion>10</LangVersion>
-	  <Product>Rebalanced Industries Revisited</Product> 
-	  <Authors>Mbyron26</Authors>
-	  <Copyright>Copyright © 2022 Mbyron26</Copyright>
-	  <Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net35</TargetFramework>
+		<LangVersion>10</LangVersion>
+		<Product>Rebalanced Industries Revisited</Product>
+		<Authors>Mbyron26</Authors>
+		<Copyright>Copyright © 2022 Mbyron26</Copyright>
+		<Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
+	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.8</Version>
+		<Version>0.8.0.51419</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<Version>0.7.7.7</Version>
+		<Version>0.7.7.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|AnyCPU'">
@@ -31,35 +31,107 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Stable Release|AnyCPU'">
 		<DebugType>none</DebugType>
-	</PropertyGroup>	
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Remove="Properties\Localize.de.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.es-ES.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.fr.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.it.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.ja.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.ko.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.nl.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.pl.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.pt-BR.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.ru.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.tr.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.zh-CN.resx" />
+	  <EmbeddedResource Remove="Properties\Localize.zh-TW.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Properties\Localize.de.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.es-ES.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.fr.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.it.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.ja.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.ko.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.nl.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.pl.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.pt-BR.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.resx">
+	    <Generator>LocalizeGenerator</Generator>
+	    <LastGenOutput>Localize.cs</LastGenOutput>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CustomToolNamespace>RebalancedIndustriesRevisited</CustomToolNamespace>
+	  </None>
+	  <None Include="Properties\Localize.ru.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.tr.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.zh-CN.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="Properties\Localize.zh-TW.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
+	</ItemGroup>
 
 
-  <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ColossalManaged">
-      <HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICities">
-      <HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="ColossalManaged">
+			<HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="ICities">
+			<HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Localize.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Localize.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
 
 	<Target Name="PdbToMdb" AfterTargets="Build">
 		<PropertyGroup>
@@ -84,7 +156,5 @@
 		</ItemGroup>
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
 	</Target>
-
-	<Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
 
 </Project>
