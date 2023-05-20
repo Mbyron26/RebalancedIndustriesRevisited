@@ -135,7 +135,6 @@
 	  </Compile>
 	</ItemGroup>
 
-	<Import Project="..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
 
 	<Target Name="PdbToMdb" AfterTargets="Build">
 		<PropertyGroup>
@@ -160,5 +159,7 @@
 		</ItemGroup>
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
 	</Target>
+
+	<Import Project="..\..\..\..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
 
 </Project>
