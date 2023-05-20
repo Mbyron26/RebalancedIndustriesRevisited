@@ -39,8 +39,7 @@ namespace RebalancedIndustriesRevisited {
                     }
                 }
                 ExternalLogger.Log("--------Rebinding all building information done--------\n");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 ExternalLogger.Log(e.ToString());
             }
 
@@ -168,8 +167,7 @@ namespace RebalancedIndustriesRevisited {
                                 }
                             }
                         }
-                    }
-                    catch (Exception ex) {
+                    } catch (Exception ex) {
                         ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                     }
                 }
@@ -208,8 +206,7 @@ namespace RebalancedIndustriesRevisited {
                             }
                         }
                     }
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                 }
 
@@ -255,8 +252,7 @@ namespace RebalancedIndustriesRevisited {
                                 }
                             }
                         }
-                    }
-                    catch (Exception ex) {
+                    } catch (Exception ex) {
                         ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                     }
                 }
@@ -302,8 +298,7 @@ namespace RebalancedIndustriesRevisited {
                             }
                         }
                     }
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     ExternalLogger.Exception("Couldn't rebinding tooltip.", ex);
                 }
             }
@@ -361,6 +356,16 @@ namespace RebalancedIndustriesRevisited {
                 SetCargoCapacity(cargoTruckAI, capacity);
             }
         }
+        public static void SetCargoCapacity(Vehicle data, ref CargoTruckAI cargoTruckAI) {
+            var type = (TransferManager.TransferReason)data.m_transferType;
+            if (IsRawMaterial(type)) {
+                cargoTruckAI.m_cargoCapacity = (int)(8000 * Config.Instance.RawMaterialsLoadMultiplierFactor);
+            } else if (IsProcessedProduct(type)) {
+                cargoTruckAI.m_cargoCapacity = (int)(8000 * Config.Instance.ProcessingMaterialsLoadMultiplierFactor);
+            }
+        }
+        public static bool IsRawMaterial(TransferManager.TransferReason transferReason) => transferReason == TransferManager.TransferReason.Logs || transferReason == TransferManager.TransferReason.Grain || transferReason == TransferManager.TransferReason.Ore || transferReason == TransferManager.TransferReason.Oil;
+        public static bool IsProcessedProduct(TransferManager.TransferReason transferReason) => transferReason == TransferManager.TransferReason.Paper || transferReason == TransferManager.TransferReason.PlanedTimber || transferReason == TransferManager.TransferReason.Flours || transferReason == TransferManager.TransferReason.AnimalProducts || transferReason == TransferManager.TransferReason.Metals || transferReason == TransferManager.TransferReason.Glass || transferReason == TransferManager.TransferReason.Plastics || transferReason == TransferManager.TransferReason.Petroleum || transferReason == TransferManager.TransferReason.LuxuryProducts;
         public static void SetCargoCapacity(CargoTruckAI cargoTruckAI, int capacity) => cargoTruckAI.m_cargoCapacity = capacity;
         public static IndustriesType GetIndustriesType(TransferManager.TransferReason transferReason) => transferReason switch {
             TransferManager.TransferReason.Logs => IndustriesType.Forestry,
@@ -494,7 +499,7 @@ namespace RebalancedIndustriesRevisited {
 
         public override void InitializePrefab() {
             NewConstructionCost = RawConstructionCost = AI.m_constructionCost;
-            NewMaintenanceCost =  RawMaintenanceCost = AI.m_maintenanceCost;
+            NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
             NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
             RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
             ProfileValue = AI.name switch {

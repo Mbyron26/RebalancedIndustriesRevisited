@@ -118,195 +118,196 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Zrušit</value>
   </data>
   <data name="ChangeLog" xml:space="preserve">
-    <value>Change log</value>
+    <value>Změny</value>
   </data>
   <data name="ChangeLog_Major" xml:space="preserve">
-    <value>Mod change log</value>
+    <value>Seznam změn</value>
   </data>
   <data name="Check" xml:space="preserve">
-    <value>Check</value>
+    <value>Zkontrolovat</value>
   </data>
   <data name="CompatibilityCheck_Incompatible" xml:space="preserve">
-    <value>This mod is incompatible.</value>
+    <value>Tento mod je nekompatibilní.</value>
   </data>
   <data name="CompatibilityCheck_Major" xml:space="preserve">
-    <value>Mod compatibility check</value>
+    <value>Kontrola kompatibility</value>
   </data>
   <data name="CompatibilityCheck_Minor" xml:space="preserve">
-    <value>This function only detects compatibility issues related to this mod. To check compatibility for all mods, [Compatibility Report] mod is recommended.</value>
+    <value>Tato funkce detekuje pouze problémy s kompatibilitou související s touhle modifikací. Pro kontrolu kompatibility pro všechny mody, je doporučen [Compatibility Report] mod.</value>
   </data>
   <data name="CompatibilityCheck_SameFunctionality" xml:space="preserve">
-    <value>already includes the same functionality.</value>
+    <value>již obsahuje tutéž funkci.</value>
   </data>
   <data name="CompatibilityCheck_UseInstead" xml:space="preserve">
-    <value>Use {0} instead.</value>
+    <value>Použij místo toho {0}.</value>
   </data>
   <data name="CompatibilityMessageBox_Unsubscribe" xml:space="preserve">
-    <value>Unsubscribe</value>
+    <value>Odhlásit odběr</value>
   </data>
   <data name="KeyBinding_PressAnyKey" xml:space="preserve">
-    <value>Press any key</value>
+    <value>Stiskni libovolnou klávesu</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Jazyk</value>
   </data>
   <data name="Language_cs" xml:space="preserve">
-    <value>Czech</value>
+    <value>Čeština</value>
   </data>
   <data name="Language_de" xml:space="preserve">
-    <value>German</value>
+    <value>Němčina</value>
   </data>
   <data name="Language_en" xml:space="preserve">
-    <value>English</value>
+    <value>Angličtina</value>
   </data>
   <data name="Language_es_ES" xml:space="preserve">
-    <value>Spanish</value>
+    <value>Španělština</value>
   </data>
   <data name="Language_fr" xml:space="preserve">
-    <value>French</value>
+    <value>Francouzština</value>
   </data>
   <data name="Language_GameLanguage" xml:space="preserve">
-    <value>Game Language</value>
+    <value>Jazyk hry</value>
   </data>
   <data name="Language_it" xml:space="preserve">
-    <value>Italian</value>
+    <value>Italština</value>
   </data>
   <data name="Language_ja" xml:space="preserve">
-    <value>Japanese</value>
+    <value>Japonština</value>
   </data>
   <data name="Language_ko" xml:space="preserve">
-    <value>Korean</value>
+    <value>Korejština</value>
   </data>
   <data name="Language_ms" xml:space="preserve">
-    <value>Malay</value>
+    <value>Malajština</value>
   </data>
   <data name="Language_nl" xml:space="preserve">
-    <value>Dutch</value>
+    <value>Holandština</value>
   </data>
   <data name="Language_pl" xml:space="preserve">
-    <value>Polish</value>
+    <value>Polština</value>
   </data>
   <data name="Language_pt_BR" xml:space="preserve">
-    <value>Portuguese-Brazil</value>
+    <value>Portugalská-Brazilština</value>
   </data>
   <data name="Language_ru" xml:space="preserve">
-    <value>Russian</value>
+    <value>Ruština</value>
   </data>
   <data name="Language_sk" xml:space="preserve">
-    <value>Slovak</value>
+    <value>Slovenština</value>
   </data>
   <data name="Language_th" xml:space="preserve">
-    <value>Thai</value>
+    <value>Thajština</value>
   </data>
   <data name="Language_tr" xml:space="preserve">
-    <value>Turkish</value>
+    <value>Turečtina</value>
   </data>
   <data name="Language_zh_CN" xml:space="preserve">
-    <value>Simplified Chinese</value>
+    <value>Zjednodušená čínština</value>
   </data>
   <data name="Language_zh_TW" xml:space="preserve">
-    <value>Traditional Chinese</value>
+    <value>Tradiční čínština</value>
   </data>
   <data name="LogMessageBox_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>Přidáno</value>
   </data>
   <data name="LogMessageBox_Adjusted" xml:space="preserve">
-    <value>Adjusted</value>
+    <value>Upraveno</value>
   </data>
   <data name="LogMessageBox_Attention" xml:space="preserve">
-    <value>Attention</value>
+    <value>Varování</value>
   </data>
   <data name="LogMessageBox_Fixed" xml:space="preserve">
-    <value>Fixed</value>
+    <value>Opraveno</value>
   </data>
   <data name="LogMessageBox_Optimized" xml:space="preserve">
-    <value>Optimized</value>
+    <value>Optimalizováno</value>
   </data>
   <data name="LogMessageBox_Removed" xml:space="preserve">
-    <value>Removed</value>
+    <value>Odstraněno</value>
   </data>
   <data name="LogMessageBox_Translation" xml:space="preserve">
-    <value>Translation</value>
+    <value>Překlady</value>
   </data>
   <data name="LogMessageBox_Updated" xml:space="preserve">
-    <value>Updated</value>
+    <value>Aktualizováno</value>
   </data>
   <data name="MessageBox_NormalPrompt" xml:space="preserve">
-    <value>Did not detect any incompatible mods.</value>
+    <value>Nezjistil žádné nekompatibilní modifikace.</value>
   </data>
   <data name="MessageBox_OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="MessageBox_WarningPrompt" xml:space="preserve">
-    <value>Incompatible mods have been detected, in order to ensure this mod works properly, you need to unsubscribe following mods:</value>
+    <value>Byly zjištěny nekompatibilní modifikace, abyste zajistili, že tato modifikace funguje správně, musíte odstranit následující módy:</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No</value>
+    <value>Ne</value>
   </data>
   <data name="OptionPanel_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Pokročilé</value>
   </data>
   <data name="OptionPanel_BuiltinFunction" xml:space="preserve">
-    <value>Builtin Function</value>
+    <value>Integrovaná funkce</value>
   </data>
   <data name="OptionPanel_CompatibilityCheck" xml:space="preserve">
-    <value>Compatibility Check</value>
+    <value>Kontrola kompatibility</value>
   </data>
   <data name="OptionPanel_DebugMinor" xml:space="preserve">
-    <value>Advanced functions. It is only used for debugging output. If something goes wrong, it is recommended to enable this option and send your log to developer after repeating issues.</value>
+    <value>Pokročilé funkce. Používá se pouze pro ladící výstup. Pokud se něco pokazí, doporučujeme povolit tuto možnost a odeslat protokol vývojářům po opakovaných problémech.</value>
   </data>
   <data name="OptionPanel_DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Režim ladění</value>
   </data>
   <data name="OptionPanel_General" xml:space="preserve">
-    <value>General</value>
+    <value>Obecné</value>
   </data>
   <data name="OptionPanel_Hotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Zkratky</value>
   </data>
   <data name="OptionPanel_IsDisabled" xml:space="preserve">
-    <value>Is Disabled</value>
+    <value>Je zakázáno</value>
   </data>
   <data name="OptionPanel_IsEnabled" xml:space="preserve">
-    <value>Is Enabled</value>
+    <value>Je povoleno</value>
   </data>
   <data name="OptionPanel_ModInfo" xml:space="preserve">
-    <value>Mod Information</value>
+    <value>Informace modifikace</value>
   </data>
   <data name="OptionPanel_Version" xml:space="preserve">
-    <value>Version</value>
+    <value>Verze</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Obnovit</value>
   </data>
   <data name="ResetModFailed" xml:space="preserve">
-    <value>Reset mod failed. It is recommended to send the log file to the developer.</value>
+    <value>Obnovení módu selhalo. Doporučuje se odeslat soubor protokolu vývojáři.</value>
   </data>
   <data name="ResetModMajor" xml:space="preserve">
-    <value>Reset mod config</value>
+    <value>Resetovat konfiguraci modifikace</value>
   </data>
   <data name="ResetModMinor" xml:space="preserve">
-    <value>Attention! This option will reset all settings of this mod, and this operation is irreversible!</value>
+    <value>Pozor! Tato možnost obnoví všechna nastavení tohoto režimu a tato operace je nevratná!</value>
   </data>
   <data name="ResetModSucceeded" xml:space="preserve">
-    <value>Reset mod succeeded.</value>
+    <value>Obnovení modifikace bylo úspěšné.</value>
   </data>
   <data name="ResetModWarning" xml:space="preserve">
-    <value>Are you sure you want to reset the configuration of the mod?</value>
+    <value>Opravdu chcete obnovit nastavení modifikace?</value>
   </data>
   <data name="ScrollWheel" xml:space="preserve">
-    <value>Scroll the wheel to change, Shift X10, Ctrl X0.1</value>
+    <value>Použijte kolečko myši pro změnu hodnoty,
+Shift ×10, Ctrl ×0.1</value>
   </data>
   <data name="ShowControlPanel" xml:space="preserve">
-    <value>Show control panel</value>
+    <value>Zobrazit ovládací panel</value>
   </data>
   <data name="XMLWariningMessageBox_Warning" xml:space="preserve">
-    <value>Warning! Mod cannot normally read the old configuration data. Now default configuration has been loaded for the mod. Please go to options panel and configure your Settings before starting game.</value>
+    <value>Varování! Modifikace nemůže normálně číst stará konfigurační data. Nyní byla načtena výchozí konfigurace pro režim. Před spuštěním hry přejděte na panel možností přenastavte si nastavení.</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ano</value>
   </data>
 </root>

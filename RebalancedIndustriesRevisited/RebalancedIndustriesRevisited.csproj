@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.8.0.51420</Version>
+		<Version>0.8.0.52013</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
@@ -34,6 +34,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Remove="Properties\Localize.cs.resx" />
 	  <EmbeddedResource Remove="Properties\Localize.de.resx" />
 	  <EmbeddedResource Remove="Properties\Localize.es-ES.resx" />
 	  <EmbeddedResource Remove="Properties\Localize.fr.resx" />
@@ -51,6 +52,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="Properties\Localize.cs.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Include="Properties\Localize.de.resx">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

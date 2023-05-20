@@ -40,7 +40,7 @@ public static class OptionPanelHelper {
         };
         return Group;
     }
-    private static T AddChildPanel<T>(bool renderLine = true) where T : SinglePropertyPanelBase {
+    public static T AddChildPanel<T>(bool renderLine = true) where T : SinglePropertyPanelBase {
         var panel = Group.AddItemPanel<T>();
         panel.width = PropertyPanelWidth;
         panel.AutoFitChildrenVertically = true;

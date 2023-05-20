@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,117 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BothValue" xml:space="preserve">
-    <value>Display both corrected value and original value</value>
+    <value>Zobrazit opravenou hodnotu i původní hodnotu</value>
   </data>
-  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
-  </data>
-  <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
+    <value>Násobitel zařízení na těžbu</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
-    <value>Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.</value>
+    <value>Rebalances Industries DLC, sníží tok dopravy, zvýší Nakládání nákladu a více.</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Only display corrected value</value>
+    <value>Zobrazit pouze opravenou hodnotu</value>
   </data>
-  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
-  </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
+  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
+    <value>Násobitel zařízení na těžbu</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Production Rate</value>
+    <value>Rychlost výroby</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
-  </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
+    <value>Tato možnost lze využít k regulaci míry výstupu průmyslových zařízení. Snižování výstupu je dobré pro zjednodušení provozu, vyšší než normálně, zvýší produktivitu, ale může způsobit dopravní problémy. Dynamické nastavení je povoleno.</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Tooltip Box Mode</value>
+    <value>Režim popisku nástroje</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect display of vehicle count.</value>
+    <value>[FIX]Opraveno nesprávné zobrazení počtu vozidel.</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
-    <value>[UPT]Using new algorithms to rebalances Industries.</value>
+    <value>[UPT]využití nových algoritmů pro obnovení rovnováhy průmyslu.</value>
   </data>
   <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
-    <value>[UPT]Using the latest Harmony API.</value>
+    <value>[UPT]Využití nejnovější Harmony API.</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+    <value>[FIX]Opraveno některé zpracovatelské objekty se zdají že mají málo kupujcí nebo nedostatečné suroviny.</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
-    <value>[UPT]Update buffer recognition and rebinding logic.</value>
+    <value>[UPT]Aktualizace logiky rozpoznávání vyrovnávací paměti a opětovné vazby.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]opraven problém, kdy ne-standarní budovy nespawnovaly vozidla správně.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed an issue where work space was incorrect.</value>
+    <value>[FIX]Opraven problém s nesprávným pracovním prostorem.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]Opraven problém s kompatibilitou s modem IMT a IPT.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]Opraven problém s vyvoláváním problémů.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]opraveno nesprávné náklady na údržbu pro jedinečné továrny.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]opraveny problémy, při kterých se skrytí budovy, vyskakuje nástěnka s nesprávnými náklady na stavbu, náklady na údržbu, počty vozidel a pracovní prostor.</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]Přidána volba režimu "tooltip", umožňuje zobrazení korigované hodnoty i původní hodnoty.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]Opraveno tooltip box pro něaké budovy pořád neukazuje opravenou hodnotu.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[FIX]požadavky na úroveň zaměstnanců jsou příliš vysoké.</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
-    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+    <value>[ADD]Přidána regulace výstupní rychlosti extrakčního zařízení a zpracovatelského zařízení.</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[FIX]Fixní některé budovy zemědělského podniku týkající se nadzaměstnanosti.</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
-    <value>[OPT]Optimized rebinding prefab speed.</value>
+    <value>[OPT]Optimalizována rychlost opětovného přiřazení.</value>
   </data>
   <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+    <value>[FIX]opraven nesprávný počet vozidel v jedinečné továrně.</value>
   </data>
   <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
-    <value>[UPT]Updated framework and UI style.</value>
+    <value>[UPT]Aktualizován framework a styly uživatelského rozhraní.</value>
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
-    <value>[ADD]Added advanced option for reset mod config.</value>
-  </data>
-  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
-  </data>
-  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
-  </data>
-  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
-  </data>
-  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
-  </data>
-  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>[ADD]Přidána pokročilá volba pro resetování nastavení módu.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+    <value>Zobrazení korigované hodnoty i původní hodnoty: korigovaná hodnota (původní hodnota), musí být nastavena nad možnostmi před zahájením nové hry nebo načítání uloženého souboru.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
-    <value>vanilla</value>
+    <value>bez modifikací</value>
   </data>
 </root>

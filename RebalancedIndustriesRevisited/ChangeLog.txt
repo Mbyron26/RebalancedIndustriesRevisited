@@ -1,6 +1,9 @@
 ﻿V0.8.0
 [*]Added Korean translation.
+[*]Added Czech translation.
 [*]Updated to the latest common framework.
+[*]Added materials load control function.
+[*]Optimized input/output buffer size control logic.
 
 V0.7.1.1
 [FIX]Fixed an issue with unadjustable processing rates.

@@ -1,6 +1,7 @@
 ﻿namespace RebalancedIndustriesRevisited;
 using ICities;
 using MbyronModsCommon;
+using RebalancedIndustriesRevisited.Patches;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,7 +14,7 @@ public class Mod : ModPatcherBase<Mod, Config> {
 #if BETA_DEBUG
     public override BuildVersion VersionType => BuildVersion.BetaDebug;
 #elif BETA_RELEASE
-public override BuildVersion VersionType => BuildVersion.BetaRelease;
+    public override BuildVersion VersionType => BuildVersion.BetaRelease;
 #elif STABLE_DEBUG
 public override BuildVersion VersionType => BuildVersion.StableDebug;
 #else
@@ -40,14 +41,29 @@ public override BuildVersion VersionType => BuildVersion.StableDebug;
     }
     protected override void SettingsUI(UIHelperBase helper) => OptionPanelManager<Mod, OptionPanel>.SettingsUI(helper);
 
+    protected override void PatchAction() {
+        AddTranspiler(typeof(ExtractingFacilityAI), "ProduceGoods", typeof(ExtractingFacilityAIPatch), nameof(ExtractingFacilityAIPatch.ExtractingFacilityAIProduceGoodsTranspiler));
+        AddTranspiler(typeof(ExtractingFacilityAI), "GetOutputBufferSize", typeof(ExtractingFacilityAIPatch), nameof(ExtractingFacilityAIPatch.ExtractingFacilityAIGetOutputBufferSizeTranspiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddPrefix(CargoCapacityPatch.GetOriginalSetSource(), CargoCapacityPatch.GetSetSourcePrefix());
+        AddTranspiler(ProcessingFacilityAIPatch.GetOriginalProduceGoods(), ProcessingFacilityAIPatch.GetProduceGoodsTranspiler());
+        AddTranspiler(typeof(ProcessingFacilityAI), "GetOutputBufferSize", typeof(ProcessingFacilityAIPatch), nameof(ProcessingFacilityAIPatch.ProcessingFacilityAIGetOutputBufferSizeTranspiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddTranspiler(typeof(ProcessingFacilityAI), "GetInputBufferSize1", typeof(ProcessingFacilityAIPatch), nameof(ProcessingFacilityAIPatch.ProcessingFacilityAIGetInputBufferSize1Transpiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddTranspiler(typeof(ProcessingFacilityAI), "GetInputBufferSize2", typeof(ProcessingFacilityAIPatch), nameof(ProcessingFacilityAIPatch.ProcessingFacilityAIGetInputBufferSize2Transpiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddTranspiler(typeof(ProcessingFacilityAI), "GetInputBufferSize3", typeof(ProcessingFacilityAIPatch), nameof(ProcessingFacilityAIPatch.ProcessingFacilityAIGetInputBufferSize3Transpiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddTranspiler(typeof(ProcessingFacilityAI), "GetInputBufferSize4", typeof(ProcessingFacilityAIPatch), nameof(ProcessingFacilityAIPatch.ProcessingFacilityAIGetInputBufferSize4Transpiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+        AddPrefix(WarehouseAIPatch.GetOriginalGetMaxLoadSize(), WarehouseAIPatch.GetMaxLoadSizePrefix());
+    }
+
     private List<IncompatibleModInfo> ConflictMods { get; set; } = new() {
         new IncompatibleModInfo(1562650024, @"Rebalanced Industries", true),
     };
-
     public override List<ModChangeLog> ChangeLog => new() {
-        new ModChangeLog(new Version(0, 8, 0), new(2022, 5, 14), new List<LogString> {
+        new ModChangeLog(new Version(0, 8, 0), new(2022, 5, 20), new List<LogString> {
+            new(LogFlag.Added, Localize.UpdateLog_V0_8_0ADD),
             new(LogFlag.Updated, Localize.UpdateLog_V0_8_0UPT),
-            new(LogFlag.Translation, Localize.UpdateLog_V0_8_0TRA)
+            new(LogFlag.Optimized, Localize.UpdateLog_V0_8_0OPT),
+            new(LogFlag.Translation, Localize.UpdateLog_V0_8_0TRA),
+            new(LogFlag.Translation, Localize.UpdateLog_V0_8_0TRA1)
         }),
         new ModChangeLog(new Version(0, 7, 1), new(2022, 3, 22), new List<LogString> {
             new(LogFlag.Updated,"[UPT]Updated to support game version 1.16.1"),

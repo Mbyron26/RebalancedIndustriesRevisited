@@ -12,6 +12,20 @@ public class OptionPanel : OptionPanelBase<Mod, Config, OptionPanel> {
     protected override void FillGeneralContainer() {
         AddTooltipBoxModeOptionsProperty();
         AddProductionRateOptionsProperty();
+        AddLoadMultiplierFactorProperty();
+    }
+
+    private void AddLoadMultiplierFactorProperty() {
+        OptionPanelHelper.AddGroup(GeneralContainer, ModLocalize.LoadMultiplierFactor);
+        OptionPanelHelper.AddSlider(Config.Instance.RawMaterialsLoadMultiplierFactor.ToString(), null, 0.5f, 2f, 0.1f, Config.Instance.RawMaterialsLoadMultiplierFactor, new Vector2(700, 16), (_) => {
+            Config.Instance.RawMaterialsLoadMultiplierFactor = _;
+            CallBack();
+        }, ModLocalize.RawMaterialsLoadMultiplierFactor + ": ", gradientStyle: true);
+        OptionPanelHelper.AddSlider(Config.Instance.ProcessingMaterialsLoadMultiplierFactor.ToString(), null, 0.5f, 2f, 0.1f, Config.Instance.ProcessingMaterialsLoadMultiplierFactor, new Vector2(700, 16), (_) => {
+            Config.Instance.ProcessingMaterialsLoadMultiplierFactor = _;
+            CallBack();
+        }, ModLocalize.ProcessingMaterialsLoadMultiplierFactor + ": ", gradientStyle: true);
+        OptionPanelHelper.Reset();
     }
 
     private void AddProductionRateOptionsProperty() {
@@ -37,11 +51,11 @@ public class OptionPanel : OptionPanelBase<Mod, Config, OptionPanel> {
             Config.Instance.ExtractingFacilityProductionRate = _;
             CallBack();
         }
-        , ModLocalize.ExtractingFacilityMultiplier + ": ", gradientStyle: true);
+        , ModLocalize.ExtractingFacilityMultiplierFactor + ": ", gradientStyle: true);
         var panel1 = OptionPanelHelper.AddSlider(Config.Instance.ProcessingFacilityProductionRate.ToString(), null, 0.1f, 2f, 0.1f, Config.Instance.ProcessingFacilityProductionRate, new Vector2(700, 16), (_) => {
             Config.Instance.ProcessingFacilityProductionRate = _;
             CallBack();
-        }, ModLocalize.ProcessingFacilityMultiplier + ": ", gradientStyle: true);
+        }, ModLocalize.ProcessingFacilityMultiplierFactor + ": ", gradientStyle: true);
         OptionPanelHelper.Reset();
     }
     private static void CallBack() {

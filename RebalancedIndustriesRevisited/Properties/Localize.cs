@@ -11,9 +11,14 @@ namespace RebalancedIndustriesRevisited
 		public static string BothValue => LocaleManager.GetString("BothValue", Culture);
 
 		/// <summary>
-		/// Extracting facility multiplier
+		/// Extracting facility multiplier factor
 		/// </summary>
-		public static string ExtractingFacilityMultiplier => LocaleManager.GetString("ExtractingFacilityMultiplier", Culture);
+		public static string ExtractingFacilityMultiplierFactor => LocaleManager.GetString("ExtractingFacilityMultiplierFactor", Culture);
+
+		/// <summary>
+		/// Load Multiplier Factor
+		/// </summary>
+		public static string LoadMultiplierFactor => LocaleManager.GetString("LoadMultiplierFactor", Culture);
 
 		/// <summary>
 		/// Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.
@@ -26,9 +31,14 @@ namespace RebalancedIndustriesRevisited
 		public static string OriginalValue => LocaleManager.GetString("OriginalValue", Culture);
 
 		/// <summary>
-		/// Processing facility multiplier
+		/// Processing facility multiplier factor
 		/// </summary>
-		public static string ProcessingFacilityMultiplier => LocaleManager.GetString("ProcessingFacilityMultiplier", Culture);
+		public static string ProcessingFacilityMultiplierFactor => LocaleManager.GetString("ProcessingFacilityMultiplierFactor", Culture);
+
+		/// <summary>
+		/// Processing materials load multiplier factor
+		/// </summary>
+		public static string ProcessingMaterialsLoadMultiplierFactor => LocaleManager.GetString("ProcessingMaterialsLoadMultiplierFactor", Culture);
 
 		/// <summary>
 		/// Production Rate
@@ -39,6 +49,11 @@ namespace RebalancedIndustriesRevisited
 		/// This options can be used to regulate the output rate of industrial facilities. Reducing the output r
 		/// </summary>
 		public static string ProductionRateWarning => LocaleManager.GetString("ProductionRateWarning", Culture);
+
+		/// <summary>
+		/// Raw materials load multiplier factor
+		/// </summary>
+		public static string RawMaterialsLoadMultiplierFactor => LocaleManager.GetString("RawMaterialsLoadMultiplierFactor", Culture);
 
 		/// <summary>
 		/// Tooltip Box Mode
@@ -146,9 +161,24 @@ namespace RebalancedIndustriesRevisited
 		public static string UpdateLog_V0_7_1ADD => LocaleManager.GetString("UpdateLog_V0_7_1ADD", Culture);
 
 		/// <summary>
+		/// Added materials load control function.
+		/// </summary>
+		public static string UpdateLog_V0_8_0ADD => LocaleManager.GetString("UpdateLog_V0_8_0ADD", Culture);
+
+		/// <summary>
+		/// Optimized input/output buffer size control logic.
+		/// </summary>
+		public static string UpdateLog_V0_8_0OPT => LocaleManager.GetString("UpdateLog_V0_8_0OPT", Culture);
+
+		/// <summary>
 		/// Added Korean translation.
 		/// </summary>
 		public static string UpdateLog_V0_8_0TRA => LocaleManager.GetString("UpdateLog_V0_8_0TRA", Culture);
+
+		/// <summary>
+		/// Added Czech translation.
+		/// </summary>
+		public static string UpdateLog_V0_8_0TRA1 => LocaleManager.GetString("UpdateLog_V0_8_0TRA1", Culture);
 
 		/// <summary>
 		/// Updated to the latest common framework.

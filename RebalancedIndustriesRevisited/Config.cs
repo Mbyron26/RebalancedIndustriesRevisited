@@ -7,5 +7,8 @@ namespace RebalancedIndustriesRevisited {
 
         public float ExtractingFacilityProductionRate { get; set; } = 0.5f;
         public float ProcessingFacilityProductionRate { get; set; } = 0.5f;
+
+        public float RawMaterialsLoadMultiplierFactor { get; set; } = 2f;
+        public float ProcessingMaterialsLoadMultiplierFactor { get; set; } = 2f;
     }
 }

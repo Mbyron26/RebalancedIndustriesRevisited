@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuleren</value>
   </data>
   <data name="ChangeLog" xml:space="preserve">
     <value>Wijzigingslogboek</value>
@@ -154,7 +154,7 @@
     <value>Taal</value>
   </data>
   <data name="Language_cs" xml:space="preserve">
-    <value>Czech</value>
+    <value>Tsjechisch</value>
   </data>
   <data name="Language_de" xml:space="preserve">
     <value>Duits</value>
@@ -181,7 +181,7 @@
     <value>Koreaans</value>
   </data>
   <data name="Language_ms" xml:space="preserve">
-    <value>Malay</value>
+    <value>Maleis</value>
   </data>
   <data name="Language_nl" xml:space="preserve">
     <value>Nederlands</value>
@@ -196,7 +196,7 @@
     <value>Russisch</value>
   </data>
   <data name="Language_sk" xml:space="preserve">
-    <value>Slovak</value>
+    <value>Slowaaks</value>
   </data>
   <data name="Language_th" xml:space="preserve">
     <value>Thai</value>
@@ -217,7 +217,7 @@
     <value>Aangepast</value>
   </data>
   <data name="LogMessageBox_Attention" xml:space="preserve">
-    <value>Attention</value>
+    <value>Opgelet</value>
   </data>
   <data name="LogMessageBox_Fixed" xml:space="preserve">
     <value>Opgelost</value>
@@ -229,7 +229,7 @@
     <value>Verwijderd</value>
   </data>
   <data name="LogMessageBox_Translation" xml:space="preserve">
-    <value>Translation</value>
+    <value>Vertaling</value>
   </data>
   <data name="LogMessageBox_Updated" xml:space="preserve">
     <value>Bijgewerkt</value>
@@ -295,7 +295,7 @@
     <value>Mod reset succesvol.</value>
   </data>
   <data name="ResetModWarning" xml:space="preserve">
-    <value>Are you sure you want to reset the configuration of the mod?</value>
+    <value>Weet je zeker dat je de configuratie van de mod wilt resetten?</value>
   </data>
   <data name="ScrollWheel" xml:space="preserve">
     <value>Scrol het muiswiel om te veranderen, Shift x10, Ctrl x0,1</value>
