@@ -120,8 +120,11 @@
   <data name="BothValue" xml:space="preserve">
     <value>Zeige sowohl korrigierten Wert als auch Originalwert.</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Extrahiere Anlagenmultiplikator</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Balanciert das Industries DLC, reduziert den Verkehrsfluss, erhöht die Frachtladung und mehr.</value>
@@ -129,14 +132,20 @@
   <data name="OriginalValue" xml:space="preserve">
     <value>Nur korrigierte Werte anzeigen</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>Verarbeite Anlagenmultiplikator</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>Produktionsrate</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>Diese Optionen können verwendet werden, um die Ausgangsleistung von Industrieanlagen zu regulieren. Das Reduzieren der Ausgaberate ist gut, um den Verkehr zu entlasten. Eine höhere Rate als Vanilla erhöht die Produktivität, kann aber Verkehrsprobleme verursachen. Eine dynamische Anpassung ist erlaubt.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Kurzinfo Box Modus</value>
@@ -200,6 +209,21 @@
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
     <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Sowohl korrigierter Wert als auch Originalwert anzeigen: Korrigierter Wert (Originalwert), in den obigen Optionen müssen gesetzt werden, bevor das neue Spiel gestartet oder geladen wird.</value>

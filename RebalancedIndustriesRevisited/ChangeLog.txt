@@ -1,4 +1,5 @@
 ﻿V0.8.0
+[*]Updated to support game version 1.17.0
 [*]Added Korean translation.
 [*]Added Czech translation.
 [*]Updated to the latest common framework.

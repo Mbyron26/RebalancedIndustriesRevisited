@@ -58,7 +58,8 @@ public override BuildVersion VersionType => BuildVersion.StableDebug;
         new IncompatibleModInfo(1562650024, @"Rebalanced Industries", true),
     };
     public override List<ModChangeLog> ChangeLog => new() {
-        new ModChangeLog(new Version(0, 8, 0), new(2022, 5, 20), new List<LogString> {
+        new ModChangeLog(new Version(0, 8, 0), new(2022, 5, 23), new List<LogString> {
+            new(LogFlag.Updated,"Updated to support game version 1.17.0"),
             new(LogFlag.Added, Localize.UpdateLog_V0_8_0ADD),
             new(LogFlag.Updated, Localize.UpdateLog_V0_8_0UPT),
             new(LogFlag.Optimized, Localize.UpdateLog_V0_8_0OPT),

@@ -120,8 +120,11 @@
   <data name="BothValue" xml:space="preserve">
     <value>同时显示正确数值和原始数值</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>开采设施倍乘因子</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>重新平衡工业 DLC ，减少交通流量，增加载具载货量等等。</value>
@@ -129,14 +132,20 @@
   <data name="OriginalValue" xml:space="preserve">
     <value>仅显示正确数值</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>加工设施倍乘因子</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>生产速率</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>此选项可用于调节工业设施的生产速率。 降低生产速率有利于缓解交通拥堵；高于默认数值时，能提高生产速率，但可能会导致交通问题。 此选项允许动态调整。</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>提示信息框的模式</value>
@@ -200,6 +209,21 @@
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
     <value>[ADD]添加重置模组配置的高级选项。</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>同时显示正确数值和原始数值的格式：正确数值（原始数值），以上选项需要在新建或加载存档前设置好。</value>

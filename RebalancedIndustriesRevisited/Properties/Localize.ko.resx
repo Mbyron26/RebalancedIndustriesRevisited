@@ -120,8 +120,11 @@
   <data name="BothValue" xml:space="preserve">
     <value>수정된 값과 원래 값 모두 표시합니다.</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>추출 설비 증가</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Rebalances Industries DLC는 교통 흐름을 줄이고 화물 적재량을 늘리는 등의 작업을 수행합니다.</value>
@@ -129,14 +132,20 @@
   <data name="OriginalValue" xml:space="preserve">
     <value>수정된 값만 표시합니다.</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>가공 설비 증가</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>생산률</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>이 옵션은 산업 시설의 생산률을 조절하는 데 사용할 수 있습니다. 생산률을 줄이는 것은 트래픽을 완화하는 데 도움이 되며 바닐라보다 높으면 생산성이 향상되지만 트래픽 문제가 발생할 수 있습니다. 동적 조정이 허용됩니다.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>도구 설명 상자 모드</value>
@@ -200,6 +209,21 @@
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
     <value>[ADD]모드 구성을 재설정하기위한 고급 옵션이 추가되었습니다.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>수정된 값과 원래 값을 모두 표시합니다: 수정된 값(원래 값), 새 게임을 시작하거나 게임을 저장하기 전에 위의 옵션을 설정해야 합니다.</value>

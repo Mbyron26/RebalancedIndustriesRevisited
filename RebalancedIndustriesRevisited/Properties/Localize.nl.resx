@@ -118,28 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BothValue" xml:space="preserve">
-    <value>Display both corrected value and original value</value>
+    <value>Toon zowel de gecorrigeerde als de originele waarde</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Extracting facility multiplier</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Herbalanceert de Industries DLC, verminder de verkeersstroom, verhoog het laden van vracht en meer.</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Only display corrected value</value>
+    <value>Toon alleen gecorrigeerde waarde</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>Processing facility multiplier</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Production Rate</value>
+    <value>Productiesnelheid</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
+    <value>Deze opties kunnen worden gebruikt om de productiesnelheid van industriële installaties te regelen. Het verlagen van de productiesnelheid is goed om het verkeer te ontlasten. Een hogere snelheid dan vanilla verhoogt de productiviteit, maar kan verkeersproblemen veroorzaken. Dynamische aanpassing is toegestaan.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Tooltip Box Mode</value>
+    <value>Tooltip-modus</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX] Onjuiste weergave van het aantal voertuigen is verholpen.</value>
@@ -151,34 +160,34 @@
     <value>[UPT]Gebruikt de nieuwste Harmony API.</value>
   </data>
   <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
-    <value>[FIX]Fix some processing buildings appear not enough buyer or not enough raw materials issues.</value>
+    <value>[FIX]Opgelost dat sommige verwerkingsgebouwen niet genoeg kopers of grondstoffen leken te hebben.</value>
   </data>
   <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
     <value>[UPT]Update buffer recognition and rebinding logic.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed an issue where non-vanilla buildings were not spawns vehicles correctly.</value>
+    <value>[FIX]Probleem opgelost waarbij voertuigen niet correct spawnen in niet-vanilla gebouwen.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
     <value>[FIX]Fixed an issue where work space was incorrect.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
-    <value>[FIX]Fixed compatibility issues with IMT and IPT mod.</value>
+    <value>[FIX]Compatibiliteitsproblemen met IMT en IPT mod opgelost.</value>
   </data>
   <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
-    <value>[FIX]Fixed the exception throwing issues.</value>
+    <value>[FIX]Problemen die excepties veroorzaakten opgelost.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]Onjuiste onderhoudskosten voor unieke fabrieken opgelost.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]Problemen opgelost waarbij bij het aanwijzen van een gebouw met de muis een tooltip de verkeerde bouwkosten, onderhoudskosten, aantal voertuigen en werkplekken toonde.</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]Tooltip toegevoegd, waarmee zowel de oorspronkelijke als de gecorrigeerde waarde kan worden getoond.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]Problemen opgelost met de tooltips voor sommige gebouwen, die nog steeds de verkeerde waarden weergaven.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
     <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
@@ -187,22 +196,37 @@
     <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[FIX]Problemen met overbezetting in sommige landbouwbedrijven opgelost.</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
     <value>[OPT]Optimized rebinding prefab speed.</value>
   </data>
   <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+    <value>[FIX]Onjuist aantal voertuigen van een unieke fabriek opgelost.</value>
   </data>
   <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
-    <value>[UPT]Updated framework and UI style.</value>
+    <value>[UPT]Framework en UI-stijl bijgewerkt.</value>
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
-    <value>[ADD]Added advanced option for reset mod config.</value>
+    <value>[ADD]Geavanceerde optie toegevoegd om de mod-configuratie te resetten.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+    <value>Toon zowel de gecorrigeerde als de originele waarde: Gecorrigeerde waarde (originele waarde), bovenstaande opties moeten worden ingesteld voordat het nieuwe spel wordt gestart of geladen.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>vanilla</value>

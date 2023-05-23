@@ -120,8 +120,11 @@
   <data name="BothValue" xml:space="preserve">
     <value>Afficher à la fois la valeur corrigée et la valeur d'origine</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Multiplicateur d'installations d'extraction</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Rééquilibre le DLC "Industries", réduit le flux de circulation, augmente le chargement des marchandises et plus encore.</value>
@@ -129,14 +132,20 @@
   <data name="OriginalValue" xml:space="preserve">
     <value>Afficher uniquement la valeur corrigée</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>Multiplicateur d'installations de traitement</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>Taux de production</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>Ces options peuvent être utilisées pour réguler le taux de production des installations industrielles. Réduire le taux de sortie est bon pour faciliter le trafic, plus élevé que la vanille augmentera la productivité mais peut causer des problèmes de trafic.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Mode Boîte d'info-bulle</value>
@@ -200,6 +209,21 @@
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
     <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Afficher à la fois la valeur corrigée et la valeur originale : la valeur corrigée (valeur originale), les options ci-dessus doivent être définies avant de commencer une nouvelle partie ou de charger la sauvegarde.</value>

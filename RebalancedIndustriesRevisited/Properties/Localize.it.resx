@@ -120,8 +120,11 @@
   <data name="BothValue" xml:space="preserve">
     <value>Mostra sia il valore corretto che il valore originale</value>
   </data>
-  <data name="ExtractingFacilityMultiplier" xml:space="preserve">
-    <value>Extracting facility multiplier</value>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Riequilibra Industries DLC, riduce il flusso di traffico, aumenta il carico di merci e altro ancora.</value>
@@ -129,14 +132,20 @@
   <data name="OriginalValue" xml:space="preserve">
     <value>Visualizza solo il valore corretto</value>
   </data>
-  <data name="ProcessingFacilityMultiplier" xml:space="preserve">
-    <value>Processing facility multiplier</value>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Production Rate</value>
+    <value>Tasso di produzione</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
+    <value>Questa opzione può essere utilizzata per regolare il tasso di produzione degli impianti industriali. Ridurre il tasso di produzione è utile per alleggerire il traffico, mentre un tasso superiore alla base aumenta la produttività ma può causare problemi di traffico. È consentita la regolazione dinamica.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Modalità Box Suggerimenti</value>
@@ -184,27 +193,42 @@
     <value>[FIX]Risolto i requisiti per l'aumento di livello del lavoratore che sono problemi troppo elevati.</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
-    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+    <value>[ADD]Aggiunta la regolazione del tasso di uscita dell'impianto di estrazione e dell'impianto di trattamento.</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[FIX]Risolti alcuni problemi di sovraccarico degli edifici agricoli.</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
-    <value>[OPT]Optimized rebinding prefab speed.</value>
+    <value>[OPT]Ottimizzata la velocità di rilegatura dei prefabbricati.</value>
   </data>
   <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+    <value>[FIX]Corretto il numero errato di veicoli nella fabbrica unica.</value>
   </data>
   <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
-    <value>[UPT]Updated framework and UI style.</value>
+    <value>[UPT]Aggiornati il framework e lo stile dell'UI.</value>
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
-    <value>[ADD]Added advanced option for reset mod config.</value>
+    <value>[ADD]Aggiunta opzione avanzata per il reset della configurazione della mod.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Visualizza sia il valore corretto che il valore originale: valore corretto (valore originale), le opzioni di cui sopra devono essere impostate prima di iniziare una nuova partita o caricare il salvataggio.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
-    <value>vanilla</value>
+    <value>base</value>
   </data>
 </root>
