@@ -1,11 +1,19 @@
-﻿using HarmonyLib;
+﻿namespace RebalancedIndustriesRevisited.Patches;
+using HarmonyLib;
+using System.Reflection;
 
-namespace RebalancedIndustriesRevisited {
-    [HarmonyPatch(typeof(WarehouseAI), "GetMaxLoadSize")]
-    public class WarehouseAIPatch {
-        public static bool Prefix(ref int __result) {
-            __result = 16000;
+public class WarehouseAIPatch {
+    public static MethodInfo GetOriginalGetMaxLoadSize() => AccessTools.Method(typeof(WarehouseAI), "GetMaxLoadSize");
+    public static MethodInfo GetMaxLoadSizePrefix() => AccessTools.Method(typeof(WarehouseAIPatch), nameof(MaxLoadSizePrefix));
+    public static bool MaxLoadSizePrefix(WarehouseAI __instance, ref int __result) {
+        var storageType = __instance.m_storageType;
+        if (Manager.IsRawMaterial(storageType)) {
+            __result = (int)(Config.Instance.RawMaterialsLoadMultiplierFactor * 8000);
+            return false;
+        } else if (Manager.IsProcessedProduct(storageType)) {
+            __result = (int)(Config.Instance.ProcessingMaterialsLoadMultiplierFactor * 8000);
             return false;
         }
+        return true;
     }
 }

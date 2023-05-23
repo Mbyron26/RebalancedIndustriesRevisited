@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>Zobrazit opravenou hodnotu i původní hodnotu</value>
+  </data>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
+  </data>
+  <data name="MOD_Description" xml:space="preserve">
+    <value>Rebalances Industries DLC, sníží tok dopravy, zvýší Nakládání nákladu a více.</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>Zobrazit pouze opravenou hodnotu</value>
+  </data>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
+  </data>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>Rychlost výroby</value>
+  </data>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>Tato možnost lze využít k regulaci míry výstupu průmyslových zařízení. Snižování výstupu je dobré pro zjednodušení provozu, vyšší než normálně, zvýší produktivitu, ale může způsobit dopravní problémy. Dynamické nastavení je povoleno.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>Režim popisku nástroje</value>
+  </data>
+  <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
+    <value>[FIX]Opraveno nesprávné zobrazení počtu vozidel.</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
+    <value>[UPT]využití nových algoritmů pro obnovení rovnováhy průmyslu.</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
+    <value>[UPT]Využití nejnovější Harmony API.</value>
+  </data>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[FIX]Opraveno některé zpracovatelské objekty se zdají že mají málo kupujcí nebo nedostatečné suroviny.</value>
+  </data>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]Aktualizace logiky rozpoznávání vyrovnávací paměti a opětovné vazby.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]opraven problém, kdy ne-standarní budovy nespawnovaly vozidla správně.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Opraven problém s nesprávným pracovním prostorem.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Opraven problém s kompatibilitou s modem IMT a IPT.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Opraven problém s vyvoláváním problémů.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]opraveno nesprávné náklady na údržbu pro jedinečné továrny.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]opraveny problémy, při kterých se skrytí budovy, vyskakuje nástěnka s nesprávnými náklady na stavbu, náklady na údržbu, počty vozidel a pracovní prostor.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]Přidána volba režimu "tooltip", umožňuje zobrazení korigované hodnoty i původní hodnoty.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Opraveno tooltip box pro něaké budovy pořád neukazuje opravenou hodnotu.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]požadavky na úroveň zaměstnanců jsou příliš vysoké.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]Přidána regulace výstupní rychlosti extrakčního zařízení a zpracovatelského zařízení.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[FIX]Fixní některé budovy zemědělského podniku týkající se nadzaměstnanosti.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]Optimalizována rychlost opětovného přiřazení.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]opraven nesprávný počet vozidel v jedinečné továrně.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Aktualizován framework a styly uživatelského rozhraní.</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]Přidána pokročilá volba pro resetování nastavení módu.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>Zobrazení korigované hodnoty i původní hodnoty: korigovaná hodnota (původní hodnota), musí být nastavena nad možnostmi před zahájením nové hry nebo načítání uloženého souboru.</value>
+  </data>
+  <data name="Vanilla" xml:space="preserve">
+    <value>bez modifikací</value>
+  </data>
+</root>

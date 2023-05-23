@@ -23,7 +23,7 @@ namespace RebalancedIndustriesRevisited {
                         _ => 0
                     };
                     districtManager.m_properties.m_parkProperties.m_industryLevelInfo[level].m_workerLevelupRequirement = newRequirement;
-                    ModLogger.ModLog($"Rebinding worker levelup requirement, park type: {districtPark.m_parkType}, level: {level}, levelup requirement: {rawWorkerLevelupRequirement} -> {newRequirement}.");
+                    ExternalLogger.Log($"Rebinding worker levelup requirement, park type: {districtPark.m_parkType}, level: {level}, levelup requirement: {rawWorkerLevelupRequirement} -> {newRequirement}.");
                 }
             }
 

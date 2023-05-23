@@ -1,11 +1,14 @@
 ﻿using MbyronModsCommon;
 
 namespace RebalancedIndustriesRevisited {
-    public class Config : ModConfigBase<Config> {
+    public class Config : ModConfig<Config> {
         public bool OriginalValue { get; set; } = true;
         public bool BothValue { get; set; } = false;
 
         public float ExtractingFacilityProductionRate { get; set; } = 0.5f;
         public float ProcessingFacilityProductionRate { get; set; } = 0.5f;
+
+        public float RawMaterialsLoadMultiplierFactor { get; set; } = 2f;
+        public float ProcessingMaterialsLoadMultiplierFactor { get; set; } = 2f;
     }
 }

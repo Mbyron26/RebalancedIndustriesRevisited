@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BothValue" xml:space="preserve">
+    <value>Display both corrected value and original value</value>
+  </data>
+  <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Extracting facility multiplier factor</value>
+  </data>
+  <data name="LoadMultiplierFactor" xml:space="preserve">
+    <value>Load Multiplier Factor</value>
+  </data>
+  <data name="MOD_Description" xml:space="preserve">
+    <value>Изменяет баланс DLC Промышленность, сокращает транспортные потоки, увеличивает погрузку грузов и многое другое.</value>
+  </data>
+  <data name="OriginalValue" xml:space="preserve">
+    <value>Only display corrected value</value>
+  </data>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Processing facility multiplier factor</value>
+  </data>
+  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Processing materials load multiplier factor</value>
+  </data>
+  <data name="ProductionRate" xml:space="preserve">
+    <value>Production Rate</value>
+  </data>
+  <data name="ProductionRateWarning" xml:space="preserve">
+    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
+  </data>
+  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
+    <value>Raw materials load multiplier factor</value>
+  </data>
+  <data name="TooltipBoxMode" xml:space="preserve">
+    <value>Tooltip Box Mode</value>
+  </data>
+  <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
+    <value>[FIX]Исправлено неправильное отображение количества транспортных средств.</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT1" xml:space="preserve">
+    <value>[UPT]Используются новые алгоритмы для изменения баланса DLC Промышленность.</value>
+  </data>
+  <data name="UpdateLog_V0_1_0UPT2" xml:space="preserve">
+    <value>[UPT]Используется Harmony API последней версии.</value>
+  </data>
+  <data name="UpdateLog_V0_2_0FIX" xml:space="preserve">
+    <value>[FIX] Исправлены проблемы с нехваткой покупателей или сырья в некоторых перерабатывающих зданиях.</value>
+  </data>
+  <data name="UpdateLog_V0_2_0UPT" xml:space="preserve">
+    <value>[UPT]Обновлено распознавание буфера и логика повторной привязки.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX1" xml:space="preserve">
+    <value>[FIX]Исправлена проблема, из-за которой нестандартные здания не создавали транспортные средства правильно.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX2" xml:space="preserve">
+    <value>[FIX]Исправлена проблема, при которой количество рабочих мест было не корректным.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX3" xml:space="preserve">
+    <value>[FIX]Исправлены проблемы совместимости с модами IMT и IPT.</value>
+  </data>
+  <data name="UpdateLog_V0_3_0FIX4" xml:space="preserve">
+    <value>[FIX]Исправлена ​​проблема, создававшая исключения.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+  </data>
+  <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
+    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
+    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+  </data>
+  <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
+    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
+    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+  </data>
+  <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
+    <value>[OPT]Optimized rebinding prefab speed.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
+    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+  </data>
+  <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
+    <value>[UPT]Updated framework and UI style.</value>
+  </data>
+  <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
+    <value>[ADD]Added advanced option for reset mod config.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
+    <value>Added materials load control function.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
+    <value>Optimized input/output buffer size control logic.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
+    <value>Added Korean translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
+    <value>Added Czech translation.</value>
+  </data>
+  <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
+    <value>Updated to the latest common framework.</value>
+  </data>
+  <data name="ValueWarning" xml:space="preserve">
+    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+  </data>
+  <data name="Vanilla" xml:space="preserve">
+    <value>vanilla</value>
+  </data>
+</root>

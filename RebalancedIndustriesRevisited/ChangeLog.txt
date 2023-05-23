@@ -1,4 +1,14 @@
-﻿
+﻿V0.8.0
+[*]Updated to support game version 1.17.0
+[*]Added Korean translation.
+[*]Added Czech translation.
+[*]Updated to the latest common framework.
+[*]Added materials load control function.
+[*]Optimized input/output buffer size control logic.
+
+V0.7.1.1
+[FIX]Fixed an issue with unadjustable processing rates.
+
 V0.7.1
 [ADD]Added advanced option for reset mod config.
 
