@@ -1,6 +1,6 @@
-﻿namespace RebalancedIndustriesRevisited;
+﻿global using MbyronModsCommon;
+namespace RebalancedIndustriesRevisited;
 using ICities;
-using MbyronModsCommon;
 using RebalancedIndustriesRevisited.Patches;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ public class Mod : ModPatcherBase<Mod, Config> {
 #elif BETA_RELEASE
     public override BuildVersion VersionType => BuildVersion.BetaRelease;
 #elif STABLE_DEBUG
-public override BuildVersion VersionType => BuildVersion.StableDebug;
+    public override BuildVersion VersionType => BuildVersion.StableDebug;
 #else
     public override BuildVersion VersionType => BuildVersion.StableRelease;
 #endif
@@ -24,21 +24,9 @@ public override BuildVersion VersionType => BuildVersion.StableDebug;
     public override void SetModCulture(CultureInfo cultureInfo) => Localize.Culture = cultureInfo;
     public override void IntroActions() {
         base.IntroActions();
-        CompatibilityCheck.IncompatibleMods = ConflictMods;
-        CompatibilityCheck.CheckCompatibility();
         ExternalLogger.OutputPluginsList();
     }
-    public override void OnLevelLoaded(LoadMode mode) {
-        base.OnLevelLoaded(mode);
-        if (!(mode == LoadMode.LoadGame || mode == LoadMode.LoadScenario || mode == LoadMode.NewGame || mode == LoadMode.NewGameFromScenario)) {
-            return;
-        }
-#if BETA_DEBUG
-        DebugUtils.TimeCalculater(Manager.InitializePrefab);
-#else
-        Manager.InitializePrefab();
-#endif
-    }
+
     protected override void SettingsUI(UIHelperBase helper) => OptionPanelManager<Mod, OptionPanel>.SettingsUI(helper);
 
     protected override void PatchAction() {
@@ -54,10 +42,18 @@ public override BuildVersion VersionType => BuildVersion.StableDebug;
         AddPrefix(WarehouseAIPatch.GetOriginalGetMaxLoadSize(), WarehouseAIPatch.GetMaxLoadSizePrefix());
     }
 
-    private List<IncompatibleModInfo> ConflictMods { get; set; } = new() {
-        new IncompatibleModInfo(1562650024, @"Rebalanced Industries", true),
+    public override List<ConflictModInfo> ConflictMods { get; set; } = new() {
+        new ConflictModInfo(1562650024, @"Rebalanced Industries", true),
     };
+
     public override List<ModChangeLog> ChangeLog => new() {
+        new ModChangeLog(new Version(0, 9, 0), new(2022, 6, 24), new List<LogString> {
+            new(LogFlag.Updated, Localize.UpdateLog_V0_9UPT0),
+            new(LogFlag.Added, Localize.UpdateLog_V0_9ADD0),
+            new(LogFlag.Added, Localize.UpdateLog_V0_9ADD1),
+            new(LogFlag.Optimized, Localize.UpdateLog_V0_9OPT0),
+            new(LogFlag.Fixed, Localize.UpdateLog_V0_9FIX0),
+        }),
         new ModChangeLog(new Version(0, 8, 0), new(2022, 5, 23), new List<LogString> {
             new(LogFlag.Updated,"Updated to support game version 1.17.0"),
             new(LogFlag.Added, Localize.UpdateLog_V0_8_0ADD),
