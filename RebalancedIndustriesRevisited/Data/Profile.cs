@@ -3,10 +3,10 @@ using ColossalFramework.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WarehouseProfile : ProfileBase<WarehouseAI> {
-    public const decimal TruckCountFactor = 0.5m;
     public const int MinWarehouseCapacity = 40000;
 
     public WarehouseProfile(WarehouseAI ai) {
@@ -20,36 +20,7 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
         NewTruckCount = RawTruckCount = AI.m_truckCount;
         NewWorkPlace = RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
-        var costFactor = AI.m_storageType switch {
-            TransferManager.TransferReason.Grain => 2m,
-            TransferManager.TransferReason.Logs or
-            TransferManager.TransferReason.Ore or
-            TransferManager.TransferReason.Oil => 1m,
-            _ => 0.5m
-        };
-        NewConstructionCost = Convert.ToInt32(NewConstructionCost / costFactor);
-        NewMaintenanceCost = Convert.ToInt32(NewMaintenanceCost / costFactor);
-
-        var workPlaceFactor = AI.m_storageType switch {
-            TransferManager.TransferReason.Grain => 4m,
-            TransferManager.TransferReason.Logs or
-            TransferManager.TransferReason.Ore or
-            TransferManager.TransferReason.Oil => 2m,
-            _ => 1m
-        };
-        if (NewWorkPlace.Sum() > 10) {
-            NewWorkPlace = new(Convert.ToInt32(Math.Round(NewWorkPlace.UneducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.EducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.WellEducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.HighlyEducatedWorkers / workPlaceFactor)));
-        }
-
     }
-
-    private static bool IsRawWarehouse(TransferManager.TransferReason material) => material switch {
-        TransferManager.TransferReason.Grain or
-        TransferManager.TransferReason.Logs or
-        TransferManager.TransferReason.Ore or
-        TransferManager.TransferReason.Oil => true,
-        _ => false,
-    };
 
     public override void RebindParameter() {
         RebindConstructionCost();
@@ -60,11 +31,23 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         OutputInfo();
     }
 
-    private void RebindConstructionCost() => AI.m_constructionCost = NewConstructionCost;
+    private void RebindConstructionCost() => AI.m_constructionCost = NewConstructionCost = Convert.ToInt32(RawConstructionCost * GetCostFactor());
 
-    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost;
+    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost = Convert.ToInt32(RawMaintenanceCost * GetCostFactor());
+
+    private decimal GetCostFactor() => (AI.m_storageType == TransferManager.TransferReason.Grain) ? 0.5m : 1;
 
     private void RebindWorkPlace() {
+        var workPlaceFactor = AI.m_storageType switch {
+            TransferManager.TransferReason.Grain => 4m,
+            TransferManager.TransferReason.Logs or
+            TransferManager.TransferReason.Ore or
+            TransferManager.TransferReason.Oil => 2m,
+            _ => 1m
+        };
+        if (NewWorkPlace.Sum() > 10) {
+            NewWorkPlace = new(Convert.ToInt32(Math.Round(NewWorkPlace.UneducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.EducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.WellEducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(NewWorkPlace.HighlyEducatedWorkers / workPlaceFactor)));
+        }
         AI.m_workPlaceCount0 = NewWorkPlace.UneducatedWorkers;
         AI.m_workPlaceCount1 = NewWorkPlace.EducatedWorkers;
         AI.m_workPlaceCount2 = NewWorkPlace.WellEducatedWorkers;
@@ -113,23 +96,10 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
         NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
         NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
         NewWorkPlace = RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
-        RawOutputRate = AI.m_outputRate;
-
-        bool isField = false;
-        foreach (var item in ProcessorField) {
-            if (AI.name == item) {
-                isField = true;
-            }
-        }
-        if (isField) {
-            var costsFactor = 0.5m;
-            var workersFactor = 0.35m;
-            NewConstructionCost = (int)(RawConstructionCost * costsFactor);
-            NewMaintenanceCost = (int)(RawMaintenanceCost * costsFactor);
-            NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
-        }
-        RebindTruckCount();
+        NewOutputRate = RawOutputRate = AI.m_outputRate;
     }
+
+    private bool IsSpecificBuilding() => ProcessorField.Any(_ => _ == Name);
 
     public override void RebindParameter() {
         RebindConstructionCost();
@@ -149,11 +119,23 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ProcessingFacilityProductionRate);
     }
 
-    private void RebindConstructionCost() => AI.m_constructionCost = NewConstructionCost;
+    private void RebindConstructionCost() {
+        if (!IsSpecificBuilding())
+            return;
+        AI.m_constructionCost = NewConstructionCost = (int)(RawConstructionCost * 0.5m);
+    }
 
-    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost;
+    private void RebindMaintenanceCost() {
+        if (!IsSpecificBuilding())
+            return;
+        AI.m_maintenanceCost = NewMaintenanceCost = (int)(RawMaintenanceCost * 0.5m);
+    }
 
     private void RebindWorkPlace() {
+        if (!IsSpecificBuilding())
+            return;
+        var workersFactor = 0.35m;
+        NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
         AI.m_workPlaceCount0 = NewWorkPlace.UneducatedWorkers;
         AI.m_workPlaceCount1 = NewWorkPlace.EducatedWorkers;
         AI.m_workPlaceCount2 = NewWorkPlace.WellEducatedWorkers;
@@ -222,29 +204,33 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
             "Dry Dock 01" => new UniqueFactoryAIValue(3800, new WorkPlace(80, 50, 20, 10)),
             _ => new UniqueFactoryAIValue(1, new WorkPlace()),
         };
-        NewMaintenanceCost = ProfileValue.CostsFactor != 1 ? ProfileValue.CostsFactor * 100 / 16 : AI.m_maintenanceCost;
-        NewWorkPlace = ProfileValue.CostsFactor != 1 ? ProfileValue.WorkPlaceValue : new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
     }
 
     public override void RebindParameter() {
-        if (ProfileValue.CostsFactor == 1) {
-            return;
-        }
         RebindMaintenanceCost();
         RebindWorkPlace();
-        //RebindTruckCount();
+        RebindTruckCount();
         RebindTooltip();
         OutputInfo();
     }
 
-    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost;
+    private void RebindMaintenanceCost() {
+        if (ProfileValue.CostsFactor == 1)
+            return;
+        AI.m_maintenanceCost = NewMaintenanceCost = ProfileValue.CostsFactor * 100 / 16;
+    }
 
     private void RebindWorkPlace() {
+        if (ProfileValue.CostsFactor == 1)
+            return;
+        NewWorkPlace = ProfileValue.WorkPlaceValue;
         AI.m_workPlaceCount0 = NewWorkPlace.UneducatedWorkers;
         AI.m_workPlaceCount1 = NewWorkPlace.EducatedWorkers;
         AI.m_workPlaceCount2 = NewWorkPlace.WellEducatedWorkers;
         AI.m_workPlaceCount3 = NewWorkPlace.HighlyEducatedWorkers;
     }
+
+    public void RebindTruckCount() => AI.m_outputVehicleCount = NewTruckCount = Mathf.Max(Mathf.FloorToInt(Config.Instance.UniqueFactoryTruckMultiplierFactor * RawTruckCount), 1);
 
     public void RebindTooltip() {
         if (SingletonManager<Manager>.Instance.IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
@@ -285,31 +271,11 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
 
     public override void InitializePrefab() {
         Name = AI.name;
-        RawConstructionCost = AI.m_constructionCost;
-        RawMaintenanceCost = AI.m_maintenanceCost;
-        RawTruckCount = AI.m_outputVehicleCount;
-        RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
-        RawOutputRate = AI.m_outputRate;
-
-        var costFactor = AI.m_outputResource == TransferManager.TransferReason.Grain ? 0.25m : 1m;
-        NewConstructionCost = (int)Math.Ceiling(RawConstructionCost * costFactor);
-        NewMaintenanceCost = (int)Math.Ceiling(RawMaintenanceCost * costFactor);
-        RebindTruckCount();
-        NewWorkPlace = RawWorkPlace;
-        List<int> newWorkSpace = new();
-        if (AI.m_outputResource == TransferManager.TransferReason.Grain) {
-            var workPlace = new WorkPlace(2, 4, 1, 0);
-            int workPlaceSum = (int)Math.Ceiling(Math.Sqrt(AI.m_info.m_cellLength * AI.m_info.m_cellWidth) / 2);
-            if (workPlaceSum != 0) {
-                foreach (int item in workPlace) {
-                    newWorkSpace.Add((int)(GetRatio(item, workPlace.Sum()) * workPlaceSum));
-                }
-                NewWorkPlace = new WorkPlace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
-            }
-        } else {
-            var workersFactor = 0.5m;
-            NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
-        }
+        NewConstructionCost = RawConstructionCost = AI.m_constructionCost;
+        NewMaintenanceCost = RawMaintenanceCost = AI.m_maintenanceCost;
+        NewTruckCount = RawTruckCount = AI.m_outputVehicleCount;
+        NewWorkPlace = RawWorkPlace = new WorkPlace(AI.m_workPlaceCount0, AI.m_workPlaceCount1, AI.m_workPlaceCount2, AI.m_workPlaceCount3);
+        NewOutputRate = RawOutputRate = AI.m_outputRate;
     }
 
     public override void RebindParameter() {
@@ -330,11 +296,27 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ExtractingFacilityProductionRate);
     }
 
-    private void RebindConstructionCost() => AI.m_constructionCost = NewConstructionCost;
+    private void RebindConstructionCost() => AI.m_constructionCost = NewConstructionCost = (int)Math.Ceiling(RawConstructionCost * GetCostFactor());
 
-    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost;
+    private void RebindMaintenanceCost() => AI.m_maintenanceCost = NewMaintenanceCost = (int)Math.Ceiling(RawMaintenanceCost * GetCostFactor());
+
+    private decimal GetCostFactor() => AI.m_outputResource == TransferManager.TransferReason.Grain ? 0.25m : 1m;
 
     private void RebindWorkPlace() {
+        List<int> newWorkSpace = new();
+        if (AI.m_outputResource == TransferManager.TransferReason.Grain) {
+            var workPlace = new WorkPlace(2, 4, 1, 0);
+            int workPlaceSum = (int)Math.Ceiling(Math.Sqrt(AI.m_info.m_cellLength * AI.m_info.m_cellWidth) / 2);
+            if (workPlaceSum != 0) {
+                foreach (int item in workPlace) {
+                    newWorkSpace.Add((int)(GetRatio(item, workPlace.Sum()) * workPlaceSum));
+                }
+                NewWorkPlace = new WorkPlace(newWorkSpace[0], newWorkSpace[1], newWorkSpace[2], newWorkSpace[3]);
+            }
+        } else {
+            var workersFactor = 0.5m;
+            NewWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(AI.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(AI.m_workPlaceCount3 * workersFactor)));
+        }
         AI.m_workPlaceCount0 = NewWorkPlace.UneducatedWorkers;
         AI.m_workPlaceCount1 = NewWorkPlace.EducatedWorkers;
         AI.m_workPlaceCount2 = NewWorkPlace.WellEducatedWorkers;

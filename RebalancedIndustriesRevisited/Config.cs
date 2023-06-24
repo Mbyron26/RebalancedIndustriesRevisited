@@ -1,6 +1,4 @@
 ﻿namespace RebalancedIndustriesRevisited;
-
-using System;
 using UnityEngine;
 
 public class Config : SingletonConfig<Config> {
@@ -17,6 +15,7 @@ public class Config : SingletonConfig<Config> {
     public float OreWarehouseTruckMultiplierFactor { get; set; } = 0.8f;
     public float OilWarehouseTruckMultiplierFactor { get; set; } = 0.5f;
     public float WarehouseTruckMultiplierFactor { get; set; } = 0.5f;
+    public float UniqueFactoryTruckMultiplierFactor { get; set; } = 1f;
 
     public float GrainFactor { get; set; } = 0.3f;
     public float AnimalProductsFactor { get; set; } = 0.6f;

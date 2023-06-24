@@ -161,6 +161,11 @@ namespace RebalancedIndustriesRevisited
 		public static string Truck => LocaleManager.GetString("Truck", Culture);
 
 		/// <summary>
+		/// Unique factory truck count multiplier factor
+		/// </summary>
+		public static string UniqueFactoryTruckMultiplierFactor => LocaleManager.GetString("UniqueFactoryTruckMultiplierFactor", Culture);
+
+		/// <summary>
 		/// [FIX]Fixed incorrect display of vehicle count.
 		/// </summary>
 		public static string UpdateLog_V0_1_0FIX => LocaleManager.GetString("UpdateLog_V0_1_0FIX", Culture);

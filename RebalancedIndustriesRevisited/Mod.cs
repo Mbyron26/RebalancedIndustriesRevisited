@@ -22,11 +22,7 @@ public class Mod : ModPatcherBase<Mod, Config> {
 #endif
 
     public override void SetModCulture(CultureInfo cultureInfo) => Localize.Culture = cultureInfo;
-    public override void IntroActions() {
-        base.IntroActions();
-        ExternalLogger.OutputPluginsList();
-    }
-
+    public override void IntroActions() => ExternalLogger.OutputPluginsList();
     protected override void SettingsUI(UIHelperBase helper) => OptionPanelManager<Mod, OptionPanel>.SettingsUI(helper);
 
     protected override void PatchAction() {

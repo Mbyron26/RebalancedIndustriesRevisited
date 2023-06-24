@@ -43,9 +43,17 @@ internal class ControlPanel : ControlPanelBase<Mod, ControlPanel> {
         ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.Ore, null, 80, Config.Instance.OilWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.OilWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
         ControlPanelHelper.Reset();
 
-        ControlPanelHelper.AddGroup(TruckCountContainer, PorpertyPanelWidth, ModLocalize.WarehouseMultiplierFactor);
+        ControlPanelHelper.AddGroup(TruckCountContainer, PorpertyPanelWidth, null);
         ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.WarehouseMultiplierFactor, null, 80, Config.Instance.WarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.WarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
         ControlPanelHelper.Reset();
+
+        ControlPanelHelper.AddGroup(TruckCountContainer, PorpertyPanelWidth, null);
+        ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.UniqueFactoryTruckMultiplierFactor, null, 80, Config.Instance.UniqueFactoryTruckMultiplierFactor, 0.1f, 0.2f, 4f, (_) => {
+            Config.Instance.UniqueFactoryTruckMultiplierFactor = _;
+            SingletonManager<Manager>.Instance.RefreshUniqueFactoryTruckCount();
+        });
+        ControlPanelHelper.Reset();
+
     }
 
     private CustomUILabel rawMaterialsLoadMultiplierFactorLabel;

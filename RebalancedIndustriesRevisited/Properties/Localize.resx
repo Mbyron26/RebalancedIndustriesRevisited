@@ -210,6 +210,9 @@
   <data name="Truck" xml:space="preserve">
     <value>Truck</value>
   </data>
+  <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
+    <value>Unique factory truck count multiplier factor</value>
+  </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]Fixed incorrect display of vehicle count.</value>
   </data>

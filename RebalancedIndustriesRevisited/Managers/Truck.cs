@@ -13,6 +13,12 @@ public partial class Manager {
         WarehouseAICache.ForEach(_ => _.Value.RebindTruckCount());
     }
 
+    public void RefreshUniqueFactoryTruckCount() {
+        if (!IsInit)
+            return;
+        UniqueFactoryAICache.ForEach(_ => _.Value.RebindTruckCount());
+    }
+
     public float GetWarehouseTruckFactor(TransferManager.TransferReason material) => material switch {
         TransferManager.TransferReason.Grain => Config.Instance.CropsWarehouseTruckMultiplierFactor,
         TransferManager.TransferReason.Logs => Config.Instance.RawForestProductsWarehouseTruckMultiplierFactor,
