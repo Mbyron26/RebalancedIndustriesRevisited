@@ -17,6 +17,11 @@ internal class ControlPanel : ControlPanelBase<Mod, ControlPanel> {
         AddTabContainer();
         AddGeneralContainer();
         AddTruckCountContainer();
+        ControlPanelManager<Mod, ControlPanel>.EventPanelClosing += (_) => {
+            if (SingletonManager<ToolButtonManager>.Instance.InGameToolButton is not null) {
+                SingletonManager<ToolButtonManager>.Instance.InGameToolButton.IsOn = false;
+            }
+        };
     }
 
     private void AddTruckCountContainer() {

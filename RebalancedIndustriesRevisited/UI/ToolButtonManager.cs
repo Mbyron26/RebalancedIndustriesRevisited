@@ -3,8 +3,6 @@ using ColossalFramework.UI;
 using ColossalFramework;
 using UnityEngine;
 
-//internal sealed class ToolButtonManager : SingletonToolButtonManager { }
-
 internal class ToolButtonManager : SingletonToolManager<ToolButtonManager, ToolButton, Mod, Config> {
     protected override Texture2D UUIIcon { get; } = MbyronModsCommon.UI.UIUtils.LoadTextureFromAssembly($"{AssemblyUtils.CurrentAssemblyName}.UI.Resources.InGameButton.png");
     protected override string Tooltip => SingletonMod<Mod>.Instance.ModName + $" ({SavedInputKey.ToLocalizedString("KEYNAME", Config.Instance.ControlPanelHotkey.Encode())})";
