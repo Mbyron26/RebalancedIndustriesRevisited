@@ -117,38 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimalProducts" xml:space="preserve">
+    <value>畜産物</value>
+  </data>
   <data name="BothValue" xml:space="preserve">
     <value>補正した数値と元の数値を両方表示</value>
   </data>
+  <data name="Crops" xml:space="preserve">
+    <value>農作物</value>
+  </data>
+  <data name="EPMultiplierFactor" xml:space="preserve">
+    <value>抽出施設と加工施設で使用するトラック数の倍率</value>
+  </data>
+  <data name="ExtractingFacility" xml:space="preserve">
+    <value>Extracting facility</value>
+  </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
+    <value>産出施設の倍率</value>
+  </data>
+  <data name="Flour" xml:space="preserve">
+    <value>小麦粉</value>
+  </data>
+  <data name="Glass" xml:space="preserve">
+    <value>ガラス</value>
+  </data>
+  <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
+    <value>産業エリアの倉庫で使用するトラック数の倍率</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+    <value>Truck Loading Capacity Multiplier Factor</value>
+  </data>
+  <data name="LoadMultiplierFactorMinor" xml:space="preserve">
+    <value>オプションを調整するとトラックの最大積載量が変化して、数値を上げるとトラックはより多くの荷物を積載して輸送できます。 同時に抽出施設と加工施設の生産力も大きくなり、より多くのトラックで輸送を可能にします。</value>
+  </data>
+  <data name="Metals" xml:space="preserve">
+    <value>金属</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>DLC Industriesのバランスを調整して、渋滞の緩和や貨物の積載量の増加などを変更します。</value>
   </data>
+  <data name="Oil" xml:space="preserve">
+    <value>原油</value>
+  </data>
+  <data name="OpenControlPanel" xml:space="preserve">
+    <value>コントロールパネルを開く</value>
+  </data>
+  <data name="Ore" xml:space="preserve">
+    <value>鉱石</value>
+  </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>補正した値のみ表示</value>
   </data>
-  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
+  <data name="OtherFunctionsMajor" xml:space="preserve">
+    <value>その他の機能</value>
   </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
+  <data name="OtherFunctionsMinor" xml:space="preserve">
+    <value>コントロールパネルの呼び出しは、ショートカットキー・UUIボタンを使用します。 コントロールパネルでオプションを調整したい場合は、事前にオプションパネルを閉じて下さい。</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>紙</value>
+  </data>
+  <data name="Petroleum" xml:space="preserve">
+    <value>石油</value>
+  </data>
+  <data name="PlanedTimber" xml:space="preserve">
+    <value>製材</value>
+  </data>
+  <data name="Plastics" xml:space="preserve">
+    <value>プラスチック</value>
+  </data>
+  <data name="ProcessingFacility" xml:space="preserve">
+    <value>Processing facility</value>
+  </data>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>加工施設の倍率</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>生産速度</value>
   </data>
+  <data name="ProductionRateMinor" xml:space="preserve">
+    <value>オプションは抽出施設と加工施設の生産速度を調整することができます。 適切に調整できれば需給と供給のバランスを改善して、資源の不足や過剰の問題も軽減されます。</value>
+  </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>このオプションは、産業エリアにある建物の生産速度を調整することが可能です。 バニラより上げると出荷が速くなりますが渋滞する場合があるので、生産速度は下げることをお勧めします。 途中での動的な変更も可能です。</value>
   </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
+  <data name="RawForestProducts" xml:space="preserve">
+    <value>丸太</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>ツールチップボックスのモード</value>
+  </data>
+  <data name="Truck" xml:space="preserve">
+    <value>トラック</value>
+  </data>
+  <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
+    <value>Unique factory truck count multiplier factor</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]車両数の間違った表示を修正</value>
@@ -211,24 +274,42 @@
     <value>[ADD]Modの設定をリセットする拡張オプションを追加</value>
   </data>
   <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
+    <value>原料・材料の搬入制御の機能を追加</value>
   </data>
   <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
+    <value>入力/出力のバッファサイズの制御ロジックを最適化</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>韓国語の翻訳を追加</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>チェコ語の翻訳を追加</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>最新の共通フレームワークに更新</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
+    <value>コントロールパネルを追加して、より便利なオプションの設定機能を提供</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
+    <value>産業エリアの各施設のトラック数を制御するオプションを追加</value>
+  </data>
+  <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
+    <value>Customize It Extendedで発生する例外エラーの問題を修正</value>
+  </data>
+  <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
+    <value>より最適化された再結合ロジック処理</value>
+  </data>
+  <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
+    <value>ゲームバージョン 1.17.1をサポートするように更新</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>補正した値と元の値を両方表示: 補正した値 (オリジナルの値) ｰ このオプションはゲームの開始前に設定するか、またはセーブ/ロードの前に設定して下さい。</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>バニラ</value>
+  </data>
+  <data name="WarehouseMultiplierFactor" xml:space="preserve">
+    <value>倉庫で使用するトラック数の倍率</value>
   </data>
 </root>

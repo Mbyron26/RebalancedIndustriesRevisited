@@ -117,38 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimalProducts" xml:space="preserve">
+    <value>畜产品</value>
+  </data>
   <data name="BothValue" xml:space="preserve">
     <value>同时显示正确数值和原始数值</value>
   </data>
+  <data name="Crops" xml:space="preserve">
+    <value>农作物</value>
+  </data>
+  <data name="EPMultiplierFactor" xml:space="preserve">
+    <value>开采设施与加工设施的货车数量倍乘因子</value>
+  </data>
+  <data name="ExtractingFacility" xml:space="preserve">
+    <value>开采设施</value>
+  </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
+    <value>开采设施倍乘因子</value>
+  </data>
+  <data name="Flour" xml:space="preserve">
+    <value>面粉</value>
+  </data>
+  <data name="Glass" xml:space="preserve">
+    <value>玻璃</value>
+  </data>
+  <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
+    <value>工业仓库货车数量倍乘因子</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+    <value>货车装载量倍乘因子</value>
+  </data>
+  <data name="LoadMultiplierFactorMinor" xml:space="preserve">
+    <value>改变该选项以调整工业货车的装载量，调高该值则可提高货车装载更多的货物，同时，开采设施与加工设施将会自动提高输出货物的缓存区容量以保证更多的货物储备能力</value>
+  </data>
+  <data name="Metals" xml:space="preserve">
+    <value>金属</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>重新平衡工业 DLC ，减少交通流量，增加载具载货量等等。</value>
   </data>
+  <data name="Oil" xml:space="preserve">
+    <value>石油</value>
+  </data>
+  <data name="OpenControlPanel" xml:space="preserve">
+    <value>打开控制面板</value>
+  </data>
+  <data name="Ore" xml:space="preserve">
+    <value>矿石</value>
+  </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>仅显示正确数值</value>
   </data>
-  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
+  <data name="OtherFunctionsMajor" xml:space="preserve">
+    <value>其他功能</value>
   </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
+  <data name="OtherFunctionsMinor" xml:space="preserve">
+    <value>请使用键盘快捷键或 UUI 按钮打开 GA 的控制面板。如果你想要使用控制面板中的功能，请先关闭选项面板。</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>纸张</value>
+  </data>
+  <data name="Petroleum" xml:space="preserve">
+    <value>石油</value>
+  </data>
+  <data name="PlanedTimber" xml:space="preserve">
+    <value>刨平木材</value>
+  </data>
+  <data name="Plastics" xml:space="preserve">
+    <value>塑料</value>
+  </data>
+  <data name="ProcessingFacility" xml:space="preserve">
+    <value>加工设施</value>
+  </data>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>加工设施倍乘因子</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>生产速率</value>
   </data>
+  <data name="ProductionRateMinor" xml:space="preserve">
+    <value>该选项可调整开采设施与加工设施的生产率。 适当调整可改善供求关系，以减少资源短缺或资源过剩的问题</value>
+  </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>此选项可用于调节工业设施的生产速率。 降低生产速率有利于缓解交通拥堵；高于默认数值时，能提高生产速率，但可能会导致交通问题。 此选项允许动态调整。</value>
   </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
+  <data name="RawForestProducts" xml:space="preserve">
+    <value>林业初级制品</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>提示信息框的模式</value>
+  </data>
+  <data name="Truck" xml:space="preserve">
+    <value>货车</value>
+  </data>
+  <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
+    <value>独特工厂货车数量倍乘因子</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]修复了车辆计数显示错误的问题。</value>
@@ -211,24 +274,42 @@
     <value>[ADD]添加重置模组配置的高级选项。</value>
   </data>
   <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
+    <value>增加了调整货物装载速度的功能。</value>
   </data>
   <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
+    <value>优化了输入/输出缓冲区大小的控制逻辑。</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>新增了韩语翻译。</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>新增了捷克语翻译。</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>更新到最新的通用框架。</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
+    <value>添加控制面板以提供更方便的控制入口。</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
+    <value>增加工业设施中货车数量控制选项。</value>
+  </data>
+  <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
+    <value>修复由于Customize It Extended的错误导致的异常抛出。</value>
+  </data>
+  <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
+    <value>优化重新绑定逻辑处理。</value>
+  </data>
+  <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
+    <value>更新并适配游戏版本 1.17.1</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>同时显示正确数值和原始数值的格式：正确数值（原始数值），以上选项需要在新建或加载存档前设置好。</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>原版</value>
+  </data>
+  <data name="WarehouseMultiplierFactor" xml:space="preserve">
+    <value>工业仓库货车数量倍乘因子</value>
   </data>
 </root>

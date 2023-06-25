@@ -26,6 +26,11 @@ namespace RebalancedIndustriesRevisited
 		public static string EPMultiplierFactor => LocaleManager.GetString("EPMultiplierFactor", Culture);
 
 		/// <summary>
+		/// Extracting facility
+		/// </summary>
+		public static string ExtractingFacility => LocaleManager.GetString("ExtractingFacility", Culture);
+
+		/// <summary>
 		/// Extracting facility multiplier factor
 		/// </summary>
 		public static string ExtractingFacilityMultiplierFactor => LocaleManager.GetString("ExtractingFacilityMultiplierFactor", Culture);
@@ -46,7 +51,7 @@ namespace RebalancedIndustriesRevisited
 		public static string IndustryWarehouseMultiplierFactor => LocaleManager.GetString("IndustryWarehouseMultiplierFactor", Culture);
 
 		/// <summary>
-		/// Load Multiplier Factor
+		/// Truck Loading Capacity Multiplier Factor
 		/// </summary>
 		public static string LoadMultiplierFactor => LocaleManager.GetString("LoadMultiplierFactor", Culture);
 
@@ -116,14 +121,14 @@ namespace RebalancedIndustriesRevisited
 		public static string Plastics => LocaleManager.GetString("Plastics", Culture);
 
 		/// <summary>
+		/// Processing facility
+		/// </summary>
+		public static string ProcessingFacility => LocaleManager.GetString("ProcessingFacility", Culture);
+
+		/// <summary>
 		/// Processing facility multiplier factor
 		/// </summary>
 		public static string ProcessingFacilityMultiplierFactor => LocaleManager.GetString("ProcessingFacilityMultiplierFactor", Culture);
-
-		/// <summary>
-		/// Processing materials load multiplier factor
-		/// </summary>
-		public static string ProcessingMaterialsLoadMultiplierFactor => LocaleManager.GetString("ProcessingMaterialsLoadMultiplierFactor", Culture);
 
 		/// <summary>
 		/// Production Rate
@@ -144,11 +149,6 @@ namespace RebalancedIndustriesRevisited
 		/// Raw forest products
 		/// </summary>
 		public static string RawForestProducts => LocaleManager.GetString("RawForestProducts", Culture);
-
-		/// <summary>
-		/// Raw materials load multiplier factor
-		/// </summary>
-		public static string RawMaterialsLoadMultiplierFactor => LocaleManager.GetString("RawMaterialsLoadMultiplierFactor", Culture);
 
 		/// <summary>
 		/// Tooltip Box Mode

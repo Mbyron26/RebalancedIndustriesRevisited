@@ -129,6 +129,9 @@
   <data name="EPMultiplierFactor" xml:space="preserve">
     <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
   </data>
+  <data name="ExtractingFacility" xml:space="preserve">
+    <value>Extracting facility</value>
+  </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
     <value>Extracting facility multiplier factor</value>
   </data>
@@ -142,7 +145,7 @@
     <value>Industry warehouse truck count multiplier factor</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+    <value>Truck Loading Capacity Multiplier Factor</value>
   </data>
   <data name="LoadMultiplierFactorMinor" xml:space="preserve">
     <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
@@ -183,11 +186,11 @@
   <data name="Plastics" xml:space="preserve">
     <value>Plastics</value>
   </data>
+  <data name="ProcessingFacility" xml:space="preserve">
+    <value>Processing facility</value>
+  </data>
   <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
     <value>Processing facility multiplier factor</value>
-  </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>Production Rate</value>
@@ -200,9 +203,6 @@
   </data>
   <data name="RawForestProducts" xml:space="preserve">
     <value>Raw forest products</value>
-  </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Tooltip Box Mode</value>

@@ -45,7 +45,7 @@ internal class ControlPanel : ControlPanelBase<Mod, ControlPanel> {
         ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.RawForestProducts, null, 80, Config.Instance.RawForestProductsWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.RawForestProductsWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
         ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.Crops, null, 80, Config.Instance.CropsWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.CropsWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
         ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.Ore, null, 80, Config.Instance.OreWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.OreWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
-        ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.Ore, null, 80, Config.Instance.OilWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.OilWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
+        ControlPanelHelper.AddField<UIFloatValueField, float>(ModLocalize.Oil, null, 80, Config.Instance.OilWarehouseTruckMultiplierFactor, 0.1f, 0.2f, 2f, (_) => { Config.Instance.OilWarehouseTruckMultiplierFactor = _; RefreshTruckCount(); });
         ControlPanelHelper.Reset();
 
         ControlPanelHelper.AddGroup(TruckCountContainer, PorpertyPanelWidth, null);
@@ -101,8 +101,8 @@ internal class ControlPanel : ControlPanelBase<Mod, ControlPanel> {
         ControlPanelHelper.Reset();
     }
 
-    private string ProcessingMaterialsLoadMultiplierFactorString => $"{ModLocalize.ProcessingMaterialsLoadMultiplierFactor}: {Config.Instance.ProcessingMaterialsLoadMultiplierFactor}";
-    private string RawMaterialsLoadMultiplierFactorString => $"{ModLocalize.RawMaterialsLoadMultiplierFactor}: {Config.Instance.RawMaterialsLoadMultiplierFactor}";
+    private string ProcessingMaterialsLoadMultiplierFactorString => $"{ModLocalize.ProcessingFacility}: {Config.Instance.ProcessingMaterialsLoadMultiplierFactor}";
+    private string RawMaterialsLoadMultiplierFactorString => $"{ModLocalize.ExtractingFacility}: {Config.Instance.RawMaterialsLoadMultiplierFactor}";
     private string ExtractingFacilityProductionRate => $"{ModLocalize.ExtractingFacilityMultiplierFactor}: {Config.Instance.ExtractingFacilityProductionRate}";
     private string ProcessingFacilityProductionRate => $"{ModLocalize.ProcessingFacilityMultiplierFactor}: {Config.Instance.ProcessingFacilityProductionRate}";
     private void RefreshTruckCount() => SingletonManager<Manager>.Instance.RefreshTruckCount();
@@ -124,7 +124,7 @@ internal class ControlPanel : ControlPanelBase<Mod, ControlPanel> {
         };
         tabContainer.EventContainerAdded += (_) => {
             _.size = ContainerSize;
-            _.autoLayoutPadding = new RectOffset(0, 0, 5, 10);
+            _.autoLayoutPadding = new RectOffset(0, 0, 5, 16);
             var scrollbar0 = UIScrollbarHelper.AddScrollbar(this, _, new Vector2(8, 514));
             scrollbar0.thumbObject.color = CustomUIColor.CPPrimaryBg;
             scrollbar0.relativePosition = new Vector2(width - 8, CaptionHeight + 30);

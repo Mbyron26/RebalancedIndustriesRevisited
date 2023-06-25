@@ -16,6 +16,7 @@ public class OptionPanel : OptionPanelBase<Mod, Config, OptionPanel> {
         OptionPanelHelper.Reset();
     }
 
+    protected override void OnModLocaleChanged() => ControlPanelManager<Mod, ControlPanel>.OnLocaleChanged();
     protected override void FillGeneralContainer() {
         AddTooltipBoxModeOptions();
         //AddProductionRateOptions();
