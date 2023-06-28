@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.8.0.52319</Version>
+		<Version>0.9.0.2822</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<Version>0.8</Version>
+		<Version>0.9</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|AnyCPU'">
@@ -49,6 +49,16 @@
 	  <EmbeddedResource Remove="Properties\Localize.tr.resx" />
 	  <EmbeddedResource Remove="Properties\Localize.zh-CN.resx" />
 	  <EmbeddedResource Remove="Properties\Localize.zh-TW.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="UI\Resources\InGameButton.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="UI\Resources\InGameButton.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -103,27 +113,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CitiesHarmony.API" Version="2.1.0" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-		<Reference Include="Assembly-CSharp">
-			<HintPath>C:\Users\SYS1\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="ColossalManaged">
-			<HintPath>C:\Users\SYS1\Desktop\Assembly\ColossalManaged.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="ICities">
-			<HintPath>C:\Users\SYS1\Desktop\Assembly\ICities.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>C:\Users\SYS1\Desktop\Assembly\UnityEngine.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
+		<PackageReference Include="CitiesHarmony.API" Version="2.2.0" />
+		<PackageReference Include="UnifiedUILib" Version="2.2.12" />
 	</ItemGroup>
 
 
@@ -133,6 +124,26 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Localize.resx</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Reference Include="Assembly-CSharp">
+	    <HintPath>C:\Users\SYS\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="ColossalManaged">
+	    <HintPath>C:\Users\SYS\Desktop\Assembly\ColossalManaged.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="ICities">
+	    <HintPath>C:\Users\SYS\Desktop\Assembly\ICities.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+	    <HintPath>C:\Users\SYS\Desktop\Assembly\UnityEngine.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
 	</ItemGroup>
 
 
@@ -161,5 +172,7 @@
 	</Target>
 
 	<Import Project="..\..\..\..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems" Label="Shared" />
+
+	<Import Project="..\..\..\..\MbyronModsCommon\ToolButtonShared\ToolButtonShared.projitems" Label="Shared" />
 
 </Project>

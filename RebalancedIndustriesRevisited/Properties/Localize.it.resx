@@ -117,38 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimalProducts" xml:space="preserve">
+    <value>Animal products</value>
+  </data>
   <data name="BothValue" xml:space="preserve">
     <value>Mostra sia il valore corretto che il valore originale</value>
   </data>
+  <data name="Crops" xml:space="preserve">
+    <value>Crops</value>
+  </data>
+  <data name="EPMultiplierFactor" xml:space="preserve">
+    <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
+  </data>
+  <data name="ExtractingFacility" xml:space="preserve">
+    <value>Extracting facility</value>
+  </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
+    <value>Fattore moltiplicatore dell'impinto di estrazione</value>
+  </data>
+  <data name="Flour" xml:space="preserve">
+    <value>Flour</value>
+  </data>
+  <data name="Glass" xml:space="preserve">
+    <value>Glass</value>
+  </data>
+  <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
+    <value>Industry warehouse truck count multiplier factor</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+    <value>Truck Loading Capacity Multiplier Factor</value>
+  </data>
+  <data name="LoadMultiplierFactorMinor" xml:space="preserve">
+    <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
+  </data>
+  <data name="Metals" xml:space="preserve">
+    <value>Metals</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Riequilibra Industries DLC, riduce il flusso di traffico, aumenta il carico di merci e altro ancora.</value>
   </data>
+  <data name="Oil" xml:space="preserve">
+    <value>Oil</value>
+  </data>
+  <data name="OpenControlPanel" xml:space="preserve">
+    <value>Open Control Panel</value>
+  </data>
+  <data name="Ore" xml:space="preserve">
+    <value>Ore</value>
+  </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>Visualizza solo il valore corretto</value>
   </data>
-  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
+  <data name="OtherFunctionsMajor" xml:space="preserve">
+    <value>Other functions</value>
   </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
+  <data name="OtherFunctionsMinor" xml:space="preserve">
+    <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Paper</value>
+  </data>
+  <data name="Petroleum" xml:space="preserve">
+    <value>Petroleum</value>
+  </data>
+  <data name="PlanedTimber" xml:space="preserve">
+    <value>Planed timber</value>
+  </data>
+  <data name="Plastics" xml:space="preserve">
+    <value>Plastics</value>
+  </data>
+  <data name="ProcessingFacility" xml:space="preserve">
+    <value>Processing facility</value>
+  </data>
+  <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
+    <value>Fattore moltiplicatore dell'impianto di lavorazione</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>Tasso di produzione</value>
   </data>
+  <data name="ProductionRateMinor" xml:space="preserve">
+    <value>This option can adjust the production rate of the extracting facilities and processing facilities, and the appropriate adjustment can improve the supply and demand relationship to reduce the problem of lack of resources or excess resources</value>
+  </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>Questa opzione può essere utilizzata per regolare il tasso di produzione degli impianti industriali. Ridurre il tasso di produzione è utile per alleggerire il traffico, mentre un tasso superiore alla base aumenta la produttività ma può causare problemi di traffico. È consentita la regolazione dinamica.</value>
   </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
+  <data name="RawForestProducts" xml:space="preserve">
+    <value>Raw forest products</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Modalità Box Suggerimenti</value>
+  </data>
+  <data name="Truck" xml:space="preserve">
+    <value>Truck</value>
+  </data>
+  <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
+    <value>Unique factory truck count multiplier factor</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]Corretta la visualizzazione errata del conteggio dei veicoli.</value>
@@ -211,24 +274,42 @@
     <value>[ADD]Aggiunta opzione avanzata per il reset della configurazione della mod.</value>
   </data>
   <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
+    <value>Aggiunta della funzione di controllo del carico dei materiali.</value>
   </data>
   <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
+    <value>Ottimizzata la logica di controllo delle dimensioni del buffer di ingresso/uscita.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>Aggiunta la traduzione in Coreano.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>Aggiunta la traduzione in Ceco.</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>Aggiornato all'ultimo framework comune.</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
+    <value>Added control panel to provide more convenient control entry.</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
+    <value>Added options to control the number of trucks in industrial facilities.</value>
+  </data>
+  <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
+    <value>Fixed exception throws that can be caused by Customize It Extended.</value>
+  </data>
+  <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
+    <value>Optimized rebinding logic handling.</value>
+  </data>
+  <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
+    <value>Updated to support game version 1.17.1</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Visualizza sia il valore corretto che il valore originale: valore corretto (valore originale), le opzioni di cui sopra devono essere impostate prima di iniziare una nuova partita o caricare il salvataggio.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>base</value>
+  </data>
+  <data name="WarehouseMultiplierFactor" xml:space="preserve">
+    <value>Warehouse truck count multiplier factor</value>
   </data>
 </root>

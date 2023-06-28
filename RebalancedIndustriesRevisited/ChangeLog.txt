@@ -1,4 +1,12 @@
-﻿V0.8.0
+﻿
+V0.9.0
+[*]Updated to support game version 1.17.1
+[*]Added control panel to provide more convenient control entry.
+[*]Added options to control the number of trucks in industrial facilities.
+[*]Optimized rebinding logic handling.
+[*]Fixed exception throws that can be caused by Customize It Extended.
+
+V0.8.0
 [*]Updated to support game version 1.17.0
 [*]Added Korean translation.
 [*]Added Czech translation.

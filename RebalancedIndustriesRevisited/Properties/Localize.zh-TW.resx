@@ -117,38 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimalProducts" xml:space="preserve">
+    <value>Animal products</value>
+  </data>
   <data name="BothValue" xml:space="preserve">
     <value>顯示校正值和原始值</value>
+  </data>
+  <data name="Crops" xml:space="preserve">
+    <value>Crops</value>
+  </data>
+  <data name="EPMultiplierFactor" xml:space="preserve">
+    <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
+  </data>
+  <data name="ExtractingFacility" xml:space="preserve">
+    <value>Extracting facility</value>
   </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
     <value>Extracting facility multiplier factor</value>
   </data>
+  <data name="Flour" xml:space="preserve">
+    <value>Flour</value>
+  </data>
+  <data name="Glass" xml:space="preserve">
+    <value>Glass</value>
+  </data>
+  <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
+    <value>Industry warehouse truck count multiplier factor</value>
+  </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Load Multiplier Factor</value>
+    <value>Truck Loading Capacity Multiplier Factor</value>
+  </data>
+  <data name="LoadMultiplierFactorMinor" xml:space="preserve">
+    <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
+  </data>
+  <data name="Metals" xml:space="preserve">
+    <value>Metals</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>重新平衡工業 DLC，減少交通流量，增加貨物裝載等。</value>
   </data>
+  <data name="Oil" xml:space="preserve">
+    <value>Oil</value>
+  </data>
+  <data name="OpenControlPanel" xml:space="preserve">
+    <value>Open Control Panel</value>
+  </data>
+  <data name="Ore" xml:space="preserve">
+    <value>Ore</value>
+  </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>只顯示校正值</value>
+  </data>
+  <data name="OtherFunctionsMajor" xml:space="preserve">
+    <value>Other functions</value>
+  </data>
+  <data name="OtherFunctionsMinor" xml:space="preserve">
+    <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Paper</value>
+  </data>
+  <data name="Petroleum" xml:space="preserve">
+    <value>Petroleum</value>
+  </data>
+  <data name="PlanedTimber" xml:space="preserve">
+    <value>Planed timber</value>
+  </data>
+  <data name="Plastics" xml:space="preserve">
+    <value>Plastics</value>
+  </data>
+  <data name="ProcessingFacility" xml:space="preserve">
+    <value>Processing facility</value>
   </data>
   <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
     <value>Processing facility multiplier factor</value>
   </data>
-  <data name="ProcessingMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Processing materials load multiplier factor</value>
-  </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>生產率</value>
+  </data>
+  <data name="ProductionRateMinor" xml:space="preserve">
+    <value>This option can adjust the production rate of the extracting facilities and processing facilities, and the appropriate adjustment can improve the supply and demand relationship to reduce the problem of lack of resources or excess resources</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>此選項可用於調節工業設施的輸出率。降低輸出率有利於緩解交通，高於香草會提高生產率但可能會導致交通問題。允許動態調整。</value>
   </data>
-  <data name="RawMaterialsLoadMultiplierFactor" xml:space="preserve">
-    <value>Raw materials load multiplier factor</value>
+  <data name="RawForestProducts" xml:space="preserve">
+    <value>Raw forest products</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>工具提示框模式</value>
+  </data>
+  <data name="Truck" xml:space="preserve">
+    <value>Truck</value>
+  </data>
+  <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
+    <value>Unique factory truck count multiplier factor</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[修復]修復了車輛數量的錯誤顯示。</value>
@@ -225,10 +288,28 @@
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
     <value>Updated to the latest common framework.</value>
   </data>
+  <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
+    <value>Added control panel to provide more convenient control entry.</value>
+  </data>
+  <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
+    <value>Added options to control the number of trucks in industrial facilities.</value>
+  </data>
+  <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
+    <value>Fixed exception throws that can be caused by Customize It Extended.</value>
+  </data>
+  <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
+    <value>Optimized rebinding logic handling.</value>
+  </data>
+  <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
+    <value>Updated to support game version 1.17.1</value>
+  </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Display both corrected value and original value：修正值（原始值），以上選項需要在開始新遊戲或載入存檔前設置。</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
     <value>香草</value>
+  </data>
+  <data name="WarehouseMultiplierFactor" xml:space="preserve">
+    <value>Warehouse truck count multiplier factor</value>
   </data>
 </root>
