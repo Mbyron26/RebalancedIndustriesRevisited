@@ -114,7 +114,7 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            InternalLogger.Error($"Raw output raw is zero, fixed to 700, building: {Name}");
+            InternalLogger.Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ProcessingFacilityProductionRate);
     }
@@ -291,7 +291,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            InternalLogger.Error($"Raw output rate is zero, fixed to 700, building: {Name}");
+            InternalLogger.Error($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ExtractingFacilityProductionRate);
     }
@@ -394,7 +394,7 @@ public abstract class ProfileBase<TypeAI> : IProfile where TypeAI : PlayerBuildi
         TransferManager.TransferReason.Petroleum => 2m,
         _ => 0.5m
     };
-    protected decimal GetRatio(decimal numerator, int denominator) => Math.Round(numerator / denominator, 2);
+    protected decimal GetRatio(decimal numerator, int denominator) => denominator == 0 ? 1 : Math.Round(numerator / denominator, 2);
     public abstract void RebindParameter();
 }
 

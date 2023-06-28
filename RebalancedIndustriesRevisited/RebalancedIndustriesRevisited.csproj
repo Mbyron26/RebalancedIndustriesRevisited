@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.9.0.2419</Version>
+		<Version>0.9.0.2822</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<Version>0.8</Version>
+		<Version>0.9</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|AnyCPU'">

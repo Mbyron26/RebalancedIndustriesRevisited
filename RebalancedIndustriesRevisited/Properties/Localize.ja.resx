@@ -130,10 +130,10 @@
     <value>抽出施設と加工施設で使用するトラック数の倍率</value>
   </data>
   <data name="ExtractingFacility" xml:space="preserve">
-    <value>Extracting facility</value>
+    <value>抽出施設</value>
   </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>産出施設の倍率</value>
+    <value>抽出施設の倍率</value>
   </data>
   <data name="Flour" xml:space="preserve">
     <value>小麦粉</value>
@@ -145,7 +145,7 @@
     <value>産業エリアの倉庫で使用するトラック数の倍率</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Truck Loading Capacity Multiplier Factor</value>
+    <value>トラック積載量の倍率</value>
   </data>
   <data name="LoadMultiplierFactorMinor" xml:space="preserve">
     <value>オプションを調整するとトラックの最大積載量が変化して、数値を上げるとトラックはより多くの荷物を積載して輸送できます。 同時に抽出施設と加工施設の生産力も大きくなり、より多くのトラックで輸送を可能にします。</value>
@@ -187,7 +187,7 @@
     <value>プラスチック</value>
   </data>
   <data name="ProcessingFacility" xml:space="preserve">
-    <value>Processing facility</value>
+    <value>加工施設</value>
   </data>
   <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
     <value>加工施設の倍率</value>
@@ -211,7 +211,7 @@
     <value>トラック</value>
   </data>
   <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
-    <value>Unique factory truck count multiplier factor</value>
+    <value>ユニーク工場で使用するトラック数の倍率</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]車両数の間違った表示を修正</value>
