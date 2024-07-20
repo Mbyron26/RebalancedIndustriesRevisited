@@ -1,11 +1,18 @@
 ﻿namespace RebalancedIndustriesRevisited.Patches;
 using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
 public class ExtractingFacilityAIPatch {
+    public static void Patch(HarmonyPatcher harmonyPatcher) {
+        harmonyPatcher.TranspilerPatching(typeof(ExtractingFacilityAI), "ProduceGoods", typeof(ExtractingFacilityAIPatch), nameof(ExtractingFacilityAIProduceGoodsTranspiler));
+        harmonyPatcher.TranspilerPatching(typeof(ExtractingFacilityAI), "GetOutputBufferSize", typeof(ExtractingFacilityAIPatch), nameof(ExtractingFacilityAIGetOutputBufferSizeTranspiler), new Type[] { typeof(DistrictPolicies.Park), typeof(int) });
+    }
+
     private static MethodInfo GetOutputLoadMethodInfo => AccessTools.Method(typeof(ExtractingFacilityAIPatch), nameof(GetOutputLoad));
+
     public static IEnumerable<CodeInstruction> ExtractingFacilityAIProduceGoodsTranspiler(IEnumerable<CodeInstruction> instructions) {
         bool flag = false;
         IEnumerator<CodeInstruction> targetEnumerator = instructions.GetEnumerator();

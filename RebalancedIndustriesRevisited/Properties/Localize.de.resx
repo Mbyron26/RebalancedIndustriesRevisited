@@ -124,7 +124,7 @@
     <value>Zeige sowohl korrigierten Wert als auch Originalwert.</value>
   </data>
   <data name="Crops" xml:space="preserve">
-    <value>Crops</value>
+    <value>Getreide</value>
   </data>
   <data name="EPMultiplierFactor" xml:space="preserve">
     <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
@@ -136,10 +136,10 @@
     <value>Extracting facility multiplier factor</value>
   </data>
   <data name="Flour" xml:space="preserve">
-    <value>Flour</value>
+    <value>Mehl</value>
   </data>
   <data name="Glass" xml:space="preserve">
-    <value>Glass</value>
+    <value>Glas</value>
   </data>
   <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
     <value>Industry warehouse truck count multiplier factor</value>
@@ -151,31 +151,31 @@
     <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
   </data>
   <data name="Metals" xml:space="preserve">
-    <value>Metals</value>
+    <value>Metalle</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Balanciert das Industries DLC, reduziert den Verkehrsfluss, erhöht die Frachtladung und mehr.</value>
   </data>
   <data name="Oil" xml:space="preserve">
-    <value>Oil</value>
+    <value>Öl</value>
   </data>
   <data name="OpenControlPanel" xml:space="preserve">
     <value>Open Control Panel</value>
   </data>
   <data name="Ore" xml:space="preserve">
-    <value>Ore</value>
+    <value>Erz</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>Nur korrigierte Werte anzeigen</value>
   </data>
   <data name="OtherFunctionsMajor" xml:space="preserve">
-    <value>Other functions</value>
+    <value>Sonstige Funktionen</value>
   </data>
   <data name="OtherFunctionsMinor" xml:space="preserve">
     <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
   </data>
   <data name="Paper" xml:space="preserve">
-    <value>Paper</value>
+    <value>Papier</value>
   </data>
   <data name="Petroleum" xml:space="preserve">
     <value>Petroleum</value>
@@ -184,7 +184,7 @@
     <value>Planed timber</value>
   </data>
   <data name="Plastics" xml:space="preserve">
-    <value>Plastics</value>
+    <value>Kunststoffe</value>
   </data>
   <data name="ProcessingFacility" xml:space="preserve">
     <value>Processing facility</value>
@@ -208,7 +208,7 @@
     <value>Kurzinfo Box Modus</value>
   </data>
   <data name="Truck" xml:space="preserve">
-    <value>Truck</value>
+    <value>Lastwagen</value>
   </data>
   <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
     <value>Unique factory truck count multiplier factor</value>
@@ -280,10 +280,10 @@
     <value>Optimized input/output buffer size control logic.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>Koreanische Übersetzung hinzugefügt.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>Tschechische Übersetzung hinzugefügt.</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
     <value>Updated to the latest common framework.</value>
@@ -301,7 +301,7 @@
     <value>Optimized rebinding logic handling.</value>
   </data>
   <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
-    <value>Updated to support game version 1.17.1</value>
+    <value>Aktualisiert, um Spielversion 1.17.1 zu unterstützen</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>Sowohl korrigierter Wert als auch Originalwert anzeigen: Korrigierter Wert (Originalwert), in den obigen Optionen müssen gesetzt werden, bevor das neue Spiel gestartet oder geladen wird.</value>

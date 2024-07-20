@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimalProducts" xml:space="preserve">
-    <value>Animal products</value>
+    <value>Dierlijke producten</value>
   </data>
   <data name="BothValue" xml:space="preserve">
     <value>Toon zowel de gecorrigeerde als de originele waarde</value>
   </data>
   <data name="Crops" xml:space="preserve">
-    <value>Crops</value>
+    <value>Gewassen</value>
   </data>
   <data name="EPMultiplierFactor" xml:space="preserve">
     <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
@@ -136,10 +136,10 @@
     <value>Extracting facility multiplier factor</value>
   </data>
   <data name="Flour" xml:space="preserve">
-    <value>Flour</value>
+    <value>Bloem</value>
   </data>
   <data name="Glass" xml:space="preserve">
-    <value>Glass</value>
+    <value>Glas</value>
   </data>
   <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
     <value>Industry warehouse truck count multiplier factor</value>
@@ -151,19 +151,19 @@
     <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
   </data>
   <data name="Metals" xml:space="preserve">
-    <value>Metals</value>
+    <value>Metalen</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Herbalanceert de Industries DLC, verminder de verkeersstroom, verhoog het laden van vracht en meer.</value>
   </data>
   <data name="Oil" xml:space="preserve">
-    <value>Oil</value>
+    <value>Olie</value>
   </data>
   <data name="OpenControlPanel" xml:space="preserve">
     <value>Open Control Panel</value>
   </data>
   <data name="Ore" xml:space="preserve">
-    <value>Ore</value>
+    <value>Erts</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>Toon alleen gecorrigeerde waarde</value>
@@ -175,16 +175,16 @@
     <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
   </data>
   <data name="Paper" xml:space="preserve">
-    <value>Paper</value>
+    <value>Papier</value>
   </data>
   <data name="Petroleum" xml:space="preserve">
-    <value>Petroleum</value>
+    <value>Aardolie</value>
   </data>
   <data name="PlanedTimber" xml:space="preserve">
-    <value>Planed timber</value>
+    <value>Geschaafd hout</value>
   </data>
   <data name="Plastics" xml:space="preserve">
-    <value>Plastics</value>
+    <value>Kunststoffen</value>
   </data>
   <data name="ProcessingFacility" xml:space="preserve">
     <value>Processing facility</value>
@@ -202,13 +202,13 @@
     <value>Deze opties kunnen worden gebruikt om de productiesnelheid van industriële installaties te regelen. Het verlagen van de productiesnelheid is goed om het verkeer te ontlasten. Een hogere snelheid dan vanilla verhoogt de productiviteit, maar kan verkeersproblemen veroorzaken. Dynamische aanpassing is toegestaan.</value>
   </data>
   <data name="RawForestProducts" xml:space="preserve">
-    <value>Raw forest products</value>
+    <value>Ruwe bosbouwproducten</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Tooltip-modus</value>
   </data>
   <data name="Truck" xml:space="preserve">
-    <value>Truck</value>
+    <value>Vrachtwagen</value>
   </data>
   <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
     <value>Unique factory truck count multiplier factor</value>

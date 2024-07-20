@@ -51,6 +51,11 @@ namespace RebalancedIndustriesRevisited
 		public static string IndustryWarehouseMultiplierFactor => LocaleManager.GetString("IndustryWarehouseMultiplierFactor", Culture);
 
 		/// <summary>
+		/// In order to ensure the normal operation of Rebalanced Industries Revisited Mod, load game function h
+		/// </summary>
+		public static string LoadGame => LocaleManager.GetString("LoadGame", Culture);
+
+		/// <summary>
 		/// Truck Loading Capacity Multiplier Factor
 		/// </summary>
 		public static string LoadMultiplierFactor => LocaleManager.GetString("LoadMultiplierFactor", Culture);
@@ -149,6 +154,11 @@ namespace RebalancedIndustriesRevisited
 		/// Raw forest products
 		/// </summary>
 		public static string RawForestProducts => LocaleManager.GetString("RawForestProducts", Culture);
+
+		/// <summary>
+		/// In order to ensure the normal operation of Rebalanced Industries Revisited Mod, back to main menu fu
+		/// </summary>
+		public static string ToMainMenu => LocaleManager.GetString("ToMainMenu", Culture);
 
 		/// <summary>
 		/// Tooltip Box Mode

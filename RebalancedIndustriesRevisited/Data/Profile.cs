@@ -70,12 +70,12 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
             SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
             SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            ExternalLogger.DebugMode<Config>($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        ExternalLogger.DebugMode<Config>($"Warehouse | Vehicle count: {RawTruckCount} -> {AI.m_truckCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        Mod.Log.Info($"Warehouse | Vehicle count: {RawTruckCount} -> {AI.m_truckCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 
 }
@@ -114,7 +114,7 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            InternalLogger.Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
+            Mod.Log.Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ProcessingFacilityProductionRate);
     }
@@ -162,12 +162,12 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
             SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
             SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            ExternalLogger.DebugMode<Config>($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        ExternalLogger.DebugMode<Config>($"Processing Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        Mod.Log.Info($"Processing Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 }
 
@@ -241,12 +241,12 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
             SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
             SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            ExternalLogger.DebugMode<Config>($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        ExternalLogger.DebugMode<Config>($"Unique Factory | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        Mod.Log.Info($"Unique Factory | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 
     public struct UniqueFactoryAIValue {
@@ -291,7 +291,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            InternalLogger.Error($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
+            Mod.Log.Info($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ExtractingFacilityProductionRate);
     }
@@ -343,12 +343,12 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
             SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            ExternalLogger.DebugMode<Config>($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        ExternalLogger.DebugMode<Config>($"Extracting Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Output rate: {RawOutputRate} -> {AI.m_outputRate} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        Mod.Log.Info($"Extracting Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Output rate: {RawOutputRate} -> {AI.m_outputRate} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 }
 

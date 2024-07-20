@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>0.9.0.2822</Version>
+		<Version>0.9.1.1749</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<Version>0.9</Version>
+		<Version>0.9.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|AnyCPU'">
@@ -117,6 +117,25 @@
 		<PackageReference Include="UnifiedUILib" Version="2.2.12" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="Assembly-CSharp">
+	    <HintPath>..\..\..\..\..\..\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="ColossalManaged">
+	    <HintPath>..\..\..\..\..\..\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="ICities">
+	    <HintPath>..\..\..\..\..\..\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+	    <HintPath>..\..\..\..\..\..\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+
 
 	<ItemGroup>
 	  <Compile Update="Properties\Localize.cs">
@@ -124,26 +143,6 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Localize.resx</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <Reference Include="Assembly-CSharp">
-	    <HintPath>C:\Users\SYS\Desktop\Assembly\Assembly-CSharp.dll</HintPath>
-	    <Private>False</Private>
-	  </Reference>
-	  <Reference Include="ColossalManaged">
-	    <HintPath>C:\Users\SYS\Desktop\Assembly\ColossalManaged.dll</HintPath>
-	    <Private>False</Private>
-	  </Reference>
-	  <Reference Include="ICities">
-	    <HintPath>C:\Users\SYS\Desktop\Assembly\ICities.dll</HintPath>
-	    <Private>False</Private>
-	  </Reference>
-	  <Reference Include="UnityEngine">
-	    <HintPath>C:\Users\SYS\Desktop\Assembly\UnityEngine.dll</HintPath>
-	    <Private>False</Private>
-	  </Reference>
 	</ItemGroup>
 
 

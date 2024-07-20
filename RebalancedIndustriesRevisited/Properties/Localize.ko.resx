@@ -118,100 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimalProducts" xml:space="preserve">
-    <value>Animal products</value>
+    <value>동물성 제품</value>
   </data>
   <data name="BothValue" xml:space="preserve">
     <value>수정된 값과 원래 값 모두 표시합니다.</value>
   </data>
   <data name="Crops" xml:space="preserve">
-    <value>Crops</value>
+    <value>농작물</value>
   </data>
   <data name="EPMultiplierFactor" xml:space="preserve">
-    <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
+    <value>추출 시설 및 가공 시설의 트럭 대수 배율</value>
   </data>
   <data name="ExtractingFacility" xml:space="preserve">
-    <value>Extracting facility</value>
+    <value>추출설비</value>
   </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
+    <value>추출 시설의 배율</value>
   </data>
   <data name="Flour" xml:space="preserve">
-    <value>Flour</value>
+    <value>밀가루</value>
   </data>
   <data name="Glass" xml:space="preserve">
-    <value>Glass</value>
+    <value>유리</value>
   </data>
   <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
-    <value>Industry warehouse truck count multiplier factor</value>
+    <value>산업 창고 트럭 수 배율</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Truck Loading Capacity Multiplier Factor</value>
+    <value>트럭 적재 용량 배율</value>
   </data>
   <data name="LoadMultiplierFactorMinor" xml:space="preserve">
-    <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
+    <value>이 옵션을 조정하면 차량의 적재 용량이 변경되고, 더 높은 값은 차량이 더 많은 화물을 운반할 수 있음을 의미하며, 추출 설비 및 처리 설비의 출력 버퍼는 더 많은 화물을 제공할 수 있는 더 큰 용량을 갖게 됩니다.</value>
   </data>
   <data name="Metals" xml:space="preserve">
-    <value>Metals</value>
+    <value>금속</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Rebalances Industries DLC는 교통 흐름을 줄이고 화물 적재량을 늘리는 등의 작업을 수행합니다.</value>
   </data>
   <data name="Oil" xml:space="preserve">
-    <value>Oil</value>
+    <value>기름</value>
   </data>
   <data name="OpenControlPanel" xml:space="preserve">
-    <value>Open Control Panel</value>
+    <value>제어판 열기</value>
   </data>
   <data name="Ore" xml:space="preserve">
-    <value>Ore</value>
+    <value>광석</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
     <value>수정된 값만 표시합니다.</value>
   </data>
   <data name="OtherFunctionsMajor" xml:space="preserve">
-    <value>Other functions</value>
+    <value>기타 기능</value>
   </data>
   <data name="OtherFunctionsMinor" xml:space="preserve">
-    <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
+    <value>바로 가기 키 또는 UUI 버튼을 사용하여 제어판을 호출합니다. 제어판에서 옵션을 조정하려면 먼저 옵션 패널을 닫습니다</value>
   </data>
   <data name="Paper" xml:space="preserve">
-    <value>Paper</value>
+    <value>종이</value>
   </data>
   <data name="Petroleum" xml:space="preserve">
-    <value>Petroleum</value>
+    <value>석유</value>
   </data>
   <data name="PlanedTimber" xml:space="preserve">
-    <value>Planed timber</value>
+    <value>다듬어진 목재</value>
   </data>
   <data name="Plastics" xml:space="preserve">
-    <value>Plastics</value>
+    <value>플라스틱</value>
   </data>
   <data name="ProcessingFacility" xml:space="preserve">
-    <value>Processing facility</value>
+    <value>가공시설</value>
   </data>
   <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
+    <value>가공 시설의 배율</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
     <value>생산률</value>
   </data>
   <data name="ProductionRateMinor" xml:space="preserve">
-    <value>This option can adjust the production rate of the extracting facilities and processing facilities, and the appropriate adjustment can improve the supply and demand relationship to reduce the problem of lack of resources or excess resources</value>
+    <value>이 옵션은 추출 설비 및 가공 설비의 생산률을 조정할 수 있으며, 적절한 조정은 수급 관계를 개선하여 자원 부족 또는 과잉의 문제를 줄일 수 있습니다</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
     <value>이 옵션은 산업 시설의 생산률을 조절하는 데 사용할 수 있습니다. 생산률을 줄이는 것은 트래픽을 완화하는 데 도움이 되며 바닐라보다 높으면 생산성이 향상되지만 트래픽 문제가 발생할 수 있습니다. 동적 조정이 허용됩니다.</value>
   </data>
   <data name="RawForestProducts" xml:space="preserve">
-    <value>Raw forest products</value>
+    <value>통나무</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>도구 설명 상자 모드</value>
   </data>
   <data name="Truck" xml:space="preserve">
-    <value>Truck</value>
+    <value>트럭</value>
   </data>
   <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
-    <value>Unique factory truck count multiplier factor</value>
+    <value>특수 공장 드럭 수 배율</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]차량 수가 잘못 표시되는 문제 해결.</value>
@@ -274,34 +274,34 @@
     <value>[ADD]모드 구성을 재설정하기위한 고급 옵션이 추가되었습니다.</value>
   </data>
   <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
+    <value>재료 부하 제어 기능이 추가되었습니다.</value>
   </data>
   <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
+    <value>최적화된 입출력 버퍼 크기 제어 로직.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>한국어 번역 추가.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>체코어 번역 추가.</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>최신 공통 프레임워크로 업데이트되었습니다.</value>
   </data>
   <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
-    <value>Added control panel to provide more convenient control entry.</value>
+    <value>보다 편리한 제어 입력을 제공하기 위해 제어판이 추가되었습니다.</value>
   </data>
   <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
-    <value>Added options to control the number of trucks in industrial facilities.</value>
+    <value>산업 시설의 트럭 수를 제어하는 옵션이 추가되었습니다.</value>
   </data>
   <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
-    <value>Fixed exception throws that can be caused by Customize It Extended.</value>
+    <value>확장된 사용자 지정으로인해 예외 오류가 발생하는 문제 수정</value>
   </data>
   <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
-    <value>Optimized rebinding logic handling.</value>
+    <value>최적화된 리바인딩 로직 처리.</value>
   </data>
   <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
-    <value>Updated to support game version 1.17.1</value>
+    <value>게임 버전 1.17.1을 지원하도록 업데이트됨</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
     <value>수정된 값과 원래 값을 모두 표시합니다: 수정된 값(원래 값), 새 게임을 시작하거나 게임을 저장하기 전에 위의 옵션을 설정해야 합니다.</value>
@@ -310,6 +310,6 @@
     <value>바닐라</value>
   </data>
   <data name="WarehouseMultiplierFactor" xml:space="preserve">
-    <value>Warehouse truck count multiplier factor</value>
+    <value>창고 트럭수 배율</value>
   </data>
 </root>

@@ -33,23 +33,27 @@ public partial class Manager {
                         var profile = new ExtractingFacilityProfile(extractingFacilityAI);
                         profile.RebindParameter();
                         ExtractingFacilityAICache.Add(extractingFacilityAI.name, profile);
-                    } else if (ai is UniqueFactoryAI uniqueFactoryAI) {
+                    }
+                    else if (ai is UniqueFactoryAI uniqueFactoryAI) {
                         var profile = new UniqueFactoryProfile(uniqueFactoryAI);
                         profile.RebindParameter();
                         UniqueFactoryAICache.Add(uniqueFactoryAI.name, profile);
-                    } else if (ai is ProcessingFacilityAI processingFacilityAI) {
+                    }
+                    else if (ai is ProcessingFacilityAI processingFacilityAI) {
                         var profile = new ProcessingFacilityProfile(processingFacilityAI);
                         profile.RebindParameter();
                         ProcessingFacilityAICache.Add(processingFacilityAI.name, profile);
-                    } else if (ai is WarehouseAI warehouseAI) {
+                    }
+                    else if (ai is WarehouseAI warehouseAI) {
                         var profile = new WarehouseProfile(warehouseAI);
                         profile.RebindParameter();
                         WarehouseAICache.Add(warehouseAI.name, profile);
                     }
                 }
             }
-        } catch (Exception e) {
-            InternalLogger.Exception("Rebind prefab failed", e);
+        }
+        catch (Exception e) {
+            Mod.Log.Error(e, "Rebind prefab failed");
         }
     }
 

@@ -118,101 +118,101 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimalProducts" xml:space="preserve">
-    <value>Animal products</value>
+    <value>Продукты животного происхождения</value>
   </data>
   <data name="BothValue" xml:space="preserve">
     <value>Ключ: Двойное значение
 Двойное значение</value>
   </data>
   <data name="Crops" xml:space="preserve">
-    <value>Crops</value>
+    <value>Зерно</value>
   </data>
   <data name="EPMultiplierFactor" xml:space="preserve">
-    <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
+    <value>Коэффициент количества автомобилей на добывающих и обрабатывающих предприятиях</value>
   </data>
   <data name="ExtractingFacility" xml:space="preserve">
-    <value>Extracting facility</value>
+    <value>Добывающее предприятие</value>
   </data>
   <data name="ExtractingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Extracting facility multiplier factor</value>
+    <value>Коэффициент добывающего предприятия</value>
   </data>
   <data name="Flour" xml:space="preserve">
-    <value>Flour</value>
+    <value>Мука</value>
   </data>
   <data name="Glass" xml:space="preserve">
-    <value>Glass</value>
+    <value>Стекло</value>
   </data>
   <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
-    <value>Industry warehouse truck count multiplier factor</value>
+    <value>Коэффициент количества складских грузовиков в отрасли</value>
   </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
-    <value>Truck Loading Capacity Multiplier Factor</value>
+    <value>Коэффициент вместимости грузовика</value>
   </data>
   <data name="LoadMultiplierFactorMinor" xml:space="preserve">
-    <value>The adjustment of this option will change the load capacity of the vehicle, higher value means that the vehicle can carry more cargo, and the output buffer of the extracting facilities and processing facilities will have a larger capacity to provide more cargo.</value>
+    <value>Настройка этого параметра изменит вместимость транспортного средства. При более высоком значении транспортное средство может перевозить больше груза, а выходной буфер добывающих и обрабатывающих предприятий будет иметь большую ёмкость для доставки большего количества грузов.</value>
   </data>
   <data name="Metals" xml:space="preserve">
-    <value>Metals</value>
+    <value>Металл</value>
   </data>
   <data name="MOD_Description" xml:space="preserve">
     <value>Изменяет баланс DLC Промышленность, сокращает транспортные потоки, увеличивает погрузку грузов и многое другое.</value>
   </data>
   <data name="Oil" xml:space="preserve">
-    <value>Oil</value>
+    <value>Нефть</value>
   </data>
   <data name="OpenControlPanel" xml:space="preserve">
-    <value>Open Control Panel</value>
+    <value>Открыть Панель Управления</value>
   </data>
   <data name="Ore" xml:space="preserve">
-    <value>Ore</value>
+    <value>Руда</value>
   </data>
   <data name="OriginalValue" xml:space="preserve">
-    <value>Only display corrected value</value>
+    <value>Отображать только исправленное значение</value>
   </data>
   <data name="OtherFunctionsMajor" xml:space="preserve">
-    <value>Other functions</value>
+    <value>Другие функции</value>
   </data>
   <data name="OtherFunctionsMinor" xml:space="preserve">
-    <value>Use the shortcut keys or the UUI button to invoke the Control Panel, if you want to adjust the options in the Control Panel, close the Options Panel first</value>
+    <value>Используйте горячие клавиши или кнопку для вызова Панели Управления. Если вы хотите изменить значения в Панели Управления, сначала закройте Панель Настроек</value>
   </data>
   <data name="Paper" xml:space="preserve">
-    <value>Paper</value>
+    <value>Бумага</value>
   </data>
   <data name="Petroleum" xml:space="preserve">
-    <value>Petroleum</value>
+    <value>Бензин</value>
   </data>
   <data name="PlanedTimber" xml:space="preserve">
-    <value>Planed timber</value>
+    <value>Строганые пиломатериалы</value>
   </data>
   <data name="Plastics" xml:space="preserve">
-    <value>Plastics</value>
+    <value>Пластик</value>
   </data>
   <data name="ProcessingFacility" xml:space="preserve">
-    <value>Processing facility</value>
+    <value>Обрабатывающее предприятие</value>
   </data>
   <data name="ProcessingFacilityMultiplierFactor" xml:space="preserve">
-    <value>Processing facility multiplier factor</value>
+    <value>Коэффициент обрабатывающего предприятия</value>
   </data>
   <data name="ProductionRate" xml:space="preserve">
-    <value>Production Rate</value>
+    <value>Производительность</value>
   </data>
   <data name="ProductionRateMinor" xml:space="preserve">
-    <value>This option can adjust the production rate of the extracting facilities and processing facilities, and the appropriate adjustment can improve the supply and demand relationship to reduce the problem of lack of resources or excess resources</value>
+    <value>Этот параметр может регулировать производительность добывающих и обрабатывающих предприятий, а соответствующая корректировка может улучшить соотношение спроса и предложения, чтобы уменьшить проблему нехватки или избытка ресурсов</value>
   </data>
   <data name="ProductionRateWarning" xml:space="preserve">
-    <value>This options can be used to regulate the output rate of industrial facilities. Reducing the output rate is good for easing traffic, higher than vanilla will increase productivity but may cause traffic problems. Dynamic adjustment is allowed.</value>
+    <value>Эти параметры можно использовать для регулирования производительности промышленных объектов. Сниженная производительность полезна для уменьшения трафика, а более высокая, по сравнению с ванилью, повысит производительность, но может вызвать проблемы с трафиком. Допускается динамическая регулировка.</value>
   </data>
   <data name="RawForestProducts" xml:space="preserve">
-    <value>Raw forest products</value>
+    <value>Сырьё лесной продукции</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
-    <value>Tooltip Box Mode</value>
+    <value>Режим всплывающей подсказки</value>
   </data>
   <data name="Truck" xml:space="preserve">
-    <value>Truck</value>
+    <value>Грузовик</value>
   </data>
   <data name="UniqueFactoryTruckMultiplierFactor" xml:space="preserve">
-    <value>Unique factory truck count multiplier factor</value>
+    <value>Коэффициент количества грузовиков уникальных фабрик</value>
   </data>
   <data name="UpdateLog_V0_1_0FIX" xml:space="preserve">
     <value>[FIX]Исправлено неправильное отображение количества транспортных средств.</value>
@@ -242,75 +242,75 @@
     <value>[FIX]Исправлена ​​проблема, создававшая исключения.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed incorrect maintenance costs for unique factories.</value>
+    <value>[FIX]Исправлена некорректная стоимость обслуживания уникальных фабрик.</value>
   </data>
   <data name="UpdateLog_V0_4_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed issues where hovering over a building pops up tooltipbox with incorrect construction costs, maintenance costs, vehicle counts, and workspace.</value>
+    <value>[FIX]Исправлены проблемы, из-за которых при наведении курсора на здание появлялась всплывающая подсказка с неправильными затратами на строительство, расходами на обслуживание, количеством транспортных средств и рабочим пространством.</value>
   </data>
   <data name="UpdateLog_V0_5_0ADD" xml:space="preserve">
-    <value>[ADD]Added tooltip box mode option, allows display both corrected value and original value.</value>
+    <value>[ADD]Добавлена опция режима всплывающей подсказки, позволяющая отображать как исправленное, так и исходное значение.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX1" xml:space="preserve">
-    <value>[FIX]Fixed tooltip box for some buildings still not showing the corrected value.</value>
+    <value>[FIX]Исправлены всплывающие подсказки для некоторых зданий, которые по-прежнему не отображали исправленное значение.</value>
   </data>
   <data name="UpdateLog_V0_5_0FIX2" xml:space="preserve">
-    <value>[FIX]Fixed worker levelup requirements are too high issues.</value>
+    <value>[FIX]Исправлены слишком высокие требования к повышению уровня работника.</value>
   </data>
   <data name="UpdateLog_V0_6_0ADD" xml:space="preserve">
-    <value>[ADD]Added Extracting facility and processing facility output rate regulation.</value>
+    <value>[ADD]Добавлено регулирование производительности добывающих и обрабатывающих предприятий.</value>
   </data>
   <data name="UpdateLog_V0_6_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed some farm buildings overemployment issues.</value>
+    <value>[FIX]Исправлены проблемы с перенаселением некоторых фермерских построек.</value>
   </data>
   <data name="UpdateLog_V0_6_0OPT" xml:space="preserve">
-    <value>[OPT]Optimized rebinding prefab speed.</value>
+    <value>[OPT]Оптимизирована скорость повторной привязки сборного материала.</value>
   </data>
   <data name="UpdateLog_V0_7_0FIX" xml:space="preserve">
-    <value>[FIX]Fixed incorrect number of vehicles in the unique factory.</value>
+    <value>[FIX]Исправлено неправильное количество автомобилей на уникальном заводе.</value>
   </data>
   <data name="UpdateLog_V0_7_0UPT" xml:space="preserve">
-    <value>[UPT]Updated framework and UI style.</value>
+    <value>[UPT]Обновлена структура и стиль пользовательского интерфейса.</value>
   </data>
   <data name="UpdateLog_V0_7_1ADD" xml:space="preserve">
-    <value>[ADD]Added advanced option for reset mod config.</value>
+    <value>[ADD]Добавлена расширенная опция для сброса конфигурации мода.</value>
   </data>
   <data name="UpdateLog_V0_8_0ADD" xml:space="preserve">
-    <value>Added materials load control function.</value>
+    <value>Добавлена функция контроля загрузки материалов.</value>
   </data>
   <data name="UpdateLog_V0_8_0OPT" xml:space="preserve">
-    <value>Optimized input/output buffer size control logic.</value>
+    <value>Оптимизирована логика управления размером входного/выходного буфера.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA" xml:space="preserve">
-    <value>Added Korean translation.</value>
+    <value>Добавлен перевод на корейский.</value>
   </data>
   <data name="UpdateLog_V0_8_0TRA1" xml:space="preserve">
-    <value>Added Czech translation.</value>
+    <value>Добавлен перевод на чешский.</value>
   </data>
   <data name="UpdateLog_V0_8_0UPT" xml:space="preserve">
-    <value>Updated to the latest common framework.</value>
+    <value>Обновлено до последней общей структуры.</value>
   </data>
   <data name="UpdateLog_V0_9ADD0" xml:space="preserve">
-    <value>Added control panel to provide more convenient control entry.</value>
+    <value>Добавлена панель управления для более удобного входа в систему управления.</value>
   </data>
   <data name="UpdateLog_V0_9ADD1" xml:space="preserve">
-    <value>Added options to control the number of trucks in industrial facilities.</value>
+    <value>Добавлены возможности контроля количества грузовых автомобилей на промышленных объектах.</value>
   </data>
   <data name="UpdateLog_V0_9FIX0" xml:space="preserve">
-    <value>Fixed exception throws that can be caused by Customize It Extended.</value>
+    <value>Исправлены исключения, которые могли быть вызваны Customize It Extended.</value>
   </data>
   <data name="UpdateLog_V0_9OPT0" xml:space="preserve">
-    <value>Optimized rebinding logic handling.</value>
+    <value>Оптимизирована обработка логики повторной привязки.</value>
   </data>
   <data name="UpdateLog_V0_9UPT0" xml:space="preserve">
-    <value>Updated to support game version 1.17.1</value>
+    <value>Обновлено для поддержки версии игры 1.17.1</value>
   </data>
   <data name="ValueWarning" xml:space="preserve">
-    <value>Display both corrected value and original value: corrected value (original value), above options need to be set before starting new game or load save.</value>
+    <value>Отображение как исправленного, так и исходного значения: исправленное значение (исходное значение) необходимо установить перед запуском новой игры или загрузкой сохранения.</value>
   </data>
   <data name="Vanilla" xml:space="preserve">
-    <value>vanilla</value>
+    <value>без модов</value>
   </data>
   <data name="WarehouseMultiplierFactor" xml:space="preserve">
-    <value>Warehouse truck count multiplier factor</value>
+    <value>Коэффициент количества складских грузовиков</value>
   </data>
 </root>
