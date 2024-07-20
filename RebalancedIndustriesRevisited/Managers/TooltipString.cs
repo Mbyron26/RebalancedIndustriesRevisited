@@ -32,12 +32,12 @@ public partial class Manager {
     public void InitTooltipString() {
         IndustryPanelButtons = new();
         IndustryPanel = new() {
-        IndustryFarmingPanel,
-        IndustryForestryPanel,
-        IndustryOilPanel,
-        IndustryOrePanel,
-        IndustryUniqueFactoryPanel,
-        IndustryWarehousesPanel
+            IndustryFarmingPanel,
+            IndustryForestryPanel,
+            IndustryOilPanel,
+            IndustryOrePanel,
+            IndustryUniqueFactoryPanel,
+            IndustryWarehousesPanel
         };
         GetAllButtons();
     }
@@ -59,11 +59,13 @@ public partial class Manager {
                         IndustryPanelButtons.Add(button.name, button);
                     }
                 }
-            } else {
-                ExternalLogger.Log($"Couldn't find {panelName}.scrollablePanel");
             }
-        } else {
-            ExternalLogger.Log($"Couldn't find {targetPanel}");
+            else {
+                Mod.Log.Error($"Couldn't find {panelName}.scrollablePanel");
+            }
+        }
+        else {
+            Mod.Log.Error($"Couldn't find {targetPanel}");
         }
     }
 

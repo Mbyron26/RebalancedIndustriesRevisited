@@ -1,4 +1,9 @@
 ﻿
+V0.9.1
+[*]Code cleanup.
+[*]Fix potential issues.
+
+
 V0.9.0
 [*]Updated to support game version 1.17.1
 [*]Added control panel to provide more convenient control entry.

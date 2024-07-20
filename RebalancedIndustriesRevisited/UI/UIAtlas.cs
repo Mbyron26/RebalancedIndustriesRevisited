@@ -12,7 +12,7 @@ internal static class UIAtlas {
         get {
             if (rebalancedIndustriesRevisitedAtlas is null) {
                 rebalancedIndustriesRevisitedAtlas = MbyronModsCommon.UI.UIUtils.CreateTextureAtlas(nameof(RebalancedIndustriesRevisitedAtlas), $"{AssemblyUtils.CurrentAssemblyName}.UI.Resources.", SpriteParams);
-                InternalLogger.Log("Initialized RebalancedIndustriesRevisitedAtlas");
+                Mod.Log.Info("Initialized RebalancedIndustriesRevisitedAtlas");
             }
             return rebalancedIndustriesRevisitedAtlas;
         }

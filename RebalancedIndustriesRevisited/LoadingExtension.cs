@@ -9,6 +9,7 @@ public class LoadingExtension : ModLoadingExtension<Mod> {
             SingletonTool<ToolButtonManager>.Instance.Init();
             ControlPanelManager<Mod, ControlPanel>.EventOnVisibleChanged += (_) => SingletonTool<ToolButtonManager>.Instance.UUIButtonIsPressed = _;
         }
+        Manager.Instance.ReloadCheck();
     }
 
     public override void LevelUnloading() {

@@ -144,6 +144,9 @@
   <data name="IndustryWarehouseMultiplierFactor" xml:space="preserve">
     <value>Industry warehouse truck count multiplier factor</value>
   </data>
+  <data name="LoadGame" xml:space="preserve">
+    <value>In order to ensure the normal operation of Rebalanced Industries Revisited Mod, load game function has been disabled, please exit the game and reload save.</value>
+  </data>
   <data name="LoadMultiplierFactor" xml:space="preserve">
     <value>Truck Loading Capacity Multiplier Factor</value>
   </data>
@@ -203,6 +206,9 @@
   </data>
   <data name="RawForestProducts" xml:space="preserve">
     <value>Raw forest products</value>
+  </data>
+  <data name="ToMainMenu" xml:space="preserve">
+    <value>In order to ensure the normal operation of Rebalanced Industries Revisited Mod, back to main menu function has been disabled, please exit the game and reload save.</value>
   </data>
   <data name="TooltipBoxMode" xml:space="preserve">
     <value>Tooltip Box Mode</value>

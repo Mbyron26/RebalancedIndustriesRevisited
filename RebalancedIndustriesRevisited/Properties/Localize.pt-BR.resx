@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimalProducts" xml:space="preserve">
-    <value>Animal products</value>
+    <value>Produtos de Origem Animal</value>
   </data>
   <data name="BothValue" xml:space="preserve">
-    <value>Display both corrected value and original value</value>
+    <value>Exibir tanto o valor corrigido e o valor original</value>
   </data>
   <data name="Crops" xml:space="preserve">
-    <value>Crops</value>
+    <value>Plantações</value>
   </data>
   <data name="EPMultiplierFactor" xml:space="preserve">
     <value>Multiplier factor of the truck count in extracting facilities and processing facilities</value>
