@@ -1,5 +1,8 @@
-﻿namespace RebalancedIndustriesRevisited;
+﻿using CSShared.Extension;
+using CSShared.UI.ControlPanel;
 using RebalancedIndustriesRevisited.UI;
+
+namespace RebalancedIndustriesRevisited;
 
 public class ThreadExtension : ModThreadExtensionBase {
     private bool toggleControlPanel;

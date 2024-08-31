@@ -1,5 +1,6 @@
-﻿namespace RebalancedIndustriesRevisited;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
+
+namespace RebalancedIndustriesRevisited;
 
 public partial class Manager {
     public const int MinTruckCount = 2;

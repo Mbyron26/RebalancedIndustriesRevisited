@@ -1,7 +1,10 @@
-﻿namespace RebalancedIndustriesRevisited.UI;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
+using CSShared.Debug;
+using CSShared.Tools;
 using System.Collections.Generic;
 using UnityEngine;
+
+namespace RebalancedIndustriesRevisited.UI;
 
 internal static class UIAtlas {
     private static UITextureAtlas rebalancedIndustriesRevisitedAtlas;
@@ -11,8 +14,8 @@ internal static class UIAtlas {
     public static UITextureAtlas RebalancedIndustriesRevisitedAtlas {
         get {
             if (rebalancedIndustriesRevisitedAtlas is null) {
-                rebalancedIndustriesRevisitedAtlas = MbyronModsCommon.UI.UIUtils.CreateTextureAtlas(nameof(RebalancedIndustriesRevisitedAtlas), $"{AssemblyUtils.CurrentAssemblyName}.UI.Resources.", SpriteParams);
-                Mod.Log.Info("Initialized RebalancedIndustriesRevisitedAtlas");
+                rebalancedIndustriesRevisitedAtlas = CSShared.UI.UIUtils.CreateTextureAtlas(nameof(RebalancedIndustriesRevisitedAtlas), $"{AssemblyTools.CurrentAssemblyName}.UI.Resources.", SpriteParams);
+                LogManager.GetLogger().Info("Initialized RebalancedIndustriesRevisitedAtlas");
             }
             return rebalancedIndustriesRevisitedAtlas;
         }

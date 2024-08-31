@@ -1,9 +1,12 @@
-﻿namespace RebalancedIndustriesRevisited;
-using ColossalFramework;
+﻿using ColossalFramework;
+using CSShared.Debug;
+using CSShared.Patch;
 using HarmonyLib;
 
+namespace RebalancedIndustriesRevisited.Patches;
+
 public class DistrictParkPatch {
-    private static bool[] Initialised { get; set; } = new bool[] { false, false, false, false, false, false };
+    private static bool[] Initialized { get; set; } = new bool[] { false, false, false, false, false, false };
 
     public static void Patch(HarmonyPatcher harmonyPatcher) {
         harmonyPatcher.PrefixPatching(AccessTools.Method(typeof(DistrictPark), "IndustrySimulationStep"), AccessTools.Method(typeof(DistrictParkPatch), nameof(IndustrySimulationStepPrefix)));
@@ -15,9 +18,9 @@ public class DistrictParkPatch {
             var districtPark = districtManager.m_parks.m_buffer[parkID];
             var level = (uint)districtPark.m_parkLevel;
             if (DistrictPark.IsIndustryType(districtPark.m_parkType)) {
-                if (Initialised[level]) return;
-                Initialised[level] = true;
-                var rawWorkerLevelupRequirement = districtManager.m_properties.m_parkProperties.m_industryLevelInfo[level].m_workerLevelupRequirement;
+                if (Initialized[level]) return;
+                Initialized[level] = true;
+                var rawWorkerLevelUpRequirement = districtManager.m_properties.m_parkProperties.m_industryLevelInfo[level].m_workerLevelupRequirement;
                 var newRequirement = level switch {
                     1 => 75,
                     2 => 200,
@@ -26,7 +29,7 @@ public class DistrictParkPatch {
                     _ => 0
                 };
                 districtManager.m_properties.m_parkProperties.m_industryLevelInfo[level].m_workerLevelupRequirement = newRequirement;
-                Mod.Log.Info($"Rebinding worker levelup requirement, park type: {districtPark.m_parkType}, level: {level}, levelup requirement: {rawWorkerLevelupRequirement} -> {newRequirement}.");
+                LogManager.GetLogger().Info($"Rebinding worker level up requirement, park type: {districtPark.m_parkType}, level: {level}, level up requirement: {rawWorkerLevelUpRequirement} -> {newRequirement}.");
             }
         }
 

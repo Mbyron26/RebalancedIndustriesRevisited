@@ -1,10 +1,15 @@
-﻿namespace RebalancedIndustriesRevisited.UI;
+﻿using ColossalFramework;
 using ColossalFramework.UI;
-using ColossalFramework;
+using CSShared.Common;
+using CSShared.ToolButton;
+using CSShared.Tools;
+using CSShared.UI.ControlPanel;
 using UnityEngine;
 
-internal class ToolButtonManager : SingletonToolManager<ToolButtonManager, ToolButton, Mod, Config> {
-    protected override Texture2D UUIIcon { get; } = MbyronModsCommon.UI.UIUtils.LoadTextureFromAssembly($"{AssemblyUtils.CurrentAssemblyName}.UI.Resources.InGameButton.png");
+namespace RebalancedIndustriesRevisited.UI;
+
+internal class ToolButtonManager : UUIToolManagerBase<ToolButton, Mod, Config> {
+    protected override Texture2D UUIIcon { get; } = CSShared.UI.UIUtils.LoadTextureFromAssembly($"{AssemblyTools.CurrentAssemblyName}.UI.Resources.InGameButton.png");
     protected override string Tooltip => SingletonMod<Mod>.Instance.ModName + $" ({SavedInputKey.ToLocalizedString("KEYNAME", Config.Instance.ControlPanelHotkey.Encode())})";
 
     protected override void InGameToolButtonToggle(bool isOn) => ControlPanelManager<Mod, ControlPanel>.CallPanel();

@@ -1,20 +1,25 @@
-﻿namespace RebalancedIndustriesRevisited;
-using MbyronModsCommon;
+﻿using CSShared.Manager;
 
-public partial class Manager : SingletonManager<Manager> {
-    public override bool IsInit { get; set; }
+namespace RebalancedIndustriesRevisited;
 
-    public override void Init() {
+public partial class Manager : IManager {
+    public bool IsInit { get; set; }
+
+    public void OnCreated() { }
+
+    public void Update() {
         InitTooltipString();
         InitLoader();
         InitTooltipString();
         IsInit = true;
     }
 
-    public override void DeInit() {
+    public void Reset() {
         DeInitTooltipString();
         DeInitLoader();
         InitTooltipString();
         IsInit = false;
     }
+
+    public void OnReleased() { }
 }
