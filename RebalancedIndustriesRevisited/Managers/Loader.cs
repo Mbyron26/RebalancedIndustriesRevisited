@@ -1,6 +1,8 @@
-﻿namespace RebalancedIndustriesRevisited;
+﻿using CSShared.Debug;
 using System;
 using System.Collections.Generic;
+
+namespace RebalancedIndustriesRevisited;
 
 public partial class Manager {
     private Dictionary<string, ExtractingFacilityProfile> ExtractingFacilityAICache { get; set; }
@@ -53,7 +55,7 @@ public partial class Manager {
             }
         }
         catch (Exception e) {
-            Mod.Log.Error(e, "Rebind prefab failed");
+            LogManager.GetLogger().Error(e, "Rebind prefab failed");
         }
     }
 

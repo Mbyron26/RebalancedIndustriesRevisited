@@ -1,19 +1,23 @@
-﻿namespace RebalancedIndustriesRevisited;
-using RebalancedIndustriesRevisited.UI;
+﻿using CSShared.Extension;
+using CSShared.Manager;
+using CSShared.UI.ControlPanel;
 using ICities;
+using RebalancedIndustriesRevisited.UI;
+
+namespace RebalancedIndustriesRevisited;
 
 public class LoadingExtension : ModLoadingExtension<Mod> {
     public override void LevelLoaded(LoadMode mode) {
         if ((mode == LoadMode.LoadGame || mode == LoadMode.LoadScenario || mode == LoadMode.NewGame || mode == LoadMode.NewGameFromScenario)) {
-            SingletonManager<Manager>.Instance.Init();
-            SingletonTool<ToolButtonManager>.Instance.Init();
-            ControlPanelManager<Mod, ControlPanel>.EventOnVisibleChanged += (_) => SingletonTool<ToolButtonManager>.Instance.UUIButtonIsPressed = _;
+            ManagerPool.GetOrCreateManager<Manager>().Update();
+            ManagerPool.GetOrCreateManager<ToolButtonManager>().Enable();
+            ControlPanelManager<Mod, ControlPanel>.EventOnVisibleChanged += (_) => ManagerPool.GetOrCreateManager<ToolButtonManager>().UUIButtonIsPressed = _;
         }
-        Manager.Instance.ReloadCheck();
+        ManagerPool.GetOrCreateManager<Manager>().ReloadCheck();
     }
 
     public override void LevelUnloading() {
-        SingletonTool<ToolButtonManager>.Instance.DeInit();
-        ControlPanelManager<Mod, ControlPanel>.EventOnVisibleChanged -= (_) => SingletonTool<ToolButtonManager>.Instance.UUIButtonIsPressed = _;
+        ManagerPool.GetOrCreateManager<ToolButtonManager>().Disable();
+        ControlPanelManager<Mod, ControlPanel>.EventOnVisibleChanged -= (_) => ManagerPool.GetOrCreateManager<ToolButtonManager>().UUIButtonIsPressed = _;
     }
 }

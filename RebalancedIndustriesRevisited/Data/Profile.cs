@@ -1,5 +1,7 @@
 ﻿namespace RebalancedIndustriesRevisited;
 using ColossalFramework.UI;
+using CSShared.Debug;
+using CSShared.Manager;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,27 +57,27 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
     }
 
     public void RebindTruckCount() {
-        var factor = SingletonManager<Manager>.Instance.GetWarehouseTruckFactor(AI.m_storageType);
+        var factor = ManagerPool.GetOrCreateManager<Manager>().GetWarehouseTruckFactor(AI.m_storageType);
         NewTruckCount = (int)Math.Ceiling(RawTruckCount * factor);
         NewTruckCount = AI.m_storageCapacity <= MinWarehouseCapacity ? Mathf.Max(1, NewTruckCount) : Mathf.Max(2, NewTruckCount);
         AI.m_truckCount = NewTruckCount;
     }
 
     public void RebindTooltip() {
-        if (SingletonManager<Manager>.Instance.IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
+        if (ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
             var rawTooltip = button.tooltip;
             var newTooltip = rawTooltip;
-            SingletonManager<Manager>.Instance.ModifyTruckCountString(RawTruckCount, AI.m_truckCount, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(RawTruckCount, AI.m_truckCount, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        Mod.Log.Info($"Warehouse | Vehicle count: {RawTruckCount} -> {AI.m_truckCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        LogManager.GetLogger().Info($"Warehouse | Vehicle count: {RawTruckCount} -> {AI.m_truckCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 
 }
@@ -114,7 +116,7 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            Mod.Log.Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
+            LogManager.GetLogger().Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ProcessingFacilityProductionRate);
     }
@@ -143,7 +145,7 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
     }
 
     public void RebindTruckCount() {
-        var truckFactor = SingletonManager<Manager>.Instance.GetTruckFactor(AI.m_outputResource);
+        var truckFactor = ManagerPool.GetOrCreateManager<Manager>().GetTruckFactor(AI.m_outputResource);
         if (truckFactor != 1) {
             AI.m_outputVehicleCount = NewTruckCount = Mathf.Max((int)Math.Ceiling(RawTruckCount * truckFactor), Manager.MinTruckCount);
         }
@@ -154,20 +156,20 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
             TransferManager.TransferReason.Oil or TransferManager.TransferReason.Ore or TransferManager.TransferReason.Logs or TransferManager.TransferReason.Grain => true,
             _ => false
         };
-        if (isIndustry && SingletonManager<Manager>.Instance.IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
+        if (isIndustry && ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
             var rawTooltip = button.tooltip;
             var newTooltip = rawTooltip;
-            SingletonManager<Manager>.Instance.ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        Mod.Log.Info($"Processing Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        LogManager.GetLogger().Info($"Processing Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 }
 
@@ -233,20 +235,20 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
     public void RebindTruckCount() => AI.m_outputVehicleCount = NewTruckCount = Mathf.Max(Mathf.FloorToInt(Config.Instance.UniqueFactoryTruckMultiplierFactor * RawTruckCount), 1);
 
     public void RebindTooltip() {
-        if (SingletonManager<Manager>.Instance.IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
+        if (ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
             var rawTooltip = button.tooltip;
             var newTooltip = rawTooltip;
-            SingletonManager<Manager>.Instance.ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        Mod.Log.Info($"Unique Factory | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        LogManager.GetLogger().Info($"Unique Factory | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 
     public struct UniqueFactoryAIValue {
@@ -291,7 +293,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public void RebindOutputRate() {
         if (RawOutputRate == 0) {
             RawOutputRate = 700;
-            Mod.Log.Info($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
+            LogManager.GetLogger().Info($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
         }
         AI.m_outputRate = NewOutputRate = (int)(RawOutputRate * Config.Instance.ExtractingFacilityProductionRate);
     }
@@ -324,7 +326,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     }
 
     public void RebindTruckCount() {
-        var truckFactor = SingletonManager<Manager>.Instance.GetTruckFactor(AI.m_outputResource);
+        var truckFactor = ManagerPool.GetOrCreateManager<Manager>().GetTruckFactor(AI.m_outputResource);
         if (truckFactor != 1) {
             AI.m_outputVehicleCount = NewTruckCount = Mathf.Max((int)Math.Ceiling(RawTruckCount * truckFactor), Manager.MinTruckCount);
         }
@@ -335,20 +337,20 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             NaturalResourceManager.Resource.Oil or NaturalResourceManager.Resource.Ore or NaturalResourceManager.Resource.Forest or NaturalResourceManager.Resource.Fertility => true,
             _ => false
         };
-        if (isIndustry && SingletonManager<Manager>.Instance.IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
+        if (isIndustry && ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
             var rawTooltip = button.tooltip;
             var newTooltip = rawTooltip;
-            SingletonManager<Manager>.Instance.ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
-            SingletonManager<Manager>.Instance.ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(RawTruckCount, AI.m_outputVehicleCount, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(RawConstructionCost, AI.m_constructionCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(RawMaintenanceCost, AI.m_maintenanceCost, AI, ref newTooltip);
+            ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(RawWorkPlace, NewWorkPlace, ref newTooltip);
             button.tooltip = newTooltip;
-            Mod.Log.Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
+            LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
         }
     }
 
     public override void OutputInfo() {
-        Mod.Log.Info($"Extracting Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Output rate: {RawOutputRate} -> {AI.m_outputRate} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
+        LogManager.GetLogger().Info($"Extracting Facility | Vehicle count: {RawTruckCount} -> {AI.m_outputVehicleCount} | Construction cost: {RawConstructionCost} -> {AI.m_constructionCost} | Output rate: {RawOutputRate} -> {AI.m_outputRate} | Maintenance cost: {RawMaintenanceCost} -> {AI.m_maintenanceCost} | Work space: {RawWorkPlace.UneducatedWorkers} {RawWorkPlace.EducatedWorkers} {RawWorkPlace.WellEducatedWorkers} {RawWorkPlace.HighlyEducatedWorkers} -> {AI.m_workPlaceCount0} {AI.m_workPlaceCount1} {AI.m_workPlaceCount2} {AI.m_workPlaceCount3} | Building: {Name}");
     }
 }
 

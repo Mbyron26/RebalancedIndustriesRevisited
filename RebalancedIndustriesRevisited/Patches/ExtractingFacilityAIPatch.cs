@@ -1,9 +1,11 @@
-﻿namespace RebalancedIndustriesRevisited.Patches;
+﻿using CSShared.Patch;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+
+namespace RebalancedIndustriesRevisited.Patches;
 
 public class ExtractingFacilityAIPatch {
     public static void Patch(HarmonyPatcher harmonyPatcher) {

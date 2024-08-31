@@ -1,5 +1,7 @@
-﻿namespace RebalancedIndustriesRevisited;
+﻿using CSShared.Common;
 using UnityEngine;
+
+namespace RebalancedIndustriesRevisited;
 
 public class Config : SingletonConfig<Config> {
     public bool OriginalValue { get; set; } = true;

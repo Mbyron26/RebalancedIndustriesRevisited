@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+
 namespace RebalancedIndustriesRevisited;
 
 public partial class Manager {

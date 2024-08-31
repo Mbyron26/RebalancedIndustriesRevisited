@@ -5,11 +5,13 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RebalancedIndustriesRevisited", "RebalancedIndustriesRevisited\RebalancedIndustriesRevisited.csproj", "{43CD4B7A-4019-4416-AC25-618E7E2A4E2C}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MbyronModsCommon", "..\..\..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.shproj", "{6C5E0FC8-FBAA-4FA1-AF55-FD675486E4E7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{7455797B-9CAB-4CF8-9D7B-90975F858D56}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ToolButtonShared", "..\..\..\MbyronModsCommon\ToolButtonShared\ToolButtonShared.shproj", "{9645319F-436A-46F3-B8F1-F9A4BBADA080}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CSShared", "..\..\..\CSShared\CSShared\CSShared.shproj", "{9C0013DB-AC35-420D-97BB-F868086E1521}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CSShared.Patch", "..\..\..\CSShared\CSShared.Patch\CSShared.Patch.shproj", "{6727E296-104A-4525-998F-B3ED19029F60}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CSShared.ToolButton", "..\..\..\CSShared\CSShared.ToolButton\CSShared.ToolButton.shproj", "{B8BC3C15-A49C-4116-85AD-617389C4A9FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,16 +34,19 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6C5E0FC8-FBAA-4FA1-AF55-FD675486E4E7} = {7455797B-9CAB-4CF8-9D7B-90975F858D56}
-		{9645319F-436A-46F3-B8F1-F9A4BBADA080} = {7455797B-9CAB-4CF8-9D7B-90975F858D56}
+		{9C0013DB-AC35-420D-97BB-F868086E1521} = {7455797B-9CAB-4CF8-9D7B-90975F858D56}
+		{6727E296-104A-4525-998F-B3ED19029F60} = {7455797B-9CAB-4CF8-9D7B-90975F858D56}
+		{B8BC3C15-A49C-4116-85AD-617389C4A9FD} = {7455797B-9CAB-4CF8-9D7B-90975F858D56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFD2FDF0-2E8F-44C4-9177-6CB744328DBA}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems*{43cd4b7a-4019-4416-ac25-618e7e2a4e2c}*SharedItemsImports = 5
-		..\..\..\MbyronModsCommon\ToolButtonShared\ToolButtonShared.projitems*{43cd4b7a-4019-4416-ac25-618e7e2a4e2c}*SharedItemsImports = 5
-		..\..\..\MbyronModsCommon\MbyronModsCommon\MbyronModsCommon.projitems*{6c5e0fc8-fbaa-4fa1-af55-fd675486e4e7}*SharedItemsImports = 13
-		..\..\..\MbyronModsCommon\ToolButtonShared\ToolButtonShared.projitems*{9645319f-436a-46f3-b8f1-f9a4bbada080}*SharedItemsImports = 13
+		..\..\..\CSShared\CSShared.Patch\CSShared.Patch.projitems*{43cd4b7a-4019-4416-ac25-618e7e2a4e2c}*SharedItemsImports = 5
+		..\..\..\CSShared\CSShared.ToolButton\CSShared.ToolButton.projitems*{43cd4b7a-4019-4416-ac25-618e7e2a4e2c}*SharedItemsImports = 5
+		..\..\..\CSShared\CSShared\CSShared.projitems*{43cd4b7a-4019-4416-ac25-618e7e2a4e2c}*SharedItemsImports = 5
+		..\..\..\CSShared\CSShared.Patch\CSShared.Patch.projitems*{6727e296-104a-4525-998f-b3ed19029f60}*SharedItemsImports = 13
+		..\..\..\CSShared\CSShared\CSShared.projitems*{9c0013db-ac35-420d-97bb-f868086e1521}*SharedItemsImports = 13
+		..\..\..\CSShared\CSShared.ToolButton\CSShared.ToolButton.projitems*{b8bc3c15-a49c-4116-85ad-617389c4a9fd}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

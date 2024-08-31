@@ -1,10 +1,12 @@
-﻿namespace RebalancedIndustriesRevisited;
+﻿using ColossalFramework;
 using ColossalFramework.Globalization;
 using ColossalFramework.UI;
-using ColossalFramework;
+using CSShared.Debug;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+
+namespace RebalancedIndustriesRevisited;
 
 public partial class Manager {
     private const string IndustryFarmingPanel = nameof(IndustryFarmingPanel);
@@ -61,11 +63,11 @@ public partial class Manager {
                 }
             }
             else {
-                Mod.Log.Error($"Couldn't find {panelName}.scrollablePanel");
+                LogManager.GetLogger().Error($"Couldn't find {panelName}.scrollablePanel");
             }
         }
         else {
-            Mod.Log.Error($"Couldn't find {targetPanel}");
+            LogManager.GetLogger().Error($"Couldn't find {targetPanel}");
         }
     }
 

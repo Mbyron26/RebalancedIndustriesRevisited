@@ -1,5 +1,8 @@
-﻿namespace RebalancedIndustriesRevisited.Patches;
+﻿using CSShared.Manager;
+using CSShared.Patch;
 using HarmonyLib;
+
+namespace RebalancedIndustriesRevisited.Patches;
 
 public class WarehouseAIPatch {
     public static void Patch(HarmonyPatcher harmonyPatcher) {
@@ -8,11 +11,11 @@ public class WarehouseAIPatch {
 
     public static bool MaxLoadSizePrefix(WarehouseAI __instance, ref int __result) {
         var storageType = __instance.m_storageType;
-        if (SingletonManager<Manager>.Instance.IsRawMaterial(storageType)) {
+        if (ManagerPool.GetOrCreateManager<Manager>().IsRawMaterial(storageType)) {
             __result = (int)(Config.Instance.RawMaterialsLoadMultiplierFactor * 8000);
             return false;
         }
-        else if (SingletonManager<Manager>.Instance.IsProcessedProduct(storageType)) {
+        else if (ManagerPool.GetOrCreateManager<Manager>().IsProcessedProduct(storageType)) {
             __result = (int)(Config.Instance.ProcessingMaterialsLoadMultiplierFactor * 8000);
             return false;
         }
