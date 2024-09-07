@@ -38,6 +38,9 @@ public class Mod : ModPatcherBase<Mod, Config> {
     };
 
     public override List<ChangelogInfo> Changelog => new() {
+        new ChangelogInfo(new Version(0, 9, 3), new(2024, 9, 7), new List<ChangelogContent> {
+            new(ChangelogFlag.Fixed, "Fixed serialization exception issues."),
+        }),
         new ChangelogInfo(new Version(0, 9, 2), new(2024, 8, 31), new List<ChangelogContent> {
             new(ChangelogFlag.Updated, Localize("Changelog_0_9_2_0")),
             new(ChangelogFlag.Updated, Localize("Changelog_0_9_2_1")),
