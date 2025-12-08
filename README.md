@@ -11,10 +11,12 @@
 - Rebalance extracting facility, processing facilities to make the transfer of materials more rational. It is strongly recommended to use the nearest warehouse for transshipment, which is the most efficient.
 - Rebalance the distribution of workers.
 - Rebalance the cost of construction and maintenance.
-- Allow adjust the output rate of industrial buildings to regulate traffic.
+- Adjust the output rate of industrial buildings to regulate traffic.
 - Warehouses: Warehouse construction costs and maintenance cost for storing grain were cut in half, crops warehouse workers are one-fourth of vanilla, logs, ore, and oil warehouse workers are one-half of vanilla. The premise of balance is that the number of vanilla workers exceeds 10.
 - Processing Facility: Animal Pasture and Cattle Shed cut construction costs and maintenance cost in half, also workers were reduced to 35 percent of vanilla.
 - Extracting Facility: Farming construction and maintenance cost is 25% of vanilla, rebalance the proportion and number of workers
+- Custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.
+- Toggle between mod, game, and custom settings to adjust industrial building properties.
 
 ## Incompatible Mods
 - Rebalanced Industries
