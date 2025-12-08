@@ -1,0 +1,9 @@
+﻿Version 1.0
+[list]
+[*] Updated to support game version 1.20.1
+[*] Updated to CSLModsCommon framework 1.0
+[*] This update automatically resets all settings.
+[*] Added unique factory output rate adjustment options.
+[*] Added custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.
+[*] Added mod default values, game default values, custom options to modify industrial building properties.
+[/list]

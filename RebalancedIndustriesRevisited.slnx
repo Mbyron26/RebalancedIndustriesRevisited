@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Alpha" />
+    <BuildType Name="Beta" />
+    <BuildType Name="Stable" />
+  </Configurations>
+  <Project Path="RebalancedIndustriesRevisited/RebalancedIndustriesRevisited.csproj" />
+</Solution>

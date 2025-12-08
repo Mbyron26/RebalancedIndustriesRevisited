@@ -1,0 +1,60 @@
+﻿[HR][/HR]
+[code][h1]Overview[/h1]
+[list][h2]Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.[/h2][/list]
+[/code]
+
+[img]https://i.imgur.com/0O9w9Ta.png[/img]
+
+[quote]
+[u]New in version 1.0[/u]
+[list]
+[*] Updated to support game version 1.20.1
+[*] Updated to CSLModsCommon framework 1.0
+[*] This update automatically resets all settings.
+[*] Added unique factory output rate adjustment options.
+[*] Added custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.
+[*] Added mod default values, game default values, custom options to modify industrial building properties.
+[/list]
+[/quote]
+
+[HR][/HR] 
+[h1]Functions[/h1]
+[list] 
+[*] Using new algorithm to increase the load of vehicle in industrial zone and further reduce the traffic flow.
+[*] Rebalance extracting facility, processing facilities to make the transfer of materials more rational. It is strongly recommended to use the nearest warehouse for transshipment, which is the most efficient.
+[*] Rebalance the distribution of workers.
+[*] Rebalance the cost of construction and maintenance.
+[*] Allow adjust the output rate of industrial buildings to regulate traffic.
+[*] Warehouses: Warehouse construction costs and maintenance cost for storing grain were cut in half, crops warehouse workers are one-fourth of vanilla, logs, ore, and oil warehouse workers are one-half of vanilla. The premise of balance is that the number of vanilla workers exceeds 10.
+[*] Processing Facility: Animal Pasture and Cattle Shed cut construction costs and maintenance cost in half, also workers were reduced to 35 percent of vanilla.
+[*] Extracting Facility: Farming construction and maintenance cost is 25% of vanilla, rebalance the proportion and number of workers
+[/list]
+
+[HR][/HR] 
+[h1]Incompatible Mods:[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2881031511][img]https://imgur.com/mzpNwS8.png[/img][/url]
+[list] 
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1562650024]Rebalanced Industries[/url] - With this mod you no longer need Rebalanced Industries.
+[/list]
+
+[HR][/HR] 
+[h1]Known issues:[/h1]
+[list] 
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1369729955&searchtext=customize+it]Customize It![/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1806759255]Customize It Extended[/url] - Rebalanced Industries Revisited will no longer be detected in these two mods, so the properties of industrial buildings can be adjusted and the properties of industrial buildings will be reset when game reoaded, so please do not attempt to modify the properties of industrial buildings. Based on Customize It Extended's performance and compatibility issues, I'll consider rewrite Customize It Extended with a more efficient working mode later.
+[/list]
+
+[HR][/HR] 
+[h1]Language support:[/h1]
+If you would like to help add your language to this mod, please go to [url=https://crowdin.com/project/rebalanced-industries-revisite]Rebalanced Industries Revisited localize[/url] and [url=https://crowdin.com/project/mbyronmodcommonlocale]Common localize[/url]
+
+[HR][/HR]
+[h1]Discussion and feedback:[/h1]
+[url=https://discord.gg/ZxbyzmvGxG][img]https://i.imgur.com/bnDNN2x.png[/img][/url]
+
+[HR][/HR]
+[h1]Source code:[/h1]
+[url=https://github.com/Mbyron26/RebalancedIndustriesRevisited][img]https://i.imgur.com/DczUXYq.png[/img][/url]
+
+[HR][/HR] 
+[h1]Thank you for your help and support:[/h1]
+Special thanks to [url=https://steamcommunity.com/id/quboid/myworkshopfiles/?appid=255710]Quboid[/url] and his Rebalanced Industries mod, [url=https://steamcommunity.com/profiles/76561198050938697]Quistar[/url], [url=https://steamcommunity.com/profiles/76561197968592937]algernon[/url], [url=https://steamcommunity.com/profiles/76561198063330220]macsergey[/url], [url=https://steamcommunity.com/id/chameleon_tbn]Chamëleon TBN[/url], all testers who helped test this mod and all translators who have added/improved translations to this mod.
