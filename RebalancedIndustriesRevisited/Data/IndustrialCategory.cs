@@ -5,5 +5,6 @@ public enum IndustrialCategory {
     Farming,
     Ore,
     Oil,
+    Fishing,
     Unknown
 }

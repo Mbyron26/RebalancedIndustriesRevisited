@@ -24,23 +24,26 @@ public class FacilityManager : ManagerBase, ISerializable {
     private Dictionary<string, UniqueFactoryProfile> _uniqueFacilityModifies = new();
     private Dictionary<string, WarehouseProfile> _warehouseModifies = new();
     private Dictionary<string, MainIndustryBuildingProfile> _mainIndustryBuildingModifies = new();
+    private Dictionary<string, FishingHarborProfile> _fishingHarborModifies = new();
 
     private List<ExtractingFacilityProfile> ExtractingFacilityPrefabBuffer { get; set; }
     private List<ProcessingFacilityProfile> ProcessingFacilityPrefabBuffer { get; set; }
     private List<UniqueFactoryProfile> UniqueFacilityPrefabBuffer { get; set; }
     private List<WarehouseProfile> WarehousePrefabBuffer { get; set; }
     private List<MainIndustryBuildingProfile> MainIndustryPrefabBuffer { get; set; }
-    
+    private List<FishingHarborProfile> FishingHarborProfileBuffer { get; set; }
+
     protected override void OnCreate() {
         base.OnCreate();
         _settingManager = Domain.GetOrCreateManager<SettingManager>();
         _modSetting = _settingManager.GetSetting<ModSetting>();
         _inGameToolButtonManager = Domain.GetOrCreateManager<InGameToolButtonManager>();
-        ExtractingFacilityPrefabBuffer = new List<ExtractingFacilityProfile>();
-        ProcessingFacilityPrefabBuffer = new List<ProcessingFacilityProfile>();
-        UniqueFacilityPrefabBuffer = new List<UniqueFactoryProfile>();
-        WarehousePrefabBuffer = new List<WarehouseProfile>();
-        MainIndustryPrefabBuffer = new List<MainIndustryBuildingProfile>();
+        ExtractingFacilityPrefabBuffer = [];
+        ProcessingFacilityPrefabBuffer = [];
+        UniqueFacilityPrefabBuffer = [];
+        WarehousePrefabBuffer = [];
+        MainIndustryPrefabBuffer = [];
+        FishingHarborProfileBuffer = [];
         _keyBindingManager = Domain.GetOrCreateManager<KeyBindingManager>();
     }
 
@@ -68,14 +71,34 @@ public class FacilityManager : ManagerBase, ISerializable {
         var buildingManager = Singleton<BuildingManager>.instance;
         var building = WorldInfoPanel.GetCurrentInstanceID().Building;
         var buildingAI = buildingManager.m_buildings.m_buffer[building].Info.m_buildingAI;
-        return buildingAI switch {
-            ExtractingFacilityAI => ExtractingFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name),
-            UniqueFactoryAI => UniqueFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name),
-            ProcessingFacilityAI => ProcessingFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name),
-            WarehouseAI => WarehousePrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name),
-            MainIndustryBuildingAI => MainIndustryPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name),
-            _ => null
-        };
+        if (buildingAI is null)
+            return null;
+        var type = buildingAI.GetType();
+        if (type == typeof(ExtractingFacilityAI)) {
+            return ExtractingFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        if (type == typeof(UniqueFactoryAI)) {
+            return UniqueFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        if (type == typeof(ProcessingFacilityAI)) {
+            return ProcessingFacilityPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        if (type == typeof(WarehouseAI)) {
+            return WarehousePrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        if (type == typeof(MainIndustryBuildingAI)) {
+            return MainIndustryPrefabBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        if (type == typeof(FishingHarborAI)) {
+            return FishingHarborProfileBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
+        }
+
+        return null;
     }
 
     public void SetCargoCapacity(Vehicle data, ref CargoTruckAI cargoTruckAI) {
@@ -100,6 +123,24 @@ public class FacilityManager : ManagerBase, ISerializable {
         _ => NaturalResource.None,
     };
 
+    public void ModifyUniqueFactoryProductionRate() {
+        foreach (var uniqueFactoryProfile in UniqueFacilityPrefabBuffer) {
+            uniqueFactoryProfile?.ModifyProductionRate(_modSetting.UniqueFacilityProductionRateMultiplier);
+        }
+    }
+
+    public void ModifyExtractingFacilityProductionRate() {
+        foreach (var extractingFacilityProfile in ExtractingFacilityPrefabBuffer) {
+            extractingFacilityProfile?.ModifyProductionRate(_modSetting.ExtractingFacilityProductionRateMultiplier);
+        }
+    }
+
+    public void ModifyProcessingFacilityProductionRate() {
+        foreach (var processingFacilityProfile in ProcessingFacilityPrefabBuffer) {
+            processingFacilityProfile?.ModifyProductionRate(_modSetting.ProcessingFacilityProductionRateMultiplier);
+        }
+    }
+
     public void Serialize(IWriter writer) {
         using var performanceCounter = PerformanceCounter.Start(c => Logger.Debug($"Serialize time spent: {c.ReportMilliseconds}"));
 
@@ -108,6 +149,7 @@ public class FacilityManager : ManagerBase, ISerializable {
         _uniqueFacilityModifies.Clear();
         _warehouseModifies.Clear();
         _mainIndustryBuildingModifies.Clear();
+        _fishingHarborModifies.Clear();
 
         foreach (var extractingFacilityProfile in ExtractingFacilityPrefabBuffer) {
             extractingFacilityProfile.Validate();
@@ -144,12 +186,20 @@ public class FacilityManager : ManagerBase, ISerializable {
             }
         }
 
+        foreach (var fishingHarborProfile in FishingHarborProfileBuffer) {
+            fishingHarborProfile.Validate();
+            if (fishingHarborProfile.Customized) {
+                _fishingHarborModifies.Add(fishingHarborProfile.Name, fishingHarborProfile);
+            }
+        }
+
         writer.StartWrite("FacilitySetting", "FacilitySetting");
         writer.WriteProperty(nameof(_extractingFacilityModifies), _extractingFacilityModifies);
         writer.WriteProperty(nameof(_processingFacilityModifies), _processingFacilityModifies);
         writer.WriteProperty(nameof(_uniqueFacilityModifies), _uniqueFacilityModifies);
         writer.WriteProperty(nameof(_warehouseModifies), _warehouseModifies);
         writer.WriteProperty(nameof(_mainIndustryBuildingModifies), _mainIndustryBuildingModifies);
+        writer.WriteProperty(nameof(_fishingHarborModifies), _fishingHarborModifies);
         writer.EndWrite();
     }
 
@@ -162,65 +212,107 @@ public class FacilityManager : ManagerBase, ISerializable {
         reader.GetProperty(nameof(_uniqueFacilityModifies), ref _uniqueFacilityModifies);
         reader.GetProperty(nameof(_warehouseModifies), ref _warehouseModifies);
         reader.GetProperty(nameof(_mainIndustryBuildingModifies), ref _mainIndustryBuildingModifies);
+        reader.GetProperty(nameof(_fishingHarborModifies), ref _fishingHarborModifies);
         reader.EndRead();
 
         for (uint i = 0; i < PrefabCollection<BuildingInfo>.LoadedCount(); i++) {
             var loaded = PrefabCollection<BuildingInfo>.GetLoaded(i);
-            if (loaded is null || loaded.m_class.m_service != ItemClass.Service.PlayerIndustry || loaded.m_buildingAI is null) continue;
+            if (loaded == null || loaded.m_class == null) continue;
+            if (loaded.m_class.m_service != ItemClass.Service.PlayerIndustry && loaded.m_class.m_service != ItemClass.Service.Fishing) continue;
             var ai = loaded.m_buildingAI;
-            switch (ai) {
-                case ExtractingFacilityAI extractingFacilityAI: {
-                    var profile = new ExtractingFacilityProfile(extractingFacilityAI);
-                    if (_extractingFacilityModifies.TryGetValue(profile.Name, out var modifies))
-                        profile.SetFromLoadData(modifies);
-                    else
-                        profile.SetFromModData();
-                    ExtractingFacilityPrefabBuffer.Add(profile);
-                    Logger.Debug($"Added extracting facility prefab to buffer: {profile.Name}");
-                    break;
-                }
-                case UniqueFactoryAI uniqueFactoryAI: {
-                    var profile = new UniqueFactoryProfile(uniqueFactoryAI);
-                    if (_uniqueFacilityModifies.TryGetValue(profile.Name, out var modifies))
-                        profile.SetFromLoadData(modifies);
-                    else
-                        profile.SetFromModData();
-                    UniqueFacilityPrefabBuffer.Add(profile);
+            if (ai == null) continue;
+            var type = ai.GetType();
 
-                    Logger.Debug($"Added unique factory prefab to buffer: {profile.Name} {uniqueFactoryAI.m_info.name}");
+            if (type == typeof(ExtractingFacilityAI)) {
+                var extractingFacilityAI = ai as ExtractingFacilityAI;
+                if (extractingFacilityAI == null) continue;
 
-                    break;
+                var profile = new ExtractingFacilityProfile((ExtractingFacilityAI)ai);
+                if (_extractingFacilityModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else {
+                    profile.SetFromModData();
+                    profile.ModifyProductionRate(_modSetting.ExtractingFacilityProductionRateMultiplier);
                 }
-                case ProcessingFacilityAI processingFacilityAI: {
-                    var profile = new ProcessingFacilityProfile(processingFacilityAI);
-                    if (_processingFacilityModifies.TryGetValue(profile.Name, out var modifies))
-                        profile.SetFromLoadData(modifies);
-                    else
-                        profile.SetFromModData();
-                    ProcessingFacilityPrefabBuffer.Add(profile);
-                    Logger.Debug($"Added processing facility prefab to buffer: {profile.Name}");
-                    break;
+
+                ExtractingFacilityPrefabBuffer.Add(profile);
+                Logger.Debug($"Added extracting facility prefab to buffer: {profile.Name}");
+                continue;
+            }
+
+            if (type == typeof(UniqueFactoryAI)) {
+                var uniqueFactoryAI = ai as UniqueFactoryAI;
+                if (uniqueFactoryAI == null) continue;
+                var profile = new UniqueFactoryProfile((UniqueFactoryAI)ai);
+                if (_uniqueFacilityModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else {
+                    profile.SetFromModData();
+                    profile.ModifyProductionRate(_modSetting.UniqueFacilityProductionRateMultiplier);
                 }
-                case WarehouseAI warehouseAI: {
-                    var profile = new WarehouseProfile(warehouseAI);
-                    if (_warehouseModifies.TryGetValue(profile.Name, out var modifies))
-                        profile.SetFromLoadData(modifies);
-                    else
-                        profile.SetFromModData();
-                    WarehousePrefabBuffer.Add(profile);
-                    Logger.Info($"Added warehouse prefab to buffer: {profile.Name}");
-                    break;
+
+                UniqueFacilityPrefabBuffer.Add(profile);
+                Logger.Debug($"Added unique factory prefab to buffer: {profile.Name} {ai.m_info.name}");
+                continue;
+            }
+
+            if (type == typeof(ProcessingFacilityAI)) {
+                var processingFacilityAI = ai as ProcessingFacilityAI;
+                if (processingFacilityAI == null) continue;
+
+                var profile = new ProcessingFacilityProfile((ProcessingFacilityAI)ai);
+                if (_processingFacilityModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else {
+                    profile.SetFromModData();
+                    profile.ModifyProductionRate(_modSetting.ProcessingFacilityProductionRateMultiplier);
                 }
-                case MainIndustryBuildingAI mainIndustryBuildingAI: {
-                    var profile = new MainIndustryBuildingProfile(mainIndustryBuildingAI);
-                    if (_mainIndustryBuildingModifies.TryGetValue(profile.Name, out var modifies))
-                        profile.SetFromLoadData(modifies);
-                    else
-                        profile.SetModDefaults();
-                    MainIndustryPrefabBuffer.Add(profile);
-                    Logger.Debug($"Added main industry building prefab to buffer: {profile.Name}");
-                    break;
-                }
+
+                ProcessingFacilityPrefabBuffer.Add(profile);
+                Logger.Debug($"Added processing facility prefab to buffer: {profile.Name}");
+                continue;
+            }
+
+            if (type == typeof(WarehouseAI)) {
+                var warehouseAI = ai as WarehouseAI;
+                if (warehouseAI == null) continue;
+
+                var profile = new WarehouseProfile((WarehouseAI)ai);
+                if (_warehouseModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else
+                    profile.SetFromModData();
+                WarehousePrefabBuffer.Add(profile);
+                Logger.Info($"Added warehouse prefab to buffer: {profile.Name}");
+                continue;
+            }
+
+            if (type == typeof(MainIndustryBuildingAI)) {
+                var mainIndustryBuildingAI = ai as MainIndustryBuildingAI;
+                if (mainIndustryBuildingAI == null) continue;
+
+                var profile = new MainIndustryBuildingProfile((MainIndustryBuildingAI)ai);
+                if (_mainIndustryBuildingModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else
+                    profile.SetModDefaults();
+                MainIndustryPrefabBuffer.Add(profile);
+                Logger.Debug($"Added main industry building prefab to buffer: {profile.Name}");
+                continue;
+            }
+
+            if (type == typeof(FishingHarborAI)) {
+                var fishingHarborAI = ai as FishingHarborAI;
+                if (fishingHarborAI == null) continue;
+
+                var profile = new FishingHarborProfile((FishingHarborAI)ai);
+                if (_fishingHarborModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else
+                    profile.SetModDefaults();
+                FishingHarborProfileBuffer.Add(profile);
+                Logger.Debug($"Added fishing harbor prefab to buffer: {profile.Name}");
+                continue;
             }
         }
     }

@@ -58,15 +58,14 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
         }
     }
 
-    public UniqueFactoryProfile() { }
-
     public UniqueFactoryProfile(UniqueFactoryAI prefab) {
         Prefab = prefab;
         GetPrefab();
     }
 
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
 
-    public override void GetPrefab() {
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
@@ -108,8 +107,6 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
             Customized = false;
     }
 
-    public void RebindParameter() { }
-
     public override void SetFromModData() {
         if (ProfileValue.CostsFactor != 1)
             ModDefaultMaintenanceCost = CustomizedMaintenanceCost = ProfileValue.CostsFactor * 100 / 16;
@@ -124,22 +121,11 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
         Prefab.m_workPlaceCount3 = CustomizedWorkPlace.HighlyEducatedWorkers;
     }
 
-    // public void RebindTooltip() {
-    //     if (ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
-    //         var rawTooltip = button.tooltip;
-    //         var newTooltip = rawTooltip;
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(TruckCount, Prefab.m_outputVehicleCount, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(ConstructionCost, Prefab.m_constructionCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(MaintenanceCost, Prefab.m_maintenanceCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(WorkPlace, CustomizedWorkPlace, ref newTooltip);
-    //         button.tooltip = newTooltip;
-    //         // LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
-    //     }
-    // }
-
     public override void OutputInfo() {
         LogManager.GetLogger().Info($"Unique Factory | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
+
+    public void ModifyProductionRate(float factor) => ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * factor);
 
     public struct UniqueFactoryAIValue {
         public int CostsFactor;

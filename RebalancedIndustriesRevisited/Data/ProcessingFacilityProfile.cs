@@ -6,11 +6,10 @@ using UnityEngine;
 namespace RebalancedIndustriesRevisited.Data;
 
 public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
+    private static string[] ProcessorField { get; } = ["Animal Pasture 01", "Animal Pasture 02", "Cattle Shed 01"];
+
     public override FacilityType BuildingType => FacilityType.ProcessingFacility;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
-
-    public static string[] ProcessorField { get; } = { "Animal Pasture 01", "Animal Pasture 02", "Cattle Shed 01" };
-    public float ProcessingFacilityProductionRate => 0.5f;
 
     public override int CustomizedConstructionCost {
         get => _customizedConstructionCost;
@@ -61,14 +60,14 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
         }
     }
 
-    public ProcessingFacilityProfile() { }
-
     public ProcessingFacilityProfile(ProcessingFacilityAI prefab) {
         Prefab = prefab;
         GetPrefab();
     }
 
-    public override void GetPrefab() {
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
+        
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
@@ -103,35 +102,17 @@ public class ProcessingFacilityProfile : ProfileBase<ProcessingFacilityAI> {
             Logger.Error($"Processing facility raw output raw is zero, fixed to 700, building: {Name}");
         }
 
-        ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * ProcessingFacilityProductionRate);
         if (!IsSpecificBuilding())
             return;
         var workersFactor = 0.35m;
         ModDefaultWorkPlace = CustomizedWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount3 * workersFactor)));
     }
 
-    private bool IsSpecificBuilding() {
-        return ProcessorField.Any(s => s == Name);
-    }
-
-    // public void RebindTooltip() {
-    //     var isIndustry = Prefab.m_inputResource1 switch {
-    //         TransferManager.TransferReason.Oil or TransferManager.TransferReason.Ore or TransferManager.TransferReason.Logs or TransferManager.TransferReason.Grain => true,
-    //         _ => false
-    //     };
-    //     if (isIndustry && ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
-    //         var rawTooltip = button.tooltip;
-    //         var newTooltip = rawTooltip;
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(TruckCount, Prefab.m_outputVehicleCount, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(ConstructionCost, Prefab.m_constructionCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(MaintenanceCost, Prefab.m_maintenanceCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(WorkPlace, CustomizedWorkPlace, ref newTooltip);
-    //         button.tooltip = newTooltip;
-    //         // LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
-    //     }
-    // }
-
     public override void OutputInfo() {
         Logger.Info($"Processing Facility | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
+
+    public void ModifyProductionRate(float factor) => ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * factor);
+
+    private bool IsSpecificBuilding() => ProcessorField.Any(s => s == Name);
 }

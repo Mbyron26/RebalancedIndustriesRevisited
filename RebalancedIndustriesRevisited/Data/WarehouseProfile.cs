@@ -40,14 +40,6 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         }
     }
 
-    public override int CustomizedOutputRate {
-        get => _customizedOutputRate;
-        set {
-            _customizedOutputRate = value;
-            Validate();
-        }
-    }
-
     public override WorkPlace CustomizedWorkPlace {
         get => _customizedWorkPlace;
         set {
@@ -72,7 +64,9 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         GetPrefab();
     }
 
-    public override void GetPrefab() {
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
+
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
@@ -118,20 +112,6 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         };
         if (CustomizedWorkPlace.Sum() > 10) ModDefaultWorkPlace = CustomizedWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(CustomizedWorkPlace.UneducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.EducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.WellEducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.HighlyEducatedWorkers / workPlaceFactor)));
     }
-
-
-    // public void RebindTooltip() {
-    //     if (ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
-    //         var rawTooltip = button.tooltip;
-    //         var newTooltip = rawTooltip;
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(TruckCount, Prefab.m_truckCount, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(ConstructionCost, Prefab.m_constructionCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(MaintenanceCost, Prefab.m_maintenanceCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(WorkPlace, CustomizedWorkPlace, ref newTooltip);
-    //         button.tooltip = newTooltip;
-    //         // LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
-    //     }
-    // }
 
     public override void OutputInfo() {
         LogManager.GetLogger().Info($"Warehouse | Vehicle count: {TruckCount} -> {Prefab.m_truckCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");

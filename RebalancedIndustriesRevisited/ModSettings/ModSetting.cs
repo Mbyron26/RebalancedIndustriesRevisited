@@ -10,6 +10,9 @@ public class ModSetting : ModSettingBase {
 
     public float RawMaterialsLoadMultiplierFactor { get; set; } = 2f;
     public float ProcessingMaterialsLoadMultiplierFactor { get; set; } = 2f;
+    public float ExtractingFacilityProductionRateMultiplier { get; set; } = 0.5f;
+    public float ProcessingFacilityProductionRateMultiplier { get; set; } = 0.5f;
+    public float UniqueFacilityProductionRateMultiplier { get; set; } = 1f;
 
     public KeyBinding ControlPanelToggle { get; set; } = new(new KeyCombination(KeyCode.R, true, true, false));
 

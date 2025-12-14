@@ -8,8 +8,6 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public override FacilityType BuildingType => FacilityType.ExtractingFacility;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
 
-    public float ExtractingFacilityProductionRate => 0.5f;
-
     public override int CustomizedConstructionCost {
         get => _customizedConstructionCost;
         set {
@@ -59,14 +57,14 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
         }
     }
 
-    public ExtractingFacilityProfile() { }
-
     public ExtractingFacilityProfile(ExtractingFacilityAI prefab) {
         Prefab = prefab;
         GetPrefab();
     }
 
-    public override void GetPrefab() {
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
+        
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
@@ -85,11 +83,16 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public override void Validate() {
         if (ModDefaultConstructionCost != CustomizedConstructionCost || ModDefaultMaintenanceCost != CustomizedMaintenanceCost || ModDefaultTruckCount != CustomizedTruckCount || ModDefaultOutputRate != CustomizedOutputRate || ModDefaultWorkPlace != CustomizedWorkPlace) {
             Customized = true;
-        }else {
+        }
+        else {
             Customized = false;
         }
     }
     
+    public override void OutputInfo() {
+        Logger.Info($"Extracting Facility | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Output rate: {OutputRate} -> {Prefab.m_outputRate} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
+    }
+
     public override void SetFromModData() {
         ModDefaultConstructionCost = CustomizedConstructionCost = (int)Math.Ceiling(ConstructionCost * GetCostFactor());
         ModDefaultMaintenanceCost = CustomizedMaintenanceCost = (int)Math.Ceiling(MaintenanceCost * GetCostFactor());
@@ -98,8 +101,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             OutputRate = 700;
             Logger.Info($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
         }
-
-        ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * ExtractingFacilityProductionRate);
+        
         if (Prefab.m_outputResource == TransferManager.TransferReason.Grain) {
             var workPlace = new WorkPlace(2, 4, 1, 0);
             var workPlaceSum = (int)Math.Ceiling(Math.Sqrt(Prefab.m_info.m_cellLength * Prefab.m_info.m_cellWidth) / 2);
@@ -108,33 +110,12 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             }
         }
         else {
-            var workersFactor = 0.5m;
+            const decimal workersFactor = 0.5m;
             ModDefaultWorkPlace = CustomizedWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount0 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount1 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount2 * workersFactor)), Convert.ToInt32(Math.Round(Prefab.m_workPlaceCount3 * workersFactor)));
         }
     }
 
+    public void ModifyProductionRate(float factor) => ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * factor);
+
     private decimal GetCostFactor() => Prefab.m_outputResource == TransferManager.TransferReason.Grain ? 0.25m : 1m;
-
-    // [Obsolete]
-    // public void RebindTooltip() {
-    //     var isIndustry = Prefab.NaturalResourceType switch {
-    //         NaturalResourceManager.Resource.Oil or NaturalResourceManager.Resource.Ore or NaturalResourceManager.Resource.Forest or NaturalResourceManager.Resource.Fertility => true,
-    //         _ => false
-    //     };
-    //     if (isIndustry && ManagerPool.GetOrCreateManager<Manager>().IndustryPanelButtons.TryGetValue(Name, out UIButton button)) {
-    //         var rawTooltip = button.tooltip;
-    //         var newTooltip = rawTooltip;
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyTruckCountString(TruckCount, Prefab.m_outputVehicleCount, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyConstructionCostString(ConstructionCost, Prefab.m_constructionCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyMaintenanceCostString(MaintenanceCost, Prefab.m_maintenanceCost, Prefab, ref newTooltip);
-    //         ManagerPool.GetOrCreateManager<Manager>().ModifyWorkSpaceString(WorkPlace, CustomizedWorkPlace, ref newTooltip);
-    //         button.tooltip = newTooltip;
-    //
-    //         // LogManager.GetLogger().Info($"Rebinding {Name} tooltip:\n{rawTooltip} -> \n{button.tooltip}\n");
-    //     }
-    // }
-
-    public override void OutputInfo() {
-        Logger.Info($"Extracting Facility | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Output rate: {OutputRate} -> {Prefab.m_outputRate} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
-    }
 }

@@ -7,6 +7,26 @@ namespace RebalancedIndustriesRevisited.Localization;
 
 public static class Translations {
     /// <summary>
+    /// Production Rate Multiplier
+    /// </summary>
+    public static string ProductionRateMultiplier => LocalizationManager.Localize("ProductionRateMultiplier");
+
+    /// <summary>
+    /// Adjusts the production rate. Higher values make industries produce goods faster, but may also increase traffic congestion. This setting affects all industries (Mod default).
+    /// </summary>
+    public static string ProductionRateMultiplierDescription => LocalizationManager.Localize("ProductionRateMultiplierDescription");
+
+    /// <summary>
+    /// Boat Count
+    /// </summary>
+    public static string BoatCount => LocalizationManager.Localize("BoatCount");
+
+    /// <summary>
+    /// Fishing Harbor
+    /// </summary>
+    public static string FishingHarbor => LocalizationManager.Localize("FishingHarbor");
+
+    /// <summary>
     /// Reset customized industries settings completed.
     /// </summary>
     public static string ResetCompleted => LocalizationManager.Localize("ResetCompleted");
