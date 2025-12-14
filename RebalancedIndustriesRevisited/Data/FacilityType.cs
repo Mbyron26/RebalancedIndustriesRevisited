@@ -5,5 +5,6 @@ public enum FacilityType {
     ProcessingFacility,
     UniqueFacility,
     WarehouseFacility,
-    MainIndustryBuilding
+    MainIndustryBuilding,
+    FishingHarbor,
 }

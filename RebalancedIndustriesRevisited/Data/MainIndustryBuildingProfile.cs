@@ -35,14 +35,14 @@ public class MainIndustryBuildingProfile : ProfileBase<MainIndustryBuildingAI> {
     public override FacilityType BuildingType => FacilityType.MainIndustryBuilding;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
 
-    public MainIndustryBuildingProfile() { }
-
     public MainIndustryBuildingProfile(MainIndustryBuildingAI prefab) {
         Prefab = prefab;
         GetPrefab();
     }
 
-    public override void GetPrefab() {
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
+
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;

@@ -13,7 +13,6 @@ public class GameInfoPanelManager : ManagerBase {
     private UIButton _cityServiceWorldInfoPanelButton;
     private InGameToolButtonManager _inGameToolButtonManager;
 
-
     public bool CityServiceWorldInfoPanelButtonVisible {
         get => _cityServiceWorldInfoPanelButton.isVisible;
         set {
@@ -51,8 +50,16 @@ public class GameInfoPanelManager : ManagerBase {
 
         var building = Singleton<BuildingManager>.instance.m_buildings.m_buffer[currentInstanceId.Building];
         var buildingInfo = building.Info;
-        if (buildingInfo.m_class.m_subService is ItemClass.SubService.PlayerIndustryFarming or ItemClass.SubService.PlayerIndustryForestry or ItemClass.SubService.PlayerIndustryOil or ItemClass.SubService.PlayerIndustryOre) {
-            CityServiceWorldInfoPanelButtonVisible = true;
+        var buildingAIType = buildingInfo.m_buildingAI.GetType();
+        if (buildingInfo.m_class.m_subService is ItemClass.SubService.PlayerIndustryFarming or ItemClass.SubService.PlayerIndustryForestry or ItemClass.SubService.PlayerIndustryOil or ItemClass.SubService.PlayerIndustryOre || buildingInfo.m_buildingAI is not null && buildingAIType == typeof(FishingHarborAI)) {
+            // Campus Industries Housing Mod Compatibility
+            var aiName = buildingAIType.Name;
+            if (buildingAIType == typeof(AuxiliaryBuildingAI) || aiName == "DormsAI" || aiName == "BarracksAI") {
+                CityServiceWorldInfoPanelButtonVisible = false;
+            }
+            else {
+                CityServiceWorldInfoPanelButtonVisible = true;
+            }
         }
         else {
             CityServiceWorldInfoPanelButtonVisible = false;

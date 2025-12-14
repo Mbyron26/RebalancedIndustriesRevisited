@@ -45,6 +45,8 @@ public class WorkPlace : IEquatable<WorkPlace> {
         return to;
     }
 
+    public string SimpleString() => $"{UneducatedWorkers} {EducatedWorkers} {WellEducatedWorkers} {HighlyEducatedWorkers}";
+
     public bool Equals(WorkPlace other) {
         return Equals(this, other);
     }

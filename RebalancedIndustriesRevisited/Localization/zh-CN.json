@@ -1,4 +1,8 @@
 {
+  "ProductionRateMultiplier": "生产速率倍数",
+  "ProductionRateMultiplierDescription": "调整生产速率。较高的数值使工业生产货物更快，但也可能增加交通堵塞。此设置影响到所有行业(模组默认)。",
+  "BoatCount": "船数",
+  "FishingHarbor": "渔港",
   "ResetCompleted": "重置自定义工业设置完成。",
   "SureToResetCustomizedIndustriesSettings": "将重置所有自定义工业设置为默认值。此操作无法撤销。您确定要继续吗？",
   "NoCustomizedIndustriesSettings": "未找到自定义工业设置。",
@@ -36,5 +40,10 @@
   "Changelog_v1_0_0_Attention": "此更新将自动重置所有设置。",
   "Changelog_v1_0_0_Added": "添加独特的工厂产出速率调整选项。",
   "Changelog_v1_0_0_Added1": "增加工业建筑物的自定义属性，包括建造费用、维修费用、卡车数量、产出率、工作岗位和贮存容量。",
-  "Changelog_v1_0_0_Added2": "添加模组默认值、游戏默认值、自定义选项以修改工业建筑属性。"
+  "Changelog_v1_0_0_Added2": "添加模组默认值、游戏默认值、自定义选项以修改工业建筑属性。",
+  "Changelog_v1_0_1_Added": "添加开采设施、加工设施和独特工厂的全局生产速率倍率调整(模组默认)。",
+  "Changelog_v1_0_1_Added1": "添加了Campus Industries Housing Mod 模组的兼容性支持。",
+  "Changelog_v1_0_1_Added2": "添加了对渔船港建筑的支持。",
+  "Changelog_v1_0_1_Fixed": "修复了在某些不可用工业建筑上仍然显示入口按钮的问题。",
+  "Changelog_v1_0_1_Fixed1": "修复了一个潜在可能导致模组无法工作的问题。"
 }

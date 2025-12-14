@@ -13,7 +13,7 @@ namespace RebalancedIndustriesRevisited.Managers;
 public class ModManager : PatchModManagerBase {
     public override string ModName => "Rebalanced Industries Revisited";
     public override string RowDescription => "Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.";
-    public override DateTime VersionDate { get; } = new(2025, 12, 8);
+    public override DateTime VersionDate { get; } = new(2025, 12, 14);
     public override string ModTranslationURL => "https://crowdin.com/project/rebalanced-industries-revisite";
     public override string ModSteamURL => "https://steamcommunity.com/sharedfiles/filedetails/?id=2911178252";
 
@@ -49,8 +49,9 @@ public class ModManager : PatchModManagerBase {
         rule.Add("CSL_RebalancedIndustriesDistricts", IncompatibilityModLevel.EnableNotAllowed, "Rebalanced Industries");
     }
 
-    protected override List<ChangelogCollection> GenerateChangelogs() => new() {
+    protected override List<ChangelogCollection> GenerateChangelogs() => [
+        new(new Version(1, 0, 1), new DateTime(2025, 12, 14)),
         new ChangelogCollection(new Version(1, 0, 0), new DateTime(2025, 12, 8)).AddEntry(ChangelogFlag.Updated, new FormattedString(nameof(SharedTranslations.UpdatedToCSLModsCommon), "1.0"))
-            .AddEntry(ChangelogFlag.Updated, new FormattedString(nameof(SharedTranslations.UpdatedToGameVersion), "1.20.1")),
-    };
+            .AddEntry(ChangelogFlag.Updated, new FormattedString(nameof(SharedTranslations.UpdatedToGameVersion), "1.20.1"))
+    ];
 }

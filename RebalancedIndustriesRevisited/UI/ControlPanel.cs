@@ -37,6 +37,11 @@ internal class ControlPanel : ControlPanelBase {
     private Label _rawMaterialsLoadMultiplierFactorHeaderElement;
     private Label _processingMaterialsLoadMultiplierFactorHeaderElement;
     private SettingsSection _facilityPropertiesSection;
+    private IntValueField _customizedBoatCountField;
+    private Label _extractingFacilityProductionRateHeaderElement;
+    private Label _processingFacilityProductionRateHeaderElement;
+    private Label _uniqueFacilityProductionRateHeaderElement;
+    private Label _outputRateDescriptionElement;
 
     private Vector2 SliderSize { get; } = new(388, 16);
 
@@ -50,7 +55,7 @@ internal class ControlPanel : ControlPanelBase {
 
     protected override void OnAwake() {
         base.OnAwake();
-        
+
         FillCustomizationPage();
         FillGeneralPage();
     }
@@ -82,6 +87,7 @@ internal class ControlPanel : ControlPanelBase {
                     IndustrialCategory.Ore => "SubBarIndustryOre",
                     IndustrialCategory.Forestry => "SubBarIndustryForestry",
                     IndustrialCategory.Farming => "SubBarIndustryFarming",
+                    IndustrialCategory.Fishing => "SubBarIndustryFishing",
                     _ => string.Empty
                 });
                 v.Control.BgColors.SetValues(UIColors.White);
@@ -117,11 +123,17 @@ internal class ControlPanel : ControlPanelBase {
         }
 
         if (_profile.BuildingType != FacilityType.WarehouseFacility && _profile.BuildingType != FacilityType.MainIndustryBuilding) {
-            _outputRateField = _facilityPropertiesSection.AddIntField(Translations.OutputRate, GetMinorText(_profile.OutputRate, _profile.ModDefaultOutputRate), _profile.CustomizedOutputRate, 0, 50000, 100, v => _profile.CustomizedOutputRate = v).Control;
+            if (_profile.BuildingType != FacilityType.FishingHarbor)
+                _outputRateField = _facilityPropertiesSection.AddIntField(Translations.OutputRate, GetMinorText(_profile.OutputRate, _profile.ModDefaultOutputRate), _profile.CustomizedOutputRate, 0, 50000, 100, v => _profile.CustomizedOutputRate = v, beforeLayoutAction: v => _outputRateDescriptionElement = v.DescriptionElement).Control;
         }
+
 
         if (_profile.BuildingType == FacilityType.WarehouseFacility) {
             _customizedStorageCapacityField = _facilityPropertiesSection.AddIntField(Translations.StorageCapacity, GetMinorText(_profile.StorageCapacity / 1000, _profile.ModDefaultStorageCapacity / 1000), _profile.CustomizedStorageCapacity / 1000, 0, 6000, 10, v => _profile.CustomizedStorageCapacity = v * 1000).Control;
+        }
+
+        if (_profile.BuildingType == FacilityType.FishingHarbor) {
+            _customizedBoatCountField = _facilityPropertiesSection.AddIntField(Translations.BoatCount, GetMinorText(_profile.BoatCount, _profile.ModDefaultBoatCount), _profile.CustomizedBoatCount, 0, 100, 1, v => _profile.CustomizedBoatCount = v).Control;
         }
 
         _uneducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.UneducatedWorkers, GetMinorText(_profile.WorkPlace.UneducatedWorkers, _profile.ModDefaultWorkPlace.UneducatedWorkers), _profile.CustomizedWorkPlace.UneducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(v, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
@@ -156,6 +168,7 @@ internal class ControlPanel : ControlPanelBase {
         FacilityType.ExtractingFacility => Translations.ExtractingFacility,
         FacilityType.ProcessingFacility => Translations.ProcessingFacility,
         FacilityType.UniqueFacility => Translations.UniqueFacility,
+        FacilityType.FishingHarbor => Translations.FishingHarbor,
         _ => Translations.WarehouseFacility,
     };
 
@@ -172,10 +185,22 @@ internal class ControlPanel : ControlPanelBase {
             _customizedStorageCapacityField.Value = _profile.CustomizedStorageCapacity / 1000;
         }
 
+        if (_customizedBoatCountField is not null) {
+            _customizedBoatCountField.Value = _profile.CustomizedBoatCount;
+        }
+
         _uneducatedWorkersField.Value = _profile.WorkPlace.UneducatedWorkers;
         _educatedWorkersField.Value = _profile.WorkPlace.EducatedWorkers;
         _wellEducatedWorkersField.Value = _profile.WorkPlace.WellEducatedWorkers;
         _highlyEducatedWorkersField.Value = _profile.WorkPlace.HighlyEducatedWorkers;
+    }
+
+    private void RefreshOutputRate() {
+        if (_profile is null || _outputRateField is null) return;
+        _outputRateField.Value = _profile.CustomizedOutputRate;
+        if (_outputRateDescriptionElement is not null) {
+            _outputRateDescriptionElement.Text = GetMinorText(_profile.OutputRate, _profile.ModDefaultOutputRate);
+        }
     }
 
     private string GetMinorText(int gameValue, int modValue) => $"{Translations.GameDefault}: {gameValue.ToString()}, {Translations.ModDefault}: {modValue.ToString()}";
@@ -185,18 +210,40 @@ internal class ControlPanel : ControlPanelBase {
 
         var loadMultiplierFactorSection = AddSection(_generalPage, Translations.LoadMultiplierFactor, Translations.LoadMultiplierFactorMinor);
 
-        loadMultiplierFactorSection.AddSlider(RawMaterialsLoadMultiplierFactorString, null, 0.5f, 2f, 0.1f, _modSetting.RawMaterialsLoadMultiplierFactor, SliderSize, f => {
+        loadMultiplierFactorSection.AddSlider(RawMaterialsLoadMultiplierString, null, 0.5f, 2f, 0.1f, _modSetting.RawMaterialsLoadMultiplierFactor, SliderSize, f => {
             _modSetting.RawMaterialsLoadMultiplierFactor = f;
-            _rawMaterialsLoadMultiplierFactorHeaderElement.Text = RawMaterialsLoadMultiplierFactorString;
+            _rawMaterialsLoadMultiplierFactorHeaderElement.Text = RawMaterialsLoadMultiplierString;
         }, gradientStyle: true, beforeLayoutAction: c => { _rawMaterialsLoadMultiplierFactorHeaderElement = c.HeaderElement; });
 
-        loadMultiplierFactorSection.AddSlider(ProcessingMaterialsLoadMultiplierFactorString, null, 0.5f, 2f, 0.1f, _modSetting.ProcessingMaterialsLoadMultiplierFactor, SliderSize, f => {
+        loadMultiplierFactorSection.AddSlider(ProcessingMaterialsLoadMultiplierString, null, 0.5f, 2f, 0.1f, _modSetting.ProcessingMaterialsLoadMultiplierFactor, SliderSize, f => {
             _modSetting.ProcessingMaterialsLoadMultiplierFactor = f;
-            _processingMaterialsLoadMultiplierFactorHeaderElement.Text = ProcessingMaterialsLoadMultiplierFactorString;
+            _processingMaterialsLoadMultiplierFactorHeaderElement.Text = ProcessingMaterialsLoadMultiplierString;
         }, gradientStyle: true, card => { _processingMaterialsLoadMultiplierFactorHeaderElement = card.HeaderElement; });
+
+        var productionRateMultiplierFactorSection = AddSection(_generalPage, Translations.ProductionRateMultiplier, Translations.ProductionRateMultiplierDescription);
+        productionRateMultiplierFactorSection.AddSlider(ExtractingFacilityProductionRateMultiplierString, null, 0.2f, 2f, 0.1f, _modSetting.ExtractingFacilityProductionRateMultiplier, SliderSize, f => {
+            _modSetting.ExtractingFacilityProductionRateMultiplier = f;
+            _extractingFacilityProductionRateHeaderElement.Text = ExtractingFacilityProductionRateMultiplierString;
+            _facilityManager.ModifyExtractingFacilityProductionRate();
+            RefreshOutputRate();
+        }, gradientStyle: true, beforeLayoutAction: c => { _extractingFacilityProductionRateHeaderElement = c.HeaderElement; });
+        productionRateMultiplierFactorSection.AddSlider(ProcessingFacilityProductionRateMultiplierString, null, 0.2f, 2f, 0.1f, _modSetting.ProcessingFacilityProductionRateMultiplier, SliderSize, f => {
+            _modSetting.ProcessingFacilityProductionRateMultiplier = f;
+            _processingFacilityProductionRateHeaderElement.Text = ProcessingFacilityProductionRateMultiplierString;
+            _facilityManager.ModifyProcessingFacilityProductionRate();
+            RefreshOutputRate();
+        }, gradientStyle: true, beforeLayoutAction: c => { _processingFacilityProductionRateHeaderElement = c.HeaderElement; });
+        productionRateMultiplierFactorSection.AddSlider(UniqueFacilityProductionRateMultiplierString, null, 0.2f, 2f, 0.1f, _modSetting.UniqueFacilityProductionRateMultiplier, SliderSize, f => {
+            _modSetting.UniqueFacilityProductionRateMultiplier = f;
+            _uniqueFacilityProductionRateHeaderElement.Text = UniqueFacilityProductionRateMultiplierString;
+            _facilityManager.ModifyUniqueFactoryProductionRate();
+            RefreshOutputRate();
+        }, gradientStyle: true, beforeLayoutAction: c => _uniqueFacilityProductionRateHeaderElement = c.HeaderElement);
     }
 
-    private string ProcessingMaterialsLoadMultiplierFactorString => $"{Translations.ProcessingFacility}: {_modSetting.ProcessingMaterialsLoadMultiplierFactor}";
-
-    private string RawMaterialsLoadMultiplierFactorString => $"{Translations.ExtractingFacility}: {_modSetting.RawMaterialsLoadMultiplierFactor}";
+    private string UniqueFacilityProductionRateMultiplierString => $"{Translations.UniqueFacility}: {_modSetting.UniqueFacilityProductionRateMultiplier}";
+    private string ProcessingFacilityProductionRateMultiplierString => $"{Translations.ProcessingFacility}: {_modSetting.ProcessingFacilityProductionRateMultiplier}";
+    private string ExtractingFacilityProductionRateMultiplierString => $"{Translations.ExtractingFacility}: {_modSetting.ExtractingFacilityProductionRateMultiplier}";
+    private string ProcessingMaterialsLoadMultiplierString => $"{Translations.ProcessingFacility}: {_modSetting.ProcessingMaterialsLoadMultiplierFactor}";
+    private string RawMaterialsLoadMultiplierString => $"{Translations.ExtractingFacility}: {_modSetting.RawMaterialsLoadMultiplierFactor}";
 }

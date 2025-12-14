@@ -4,13 +4,12 @@
 [/code]
 
 [quote]
-[u]New in version 1.0[/u]
+[u]New in version 1.0.1[/u]
 [list]
-[*] Updated to support game version 1.20.1
-[*] Updated to CSLModsCommon framework 1.0
-[*] This update automatically resets all settings.
-[*] Added unique factory output rate adjustment options.
-[*] Added custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.
-[*] Added mod default values, game default values, custom options to modify industrial building properties.
+[*] Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).
+[*] Added compatibility support for the Campus Industries Housing Mod.
+[*] Added support for the Fishing Harbor building.
+[*] Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.
+[*] Fixed a potential deserialization issue that could prevent the mod from working.
 [/list]
 [/quote]

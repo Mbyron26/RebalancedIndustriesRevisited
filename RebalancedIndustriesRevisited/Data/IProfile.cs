@@ -2,10 +2,7 @@
 
 public interface IProfile {
     FacilityType BuildingType { get; }
-
     ProfileType ProfileTypeSet { get; }
-
-    // NaturalResource NaturalResourceType { get; }
     IndustrialCategory IndustrialCategory { get; }
     string Name { get; set; }
     bool Customized { get; }
@@ -27,6 +24,9 @@ public interface IProfile {
     int StorageCapacity { get; set; }
     int ModDefaultStorageCapacity { get; set; }
     int CustomizedStorageCapacity { get; set; }
+    int BoatCount { get; set; }
+    int ModDefaultBoatCount { get; set; }
+    int CustomizedBoatCount { get; set; }
     void GetPrefab();
     void SetModDefaults();
     void SetModCustomized();

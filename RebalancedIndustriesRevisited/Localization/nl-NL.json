@@ -1,4 +1,8 @@
 {
+  "ProductionRateMultiplier": "Production Rate Multiplier",
+  "ProductionRateMultiplierDescription": "Adjusts the production rate. Higher values make industries produce goods faster, but may also increase traffic congestion. This setting affects all industries (Mod default).",
+  "BoatCount": "Boat Count",
+  "FishingHarbor": "Fishing Harbor",
   "ResetCompleted": "Reset customized industries settings completed.",
   "SureToResetCustomizedIndustriesSettings": "Will reset all customized industries settings to default. This action cannot be undone. Are you sure you want to continue?",
   "NoCustomizedIndustriesSettings": "No customized industries settings.",
@@ -36,5 +40,10 @@
   "Changelog_v1_0_0_Attention": "This update automatically resets all settings.",
   "Changelog_v1_0_0_Added": "Added unique factory output rate adjustment options.",
   "Changelog_v1_0_0_Added1": "Added custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.",
-  "Changelog_v1_0_0_Added2": "Added mod default values, game default values, custom options to modify industrial building properties."
+  "Changelog_v1_0_0_Added2": "Added mod default values, game default values, custom options to modify industrial building properties.",
+  "Changelog_v1_0_1_Added": "Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).",
+  "Changelog_v1_0_1_Added1": "Added compatibility support for the Campus Industries Housing Mod.",
+  "Changelog_v1_0_1_Added2": "Added support for the Fishing Harbor building.",
+  "Changelog_v1_0_1_Fixed": "Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.",
+  "Changelog_v1_0_1_Fixed1": "Fixed a potential deserialization issue that could prevent the mod from working."
 }

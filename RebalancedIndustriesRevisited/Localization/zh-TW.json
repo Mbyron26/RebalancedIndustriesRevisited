@@ -1,4 +1,8 @@
 {
+  "ProductionRateMultiplier": "Production Rate Multiplier",
+  "ProductionRateMultiplierDescription": "Adjusts the production rate. Higher values make industries produce goods faster, but may also increase traffic congestion. This setting affects all industries (Mod default).",
+  "BoatCount": "Boat Count",
+  "FishingHarbor": "Fishing Harbor",
   "ResetCompleted": "已重置自訂工業設定完成。",
   "SureToResetCustomizedIndustriesSettings": "將會把所有自訂工業設定重置為預設值，此操作無法還原。您確定要繼續嗎？",
   "NoCustomizedIndustriesSettings": "沒有自訂工業設定。",
@@ -36,5 +40,10 @@
   "Changelog_v1_0_0_Attention": "此更新將自動重置所有設置。",
   "Changelog_v1_0_0_Added": "新增獨特工廠產出速率調整選項。",
   "Changelog_v1_0_0_Added1": "新增工業建築自訂屬性，包括建設成本、維護成本、卡車數量、產出速率、工作崗位和儲存容量。",
-  "Changelog_v1_0_0_Added2": "新增模組預設值、遊戲預設值、自訂選項以修改工業建築屬性。"
+  "Changelog_v1_0_0_Added2": "新增模組預設值、遊戲預設值、自訂選項以修改工業建築屬性。",
+  "Changelog_v1_0_1_Added": "Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).",
+  "Changelog_v1_0_1_Added1": "Added compatibility support for the Campus Industries Housing Mod.",
+  "Changelog_v1_0_1_Added2": "Added support for the Fishing Harbor building.",
+  "Changelog_v1_0_1_Fixed": "Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.",
+  "Changelog_v1_0_1_Fixed1": "Fixed a potential deserialization issue that could prevent the mod from working."
 }

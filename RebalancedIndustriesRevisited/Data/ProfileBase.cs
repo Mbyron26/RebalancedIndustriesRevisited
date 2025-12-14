@@ -20,7 +20,7 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     [JsonIgnore] public abstract IndustrialCategory IndustrialCategory { get; protected set; }
     [JsonIgnore] public string Name { get; set; }
     [JsonIgnore] public bool Customized { get; protected set; }
-    [JsonIgnore]  public int ConstructionCost { get; set; }
+    [JsonIgnore] public int ConstructionCost { get; set; }
     [JsonIgnore] public int ModDefaultConstructionCost { get; set; }
     public virtual int CustomizedConstructionCost { get; set; }
     [JsonIgnore] public int MaintenanceCost { get; set; }
@@ -38,6 +38,9 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     [JsonIgnore] public int StorageCapacity { get; set; }
     [JsonIgnore] public int ModDefaultStorageCapacity { get; set; }
     public virtual int CustomizedStorageCapacity { get; set; }
+    [JsonIgnore] public int BoatCount { get; set; }
+    [JsonIgnore] public int ModDefaultBoatCount { get; set; }
+    public virtual int CustomizedBoatCount { get; set; }
 
     public abstract void GetPrefab();
 
@@ -61,9 +64,8 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
         CustomizedTruckCount = profile.CustomizedTruckCount;
         CustomizedOutputRate = profile.CustomizedOutputRate;
         CustomizedWorkPlace = profile.CustomizedWorkPlace;
-        if (profile.BuildingType == FacilityType.WarehouseFacility) {
-            CustomizedStorageCapacity = profile.CustomizedStorageCapacity;
-        }
+        CustomizedBoatCount = profile.CustomizedBoatCount;
+        CustomizedStorageCapacity = profile.CustomizedStorageCapacity;
     }
 
     public virtual void SetFromModData() { }
@@ -74,9 +76,8 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
         CustomizedTruckCount = TruckCount;
         CustomizedOutputRate = OutputRate;
         CustomizedWorkPlace = WorkPlace;
-        if (BuildingType == FacilityType.WarehouseFacility) {
-            CustomizedStorageCapacity = StorageCapacity;
-        }
+        CustomizedStorageCapacity = StorageCapacity;
+        CustomizedBoatCount = BoatCount;
     }
 
     public virtual void SetModDefaults() {
@@ -89,6 +90,8 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     }
 
     public virtual void SetModCustomized() { }
+
+    protected virtual void SetBoatCount() => CustomizedBoatCount = ModDefaultBoatCount;
 
     protected virtual void SetWorkPlace() {
         CustomizedWorkPlace = ModDefaultWorkPlace;

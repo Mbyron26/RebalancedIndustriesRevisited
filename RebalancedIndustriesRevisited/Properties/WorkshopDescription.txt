@@ -3,17 +3,14 @@
 [list][h2]Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.[/h2][/list]
 [/code]
 
-[img]https://i.imgur.com/0O9w9Ta.png[/img]
-
 [quote]
-[u]New in version 1.0[/u]
+[u]New in version 1.0.1[/u]
 [list]
-[*] Updated to support game version 1.20.1
-[*] Updated to CSLModsCommon framework 1.0
-[*] This update automatically resets all settings.
-[*] Added unique factory output rate adjustment options.
-[*] Added custom properties for industrial buildings, including construction cost, maintenance cost, truck count, output rate, work place, and storage capacity.
-[*] Added mod default values, game default values, custom options to modify industrial building properties.
+[*] Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).
+[*] Added compatibility support for the Campus Industries Housing Mod.
+[*] Added support for the Fishing Harbor building.
+[*] Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.
+[*] Fixed a potential deserialization issue that could prevent the mod from working.
 [/list]
 [/quote]
 
@@ -40,12 +37,6 @@
 [/list]
 
 [HR][/HR] 
-[h1]Known Issues[/h1]
-[list] 
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1369729955&searchtext=customize+it]Customize It![/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1806759255]Customize It Extended[/url] - Rebalanced Industries Revisited will no longer be detected in these two mods, so the properties of industrial buildings can be adjusted and the properties of industrial buildings will be reset when game reoaded, so please do not attempt to modify the properties of industrial buildings. Based on Customize It Extended's performance and compatibility issues, I'll consider rewrite Customize It Extended with a more efficient working mode later.
-[/list]
-
-[HR][/HR] 
 [h1]Localization[/h1]
 To help improve translations, please contribute on Crowdin:
 [url=https://crowdin.com/project/rebalanced-industries-revisite][img]https://i.imgur.com/uG2NKvG.png[/img][/url]
@@ -59,5 +50,5 @@ To help improve translations, please contribute on Crowdin:
 [url=https://github.com/Mbyron26/RebalancedIndustriesRevisited][img]https://i.imgur.com/DczUXYq.png[/img][/url]
 
 [HR][/HR] 
-[h1]Acknowledgements[/h1]
+[h1]Credits[/h1]
 Special thanks to [url=https://steamcommunity.com/id/quboid/myworkshopfiles/?appid=255710]Quboid[/url] and his Rebalanced Industries mod, [url=https://steamcommunity.com/profiles/76561198050938697]Quistar[/url], [url=https://steamcommunity.com/profiles/76561197968592937]algernon[/url], [url=https://steamcommunity.com/profiles/76561198063330220]macsergey[/url], [url=https://steamcommunity.com/id/chameleon_tbn]Chamëleon TBN[/url], all testers who helped test this mod and all translators who have added/improved translations to this mod.
