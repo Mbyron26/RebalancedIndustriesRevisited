@@ -116,8 +116,8 @@ internal class ControlPanel : ControlPanelBase {
 
         _facilityPropertiesSection = AddSection(_configPage);
 
-        _constructionCostField = _facilityPropertiesSection.AddIntField(Translations.ConstructionCost, GetMinorText(_profile.ConstructionCost, _profile.ModDefaultConstructionCost), _profile.CustomizedConstructionCost, 0, 100000, 100, v => _profile.CustomizedConstructionCost = v).Control;
-        _maintenanceCostField = _facilityPropertiesSection.AddIntField(Translations.MaintenanceCost, GetMinorText(_profile.MaintenanceCost, _profile.ModDefaultMaintenanceCost), _profile.CustomizedMaintenanceCost, 0, 100000, 100, v => _profile.CustomizedMaintenanceCost = v).Control;
+        _constructionCostField = _facilityPropertiesSection.AddIntField(Translations.ConstructionCost, GetMinorText(_profile.ConstructionCost, _profile.ModDefaultConstructionCost), _profile.CustomizedConstructionCost, 0, 100000000, 100, v => _profile.CustomizedConstructionCost = v).Control;
+        _maintenanceCostField = _facilityPropertiesSection.AddIntField(Translations.MaintenanceCost, GetMinorText(_profile.MaintenanceCost, _profile.ModDefaultMaintenanceCost), _profile.CustomizedMaintenanceCost, 0, 100000000, 100, v => _profile.CustomizedMaintenanceCost = v).Control;
         if (_profile.BuildingType != FacilityType.MainIndustryBuilding) {
             _truckCountField = _facilityPropertiesSection.AddIntField(Translations.OutputTruckCount, GetMinorText(_profile.TruckCount, _profile.ModDefaultTruckCount), _profile.CustomizedTruckCount, 0, 100, 1, v => _profile.CustomizedTruckCount = v).Control;
         }
