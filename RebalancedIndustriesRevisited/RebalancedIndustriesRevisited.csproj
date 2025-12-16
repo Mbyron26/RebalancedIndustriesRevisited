@@ -5,9 +5,9 @@
         <LangVersion>12</LangVersion>
         <Authors>Mbyron26</Authors>
         <Copyright>Copyright © 2025 Mbyron26</Copyright>
-        <Version Condition="'$(Configuration)' == 'Stable'">1.0.1</Version>
+        <Version Condition="'$(Configuration)' == 'Stable'">1.0.2</Version>
         <Version Condition="'$(Configuration)' == 'Beta' OR '$(Configuration)' == 'Alpha'">
-            1.0.1-beta$([System.DateTime]::Now.ToString("yyyyMMddHHmm"))
+            1.0.2-beta$([System.DateTime]::Now.ToString("yyyyMMddHHmm"))
         </Version>
         <!-- Steam workshop title, will auto set title from this property. -->
         <Product>Rebalanced Industries Revisited</Product>
