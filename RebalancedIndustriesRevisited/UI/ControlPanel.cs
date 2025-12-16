@@ -100,11 +100,11 @@ internal class ControlPanel : ControlPanelBase {
         facilityTypeSection.AddLabel(null, $"{Translations.FacilityName}: {_facilityManager.GetCurrentBuildingName()}", beforeLayoutAction: card => card.Direction = FlexDirection.Column);
 
         facilityTypeSection.AddRadioGroup(Translations.ConfigurationType, null, unlockRadioGroup => {
-            RadioGroupLogic<ProfileType>.Create()
+            RadioGroupLogic<ProfileFlag>.Create()
                 .AddRange(
-                    new RadioButtonItem<ProfileType>(ProfileType.GameDefault, unlockRadioGroup.AddOption(Translations.GameDefault)),
-                    new RadioButtonItem<ProfileType>(ProfileType.ModDefault, unlockRadioGroup.AddOption(Translations.ModDefault)),
-                    new RadioButtonItem<ProfileType>(ProfileType.Customized, unlockRadioGroup.AddOption(Translations.Custom))
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.GameDefault, unlockRadioGroup.AddOption(Translations.GameDefault)),
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.ModDefault, unlockRadioGroup.AddOption(Translations.ModDefault)),
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.Customized, unlockRadioGroup.AddOption(Translations.Custom))
                 )
                 .SetDefault(v => v.Value == _profile.ProfileTypeSet)
                 .SelectionChanged += OnProfileSelectionChanged;
@@ -141,18 +141,18 @@ internal class ControlPanel : ControlPanelBase {
         _wellEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.WellEducatedWorkers, GetMinorText(_profile.WorkPlace.WellEducatedWorkers, _profile.ModDefaultWorkPlace.WellEducatedWorkers), _profile.CustomizedWorkPlace.WellEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, v, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
         _highlyEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.HighlyEducatedWorkers, GetMinorText(_profile.WorkPlace.HighlyEducatedWorkers, _profile.ModDefaultWorkPlace.HighlyEducatedWorkers), _profile.CustomizedWorkPlace.HighlyEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, v)).Control;
 
-        _facilityPropertiesSection.isEnabled = _profile.ProfileTypeSet == ProfileType.Customized;
+        _facilityPropertiesSection.isEnabled = _profile.ProfileTypeSet == ProfileFlag.Customized;
 
         #endregion
     }
 
-    private void OnProfileSelectionChanged(RadioButtonItem<ProfileType> obj) {
+    private void OnProfileSelectionChanged(RadioButtonItem<ProfileFlag> obj) {
         _facilityPropertiesSection.isEnabled = false;
         var value = obj.Value;
-        if (value == ProfileType.GameDefault) {
+        if (value == ProfileFlag.GameDefault) {
             _profile.SetGameDefaults();
         }
-        else if (value == ProfileType.ModDefault) {
+        else if (value == ProfileFlag.ModDefault) {
             _profile.SetModDefaults();
         }
         else {

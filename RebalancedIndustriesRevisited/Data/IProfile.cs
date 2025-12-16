@@ -2,7 +2,7 @@
 
 public interface IProfile {
     FacilityType BuildingType { get; }
-    ProfileType ProfileTypeSet { get; }
+    ProfileFlag ProfileTypeSet { get; }
     IndustrialCategory IndustrialCategory { get; }
     string Name { get; set; }
     bool Customized { get; }

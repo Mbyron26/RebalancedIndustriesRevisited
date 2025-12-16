@@ -16,7 +16,7 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     [JsonIgnore] public abstract FacilityType BuildingType { get; }
     protected ILog Logger { get; } = LogManager.GetLogger();
     protected TypePrefab Prefab { get; set; }
-    [JsonIgnore] public ProfileType ProfileTypeSet => GetProfileTypeSet();
+    [JsonIgnore] public ProfileFlag ProfileTypeSet => GetProfileTypeSet();
     [JsonIgnore] public abstract IndustrialCategory IndustrialCategory { get; protected set; }
     [JsonIgnore] public string Name { get; set; }
     [JsonIgnore] public bool Customized { get; protected set; }
@@ -44,18 +44,18 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
 
     public abstract void GetPrefab();
 
-    protected virtual ProfileType GetProfileTypeSet() {
+    protected virtual ProfileFlag GetProfileTypeSet() {
         if (_customizedConstructionCost == ConstructionCost && _customizedMaintenanceCost == MaintenanceCost && _customizedTruckCount == TruckCount && _customizedOutputRate == OutputRate && _customizedWorkPlace.Equals(WorkPlace))
-            return ProfileType.GameDefault;
+            return ProfileFlag.GameDefault;
         if (_customizedConstructionCost == ModDefaultConstructionCost && _customizedMaintenanceCost == ModDefaultMaintenanceCost && _customizedTruckCount == ModDefaultTruckCount && _customizedOutputRate == ModDefaultOutputRate && _customizedWorkPlace.Equals(ModDefaultWorkPlace)) {
             if (BuildingType == FacilityType.WarehouseFacility) {
-                return _customizedStorageCapacity != ModDefaultStorageCapacity ? ProfileType.Customized : ProfileType.ModDefault;
+                return _customizedStorageCapacity != ModDefaultStorageCapacity ? ProfileFlag.Customized : ProfileFlag.ModDefault;
             }
 
-            return ProfileType.ModDefault;
+            return ProfileFlag.ModDefault;
         }
 
-        return ProfileType.Customized;
+        return ProfileFlag.Customized;
     }
 
     public void SetFromLoadData(IProfile profile) {
@@ -81,41 +81,16 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     }
 
     public virtual void SetModDefaults() {
-        SetConstructionCost();
-        SetMaintenanceCost();
-        SetTruckCount();
-        SetOutputRate();
-        SetWorkPlace();
-        SetStorageCapacity();
+        CustomizedConstructionCost = ModDefaultConstructionCost;
+        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
+        CustomizedTruckCount = ModDefaultTruckCount;
+        CustomizedOutputRate = ModDefaultOutputRate;
+        CustomizedWorkPlace = ModDefaultWorkPlace;
+        CustomizedStorageCapacity = ModDefaultStorageCapacity;
+        CustomizedBoatCount = ModDefaultBoatCount;
     }
 
     public virtual void SetModCustomized() { }
-
-    protected virtual void SetBoatCount() => CustomizedBoatCount = ModDefaultBoatCount;
-
-    protected virtual void SetWorkPlace() {
-        CustomizedWorkPlace = ModDefaultWorkPlace;
-    }
-
-    protected virtual void SetStorageCapacity() {
-        CustomizedStorageCapacity = ModDefaultStorageCapacity;
-    }
-
-    protected virtual void SetOutputRate() {
-        CustomizedOutputRate = ModDefaultOutputRate;
-    }
-
-    protected virtual void SetTruckCount() {
-        CustomizedTruckCount = ModDefaultTruckCount;
-    }
-
-    protected virtual void SetMaintenanceCost() {
-        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
-    }
-
-    protected virtual void SetConstructionCost() {
-        CustomizedConstructionCost = ModDefaultConstructionCost;
-    }
 
     public virtual void Validate() {
         if (ModDefaultConstructionCost != CustomizedConstructionCost || ModDefaultMaintenanceCost != CustomizedMaintenanceCost || ModDefaultTruckCount != CustomizedTruckCount || ModDefaultOutputRate != CustomizedOutputRate || ModDefaultWorkPlace != CustomizedWorkPlace || ModDefaultStorageCapacity != CustomizedStorageCapacity) {
