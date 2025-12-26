@@ -51,7 +51,7 @@ public class GameInfoPanelManager : ManagerBase {
         var building = Singleton<BuildingManager>.instance.m_buildings.m_buffer[currentInstanceId.Building];
         var buildingInfo = building.Info;
         var buildingAIType = buildingInfo.m_buildingAI.GetType();
-        if (buildingInfo.m_class.m_subService is ItemClass.SubService.PlayerIndustryFarming or ItemClass.SubService.PlayerIndustryForestry or ItemClass.SubService.PlayerIndustryOil or ItemClass.SubService.PlayerIndustryOre || buildingInfo.m_buildingAI is not null && buildingAIType == typeof(FishingHarborAI)) {
+        if (buildingInfo.m_class.m_subService is ItemClass.SubService.PlayerIndustryFarming or ItemClass.SubService.PlayerIndustryForestry or ItemClass.SubService.PlayerIndustryOil or ItemClass.SubService.PlayerIndustryOre) {
             // Campus Industries Housing Mod Compatibility
             var aiName = buildingAIType.Name;
             if (buildingAIType == typeof(AuxiliaryBuildingAI) || aiName == "DormsAI" || aiName == "BarracksAI") {
@@ -60,6 +60,9 @@ public class GameInfoPanelManager : ManagerBase {
             else {
                 CityServiceWorldInfoPanelButtonVisible = true;
             }
+        }
+        else if (buildingInfo.m_class.m_service == ItemClass.Service.Fishing && (buildingAIType == typeof(ProcessingFacilityAI) || buildingAIType == typeof(FishingHarborAI) || buildingAIType == typeof(FishFarmAI))) {
+            CityServiceWorldInfoPanelButtonVisible = true;
         }
         else {
             CityServiceWorldInfoPanelButtonVisible = false;

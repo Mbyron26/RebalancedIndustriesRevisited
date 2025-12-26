@@ -1,6 +1,11 @@
 ﻿# Changelog
+All notable changes to this project will be documented in this file.
 
-## [1.0.1] -2025-12-14
+## [1.0.2] - 2025-12-26
+- Added more custom settings for fishing buildings.
+- Fixed an issue where the configuration was incorrect when selecting different configuration types.
+
+## [1.0.1] - 2025-12-14
 
 - Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).
 - Added compatibility support for the Campus Industries Housing Mod.

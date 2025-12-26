@@ -25,6 +25,7 @@ public class FacilityManager : ManagerBase, ISerializable {
     private Dictionary<string, WarehouseProfile> _warehouseModifies = new();
     private Dictionary<string, MainIndustryBuildingProfile> _mainIndustryBuildingModifies = new();
     private Dictionary<string, FishingHarborProfile> _fishingHarborModifies = new();
+    private Dictionary<string, FishFarmProfile> _fishFarmModifies = new();
 
     private List<ExtractingFacilityProfile> ExtractingFacilityPrefabBuffer { get; set; }
     private List<ProcessingFacilityProfile> ProcessingFacilityPrefabBuffer { get; set; }
@@ -32,19 +33,25 @@ public class FacilityManager : ManagerBase, ISerializable {
     private List<WarehouseProfile> WarehousePrefabBuffer { get; set; }
     private List<MainIndustryBuildingProfile> MainIndustryPrefabBuffer { get; set; }
     private List<FishingHarborProfile> FishingHarborProfileBuffer { get; set; }
+    private List<FishFarmProfile> FishFarmProfileBuffer { get; set; }
 
     protected override void OnCreate() {
         base.OnCreate();
         _settingManager = Domain.GetOrCreateManager<SettingManager>();
         _modSetting = _settingManager.GetSetting<ModSetting>();
         _inGameToolButtonManager = Domain.GetOrCreateManager<InGameToolButtonManager>();
+        _keyBindingManager = Domain.GetOrCreateManager<KeyBindingManager>();
+    }
+
+    protected override void OnGameInitialized() {
+        base.OnGameInitialized();
         ExtractingFacilityPrefabBuffer = [];
         ProcessingFacilityPrefabBuffer = [];
         UniqueFacilityPrefabBuffer = [];
         WarehousePrefabBuffer = [];
         MainIndustryPrefabBuffer = [];
         FishingHarborProfileBuffer = [];
-        _keyBindingManager = Domain.GetOrCreateManager<KeyBindingManager>();
+        FishFarmProfileBuffer = [];
     }
 
     protected override void OnGameLoaded(LoadContext context) {
@@ -71,7 +78,7 @@ public class FacilityManager : ManagerBase, ISerializable {
         var buildingManager = Singleton<BuildingManager>.instance;
         var building = WorldInfoPanel.GetCurrentInstanceID().Building;
         var buildingAI = buildingManager.m_buildings.m_buffer[building].Info.m_buildingAI;
-        if (buildingAI is null)
+        if (buildingAI == null)
             return null;
         var type = buildingAI.GetType();
         if (type == typeof(ExtractingFacilityAI)) {
@@ -97,6 +104,9 @@ public class FacilityManager : ManagerBase, ISerializable {
         if (type == typeof(FishingHarborAI)) {
             return FishingHarborProfileBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
         }
+
+        if (type == typeof(FishFarmAI))
+            return FishFarmProfileBuffer.FirstOrDefault(v => v.Name == buildingAI.name);
 
         return null;
     }
@@ -193,6 +203,13 @@ public class FacilityManager : ManagerBase, ISerializable {
             }
         }
 
+        foreach (var fishFarmProfile in FishFarmProfileBuffer) {
+            fishFarmProfile.Validate();
+            if (fishFarmProfile.Customized) {
+                _fishFarmModifies.Add(fishFarmProfile.Name, fishFarmProfile);
+            }
+        }
+
         writer.StartWrite("FacilitySetting", "FacilitySetting");
         writer.WriteProperty(nameof(_extractingFacilityModifies), _extractingFacilityModifies);
         writer.WriteProperty(nameof(_processingFacilityModifies), _processingFacilityModifies);
@@ -200,6 +217,7 @@ public class FacilityManager : ManagerBase, ISerializable {
         writer.WriteProperty(nameof(_warehouseModifies), _warehouseModifies);
         writer.WriteProperty(nameof(_mainIndustryBuildingModifies), _mainIndustryBuildingModifies);
         writer.WriteProperty(nameof(_fishingHarborModifies), _fishingHarborModifies);
+        writer.WriteProperty(nameof(_fishFarmModifies), _fishFarmModifies);
         writer.EndWrite();
     }
 
@@ -313,6 +331,18 @@ public class FacilityManager : ManagerBase, ISerializable {
                 FishingHarborProfileBuffer.Add(profile);
                 Logger.Debug($"Added fishing harbor prefab to buffer: {profile.Name}");
                 continue;
+            }
+
+            if (type == typeof(FishFarmAI)) {
+                var fishFarmAI = ai as FishFarmAI;
+                if (fishFarmAI == null) continue;
+                var profile = new FishFarmProfile((FishFarmAI)ai);
+                if (_fishFarmModifies.TryGetValue(profile.Name, out var modifies))
+                    profile.SetFromLoadData(modifies);
+                else
+                    profile.SetModDefaults();
+                FishFarmProfileBuffer.Add(profile);
+                Logger.Debug($"Added fish farm prefab to buffer: {profile.Name}");
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using RebalancedIndustriesRevisited.Extensions;
 using UnityEngine;
 
@@ -8,25 +9,8 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
     public override FacilityType BuildingType => FacilityType.ExtractingFacility;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
 
-    public override int CustomizedConstructionCost {
-        get => _customizedConstructionCost;
-        set {
-            _customizedConstructionCost = value;
-            if (Prefab is not null)
-                Prefab.m_constructionCost = _customizedConstructionCost;
-            Validate();
-        }
-    }
-
-    public override int CustomizedMaintenanceCost {
-        get => _customizedMaintenanceCost;
-        set {
-            _customizedMaintenanceCost = value;
-            if (Prefab is not null)
-                Prefab.m_maintenanceCost = _customizedMaintenanceCost;
-            Validate();
-        }
-    }
+    [JsonIgnore] public override int CustomizedStorageCapacity { get; set; }
+    [JsonIgnore] public override int CustomizedBoatCount { get; set; }
 
     public override int CustomizedTruckCount {
         get => _customizedTruckCount;
@@ -64,7 +48,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
 
     public sealed override void GetPrefab() {
         if (Prefab == null) return;
-        
+
         Name = Prefab.name;
         _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
         _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
@@ -88,9 +72,33 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             Customized = false;
         }
     }
-    
+
     public override void OutputInfo() {
         Logger.Info($"Extracting Facility | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Output rate: {OutputRate} -> {Prefab.m_outputRate} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
+    }
+
+    public override void SetGameDefaults() {
+        CustomizedConstructionCost = ConstructionCost;
+        CustomizedMaintenanceCost = MaintenanceCost;
+        CustomizedTruckCount = TruckCount;
+        CustomizedOutputRate = OutputRate;
+        CustomizedWorkPlace = WorkPlace;
+    }
+
+    public override void SetModDefaults() {
+        CustomizedConstructionCost = ModDefaultConstructionCost;
+        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
+        CustomizedTruckCount = ModDefaultTruckCount;
+        CustomizedOutputRate = ModDefaultOutputRate;
+        CustomizedWorkPlace = ModDefaultWorkPlace;
+    }
+
+    public override void SetFromLoadData(IProfile profile) {
+        CustomizedConstructionCost = profile.CustomizedConstructionCost;
+        CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
+        CustomizedTruckCount = profile.CustomizedTruckCount;
+        CustomizedOutputRate = profile.CustomizedOutputRate;
+        CustomizedWorkPlace = profile.CustomizedWorkPlace;
     }
 
     public override void SetFromModData() {
@@ -101,7 +109,7 @@ public class ExtractingFacilityProfile : ProfileBase<ExtractingFacilityAI> {
             OutputRate = 700;
             Logger.Info($"Extracting facility raw output rate is zero, fixed to 700, building: {Name}");
         }
-        
+
         if (Prefab.m_outputResource == TransferManager.TransferReason.Grain) {
             var workPlace = new WorkPlace(2, 4, 1, 0);
             var workPlaceSum = (int)Math.Ceiling(Math.Sqrt(Prefab.m_info.m_cellLength * Prefab.m_info.m_cellWidth) / 2);

@@ -1,27 +1,13 @@
-﻿using RebalancedIndustriesRevisited.Extensions;
+﻿using Newtonsoft.Json;
+using RebalancedIndustriesRevisited.Extensions;
 
 namespace RebalancedIndustriesRevisited.Data;
 
 public class MainIndustryBuildingProfile : ProfileBase<MainIndustryBuildingAI> {
-    public override int CustomizedConstructionCost {
-        get => _customizedConstructionCost;
-        set {
-            _customizedConstructionCost = value;
-            if (Prefab is not null)
-                Prefab.m_constructionCost = _customizedConstructionCost;
-            Validate();
-        }
-    }
-
-    public override int CustomizedMaintenanceCost {
-        get => _customizedMaintenanceCost;
-        set {
-            _customizedMaintenanceCost = value;
-            if (Prefab is not null)
-                Prefab.m_maintenanceCost = _customizedMaintenanceCost;
-            Validate();
-        }
-    }
+    [JsonIgnore] public override int CustomizedBoatCount { get; set; }
+    [JsonIgnore] public override int CustomizedOutputRate { get; set; }
+    [JsonIgnore] public override int CustomizedStorageCapacity { get; set; }
+    [JsonIgnore] public override int CustomizedTruckCount { get; set; }
 
     public override WorkPlace CustomizedWorkPlace {
         get => _customizedWorkPlace;
@@ -54,6 +40,30 @@ public class MainIndustryBuildingProfile : ProfileBase<MainIndustryBuildingAI> {
             DistrictPark.ParkType.Farming => IndustrialCategory.Farming,
             _ => IndustrialCategory.Unknown
         };
+    }
+
+    public override void SetFromLoadData(IProfile profile) {
+        CustomizedConstructionCost = profile.CustomizedConstructionCost;
+        CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
+        CustomizedWorkPlace = profile.CustomizedWorkPlace;
+    }
+
+    public override void SetFromModData() { }
+
+    public override void SetGameDefaults() {
+        CustomizedConstructionCost = ConstructionCost;
+        CustomizedMaintenanceCost = MaintenanceCost;
+        CustomizedWorkPlace = WorkPlace;
+    }
+
+    public override void SetModDefaults() {
+        CustomizedConstructionCost = ModDefaultConstructionCost;
+        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
+        CustomizedWorkPlace = ModDefaultWorkPlace;
+    }
+
+    public override void OutputInfo() {
+        Logger.Info($"MainIndustryBuildingAI | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.ToString()} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
 
     public override void Validate() {

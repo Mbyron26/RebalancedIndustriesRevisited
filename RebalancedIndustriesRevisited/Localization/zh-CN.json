@@ -1,4 +1,5 @@
 {
+  "FishFarm": "养鱼场",
   "ProductionRateMultiplier": "生产速率倍数",
   "ProductionRateMultiplierDescription": "调整生产速率。较高的数值使工业生产货物更快，但也可能增加交通堵塞。此设置影响到所有行业(模组默认)。",
   "BoatCount": "船数",
@@ -45,5 +46,7 @@
   "Changelog_v1_0_1_Added1": "添加了Campus Industries Housing Mod 模组的兼容性支持。",
   "Changelog_v1_0_1_Added2": "添加了对渔船港建筑的支持。",
   "Changelog_v1_0_1_Fixed": "修复了在某些不可用工业建筑上仍然显示入口按钮的问题。",
-  "Changelog_v1_0_1_Fixed1": "修复了一个潜在可能导致模组无法工作的问题。"
+  "Changelog_v1_0_1_Fixed1": "修复了一个潜在可能导致模组无法工作的问题。",
+  "Changelog_v1_0_2_Added": "为捕鱼建筑添加了更多自定义设置。",
+  "Changelog_v1_0_2_Fixed": "修复在选择不同的配置类型时配置不正确的问题。"
 }

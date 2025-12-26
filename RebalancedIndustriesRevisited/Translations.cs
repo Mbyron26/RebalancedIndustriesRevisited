@@ -7,6 +7,11 @@ namespace RebalancedIndustriesRevisited.Localization;
 
 public static class Translations {
     /// <summary>
+    /// Fish Farm
+    /// </summary>
+    public static string FishFarm => LocalizationManager.Localize("FishFarm");
+
+    /// <summary>
     /// Production Rate Multiplier
     /// </summary>
     public static string ProductionRateMultiplier => LocalizationManager.Localize("ProductionRateMultiplier");
@@ -215,5 +220,40 @@ public static class Translations {
     /// Added mod default values, game default values, custom options to modify industrial building properties.
     /// </summary>
     public static string Changelog_v1_0_0_Added2 => LocalizationManager.Localize("Changelog_v1_0_0_Added2");
+
+    /// <summary>
+    /// Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).
+    /// </summary>
+    public static string Changelog_v1_0_1_Added => LocalizationManager.Localize("Changelog_v1_0_1_Added");
+
+    /// <summary>
+    /// Added compatibility support for the Campus Industries Housing Mod.
+    /// </summary>
+    public static string Changelog_v1_0_1_Added1 => LocalizationManager.Localize("Changelog_v1_0_1_Added1");
+
+    /// <summary>
+    /// Added support for the Fishing Harbor building.
+    /// </summary>
+    public static string Changelog_v1_0_1_Added2 => LocalizationManager.Localize("Changelog_v1_0_1_Added2");
+
+    /// <summary>
+    /// Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.
+    /// </summary>
+    public static string Changelog_v1_0_1_Fixed => LocalizationManager.Localize("Changelog_v1_0_1_Fixed");
+
+    /// <summary>
+    /// Fixed a potential deserialization issue that could prevent the mod from working.
+    /// </summary>
+    public static string Changelog_v1_0_1_Fixed1 => LocalizationManager.Localize("Changelog_v1_0_1_Fixed1");
+
+    /// <summary>
+    /// Added more custom settings for fishing buildings.
+    /// </summary>
+    public static string Changelog_v1_0_2_Added => LocalizationManager.Localize("Changelog_v1_0_2_Added");
+
+    /// <summary>
+    /// Fixed an issue where the configuration was incorrect when selecting different configuration types.
+    /// </summary>
+    public static string Changelog_v1_0_2_Fixed => LocalizationManager.Localize("Changelog_v1_0_2_Fixed");
 
 }

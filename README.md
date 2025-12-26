@@ -1,8 +1,8 @@
 # Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.
 
 [![Changelog](https://img.shields.io/badge/Changelog-Click%20to%20View-blue)](CHANGELOG.md)
-[![Stable](https://img.shields.io/badge/Stable%20Version-1.0.1-green)](https://steamcommunity.com/sharedfiles/filedetails/?id=2911178252)
-[![Beta](https://img.shields.io/badge/Beta%20Version-1.0.1-orange)](https://steamcommunity.com/sharedfiles/filedetails/?id=2928683738)
+[![Stable](https://img.shields.io/badge/Stable%20Version-1.0.2-green)](https://steamcommunity.com/sharedfiles/filedetails/?id=2911178252)
+[![Beta](https://img.shields.io/badge/Beta%20Version-1.0.2-orange)](https://steamcommunity.com/sharedfiles/filedetails/?id=2928683738)
 ![Game Version](https://img.shields.io/badge/Support%20Game%20Version-1.20.1-green)
 
 ## Functions
@@ -26,6 +26,3 @@
 To help improve translations, please contribute on Crowdin:
 
 [![Crowdin](https://img.shields.io/badge/Crowdin-Translate-2E3340?style=flat&logo=crowdin&logoColor=white)](https://crowdin.com/project/rebalanced-industries-revisite)
-
-## Discussion & Feedback
-[![Discord](https://img.shields.io/badge/Discord-Chat-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/ZxbyzmvGxG)

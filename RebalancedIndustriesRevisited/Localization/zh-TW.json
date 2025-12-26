@@ -1,4 +1,5 @@
 {
+  "FishFarm": "Fish Farm",
   "ProductionRateMultiplier": "Production Rate Multiplier",
   "ProductionRateMultiplierDescription": "Adjusts the production rate. Higher values make industries produce goods faster, but may also increase traffic congestion. This setting affects all industries (Mod default).",
   "BoatCount": "Boat Count",
@@ -45,5 +46,7 @@
   "Changelog_v1_0_1_Added1": "Added compatibility support for the Campus Industries Housing Mod.",
   "Changelog_v1_0_1_Added2": "Added support for the Fishing Harbor building.",
   "Changelog_v1_0_1_Fixed": "Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.",
-  "Changelog_v1_0_1_Fixed1": "Fixed a potential deserialization issue that could prevent the mod from working."
+  "Changelog_v1_0_1_Fixed1": "Fixed a potential deserialization issue that could prevent the mod from working.",
+  "Changelog_v1_0_2_Added": "Added more custom settings for fishing buildings.",
+  "Changelog_v1_0_2_Fixed": "Fixed an issue where the configuration was incorrect when selecting different configuration types."
 }

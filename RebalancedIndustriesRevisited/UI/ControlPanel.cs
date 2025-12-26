@@ -136,10 +136,10 @@ internal class ControlPanel : ControlPanelBase {
             _customizedBoatCountField = _facilityPropertiesSection.AddIntField(Translations.BoatCount, GetMinorText(_profile.BoatCount, _profile.ModDefaultBoatCount), _profile.CustomizedBoatCount, 0, 100, 1, v => _profile.CustomizedBoatCount = v).Control;
         }
 
-        _uneducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.UneducatedWorkers, GetMinorText(_profile.WorkPlace.UneducatedWorkers, _profile.ModDefaultWorkPlace.UneducatedWorkers), _profile.CustomizedWorkPlace.UneducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(v, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _educatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.EducatedWorkers, GetMinorText(_profile.WorkPlace.EducatedWorkers, _profile.ModDefaultWorkPlace.EducatedWorkers), _profile.CustomizedWorkPlace.EducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, v, _profile.CustomizedWorkPlace.WellEducatedWorkers, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _wellEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.WellEducatedWorkers, GetMinorText(_profile.WorkPlace.WellEducatedWorkers, _profile.ModDefaultWorkPlace.WellEducatedWorkers), _profile.CustomizedWorkPlace.WellEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, v, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _highlyEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.HighlyEducatedWorkers, GetMinorText(_profile.WorkPlace.HighlyEducatedWorkers, _profile.ModDefaultWorkPlace.HighlyEducatedWorkers), _profile.CustomizedWorkPlace.HighlyEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, v)).Control;
+        _uneducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.UneducatedWorkers, GetMinorText(_profile.WorkPlace.UneducatedWorkers, _profile.ModDefaultWorkPlace.UneducatedWorkers), _profile.CustomizedWorkPlace.UneducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithUneducatedWorkers(v)).Control;
+        _educatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.EducatedWorkers, GetMinorText(_profile.WorkPlace.EducatedWorkers, _profile.ModDefaultWorkPlace.EducatedWorkers), _profile.CustomizedWorkPlace.EducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithEducatedWorkers(v)).Control;
+        _wellEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.WellEducatedWorkers, GetMinorText(_profile.WorkPlace.WellEducatedWorkers, _profile.ModDefaultWorkPlace.WellEducatedWorkers), _profile.CustomizedWorkPlace.WellEducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithWellEducatedWorkers(v)).Control;
+        _highlyEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.HighlyEducatedWorkers, GetMinorText(_profile.WorkPlace.HighlyEducatedWorkers, _profile.ModDefaultWorkPlace.HighlyEducatedWorkers), _profile.CustomizedWorkPlace.HighlyEducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithHighlyEducatedWorkers(v)).Control;
 
         _facilityPropertiesSection.isEnabled = _profile.ProfileTypeSet == ProfileFlag.Customized;
 
@@ -169,6 +169,7 @@ internal class ControlPanel : ControlPanelBase {
         FacilityType.ProcessingFacility => Translations.ProcessingFacility,
         FacilityType.UniqueFacility => Translations.UniqueFacility,
         FacilityType.FishingHarbor => Translations.FishingHarbor,
+        FacilityType.FishFarm => Translations.FishFarm,
         _ => Translations.WarehouseFacility,
     };
 

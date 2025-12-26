@@ -3,13 +3,12 @@ using RebalancedIndustriesRevisited.Extensions;
 
 namespace RebalancedIndustriesRevisited.Data;
 
-public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
-    private int _customizedBoatCount;
-
-    public override FacilityType BuildingType => FacilityType.FishingHarbor;
+public class FishFarmProfile : ProfileBase<FishFarmAI> {
+    public override FacilityType BuildingType => FacilityType.FishFarm;
     public override IndustrialCategory IndustrialCategory { get; protected set; } = IndustrialCategory.Fishing;
+
+    [JsonIgnore] public override int CustomizedBoatCount { get; set; }
     [JsonIgnore] public override int CustomizedStorageCapacity { get; set; }
-    [JsonIgnore] public override int CustomizedOutputRate { get; set; }
 
     public override int CustomizedTruckCount {
         get => _customizedTruckCount;
@@ -21,12 +20,12 @@ public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
         }
     }
 
-    public override int CustomizedBoatCount {
-        get => _customizedBoatCount;
+    public override int CustomizedOutputRate {
+        get => _customizedOutputRate;
         set {
-            _customizedBoatCount = value;
+            _customizedOutputRate = value;
             if (Prefab is not null)
-                Prefab.m_boatCount = _customizedBoatCount;
+                Prefab.m_productionRate = _customizedOutputRate;
             Validate();
         }
     }
@@ -40,13 +39,24 @@ public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
         }
     }
 
-    public FishingHarborProfile(FishingHarborAI prefab) {
+    public FishFarmProfile(FishFarmAI prefab) {
         Prefab = prefab;
         GetPrefab();
     }
 
+    public sealed override void GetPrefab() {
+        if (Prefab == null) return;
+
+        Name = Prefab.name;
+        _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
+        _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
+        _customizedOutputRate = ModDefaultOutputRate = OutputRate = Prefab.m_productionRate;
+        _customizedTruckCount = ModDefaultTruckCount = TruckCount = Prefab.m_outputVehicleCount;
+        _customizedWorkPlace = ModDefaultWorkPlace = WorkPlace = Prefab.GetWorkPlace();
+    }
+
     public override void Validate() {
-        if (ModDefaultConstructionCost != CustomizedConstructionCost || ModDefaultMaintenanceCost != CustomizedMaintenanceCost || ModDefaultTruckCount != CustomizedTruckCount || ModDefaultWorkPlace != CustomizedWorkPlace || ModDefaultBoatCount != CustomizedBoatCount) {
+        if (ModDefaultConstructionCost != CustomizedConstructionCost || ModDefaultMaintenanceCost != CustomizedMaintenanceCost || ModDefaultTruckCount != CustomizedTruckCount || ModDefaultOutputRate != CustomizedOutputRate || ModDefaultWorkPlace != CustomizedWorkPlace) {
             Customized = true;
         }
         else {
@@ -54,23 +64,11 @@ public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
         }
     }
 
-    public sealed override void GetPrefab() {
-        if (Prefab is null) return;
-
-        Name = Prefab.name;
-        _customizedConstructionCost = ModDefaultConstructionCost = ConstructionCost = Prefab.m_constructionCost;
-        _customizedMaintenanceCost = ModDefaultMaintenanceCost = MaintenanceCost = Prefab.m_maintenanceCost;
-        _customizedTruckCount = ModDefaultTruckCount = TruckCount = Prefab.m_outputVehicleCount;
-        _customizedBoatCount = ModDefaultBoatCount = BoatCount = Prefab.m_boatCount;
-        _customizedWorkPlace = ModDefaultWorkPlace = WorkPlace = Prefab.GetWorkPlace();
-    }
-
     public override void SetFromLoadData(IProfile profile) {
         CustomizedConstructionCost = profile.CustomizedConstructionCost;
         CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
         CustomizedTruckCount = profile.CustomizedTruckCount;
         CustomizedOutputRate = profile.CustomizedOutputRate;
-        CustomizedBoatCount = profile.CustomizedBoatCount;
         CustomizedWorkPlace = profile.CustomizedWorkPlace;
     }
 
@@ -81,7 +79,6 @@ public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
         CustomizedMaintenanceCost = MaintenanceCost;
         CustomizedTruckCount = TruckCount;
         CustomizedOutputRate = OutputRate;
-        CustomizedBoatCount = BoatCount;
         CustomizedWorkPlace = WorkPlace;
     }
 
@@ -90,11 +87,10 @@ public class FishingHarborProfile : ProfileBase<FishingHarborAI> {
         CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
         CustomizedTruckCount = ModDefaultTruckCount;
         CustomizedOutputRate = ModDefaultOutputRate;
-        CustomizedBoatCount = ModDefaultBoatCount;
         CustomizedWorkPlace = ModDefaultWorkPlace;
     }
 
     public override void OutputInfo() {
-        Logger.Info($"FishingHarbor | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.ToString()} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | BoatCount: {BoatCount} -> {Prefab.m_boatCount} | Building: {Name}");
+        Logger.Info($"FishFarm | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Vehicle count: {TruckCount} -> {Prefab.m_outputVehicleCount} | Output rate: {OutputRate} -> {Prefab.m_productionRate} | Work space: {WorkPlace.ToString()} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
 }
