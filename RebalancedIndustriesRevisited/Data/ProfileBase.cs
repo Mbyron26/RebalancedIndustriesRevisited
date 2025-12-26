@@ -16,24 +16,44 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     [JsonIgnore] public abstract FacilityType BuildingType { get; }
     protected ILog Logger { get; } = LogManager.GetLogger();
     protected TypePrefab Prefab { get; set; }
-    [JsonIgnore] public ProfileType ProfileTypeSet => GetProfileTypeSet();
+    [JsonIgnore] public ProfileFlag ProfileTypeSet => GetProfileFlagSet();
     [JsonIgnore] public abstract IndustrialCategory IndustrialCategory { get; protected set; }
     [JsonIgnore] public string Name { get; set; }
     [JsonIgnore] public bool Customized { get; protected set; }
     [JsonIgnore] public int ConstructionCost { get; set; }
     [JsonIgnore] public int ModDefaultConstructionCost { get; set; }
-    public virtual int CustomizedConstructionCost { get; set; }
+
+    public virtual int CustomizedConstructionCost {
+        get => _customizedConstructionCost;
+        set {
+            _customizedConstructionCost = value;
+            if (Prefab is not null)
+                Prefab.m_constructionCost = _customizedConstructionCost;
+            Validate();
+        }
+    }
+
     [JsonIgnore] public int MaintenanceCost { get; set; }
     [JsonIgnore] public int ModDefaultMaintenanceCost { get; set; }
-    public virtual int CustomizedMaintenanceCost { get; set; }
+
+    public virtual int CustomizedMaintenanceCost {
+        get => _customizedMaintenanceCost;
+        set {
+            _customizedMaintenanceCost = value;
+            if (Prefab is not null)
+                Prefab.m_maintenanceCost = _customizedMaintenanceCost;
+            Validate();
+        }
+    }
+
     [JsonIgnore] public int TruckCount { get; set; }
     [JsonIgnore] public int ModDefaultTruckCount { get; set; }
     public virtual int CustomizedTruckCount { get; set; }
     [JsonIgnore] public int OutputRate { get; set; }
     [JsonIgnore] public int ModDefaultOutputRate { get; set; }
     public virtual int CustomizedOutputRate { get; set; }
-    [JsonIgnore] public WorkPlace WorkPlace { get; set; } = new();
-    [JsonIgnore] public WorkPlace ModDefaultWorkPlace { get; set; } = new();
+    [JsonIgnore] public WorkPlace WorkPlace { get; set; } 
+    [JsonIgnore] public WorkPlace ModDefaultWorkPlace { get; set; } 
     public virtual WorkPlace CustomizedWorkPlace { get; set; }
     [JsonIgnore] public int StorageCapacity { get; set; }
     [JsonIgnore] public int ModDefaultStorageCapacity { get; set; }
@@ -43,87 +63,28 @@ public abstract class ProfileBase<TypePrefab> : IProfile where TypePrefab : Play
     public virtual int CustomizedBoatCount { get; set; }
 
     public abstract void GetPrefab();
+    public abstract void SetFromLoadData(IProfile profile);
+    public abstract void SetFromModData();
+    public abstract void Validate();
+    public abstract void SetGameDefaults();
+    public abstract void SetModDefaults();
+    
+    public virtual void SetModCustomized() { }
+    public virtual void OutputInfo() { }
 
-    protected virtual ProfileType GetProfileTypeSet() {
+    protected virtual ProfileFlag GetProfileFlagSet() {
         if (_customizedConstructionCost == ConstructionCost && _customizedMaintenanceCost == MaintenanceCost && _customizedTruckCount == TruckCount && _customizedOutputRate == OutputRate && _customizedWorkPlace.Equals(WorkPlace))
-            return ProfileType.GameDefault;
+            return ProfileFlag.GameDefault;
         if (_customizedConstructionCost == ModDefaultConstructionCost && _customizedMaintenanceCost == ModDefaultMaintenanceCost && _customizedTruckCount == ModDefaultTruckCount && _customizedOutputRate == ModDefaultOutputRate && _customizedWorkPlace.Equals(ModDefaultWorkPlace)) {
             if (BuildingType == FacilityType.WarehouseFacility) {
-                return _customizedStorageCapacity != ModDefaultStorageCapacity ? ProfileType.Customized : ProfileType.ModDefault;
+                return _customizedStorageCapacity != ModDefaultStorageCapacity ? ProfileFlag.Customized : ProfileFlag.ModDefault;
             }
 
-            return ProfileType.ModDefault;
+            return ProfileFlag.ModDefault;
         }
 
-        return ProfileType.Customized;
+        return ProfileFlag.Customized;
     }
-
-    public void SetFromLoadData(IProfile profile) {
-        CustomizedConstructionCost = profile.CustomizedConstructionCost;
-        CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
-        CustomizedTruckCount = profile.CustomizedTruckCount;
-        CustomizedOutputRate = profile.CustomizedOutputRate;
-        CustomizedWorkPlace = profile.CustomizedWorkPlace;
-        CustomizedBoatCount = profile.CustomizedBoatCount;
-        CustomizedStorageCapacity = profile.CustomizedStorageCapacity;
-    }
-
-    public virtual void SetFromModData() { }
-
-    public virtual void SetGameDefaults() {
-        CustomizedConstructionCost = ConstructionCost;
-        CustomizedMaintenanceCost = MaintenanceCost;
-        CustomizedTruckCount = TruckCount;
-        CustomizedOutputRate = OutputRate;
-        CustomizedWorkPlace = WorkPlace;
-        CustomizedStorageCapacity = StorageCapacity;
-        CustomizedBoatCount = BoatCount;
-    }
-
-    public virtual void SetModDefaults() {
-        SetConstructionCost();
-        SetMaintenanceCost();
-        SetTruckCount();
-        SetOutputRate();
-        SetWorkPlace();
-        SetStorageCapacity();
-    }
-
-    public virtual void SetModCustomized() { }
-
-    protected virtual void SetBoatCount() => CustomizedBoatCount = ModDefaultBoatCount;
-
-    protected virtual void SetWorkPlace() {
-        CustomizedWorkPlace = ModDefaultWorkPlace;
-    }
-
-    protected virtual void SetStorageCapacity() {
-        CustomizedStorageCapacity = ModDefaultStorageCapacity;
-    }
-
-    protected virtual void SetOutputRate() {
-        CustomizedOutputRate = ModDefaultOutputRate;
-    }
-
-    protected virtual void SetTruckCount() {
-        CustomizedTruckCount = ModDefaultTruckCount;
-    }
-
-    protected virtual void SetMaintenanceCost() {
-        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
-    }
-
-    protected virtual void SetConstructionCost() {
-        CustomizedConstructionCost = ModDefaultConstructionCost;
-    }
-
-    public virtual void Validate() {
-        if (ModDefaultConstructionCost != CustomizedConstructionCost || ModDefaultMaintenanceCost != CustomizedMaintenanceCost || ModDefaultTruckCount != CustomizedTruckCount || ModDefaultOutputRate != CustomizedOutputRate || ModDefaultWorkPlace != CustomizedWorkPlace || ModDefaultStorageCapacity != CustomizedStorageCapacity) {
-            Customized = true;
-        }
-    }
-
-    public virtual void OutputInfo() { }
 
     protected float GetTruckFactor(TransferManager.TransferReason material) => material switch {
         TransferManager.TransferReason.Grain => 0.3f,

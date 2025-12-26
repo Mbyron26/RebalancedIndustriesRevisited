@@ -100,11 +100,11 @@ internal class ControlPanel : ControlPanelBase {
         facilityTypeSection.AddLabel(null, $"{Translations.FacilityName}: {_facilityManager.GetCurrentBuildingName()}", beforeLayoutAction: card => card.Direction = FlexDirection.Column);
 
         facilityTypeSection.AddRadioGroup(Translations.ConfigurationType, null, unlockRadioGroup => {
-            RadioGroupLogic<ProfileType>.Create()
+            RadioGroupLogic<ProfileFlag>.Create()
                 .AddRange(
-                    new RadioButtonItem<ProfileType>(ProfileType.GameDefault, unlockRadioGroup.AddOption(Translations.GameDefault)),
-                    new RadioButtonItem<ProfileType>(ProfileType.ModDefault, unlockRadioGroup.AddOption(Translations.ModDefault)),
-                    new RadioButtonItem<ProfileType>(ProfileType.Customized, unlockRadioGroup.AddOption(Translations.Custom))
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.GameDefault, unlockRadioGroup.AddOption(Translations.GameDefault)),
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.ModDefault, unlockRadioGroup.AddOption(Translations.ModDefault)),
+                    new RadioButtonItem<ProfileFlag>(ProfileFlag.Customized, unlockRadioGroup.AddOption(Translations.Custom))
                 )
                 .SetDefault(v => v.Value == _profile.ProfileTypeSet)
                 .SelectionChanged += OnProfileSelectionChanged;
@@ -116,8 +116,8 @@ internal class ControlPanel : ControlPanelBase {
 
         _facilityPropertiesSection = AddSection(_configPage);
 
-        _constructionCostField = _facilityPropertiesSection.AddIntField(Translations.ConstructionCost, GetMinorText(_profile.ConstructionCost, _profile.ModDefaultConstructionCost), _profile.CustomizedConstructionCost, 0, 50000, 100, v => _profile.CustomizedConstructionCost = v).Control;
-        _maintenanceCostField = _facilityPropertiesSection.AddIntField(Translations.MaintenanceCost, GetMinorText(_profile.MaintenanceCost, _profile.ModDefaultMaintenanceCost), _profile.CustomizedMaintenanceCost, 0, 50000, 100, v => _profile.CustomizedMaintenanceCost = v).Control;
+        _constructionCostField = _facilityPropertiesSection.AddIntField(Translations.ConstructionCost, GetMinorText(_profile.ConstructionCost, _profile.ModDefaultConstructionCost), _profile.CustomizedConstructionCost, 0, 100000000, 100, v => _profile.CustomizedConstructionCost = v).Control;
+        _maintenanceCostField = _facilityPropertiesSection.AddIntField(Translations.MaintenanceCost, GetMinorText(_profile.MaintenanceCost, _profile.ModDefaultMaintenanceCost), _profile.CustomizedMaintenanceCost, 0, 100000000, 100, v => _profile.CustomizedMaintenanceCost = v).Control;
         if (_profile.BuildingType != FacilityType.MainIndustryBuilding) {
             _truckCountField = _facilityPropertiesSection.AddIntField(Translations.OutputTruckCount, GetMinorText(_profile.TruckCount, _profile.ModDefaultTruckCount), _profile.CustomizedTruckCount, 0, 100, 1, v => _profile.CustomizedTruckCount = v).Control;
         }
@@ -136,23 +136,23 @@ internal class ControlPanel : ControlPanelBase {
             _customizedBoatCountField = _facilityPropertiesSection.AddIntField(Translations.BoatCount, GetMinorText(_profile.BoatCount, _profile.ModDefaultBoatCount), _profile.CustomizedBoatCount, 0, 100, 1, v => _profile.CustomizedBoatCount = v).Control;
         }
 
-        _uneducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.UneducatedWorkers, GetMinorText(_profile.WorkPlace.UneducatedWorkers, _profile.ModDefaultWorkPlace.UneducatedWorkers), _profile.CustomizedWorkPlace.UneducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(v, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _educatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.EducatedWorkers, GetMinorText(_profile.WorkPlace.EducatedWorkers, _profile.ModDefaultWorkPlace.EducatedWorkers), _profile.CustomizedWorkPlace.EducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, v, _profile.CustomizedWorkPlace.WellEducatedWorkers, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _wellEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.WellEducatedWorkers, GetMinorText(_profile.WorkPlace.WellEducatedWorkers, _profile.ModDefaultWorkPlace.WellEducatedWorkers), _profile.CustomizedWorkPlace.WellEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, v, _profile.CustomizedWorkPlace.HighlyEducatedWorkers)).Control;
-        _highlyEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.HighlyEducatedWorkers, GetMinorText(_profile.WorkPlace.HighlyEducatedWorkers, _profile.ModDefaultWorkPlace.HighlyEducatedWorkers), _profile.CustomizedWorkPlace.HighlyEducatedWorkers, 0, 100, 1, v => _profile.CustomizedWorkPlace = new WorkPlace(_profile.CustomizedWorkPlace.UneducatedWorkers, _profile.CustomizedWorkPlace.EducatedWorkers, _profile.CustomizedWorkPlace.WellEducatedWorkers, v)).Control;
+        _uneducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.UneducatedWorkers, GetMinorText(_profile.WorkPlace.UneducatedWorkers, _profile.ModDefaultWorkPlace.UneducatedWorkers), _profile.CustomizedWorkPlace.UneducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithUneducatedWorkers(v)).Control;
+        _educatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.EducatedWorkers, GetMinorText(_profile.WorkPlace.EducatedWorkers, _profile.ModDefaultWorkPlace.EducatedWorkers), _profile.CustomizedWorkPlace.EducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithEducatedWorkers(v)).Control;
+        _wellEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.WellEducatedWorkers, GetMinorText(_profile.WorkPlace.WellEducatedWorkers, _profile.ModDefaultWorkPlace.WellEducatedWorkers), _profile.CustomizedWorkPlace.WellEducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithWellEducatedWorkers(v)).Control;
+        _highlyEducatedWorkersField = _facilityPropertiesSection.AddIntField(Translations.HighlyEducatedWorkers, GetMinorText(_profile.WorkPlace.HighlyEducatedWorkers, _profile.ModDefaultWorkPlace.HighlyEducatedWorkers), _profile.CustomizedWorkPlace.HighlyEducatedWorkers, 0, 1000, 1, v => _profile.CustomizedWorkPlace = _profile.CustomizedWorkPlace.WithHighlyEducatedWorkers(v)).Control;
 
-        _facilityPropertiesSection.isEnabled = _profile.ProfileTypeSet == ProfileType.Customized;
+        _facilityPropertiesSection.isEnabled = _profile.ProfileTypeSet == ProfileFlag.Customized;
 
         #endregion
     }
 
-    private void OnProfileSelectionChanged(RadioButtonItem<ProfileType> obj) {
+    private void OnProfileSelectionChanged(RadioButtonItem<ProfileFlag> obj) {
         _facilityPropertiesSection.isEnabled = false;
         var value = obj.Value;
-        if (value == ProfileType.GameDefault) {
+        if (value == ProfileFlag.GameDefault) {
             _profile.SetGameDefaults();
         }
-        else if (value == ProfileType.ModDefault) {
+        else if (value == ProfileFlag.ModDefault) {
             _profile.SetModDefaults();
         }
         else {
@@ -169,6 +169,7 @@ internal class ControlPanel : ControlPanelBase {
         FacilityType.ProcessingFacility => Translations.ProcessingFacility,
         FacilityType.UniqueFacility => Translations.UniqueFacility,
         FacilityType.FishingHarbor => Translations.FishingHarbor,
+        FacilityType.FishFarm => Translations.FishFarm,
         _ => Translations.WarehouseFacility,
     };
 

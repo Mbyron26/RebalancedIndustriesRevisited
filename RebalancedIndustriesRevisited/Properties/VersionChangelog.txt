@@ -1,8 +1,5 @@
-﻿Version 1.0.1
+﻿Version 1.0.2
 [list]
-[*] Added global production rate adjustment for extractors, processors, and unique factories (Mod Default).
-[*] Added compatibility support for the Campus Industries Housing Mod.
-[*] Added support for the Fishing Harbor building.
-[*] Fixed an issue where the entry button was still displayed on certain unavailable industrial buildings.
-[*] Fixed a potential deserialization issue that could prevent the mod from working.
+[*] Added more custom settings for fishing buildings.
+[*]Fixed an issue where the configuration was incorrect when selecting different configuration types.
 [/list]

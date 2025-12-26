@@ -1,6 +1,6 @@
 ﻿namespace RebalancedIndustriesRevisited.Data;
 
-public enum ProfileType {
+public enum ProfileFlag {
     GameDefault,
     ModDefault,
     Customized,

@@ -1,5 +1,5 @@
 ﻿using System;
-using CSLModsCommon.Logging;
+using Newtonsoft.Json;
 using RebalancedIndustriesRevisited.Extensions;
 using UnityEngine;
 
@@ -9,26 +9,8 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
     public override FacilityType BuildingType => FacilityType.WarehouseFacility;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
     public const int MinWarehouseCapacity = 40000;
-
-    public override int CustomizedConstructionCost {
-        get => _customizedConstructionCost;
-        set {
-            _customizedConstructionCost = value;
-            if (Prefab is not null)
-                Prefab.m_constructionCost = _customizedConstructionCost;
-            Validate();
-        }
-    }
-
-    public override int CustomizedMaintenanceCost {
-        get => _customizedMaintenanceCost;
-        set {
-            _customizedMaintenanceCost = value;
-            if (Prefab is not null)
-                Prefab.m_maintenanceCost = _customizedMaintenanceCost;
-            Validate();
-        }
-    }
+    [JsonIgnore] public override int CustomizedOutputRate { get; set; }
+    [JsonIgnore] public override int CustomizedBoatCount { get; set; }
 
     public override int CustomizedTruckCount {
         get => _customizedTruckCount;
@@ -89,12 +71,16 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
             Customized = false;
     }
 
-    private float GetWarehouseTruckFactor() {
-        return Prefab.m_storageType == TransferManager.TransferReason.Ore ? 0.8f : 0.5f;
-    }
+    private float GetWarehouseTruckFactor() => Prefab.m_storageType == TransferManager.TransferReason.Ore ? 0.8f : 0.5f;
 
-    private decimal GetCostFactor() {
-        return Prefab.m_storageType == TransferManager.TransferReason.Grain ? 0.5m : 1;
+    private decimal GetCostFactor() => Prefab.m_storageType == TransferManager.TransferReason.Grain ? 0.5m : 1;
+
+    public override void SetFromLoadData(IProfile profile) {
+        CustomizedConstructionCost = profile.CustomizedConstructionCost;
+        CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
+        CustomizedTruckCount = profile.CustomizedTruckCount;
+        CustomizedStorageCapacity = profile.CustomizedStorageCapacity;
+        CustomizedWorkPlace = profile.CustomizedWorkPlace;
     }
 
     public override void SetFromModData() {
@@ -113,7 +99,23 @@ public class WarehouseProfile : ProfileBase<WarehouseAI> {
         if (CustomizedWorkPlace.Sum() > 10) ModDefaultWorkPlace = CustomizedWorkPlace = new WorkPlace(Convert.ToInt32(Math.Round(CustomizedWorkPlace.UneducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.EducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.WellEducatedWorkers / workPlaceFactor)), Convert.ToInt32(Math.Round(CustomizedWorkPlace.HighlyEducatedWorkers / workPlaceFactor)));
     }
 
+    public override void SetGameDefaults() {
+        CustomizedConstructionCost = ConstructionCost;
+        CustomizedMaintenanceCost = MaintenanceCost;
+        CustomizedTruckCount = TruckCount;
+        CustomizedStorageCapacity = StorageCapacity;
+        CustomizedWorkPlace = WorkPlace;
+    }
+
+    public override void SetModDefaults() {
+        CustomizedConstructionCost = ModDefaultConstructionCost;
+        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
+        CustomizedTruckCount = ModDefaultTruckCount;
+        CustomizedStorageCapacity = ModDefaultStorageCapacity;
+        CustomizedWorkPlace = ModDefaultWorkPlace;
+    }
+
     public override void OutputInfo() {
-        LogManager.GetLogger().Info($"Warehouse | Vehicle count: {TruckCount} -> {Prefab.m_truckCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
+        Logger.Info($"Warehouse | Vehicle count: {TruckCount} -> {Prefab.m_truckCount} | Construction cost: {ConstructionCost} -> {Prefab.m_constructionCost} | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
 }

@@ -1,4 +1,4 @@
-﻿using CSLModsCommon.Logging;
+﻿using Newtonsoft.Json;
 using RebalancedIndustriesRevisited.Extensions;
 using UnityEngine;
 
@@ -8,26 +8,8 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
     public override FacilityType BuildingType => FacilityType.UniqueFacility;
     public override IndustrialCategory IndustrialCategory { get; protected set; }
     public UniqueFactoryAIValue ProfileValue { get; private set; }
-
-    public override int CustomizedConstructionCost {
-        get => _customizedConstructionCost;
-        set {
-            _customizedConstructionCost = value;
-            if (Prefab is not null)
-                Prefab.m_constructionCost = _customizedConstructionCost;
-            Validate();
-        }
-    }
-
-    public override int CustomizedMaintenanceCost {
-        get => _customizedMaintenanceCost;
-        set {
-            _customizedMaintenanceCost = value;
-            if (Prefab is not null)
-                Prefab.m_maintenanceCost = _customizedMaintenanceCost;
-            Validate();
-        }
-    }
+    [JsonIgnore] public override int CustomizedBoatCount { get; set; }
+    [JsonIgnore] public override int CustomizedStorageCapacity { get; set; }
 
     public override int CustomizedTruckCount {
         get => _customizedTruckCount;
@@ -114,15 +96,35 @@ public class UniqueFactoryProfile : ProfileBase<UniqueFactoryAI> {
             CustomizedTruckCount = Mathf.Max(Mathf.FloorToInt(1f * TruckCount), 1);
         if (ProfileValue.CostsFactor == 1)
             return;
-        ModDefaultWorkPlace = CustomizedWorkPlace = ProfileValue.WorkPlaceValue;
-        Prefab.m_workPlaceCount0 = CustomizedWorkPlace.UneducatedWorkers;
-        Prefab.m_workPlaceCount1 = CustomizedWorkPlace.EducatedWorkers;
-        Prefab.m_workPlaceCount2 = CustomizedWorkPlace.WellEducatedWorkers;
-        Prefab.m_workPlaceCount3 = CustomizedWorkPlace.HighlyEducatedWorkers;
+        CustomizedWorkPlace = ModDefaultWorkPlace = ProfileValue.WorkPlaceValue;
+    }
+
+    public override void SetFromLoadData(IProfile profile) {
+        CustomizedConstructionCost = profile.CustomizedConstructionCost;
+        CustomizedMaintenanceCost = profile.CustomizedMaintenanceCost;
+        CustomizedTruckCount = profile.CustomizedTruckCount;
+        CustomizedOutputRate = profile.CustomizedOutputRate;
+        CustomizedWorkPlace = profile.CustomizedWorkPlace;
+    }
+
+    public override void SetGameDefaults() {
+        CustomizedConstructionCost = ConstructionCost;
+        CustomizedMaintenanceCost = MaintenanceCost;
+        CustomizedTruckCount = TruckCount;
+        CustomizedOutputRate = OutputRate;
+        CustomizedWorkPlace = WorkPlace;
+    }
+
+    public override void SetModDefaults() {
+        CustomizedConstructionCost = ModDefaultConstructionCost;
+        CustomizedMaintenanceCost = ModDefaultMaintenanceCost;
+        CustomizedTruckCount = ModDefaultTruckCount;
+        CustomizedOutputRate = ModDefaultOutputRate;
+        CustomizedWorkPlace = ModDefaultWorkPlace;
     }
 
     public override void OutputInfo() {
-        LogManager.GetLogger().Info($"Unique Factory | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
+        Logger.Info($"Unique Factory | Maintenance cost: {MaintenanceCost} -> {Prefab.m_maintenanceCost} | Work space: {WorkPlace.UneducatedWorkers} {WorkPlace.EducatedWorkers} {WorkPlace.WellEducatedWorkers} {WorkPlace.HighlyEducatedWorkers} -> {Prefab.m_workPlaceCount0} {Prefab.m_workPlaceCount1} {Prefab.m_workPlaceCount2} {Prefab.m_workPlaceCount3} | Building: {Name}");
     }
 
     public void ModifyProductionRate(float factor) => ModDefaultOutputRate = CustomizedOutputRate = (int)(OutputRate * factor);

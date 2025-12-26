@@ -7,4 +7,5 @@ public enum FacilityType {
     WarehouseFacility,
     MainIndustryBuilding,
     FishingHarbor,
+    FishFarm
 }
