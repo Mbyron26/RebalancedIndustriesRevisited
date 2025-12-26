@@ -301,7 +301,7 @@ public class FacilityManager : ManagerBase, ISerializable {
                 else
                     profile.SetFromModData();
                 WarehousePrefabBuffer.Add(profile);
-                Logger.Info($"Added warehouse prefab to buffer: {profile.Name}");
+                Logger.Debug($"Added warehouse prefab to buffer: {profile.Name}");
                 continue;
             }
 
