@@ -94,9 +94,9 @@
     "LanguageName": "Portuguese, Brazilian",
     "Locale": "pt-BR",
     "TotalStrings": 50,
-    "TranslatedStrings": 7,
-    "TranslationProgress": 22,
-    "ApprovalProgress": 22
+    "TranslatedStrings": 50,
+    "TranslationProgress": 100,
+    "ApprovalProgress": 100
   },
   {
     "LanguageId": "pt-PT",
@@ -112,9 +112,9 @@
     "LanguageName": "Russian",
     "Locale": "ru-RU",
     "TotalStrings": 50,
-    "TranslatedStrings": 7,
-    "TranslationProgress": 22,
-    "ApprovalProgress": 22
+    "TranslatedStrings": 15,
+    "TranslationProgress": 49,
+    "ApprovalProgress": 49
   },
   {
     "LanguageId": "sk",

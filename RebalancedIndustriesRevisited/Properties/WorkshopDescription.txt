@@ -1,13 +1,15 @@
-﻿[HR][/HR]
+﻿[img]https://i.imgur.com/8BfNPgj.png[/img]
+
+[HR][/HR]
 [code][h1]Overview[/h1]
 [list][h2]Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.[/h2][/list]
 [/code]
 
 [quote]
-[u]New in version 1.0.2[/u]
+[u]New in version 1.0.3[/u]
 [list]
-[*] Added more custom settings for fishing buildings.
-[*] Fixed an issue where the configuration was incorrect when selecting different configuration types.
+[*] Updated to support game version 1.21.1
+[*] Updated to CSLModsCommon framework 1.0.2
 [/list]
 [/quote]
 
