@@ -1,7 +1,14 @@
 ﻿# Changelog
+
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2026-03-14
+
+- Updated to support game version 1.21.1
+- Updated to CSLModsCommon framework 1.0.2
+
 ## [1.0.2] - 2025-12-26
+
 - Added more custom settings for fishing buildings.
 - Fixed an issue where the configuration was incorrect when selecting different configuration types.
 

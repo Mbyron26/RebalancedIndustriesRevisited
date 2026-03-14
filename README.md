@@ -1,9 +1,11 @@
 # Rebalances Industries DLC, reduce traffic flow, increase cargo loading and more.
 
 [![Changelog](https://img.shields.io/badge/Changelog-Click%20to%20View-blue)](CHANGELOG.md)
-[![Stable](https://img.shields.io/badge/Stable%20Version-1.0.2-green)](https://steamcommunity.com/sharedfiles/filedetails/?id=2911178252)
+[![Stable](https://img.shields.io/badge/Stable%20Version-1.0.3-green)](https://steamcommunity.com/sharedfiles/filedetails/?id=2911178252)
 [![Beta](https://img.shields.io/badge/Beta%20Version-1.0.2-orange)](https://steamcommunity.com/sharedfiles/filedetails/?id=2928683738)
-![Game Version](https://img.shields.io/badge/Support%20Game%20Version-1.20.1-green)
+![Game Version](https://img.shields.io/badge/Support%20Game%20Version-1.21.1-green)
+
+![d](https://i.imgur.com/8BfNPgj.png)
 
 ## Functions
 - Using new algorithm to increase the load of vehicle in industrial zone and further reduce the traffic flow.

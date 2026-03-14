@@ -1,5 +1,5 @@
-﻿Version 1.0.2
+﻿Version 1.0.3
 [list]
-[*] Added more custom settings for fishing buildings.
-[*]Fixed an issue where the configuration was incorrect when selecting different configuration types.
+[*] Updated to support game version 1.21.1
+[*] Updated to CSLModsCommon framework 1.0.2
 [/list]
